@@ -17,6 +17,8 @@
     justify-content: center;
     align-items: center;
     animation-fill-mode: both;
+
+    z-index: 999;
 }
 
 #content,
@@ -33,7 +35,6 @@
 .loading .layout__header,
 .loading .layout__side
 {
-    animation-fill-mode: both;
     filter: blur(10px);
     opacity: .2;
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="loading start-page--open">
 <head>
   <meta charset="UTF-8">
 
@@ -7,7 +7,7 @@
   <title>Много сделал! - Шаблон</title>
   <link rel="stylesheet" href="css/preloader.css">
 </head>
-<body class="loading">
+<body class="">
   <div id="preloader">
       <div class="preloader__stiker" style="transform: rotate(-8deg);">
           <div class="preloader__stiker__warp preloader__stiker--to-right">
@@ -122,35 +122,26 @@
       <div class="layout__body">
         <div class="layout__container">
           <div id="content">
-            <h2>Меню</h2>
-            <hr>
-            <code>
-              ul.menu>ul.menu__list>li.menu__item*6>a.menu__link[#]{Пункт меню $}
-            </code>
-            <ul class="menu">
-              <ul class="menu__list">
-                <li class="menu__item"><a href="#" class="menu__link active">Пункт меню 1 <code>active</code></a></li>
-                <li class="menu__item"><a href="#" class="menu__link">Пункт меню 2</a></li>
-                <li class="menu__item"><a href="#" class="menu__link">Пункт меню 3</a></li>
-                <li class="menu__item"><a href="#" class="menu__link">Пункт меню 4</a></li>
-                <li class="menu__item"><a href="#" class="menu__link">Пункт меню 5</a></li>
-                <li class="menu__item"><a href="#" class="menu__link">Пункт меню 6</a></li>
-              </ul>
-            </ul>
-
 
             <h2>Иконки</h2>
             <hr>
-            <p><span class="icon lang"></span> <code>.icon.lang</code> </p>
-            <p><span class="icon mix"></span> <code>.icon.mix</code> </p>
-            <p><span class="icon arrow-left"></span> <code>.icon.arrow-left</code></p>
-            <p><span class="icon arrow-top"></span> <code>.icon.arrow-top</code></p>
-            <p><span class="icon back"></span> <code>.icon.back</code> </p>
-            <p><span class="icon socal-vk"></span> <code>.icon.socal-vk</code> </p>
-            <p><span class="icon socal-fb"></span> <code>.icon.socal-fb</code> </p>
-            <p><span class="icon socal-tw"></span> <code>.icon.socal-tw</code> </p>
-            <p><span class="icon socal-lj"></span> <code>.icon.socal-lj</code> </p>
-            <p><span class="icon socal-yt"></span> <code>.icon.socal-yt</code> </p>
+            <p><span class="icon lang"></span> <code>span.icon.lang</code> </p>
+            <p><span class="icon mix"></span> <code>span.icon.mix</code> </p>
+            <p><span class="icon arrow-left"></span> <code>span.icon.arrow-left</code></p>
+            <p><span class="icon arrow-top"></span> <code>span.icon.arrow-top</code></p>
+            <p><span class="icon back"></span> <code>span.icon.back</code> </p>
+            <p><span class="icon socal-vk"></span> <code>span.icon.socal-vk</code> </p>
+            <p><span class="icon socal-fb"></span> <code>span.icon.socal-fb</code> </p>
+            <p><span class="icon socal-tw"></span> <code>span.icon.socal-tw</code> </p>
+            <p><span class="icon socal-lj"></span> <code>span.icon.socal-lj</code> </p>
+            <p><span class="icon socal-yt"></span> <code>span.icon.socal-yt</code> </p>
+
+            <h2>Маркеры</h2>
+            <hr>
+
+            <p><code class="marker-1">span.marker-1</code></p>
+            <p><code class="marker-2">span.marker-2</code></p>
+            <p><code class="marker-3">span.marker-3</code></p>
 
 
             <br>
@@ -189,6 +180,23 @@
             <p><code>q</code> <q>Используется для выделения коротких цитат.</q></p>
             <p><code>cite</code> <cite>Применяется для выделения цитат, названий произведений, сносок на другие документы.</cite></p>
             <p><code>dfn</code> <dfn>Позволяет выделить текст как определение. Несмотря на наличие специального тега, рекомендуется выделять текст силами CSS.</dfn></p>
+
+
+            <h2>Меню</h2>
+            <hr>
+            <code>
+              ul.menu>ul.menu__list>li.menu__item*6>a.menu__link[#]{Пункт меню $}
+            </code>
+            <ul class="menu">
+              <ul class="menu__list">
+                <li class="menu__item"><a href="#" class="menu__link active">Пункт меню 1 <code>.active</code></a></li>
+                <li class="menu__item"><a href="#" class="menu__link">Пункт меню 2</a></li>
+                <li class="menu__item"><a href="#" class="menu__link">Пункт меню 3</a></li>
+                <li class="menu__item"><a href="#" class="menu__link">Пункт меню 4</a></li>
+                <li class="menu__item"><a href="#" class="menu__link">Пункт меню 5</a></li>
+                <li class="menu__item"><a href="#" class="menu__link">Пункт меню 6</a></li>
+              </ul>
+            </ul>
         </div>
       </div>
       <!-- END: layout__body -->
@@ -208,6 +216,31 @@
       <div class="layout__side_center">Side center</div>
       <div class="layout__side_bottom">Side bottom</div>
     </div>
+  </div>
+
+  <div class="start-page">
+    <div class="start-page__header">
+      <div class="start-page__logo">
+        <a href="/"><img class="logo" src="img/logo-inverse.png" alt="bar" srcset="img/logo-inverse@2x.png 2x"></a>
+      </div>
+      <div class="start-page__menu">
+        <ul>
+          <li><a href="#">Читать обо мне</a></li>
+          <li><a href="#">Тренинги и мероприятия</a></li>
+          <li><a href="#">Написать мне</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="start-page__body">
+      <div class="start-page__photo">
+        <img src="img/start-page__photo.png" srcset="img/start-page__photo@2x.png 2x" alt="">
+      </div>
+      <p class="start-page__title">Всем привет!</p>
+      <p class="start-page__subtitle">Меня зовут Максим Дорофеев.</p>
+      <p class="start-page__text">  Я – <span class="marker-2">корпоративный доктор</span>-<br>прокрастинатолог,<br>  и моя работа – помогать взрослым дядям<br> и тётям учиться <span class="marker-3">делать</span> все важные<br> рабочие и личные <span class="marker-1">дела </span> <br><span class="marker-3">вовремя…</span></p>
+      <div class="start-page__close">Ок, продолжим!</div>
+    </div>
+    <div class="start-page__footer"></div>
   </div>
 
   <script type="text/javascript" src="js/main.js"></script>

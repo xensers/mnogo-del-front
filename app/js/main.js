@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
 
      document.querySelector('.menu__burger').addEventListener("click", function() {
-        document.body.classList.toggle('menu--open');
+        document.documentElement.classList.toggle('menu--open');
     });
 
 
@@ -22,5 +22,18 @@ document.addEventListener("DOMContentLoaded", function() {
             headerElem.classList.remove('scroll');
         }
     });
+
+
+     document.querySelector('.start-page__menu').addEventListener("click", function() {
+        this.classList.toggle('open');
+    });
+
+      document.querySelector('.start-page__close').addEventListener("click", function() {
+        document.documentElement.classList.add('start-page--closing');
+         setTimeout(function(){
+            document.documentElement.classList.remove('start-page--open');
+            document.documentElement.classList.remove('start-page--closing');
+        }, 1000);
+     });
 
 });

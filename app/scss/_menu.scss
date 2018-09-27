@@ -24,29 +24,14 @@
 
         position: relative;
 
-        display: inline-block;
-
         transition: transform .5s ease;
         text-decoration: none;
 
         color: #000;
 
-        &.active::before
+        &.active
         {
-            position: absolute;
-            z-index: -1;
-            top: 0;
-            left: -10%;
-
-            width: 120%;
-            height: 100%;
-
-            content: '';
-            transition: transform .5s ease .5s;
-
-            background: url('../img/marker-1.png') no-repeat;
-            background-position: center center;
-            background-size: 100% 100%;
+            @include marker-1;
         }
     }
 
@@ -83,6 +68,10 @@
 
 .menu--open
 {
+    &, & body
+    {
+        overflow-y: hidden !important;
+    }
     @include respond-from(small)
     {
         overflow: hidden;
