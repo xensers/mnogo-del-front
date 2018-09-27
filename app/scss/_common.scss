@@ -1,0 +1,36 @@
+*
+{
+    box-sizing: border-box;
+}
+
+html,
+body
+{
+    font-family: 'AvantGardeGothicC';
+    font-size: 16px;
+}
+
+img,
+.icon
+{
+    display: inline-block;
+
+    max-width: 100%;
+
+    vertical-align: middle;
+}
+
+pre
+{
+    font-family: monospace;
+    background-color: #eee;
+    overflow: auto;
+}
+
+code
+{
+    font-family: monospace;
+    background-color: #eee;
+    padding: .2em;
+    color: #FD8008;
+}

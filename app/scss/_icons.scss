@@ -1,0 +1,122 @@
+.icon
+{
+    display: inline-block;
+    vertical-align: middle;
+
+    height: 1em;
+    width: 1.6em;
+
+    background-size: auto 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &.lang
+    {
+        width: 1.6em;
+        height: 1em;
+        background-image: url('../img/icons/lang.png');
+        @include retina
+        {
+            background-image: url('../img/icons/lang@2x.png');
+        }
+    }
+
+    &.mix
+    {
+        width: 1.3em;
+        height: 1em;
+        background-image: url('../img/icons/mix.png');
+        @include retina
+        {
+            background-image: url('../img/icons/mix@2x.png');
+        }
+    }
+
+    &.arrow-left
+    {
+        width: 1.4em;
+        height: 1em;
+        background-image: url('../img/icons/arrow-left.png');
+        @include retina
+        {
+            background-image: url('../img/icons/arrow-left@2x.png');
+        }
+    }
+
+    &.arrow-top
+    {
+        width: .9em;
+        height: 1em;
+        background-image: url('../img/icons/arrow-top.png');
+        @include retina
+        {
+            background-image: url('../img/icons/arrow-top@2x.png');
+        }
+    }
+
+    &.back
+    {
+        width: 1.3em;
+        height: 1em;
+        background-image: url('../img/icons/back.png');
+        @include retina
+        {
+            background-image: url('../img/icons/back@2x.png');
+        }
+    }
+
+    &.socal-vk
+    {
+        width: 1.8em;
+        height: 1em;
+        background-image: url('../img/icons/socal-vk.png');
+        @include retina
+        {
+            background-image: url('../img/icons/socal-vk@2x.png');
+        }
+    }
+
+    &.socal-fb
+    {
+        width: 1em;
+        height: 1em;
+        background-image: url('../img/icons/socal-fb.png');
+        @include retina
+        {
+            background-image: url('../img/icons/socal-fb@2x.png');
+        }
+    }
+
+    &.socal-tw
+    {
+        width: 1.4em;
+        height: 1em;
+        background-image: url('../img/icons/socal-tw.png');
+        @include retina
+        {
+            background-image: url('../img/icons/socal-tw@2x.png');
+        }
+    }
+
+    &.socal-lj
+    {
+        width: 1em;
+        height: 1em;
+        background-image: url('../img/icons/socal-lj.png');
+        @include retina
+        {
+            background-image: url('../img/icons/socal-lj@2x.png');
+        }
+    }
+
+    &.socal-yt
+    {
+        width: 1.5em;
+        height: 1em;
+        background-image: url('../img/icons/socal-yt.png');
+        @include retina
+        {
+            background-image: url('../img/icons/socal-yt@2x.png');
+        }
+    }
+}

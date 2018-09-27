@@ -1,0 +1,131 @@
+.layout
+{
+    padding: 0 2rem;
+    overflow-x: hidden;
+
+    &__wrapper
+    {
+        max-width: 80rem;
+        margin: auto;
+
+        border-right: 1px solid #eee;
+        border-left: 1px solid #eee;
+
+        @include respond-to(small)
+        {
+            padding: 0;
+
+            border: none;
+            background: url('../img/body-bg.svg') repeat-y;
+            background-position: center top;
+            background-size: 100% 1px;
+        }
+        @include respond-to(small)
+        {
+            border: none;
+        }
+    }
+
+    &__header
+    {
+        position: fixed;
+        z-index: 999;
+        top: 0;
+        left: 0;
+
+        overflow: hidden;
+
+        width: 100%;
+    }
+
+    &__menu
+    {
+        position: fixed;
+        top: 0;
+        left: -100%;
+
+        overflow: scroll;
+
+        width: 100%;
+        height: 100vh;
+        padding: 0 2rem;
+        padding-top: 6rem;
+
+        transition: transform .5s ease;
+    }
+
+    &__body
+    {
+        position: relative;
+
+        display: flex;
+
+        width: 100%;
+        padding-top: 6rem;
+
+        transition: transform .5s ease;
+
+        justify-content: space-between;
+    }
+
+    &__container
+    {
+        max-width: 100%;
+        margin: auto;
+
+        @include respond-to(small)
+        {
+            width: 66.66666666%;
+            max-width: 53.375rem;
+        }
+    }
+
+    &__side-left,
+    &__side-right
+    {
+        display: none;
+        @include respond-to(small)
+        {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 2rem;
+            padding-top: 8rem;
+            .rotate {
+                writing-mode: vertical-rl;
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    &__side-left
+    {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 16%;
+        height: 100%;
+    }
+
+    &__side-right
+    {
+        align-items: flex-end;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 16%;
+        height: 100%;
+    }
+
+}
+
+.menu--open
+{
+    overflow: hidden;
+    .layout__body,
+    .layout__menu
+    {
+        transform: translateX(100%);
+    }
+}

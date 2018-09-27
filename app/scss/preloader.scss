@@ -1,0 +1,281 @@
+#preloader
+{
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+
+    font-size: 16px;
+
+    display: none;
+
+    width: 100%;
+    height: 100%;
+
+    animation: loading-fade 1s;
+
+    justify-content: center;
+    align-items: center;
+    animation-fill-mode: both;
+}
+
+#content,
+.layout__header,
+.layout__side
+{
+    opacity: 1;
+    filter: blur(0);
+    transition: all 1s;
+}
+
+
+.loading #content,
+.loading .layout__header,
+.loading .layout__side
+{
+    animation-fill-mode: both;
+    filter: blur(10px);
+    opacity: .2;
+}
+
+@keyframes loading-fade
+{
+    from
+    {
+        opacity: 0;
+    }
+    to
+    {
+        opacity: 1;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    #preloader
+    {
+        font-size: 12px;
+    }
+}
+
+.preloader__stiker
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 15em;
+    height: 15em;
+    margin-top: -7.5em;
+    margin-left: -7.5em;
+}
+.preloader__stiker__warp
+{
+    position: relative;
+
+    display: flex;
+    overflow: hidden;
+
+    width: 100%;
+    height: 100%;
+
+    transform: rotate(-45deg);
+
+    justify-content: center;
+    align-items: center;
+    animation-fill-mode: both !important;
+}
+
+
+.preloader__stiker:nth-child(4) *
+{
+    animation-delay: 1s !important;
+}
+
+.preloader__stiker:nth-child(3) *
+{
+    animation-delay: 2s !important;
+}
+
+.preloader__stiker:nth-child(2) *
+{
+    animation-delay: 3s !important;
+}
+
+.preloader__stiker:nth-child(1) *
+{
+    animation-delay: 4s !important;
+}
+
+
+
+.preloader__stiker__front
+{
+    line-height: 10em;
+    width: 10em;
+    height: 10em;
+    transform: rotate(45deg) translate(0, 0);
+    text-align: center;
+    background: linear-gradient(45deg, #fff5ad, #f3e168);
+    box-shadow: 0 0 .5em rgba(0, 0, 0, .2);
+    animation-fill-mode: both !important;
+}
+
+.preloader__stiker__back
+{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    width: 8em;
+    height: 8em;
+
+    transform: translate(8.5em, 8.5em);
+
+    background: #dfc850;
+    box-shadow: 0 0 .5em rgba(0, 0, 0, .1);
+
+    animation-fill-mode: both !important;
+}
+
+
+
+.preloader__stiker__content
+{
+    display: inline-block;
+    font-family: 'Comic Sans MS', 'Courier New';
+    font-weight: bold;
+    font-size: 3.5em;
+    color: #330;
+}
+
+.preloader__stiker__content span 
+{
+    font-size: .6em;
+    padding-left: .1em;
+}
+
+
+
+
+.preloader__stiker--to-left
+{
+    transform: rotate(-40deg);
+    animation: stiker--to-left 1s cubic-bezier(.26,.47,.89,-.17);
+}
+
+.preloader__stiker--to-left .preloader__stiker__front
+{
+    transform: rotate(45deg) translate(0, 0);
+    animation: stiker__front--to-left 1s cubic-bezier(.26,.47,.89,-.17);
+}
+
+.preloader__stiker--to-left .preloader__stiker__back
+{
+    transform: translate(8.5em, 8.5em);
+    animation: stiker__back--to-left 1s cubic-bezier(.26,.47,.89,-.17);
+}
+
+@keyframes stiker--to-left
+{
+    0%
+    {
+        transform: rotate(-45deg) translate(0em, 0em);
+    }
+    99%
+    {
+        transform: rotate(-45deg) translate(0em, -17em);
+
+        opacity: 1;
+    }
+    100%
+    {
+        opacity: 0;
+    }
+}
+
+@keyframes stiker__front--to-left
+{
+    0%
+    {
+        transform: rotate(45deg) translate(0em, 0em);
+    }
+    100%
+    {
+        transform: rotate(40deg) translate(11em, 11em);
+    }
+}
+
+@keyframes stiker__back--to-left
+{
+    0%
+    {
+        transform: translate(8.5em, 8.5em);
+    }
+    100%
+    {
+        transform: translate(-12em, -12em);
+    }
+}
+
+
+.preloader__stiker--to-right
+{
+    transform: rotate(40deg) translate(0em, 0em);
+    animation: stiker--to-right 1s cubic-bezier(.26,.47,.89,-.17);
+}
+
+.preloader__stiker--to-right .preloader__stiker__front
+{
+    transform: rotate(-45deg) translate(0em, 0em);
+    animation: stiker__front--to-right 1s cubic-bezier(.26,.47,.89,-.17);
+}
+
+.preloader__stiker--to-right .preloader__stiker__back
+{
+    left: 0;
+    transform: translate(-8.5em, 8.5em);
+    animation: stiker__back--to-right 1s cubic-bezier(.26,.47,.89,-.17);
+}
+
+@keyframes stiker--to-right
+{
+    0%
+    {
+        transform: rotate(45deg) translate(0em, 0em);
+    }
+    99%
+    {
+        transform: rotate(45deg) translate(0em, -17em);
+
+        opacity: 1;
+    }
+    100%
+    {
+        opacity: 0;
+    }
+}
+
+@keyframes stiker__front--to-right
+{
+    0%
+    {
+        transform: rotate(-45deg) translate(0em, 0em);
+    }
+    100%
+    {
+        transform: rotate(-40deg) translate(-11em, 11em);
+    }
+}
+
+@keyframes stiker__back--to-right
+{
+    0%
+    {
+        transform: translate(-8.5em, 8.5em);
+    }
+    100%
+    {
+        transform: translate(12em, -12em);
+    }
+}
