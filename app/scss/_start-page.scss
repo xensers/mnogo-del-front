@@ -8,6 +8,7 @@
     left: 0;
 
     display: none;
+    overflow-y: hidden;
     overflow-y: scroll;
     flex-direction: column;
 
@@ -78,7 +79,7 @@
     &__logo
     {
         opacity: 0;
-        animation: fadeIn 1s ease 3.5s;
+        animation: fadeIn 1s ease 3s;
         animation-fill-mode: both;
 
         .start-page--closing &
@@ -94,12 +95,12 @@
     &__menu
     {
         z-index: 99;
-        animation: fadeIn 1s ease 4s;
+        animation: fadeIn 1s ease 3.5s;
         animation-fill-mode: both;
 
         .start-page--closing &
         {
-            animation: outUp 1s ease .5s;
+            animation: outUp 1s ease .3s;
         }
 
         ul
@@ -146,11 +147,10 @@
         @include respond-from(small)
         {
             position: absolute;
-            top: 0;
-            right: 0;
+            top: -4em;
+            right: -6em;
 
             transition: all .3s ease;
-            transform: translate(6em, -4em);
             ul
             {
                 position: relative;
@@ -159,10 +159,10 @@
                 flex-direction: column;
 
                 width: 16em;
-                height: 12em;
-                padding: 2em 1em;
+                height: 10em;
+                padding: 1em 1em;
 
-                transition: all .3s ease;
+                transition: transform .3s ease;
                 transform: scale(.2, .23);
 
                 justify-content: space-between;
@@ -183,7 +183,7 @@
                 {
                     a
                     {
-                        transition: all .3s ease;
+                        transition: background .3s ease;
 
                         background: #fff;
                     }
@@ -192,12 +192,13 @@
 
             &.open
             {
-                transform: translate(0);
+                transform: translate(-6em, 4em);
 
                 ul
                 {
                     border: .1em solid #fff;
-                    background: #222;
+                    border-radius: 1em;
+                    background: rgba(30, 30, 30, 0.85);
                     transform: scale(1);
                     &:after
                     {
@@ -208,10 +209,11 @@
                         height: 2.5em;
 
                         border: .1em solid #fff;
+                        border-radius: 1em;
 
-                        background: url('../img/close.svg') no-repeat #222;
+                        background: url('../img/close.svg') no-repeat rgba(30, 30, 30, 0.85);
                         background-position: center;
-                        background-size: 70%;
+                        background-size: 50%;
                     }
                     li a
                     {

@@ -7,7 +7,11 @@
   <title>Много сделал! - Шаблон</title>
   <link rel="stylesheet" href="css/preloader.css">
 </head>
-<body class="">
+<body>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <!-- BEGIN: preloader -->
   <div id="preloader">
       <div class="preloader__stiker" style="transform: rotate(-8deg);">
           <div class="preloader__stiker__warp preloader__stiker--to-right">
@@ -51,8 +55,7 @@
       </div>
   </div>
   <script src="js/preloader.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
-  <link rel="stylesheet" href="css/main.css">
+  <!-- END: preloader -->
 
   <div class="layout">
     <div class="layout__wrapper">
@@ -197,11 +200,12 @@
                 <li class="menu__item"><a href="#" class="menu__link">Пункт меню 6</a></li>
               </ul>
             </ul>
-        </div>
+          </div>
       </div>
       <!-- END: layout__body -->
     </div>
 
+    <!-- BEGIN: layout__side -->
     <div class="layout__side layout__side-left">
       <div class="layout__side_top">Side top</div>
       <div class="layout__side_center">
@@ -211,13 +215,16 @@
       </div>
       <div class="layout__side_bottom">Side bottom</div>
     </div>
+
     <div class="layout__side layout__side-right">
       <div class="layout__side_top">Side top</div>
       <div class="layout__side_center">Side center</div>
       <div class="layout__side_bottom">Side bottom</div>
     </div>
+    <!-- END: layout__side -->
   </div>
 
+  <!-- BEGIN: start-page -->
   <div class="start-page">
     <div class="start-page__header">
       <div class="start-page__logo">
@@ -242,6 +249,7 @@
     </div>
     <div class="start-page__footer"></div>
   </div>
+  <!-- END: start-page -->
 
   <script type="text/javascript" src="js/main.js"></script>
 </body>

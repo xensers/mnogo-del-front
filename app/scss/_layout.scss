@@ -122,10 +122,18 @@
 
 .menu--open
 {
-    overflow: hidden;
-    .layout__body,
-    .layout__menu
+    @include respond-from(small)
     {
-        transform: translateX(100%);
+        &, & body
+        {
+            overflow-y: hidden !important;
+        }
+
+        overflow: hidden;
+        .layout__body,
+        .layout__menu
+        {
+            transform: translateX(100%);
+        }
     }
 }

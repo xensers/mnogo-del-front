@@ -7,10 +7,10 @@
     margin: auto;
     padding: 0 2rem;
 
-    transition: all .5s;
-
     align-items: center;
     justify-content: space-between;
+
+    transition: opacity .5s, height .3s;
     @include respond-to(small)
     {
         justify-content: flex-start;
@@ -241,7 +241,6 @@
             img
             {
                 width: auto;
-                // height: 3rem;
             }
         }
 
