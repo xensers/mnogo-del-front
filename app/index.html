@@ -6,23 +6,24 @@
     <title>Много сделал! - Демо</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
     <!-- build:css assets/css/preloader.css-->
-    <link rel="stylesheet" href="components/preloader/style.css">
+    <link rel="stylesheet" href="assets/css/preloader.css">
     <!-- endbuild-->
     <!-- build:js assets/js/preloader.js-->
-    <script type="text/javascript" src="components/preloader/script.js"></script>
+    <script type="text/javascript" src="assets/js/preloader.js"></script>
     <!-- endbuild-->
     <!-- build:css assets/fonts/fonts.css-->
     <link rel="stylesheet" href="assets/fonts/fonts.css">
     <!-- endbuild-->
     <!-- build:css assets/css/main.css-->
-    <link rel="stylesheet" href="components/layout/common.css">
-    <link rel="stylesheet" href="components/layout/sheme.css">
-    <link rel="stylesheet" href="components/typography/style.css">
-    <link rel="stylesheet" href="components/header/style.css">
-    <link rel="stylesheet" href="components/menu/style.css">
-    <link rel="stylesheet" href="components/icons/style.css">
-    <link rel="stylesheet" href="components/markers/style.css">
-    <link rel="stylesheet" href="components/start-page/style.css">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/keyframes.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/typography.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/menu.css">
+    <link rel="stylesheet" href="assets/css/icons.css">
+    <link rel="stylesheet" href="assets/css/markers.css">
+    <link rel="stylesheet" href="assets/css/start-page.css">
     <!-- endbuild-->
   </head>
   <body>
@@ -67,7 +68,7 @@
         <div class="layout__header">
           <div class="header">
             <div class="header__menu-btn menu__burger layout__menu-toggle"><span></span><span></span><span></span></div>
-            <div class="header__logo"><a href="/"><img class="logo" src="images/logo.png" alt="bar" srcset="images/logo@2x.png 2x"></a></div>
+            <div class="header__logo"><a href="/"><img class="logo" src="assets/images/logo.png" alt="bar" srcset="assets/images/logo@2x.png 2x"></a></div>
             <nav class="header__nav">
               <ul>
                 <li><a class="header__link" href="#">О проекте</a></li>
@@ -100,6 +101,18 @@
         </div>
         <div class="layout__body">
           <div class="layout__container">
+            <h2>Прелоавдер</h2>
+            <hr>
+            <p>
+              <button onclick="runPreloader(true)">Показать</button>
+            </p>
+            <p>Что бы запустить преловадер, нужно вызвать JS функцию <code>startPageOpen(status)</code><br>которвая принимает <code>status</code> параметр:<br><code>false</code> - покажется только если страница грузится больше 2х секунд<br><code>ture</code> - для принудительного показа</p>
+            <h2>Стартовая страница</h2>
+            <hr>
+            <p>
+              <button onclick="startPageOpen()">Показать</button>
+            </p>
+            <p>Что бы показать стартовую, нужно вызвать JS функцию <code>startPageOpen()</code></p>
             <h2>Иконки</h2>
             <hr>
             <p><span class="icon lang"></span><code>span.icon.lang</code></p>
@@ -201,7 +214,7 @@
     <!-- END: layout-->
     <div class="start-page">
       <div class="start-page__header">
-        <div class="start-page__logo"><a href="/"><img class="logo" src="images/logo-inverse.png" alt="bar" srcset="images/logo-inverse@2x.png 2x"></a></div>
+        <div class="start-page__logo"><a href="/"><img class="logo" src="assets/images/logo-inverse.png" alt="bar" srcset="assets/images/logo-inverse@2x.png 2x"></a></div>
         <div class="start-page__menu">
           <ul>
             <li><a href="#">Читать обо мне</a></li>
@@ -211,7 +224,7 @@
         </div>
       </div>
       <div class="start-page__body">
-        <div class="start-page__photo"><img src="images/start-page__photo.png" srcset="images/start-page__photo@2x.png 2x" alt=""></div>
+        <div class="start-page__photo"><img src="assets/images/start-page__photo.png" srcset="assets/images/start-page__photo@2x.png 2x" alt=""></div>
         <p class="start-page__title">Всем привет!</p>
         <p class="start-page__subtitle">Меня зовут Максим Дорофеев.</p>
         <p class="start-page__text">Я – <span class="marker-2">корпоративный доктор</span>-<br>прокрастинатолог,<br>и моя работа – помогать взрослым дядям<br> и тётям учиться <span class="marker-3">делать</span> все важные<br> рабочие и личные <span class="marker-1">дела </span><br><span class="marker-3">вовремя…</span></p>
@@ -221,10 +234,10 @@
     </div>
     <!-- END: start-page-->
     <!-- build:js assets/js/main.js-->
-    <script type="text/javascript" src="components/layout/script.js"></script>
-    <script type="text/javascript" src="components/header/script.js"></script>
-    <script type="text/javascript" src="components/menu/script.js"></script>
-    <script type="text/javascript" src="components/start-page/script.js"></script>
+    <script type="text/javascript" src="assets/js/layout.js"></script>
+    <script type="text/javascript" src="assets/js/header.js"></script>
+    <script type="text/javascript" src="assets/js/menu.js"></script>
+    <script type="text/javascript" src="assets/js/start-page.js"></script>
     <!-- endbuild-->
   </body>
 </html>

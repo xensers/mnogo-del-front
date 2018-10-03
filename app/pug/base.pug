@@ -1,0 +1,69 @@
+extends template
+
+block vars
+  -
+    var siteTitle = 'Много сделал!'
+    var pageTitle = 'Шаблон'
+  -
+    var html = {
+      attrs: {
+        lang: 'ru'
+      },
+      classList: []
+    }
+  -
+    var body = {
+      attrs: {},
+      classList: []
+    }
+  -
+    var layout = {
+      attrs: {},
+      classList: []
+    }
+
+block styles
+  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css')
+
+  // build:css assets/css/preloader.css
+  link(rel='stylesheet', href='assets/css/preloader.css')
+  // endbuild
+  // build:js assets/js/preloader.js
+  script(type='text/javascript', src='assets/js/preloader.js')
+  // endbuild
+
+  // build:css assets/fonts/fonts.css
+  link(rel='stylesheet', href='assets/fonts/fonts.css')
+  // endbuild
+
+  // build:css assets/css/main.css
+  link(rel='stylesheet', href='assets/css/base.css')
+  link(rel='stylesheet', href='assets/css/keyframes.css')
+  link(rel='stylesheet', href='assets/css/layout.css')
+  link(rel='stylesheet', href='assets/css/typography.css')
+  link(rel='stylesheet', href='assets/css/header.css')
+  link(rel='stylesheet', href='assets/css/menu.css')
+  link(rel='stylesheet', href='assets/css/icons.css')
+  link(rel='stylesheet', href='assets/css/markers.css')
+  link(rel='stylesheet', href='assets/css/start-page.css')
+  // endbuild
+
+block scripts
+  // build:js assets/js/main.js
+  script(type='text/javascript', src='assets/js/layout.js')
+  script(type='text/javascript', src='assets/js/header.js')
+  script(type='text/javascript', src='assets/js/menu.js')
+  script(type='text/javascript', src='assets/js/start-page.js')
+  // endbuild
+
+block body-start
+  include preloader
+
+block header
+  include header
+
+block modal
+  include start-page
+
+block menu
+  include menu

@@ -1,0 +1,21 @@
+*
+{
+    box-sizing: border-box;
+}
+
+html,
+body
+{
+    font-family: 'AvantGardeGothicC';
+    font-size: 16px;
+}
+
+img,
+.icon
+{
+    display: inline-block;
+
+    max-width: 100%;
+
+    vertical-align: middle;
+}
