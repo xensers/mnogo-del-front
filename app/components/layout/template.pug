@@ -1,0 +1,42 @@
+.layout(class=layout.classList)&attributes(layout.attrs)
+  .layout__wrapper
+    .layout__header
+      block header
+        button.layout__menu-toggle
+          | Menu
+        h2 Header
+    .layout__menu
+      .layout__container
+        block menu
+          h2 Menu
+    .layout__body
+      .layout__container
+        block content
+          h1 Content
+    // END: layout__body
+    .layout__side.layout__side-left
+      .layout__side_top 
+        block side-left-top
+          | Side top
+      .layout__side_center
+        block side-left-center
+          .rotate
+            | Side Center 
+            code .rotate
+      .layout__side_bottom
+        block side-left-bottom
+          | Side bottom
+    // END: layout__side-left
+    .layout__side.layout__side-right
+      .layout__side_top 
+        block side-right-top
+          | Side top
+      .layout__side_center
+        block side-right-center
+          | Side Center 
+      .layout__side_bottom
+        block side-right-bottom
+          | Side bottom
+    // END: layout__side-right
+  // END: layout__wrapper
+// END: layout

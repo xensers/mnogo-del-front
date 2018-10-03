@@ -1,0 +1,10 @@
+extends layout.pug
+
+block scripts
+  script(src='/pets.js')
+
+block content
+  h1= title
+  - var pets = ['cat', 'dog']
+  each petName in pets
+    include pet.pug

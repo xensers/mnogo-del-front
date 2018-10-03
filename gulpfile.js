@@ -1,30 +1,36 @@
-var gulp         = require('gulp'),
-    sass         = require('gulp-sass'),
-    sourcemaps         = require('gulp-sourcemaps'),
-    browserSync  = require('browser-sync'),
-    // concat       = require('gulp-concat'),
-    uglify       = require('gulp-uglify'),
-    cssnano      = require('gulp-cssnano'),
-    rename       = require('gulp-rename'),
-    del          = require('del'),
-    imagemin     = require('gulp-imagemin'),
-    pngquant     = require('imagemin-pngquant'),
-    cache        = require('gulp-cache'),
-    autoprefixer = require('gulp-autoprefixer');
-    plumber      = require('gulp-plumber');
-    notify       = require('gulp-notify');
+var gulp         = require('gulp');
+var browserSync  = require('browser-sync');
+var cache        = require('gulp-cache');
+var rename       = require('gulp-rename');
+var del          = require('del');
+
+var pug          = require('gulp-pug');
+var useref       = require('gulp-useref');
+var gulpif       = require('gulp-if');
+
+var sass         = require('gulp-sass');
+var sourcemaps   = require('gulp-sourcemaps');
+var cssnano      = require('gulp-cssnano');
+var autoprefixer = require('gulp-autoprefixer');
+
+var concat       = require('gulp-concat');
+var uglify       = require('gulp-uglify');
+var babel        = require('gulp-babel');
+
+var imagemin     = require('gulp-imagemin');
+var pngquant     = require('imagemin-pngquant');
+
+var plumber      = require('gulp-plumber');
+var notify       = require('gulp-notify');
+var pump         = require('pump');
 
 var errorHandler = notify.onError('<%= error.message %>');
 
-gulp.task('scss', function(){
-    return gulp.src('app/scss/**/*.scss')
-        .pipe(plumber({errorHandler}))
-        .pipe(sourcemaps.init())
-        .pipe(sass())
-        .pipe(autoprefixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true }))
-        .pipe(sourcemaps.write())
-        .pipe(gulp.dest('app/css'))
-        .pipe(browserSync.reload({stream: true}))
+gulp.task('debuggingUglify', function (cb) {
+  pump([
+    gulp.src('app/**/*.js'),
+    uglify()
+  ], cb);
 });
 
 gulp.task('browser-sync', function() {
@@ -32,22 +38,32 @@ gulp.task('browser-sync', function() {
         server: {
             baseDir: 'app'
         },
-        notify: false
+        notify: true
     });
 });
 
-gulp.task('watch', ['browser-sync'], function() {
-    gulp.watch('app/scss/**/*.scss', ['scss']);
-    gulp.watch('app/*.html', browserSync.reload);
-    gulp.watch('app/js/**/*.js', browserSync.reload);  
+gulp.task('styles', function(){
+    return gulp.src('app/**/*.scss')
+        .pipe(plumber({errorHandler}))
+        .pipe(sourcemaps.init())
+        .pipe(sass())
+        .pipe(autoprefixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true }))
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest('app/'))
+        .pipe(browserSync.reload({stream: true}))
 });
 
-gulp.task('clean', function() {
-    return del.sync('dist');
+gulp.task('pug', function() {
+  return gulp.src('app/pages/*.pug')
+    .pipe(plumber({errorHandler}))
+    .pipe(pug({
+        pretty: true
+    }))
+    .pipe(gulp.dest('app/'))
 });
 
-gulp.task('img', function() {
-    return gulp.src('app/img/**/*')
+gulp.task('img:build', function() {
+    return gulp.src('app/images/**/*')
         .pipe(plumber({errorHandler}))
         .pipe(cache(imagemin({ 
             interlaced: true,
@@ -55,28 +71,38 @@ gulp.task('img', function() {
             svgoPlugins: [{removeViewBox: false}],
             use: [pngquant()]
         })))
-        .pipe(gulp.dest('dist/img'));
+        .pipe(gulp.dest('dist/images'));
 });
 
-gulp.task('build', ['clean', 'img'], function() {
 
-    var buildCss = gulp.src('app/css/**/*.css')
-    .pipe(cssnano())
-    .pipe(gulp.dest('dist/css'))
-
-    var buildFonts = gulp.src('app/fonts/**/*')
-    .pipe(gulp.dest('dist/fonts'))
-
-    var buildJs = gulp.src('app/js/**/*')
-    .pipe(uglify())
-    .pipe(gulp.dest('dist/js'))
-
-    var buildHtml = gulp.src('app/*.html')
-    .pipe(gulp.dest('dist'));
-
+gulp.task('html:build', function() {
+    return gulp.src('app/*.html')
+        .pipe(plumber({errorHandler}))
+        .pipe(useref())
+        .pipe(gulpif('*.js', uglify() ))
+        .pipe(gulpif('*.css', cssnano()))
+        .pipe(gulp.dest('dist'));
 });
 
-gulp.task('clear', function () {
+gulp.task('fonts:build', function() {
+    return gulp.src('app/assets/fonts/**/*.*')
+        .pipe(gulp.dest('dist/assets/fonts'));
+});
+
+gulp.task('build', ['clean', 'html:build', 'fonts:build', 'img:build']);
+
+gulp.task('watch', ['browser-sync'], function watch() {
+    gulp.watch('app/**/*.pug', ['pug']);
+    gulp.watch('app/**/*.scss', ['styles']);
+    gulp.watch('app/*.html', browserSync.reload);
+    gulp.watch('app/js/**/*.js', browserSync.reload);  
+});
+
+gulp.task('clean', function clean() {
+    return del.sync('dist');
+});
+
+gulp.task('clear', function clear() {
     return cache.clearAll();
 })
 
