@@ -49,6 +49,27 @@ function animate(options) {
 }
 
 
+function zone(current, from, to, draw)
+{
+
+  current = current * 100;
+  from    = from * 100;
+  to      = to * 100;
+  draw    = draw * 100;
+
+  if (current >= from && current <= to)
+  {
+    var progress = (current - from) / (to - from);
+    if (draw) draw(progress);
+    return progress;
+  } else if (current <= from) {
+    return 0;
+  } else if (current >= to) {
+    return 1;
+  }
+}
+
+
 // преобразователь в easeOut
 function makeEaseOut(timing) {
   return function(timeFraction) {

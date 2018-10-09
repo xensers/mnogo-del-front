@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-  var stikerItem = 0;
-
   var elemStikers = document.querySelectorAll('.stiker');
 
   for (var i = elemStikers.length - 1; i >= 0; i--) {
@@ -11,40 +9,64 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function initStiker(elemStiker){
 
-    var layerItem = 2;
-
     var elemLayers = elemStiker.querySelectorAll('.stiker__layer');
+
+    var activeLayerNumber = elemLayers.length - 1;
+    var deg = 5;
     for (var i = elemLayers.length - 1; i >= 0; i--) {
-      elemLayers[i].children[0].children[0].innerText = i;
+      activeLayerNumber = i;
+      if (elemLayers.length > 1) initLayer(true);
+      elemLayers[i].style.zIndex = i;
+
+      deg = (Math.random() * 10) - 5
+      elemLayers[i].style.transform = 'rotate('+ deg +'deg)';
+
+      elemLayers[i].children[0].children[0].children[0].children[0].innerText = i + 1;
     }
 
-    initLayer();
+    activeLayerNumber = elemLayers.length - 1;
 
-    function initLayer()
+    if (activeLayerNumber > 1) initLayer();
+
+    function initLayer(noEvents)
     {
-      var elemLayer = elemStiker.querySelectorAll('.stiker__layer')[layerItem];
-      var elemInner = elemStiker.querySelector('.stiker__inner');
-      var elemOuter = elemLayer.querySelector('.stiker__outer');
-      var elemBack = elemOuter.querySelector('.stiker__back');
-      var elemBody = elemOuter.querySelector('.stiker__body');
+      var ready = true;
+
+      var elemLayer = elemLayers[activeLayerNumber];
+      var elemArena = elemStiker.querySelector('.stiker__arena');
+      var elemInner = elemLayer.querySelector('.stiker__inner');
+      var elemOuter = elemInner.querySelector('.stiker__outer');
+      var elemBack  = elemOuter.querySelector('.stiker__back');
+      var elemItem  = elemOuter.querySelector('.stiker__item');
+
+      if (activeLayerNumber % 2) {
+        var layerDraw = layerDrawToLeft;
+      } else {
+        var layerDraw = layerDrawToRight;
+      }
 
       animate({
         timing: linear,
         duration: 2000,
         delay: 1000,
-        draw: stikerAnimationDraw,
-        to: 10
+        draw: layerDraw,
+        to: 10,
       });
 
-      elemInner.addEventListener('mousedown', onStikerLayerDown);
-      elemInner.addEventListener('mouseup', onStikerLayerUp);
+
+      if (!noEvents) {
+        elemArena.addEventListener('mousedown', onStikerLayerDown);
+        elemArena.addEventListener('mouseup', onStikerLayerUp);
+      }
 
 
       function onStikerLayerMove(event)
       {
-          progress = event.offsetX / this.offsetWidth;
+          progress = -(event.offsetY / this.offsetHeight - 1);
           if (progress > .1 && progress < 1) {
-            stikerAnimationDraw(progress);
+            requestAnimationFrame(function(){
+              layerDraw(progress + 0.05);
+            })
           }
           return false;
       }
@@ -53,6 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
       {
           this.style.height = '200%';
           this.style.width = '200%';
+          this.style.zIndex = '999';
           this.addEventListener('mousemove', onStikerLayerMove);
           return false;
       }
@@ -61,17 +84,26 @@ document.addEventListener("DOMContentLoaded", function () {
       {
         this.style.height = '100%';
         this.style.width = '100%';
+        this.style.zIndex = '99';
         this.removeEventListener('mousemove', onStikerLayerMove);
 
         if (progress > 0.4) {
           animate({
             timing: linear,
             delay: 0,
-            duration: 500,
-            draw: stikerAnimationDraw,
+            duration: 700,
+            draw: layerDraw,
             from: progress * 100,
             to: 100,
             after: function(){
+              animate({
+                timing: linear,
+                delay: 0,
+                duration: 500,
+                draw: layerDraw,
+                from: 100,
+                to: 10,
+              });
               nextLayer();
             }
           });
@@ -80,35 +112,69 @@ document.addEventListener("DOMContentLoaded", function () {
           animate({
             timing: linear,
             delay: 0,
-            duration: 500,
-            draw: stikerAnimationDraw,
+            duration: 700,
+            draw: layerDraw,
             from: progress * 100,
-            to: 15,
+            to: 10,
           });
         }
       }
 
       function nextLayer()
       {
-        elemInner.removeEventListener('mousedown', onStikerLayerDown);
-        elemInner.removeEventListener('mouseup', onStikerLayerUp);
-        elemInner.removeEventListener('mousemove', onStikerLayerMove);
+        elemArena.removeEventListener('mousedown', onStikerLayerDown);
+        elemArena.removeEventListener('mouseup', onStikerLayerUp);
+        elemArena.removeEventListener('mousemove', onStikerLayerMove);
 
-        layerItem = layerItem - 1;
-        if (layerItem < 0) layerItem = elemLayers.length - 1;
-        console.log(layerItem);
+        var lastIndex, newIndex;
+        for (var i = elemLayers.length - 1; i >= 0; i--) {
+          lastIndex = +elemLayers[i].style.zIndex;
+          newIndex = lastIndex + 1;
+          if (newIndex > elemLayers.length - 1) newIndex = 0;
+          elemLayers[i].style.zIndex = newIndex;
+        }
+
+        activeLayerNumber = activeLayerNumber - 1;
+        if (activeLayerNumber < 0) activeLayerNumber = elemLayers.length - 1;
 
         initLayer();
       }
 
-      function stikerAnimationDraw(progress)
+      function layerDrawToRight(progress)
       {
-        elemLayer.style.transform = 'rotate(45deg) translateY(' + -24 * progress + 'em)';
-        elemOuter.style.transform = 'translateY(' + 24 * progress + 'em)';
-        elemBack.style.transform = 'rotate(-45deg) translate(' + (-17 + progress * 34) + 'em, '+ (17 - progress * 34) +'em)';
-        elemBody.style.transform = 'rotate(-45deg)';
+        // if (ready) {
+        //   ready = false;
+          // setTimeout(function(){
+            var layerTranslateY = -24 * progress;
+            var outerTranslateY = 24 * progress;
+            var backTransleteY  = -(17 - progress * 34);
+            var backTransleteX  = (17 - progress * 34);
+            var backScale  = (100 - 30 * zone(progress, 0.7, 1)) / 100;
 
-        elemLayer.style.opacity = -(progress - 1);
+            elemArena.style.right = '';
+            elemInner.style.transform = 'rotate(45deg) translateY(' + layerTranslateY + 'em)';
+            elemOuter.style.transform = 'translateY(' + outerTranslateY + 'em)';
+            elemBack.style.transform = 'rotate(-45deg) translate(' + backTransleteY + 'em, '+ backTransleteX +'em) scale('+ backScale +')';
+            elemItem.style.transform = 'rotate(-45deg)';
+
+            ready = true;
+          // }, 30);
+        // }
+      }
+
+      function layerDrawToLeft(progress)
+      {
+        var layerTranslateY = -24 * progress;
+        var outerTranslateY = 24 * progress;
+        var backTransleteY  = (17 - progress * 34);
+        var backTransleteX  = (17 - progress * 34);
+        var backScale  = (100 - 30 * zone(progress, 0.7, 1)) / 100;
+
+        elemArena.style.right = 0;
+        elemInner.style.transform = 'rotate(-45deg) translateY(' + layerTranslateY + 'em)';
+        elemOuter.style.transform = 'translateY(' + outerTranslateY + 'em)';
+        elemBack.style.transform = 'rotate(45deg) translate(' + backTransleteY + 'em, '+ backTransleteX +'em) scale('+ backScale +')';
+        elemItem.style.transform = 'rotate(45deg)';
       }
     }
   }
