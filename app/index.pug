@@ -1,9 +1,44 @@
 extends pug/base
 
 append vars
-  - pageTitle = 'Демо';
+  - pageTitle = 'Документация';
 
 block content
+
+
+  br
+  h2 Меню 
+  hr
+  ul.menu
+    ul.menu__list
+      li.menu__item
+        a.menu__link.active(href='index.html')
+          | Документация
+          code .active
+      li.menu__item
+        a.menu__link(href='layout-template.html' target="_blank")
+          | Просто структурный шаблон
+      li.menu__item
+        a.menu__link(href='home.html' target="_blank")
+          del Главная
+      li.menu__item
+        a.menu__link(href='home.html#Cases' target="_blank")
+          del Кейсы
+      li.menu__item
+        a.menu__link(href='сase-detailed.html' target="_blank")
+          del Страница кейса
+      li.menu__item
+        a.menu__link(href='about.html' target="_blank")
+          del О нас
+    p
+      strong Emmet 
+      | Сокращение для кода меню:
+      br
+      code
+        | ul.menu>ul.menu__list>li.menu__item*6>a.menu__link[#]{Пункт меню $}
+
+
+  br
   h2 Прелоавдер
   hr
   p
@@ -22,6 +57,8 @@ block content
     code ture
     |  - для принудительного показа
 
+
+  br
   h2 Стартовая страница
   hr
   p
@@ -31,6 +68,54 @@ block content
     code startPageOpen()
 
 
+  br
+  h2 Стикеры
+  hr
+  
+  .stiker
+    .stiker__layer
+      .stiker__outer
+        .stiker__body
+          | Layer 0
+        .stiker__back
+    .stiker__layer
+      .stiker__outer
+        .stiker__body
+          | Layer 1
+        .stiker__back
+    .stiker__layer
+      .stiker__outer
+        .stiker__body
+          | Layer 2
+        .stiker__back
+    .stiker__inner
+
+  .stiker
+    .stiker__layer
+      .stiker__outer
+        .stiker__body
+          | Layer 0
+        .stiker__back
+    .stiker__layer
+      .stiker__outer
+        .stiker__body
+          | Layer 1
+        .stiker__back
+    .stiker__layer
+      .stiker__outer
+        .stiker__body
+          | Layer 2
+        .stiker__back
+    .stiker__inner
+
+  //- .stiker
+  //-   .stiker__layer
+  //-     .stiker__outer
+  //-       .stiker__body
+  //-         | stiker 2
+  //-       .stiker__back
+
+  br
   h2 Иконки
   hr
   p
@@ -63,6 +148,9 @@ block content
   p
     span.icon.socal-yt
     code span.icon.socal-yt
+
+
+  br
   h2 Маркеры
   hr
   p
@@ -71,6 +159,9 @@ block content
     code.marker-2 span.marker-2
   p
     code.marker-3 span.marker-3
+  br
+  hr
+
   br
   h2 Типография
   hr
@@ -168,24 +259,3 @@ block content
     code dfn
     dfn
       | Позволяет выделить текст как определение. Несмотря на наличие специального тега, рекомендуется выделять текст силами CSS.
-
-  h2 Меню
-  hr
-  code
-    | ul.menu>ul.menu__list>li.menu__item*6>a.menu__link[#]{Пункт меню $}
-  ul.menu
-    ul.menu__list
-      li.menu__item
-        a.menu__link.active(href='#')
-          | Пункт меню 1 
-          code .active
-      li.menu__item
-        a.menu__link(href='#') Пункт меню 2
-      li.menu__item
-        a.menu__link(href='#') Пункт меню 3
-      li.menu__item
-        a.menu__link(href='#') Пункт меню 4
-      li.menu__item
-        a.menu__link(href='#') Пункт меню 5
-      li.menu__item
-        a.menu__link(href='#') Пункт меню 6

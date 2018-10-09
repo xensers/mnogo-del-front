@@ -1,0 +1,84 @@
+.stiker
+{
+    position: relative;
+    font-size: 1rem;
+
+    display: inline-block;
+    
+    // margin: 2em;
+
+    width: 16em;
+    height: 16em;
+    margin: 1rem;
+    // outline: 1px solid red;
+
+    *
+    {
+      transition: transform .1s;
+    }
+
+    &__layer
+    {
+      position: absolute;
+      top: -4em;
+      left: -4em;
+
+      width: 24em;
+      height: 24em;
+
+      // outline: 1px solid green;
+      overflow: hidden;
+
+    }
+
+    &__outer
+    {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      // outline: 1px solid blue;
+
+    }
+
+    &__back
+    {
+      content: '';
+      position: absolute;
+
+      top:  4em;
+      left: 4em;
+      width: 16em;
+      height: 16em;
+
+      box-shadow: .1em .1em .1em rgba(0, 0, 0, .2);
+
+      transform: translate(-24em, 24em);
+      background: #FD8008;
+      cursor: pointer;
+      z-index: 999;
+    }
+
+    &__body
+    {
+      position: absolute;
+      top:  4em;
+      left: 4em;
+      width: 16em;
+      height: 16em;
+      overflow: hidden;
+      background: yellow;
+      box-shadow: .1em .1em .1em rgba(0, 0, 0, .2);
+    }
+
+    &__inner
+    {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      outline: 1px solid black;
+    }
+
+}
