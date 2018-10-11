@@ -21,22 +21,16 @@
     z-index: 999;
 }
 
-.layout__body,
-.layout__header,
-.layout__side
+.layout
 {
     opacity: 1;
-    filter: blur(0);
     transition: opacity 1s;
 }
 
 
-.loading .layout__body,
-.loading .layout__header,
-.loading .layout__side
+.loading .layout
 {
-    filter: blur(10px);
-    opacity: .2;
+    opacity: 0;
 }
 
 @keyframes loading-fade

@@ -1,25 +1,27 @@
 var activeDrawsList = [];
+var showFrameRate = false;
 
 function animate(options) {
   if (!options.delay)  options.delay = 0;
   if (!options.timing) options.timing = linear;
   if (!options.draw)   options.draw = function(progress){};
   if (!options.from)   options.from = 1;
-  if (!options.to)   options.to = 100;
+  if (!options.to)     options.to = 100;
   if (!options.draw)   options.after = function(){};
 
   var fractionFrom = options.from / 100;
   var fractionTo = options.to / 100;
 
-  for (var i = activeDrawsList.length - 1; i >= 0; i--) {
-    if (activeDrawsList[i] === options.draw) {
-      return false;
-    }
-  }
-  var animationIndex = activeDrawsList.push(options.draw);
-
   setTimeout(function(){
     var start = performance.now();
+    var timeLast = start;
+
+    for (var i = activeDrawsList.length - 1; i >= 0; i--) {
+      if (activeDrawsList[i] === options.draw) {
+        return false;
+      }
+    }
+    var animationIndex = activeDrawsList.push(options.draw);
 
     requestAnimationFrame(function animate(time) {
       var timeFraction = (time - start) / options.duration;
@@ -27,18 +29,23 @@ function animate(options) {
 
       if (fractionFrom < fractionTo) {
         timeFraction = timeFraction + fractionFrom;
-        var end = timeFraction < fractionTo;
+        var terminationСondition = timeFraction < fractionTo;
       } else {
         timeFraction = -(timeFraction - fractionFrom);
-        var end = timeFraction > fractionTo;
+        var terminationСondition = timeFraction > fractionTo;
       }
 
       var progress = options.timing(timeFraction);
 
       options.draw(progress);
 
-      if (end) {
+      if (terminationСondition) {
         requestAnimationFrame(animate);
+
+        if (showFrameRate) {
+          console.log(frameRate(timeLast, time), Math.round(timeFraction * 100));
+          timeLast = time;
+        }
       } else {
         activeDrawsList.splice(activeDrawsList.indexOf(options.draw), 1);
         if (options.after) options.after();
@@ -48,6 +55,10 @@ function animate(options) {
 
 }
 
+function frameRate(timeLast, timeNow)
+{
+  return Math.round(1000 / (timeNow - timeLast));
+}
 
 function zone(current, from, to, draw)
 {
