@@ -18,9 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
       // if (elemLayers.length > 1) initLayer(true);
       elemLayers[i].style.zIndex = i;
 
-      deg = (Math.random() * 10) - 5
+      deg = (Math.random() * 10) - 5;
       elemLayers[i].style.transform = 'rotate('+ deg +'deg)';
-
     }
 
     activeLayerNumber = elemLayers.length - 1;
@@ -41,10 +40,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (activeLayerNumber % 2) {
         var layerDraw = layerDrawToLeft;
+        elemArena.style.left = 'auto';
         elemArena.style.right = '0';
       } else {
         var layerDraw = layerDrawToRight;
-        elemArena.style.right = '';
+        elemArena.style.left = '0';
+        elemArena.style.right = 'auto';
       }
 
       if (firstInit) {

@@ -18,7 +18,7 @@ block content
           | Просто структурный шаблон
       li.menu__item
         a.menu__link(href='home.html' target="_blank")
-          del Главная
+          | Главная
       li.menu__item
         a.menu__link(href='home.html#Cases' target="_blank")
           del Кейсы
@@ -43,7 +43,7 @@ block content
     button(onclick="runPreloader(true)") Показать
   p
     | Что бы запустить преловадер, нужно вызвать JS функцию 
-    code startPageOpen(status)
+    code runPreloader(status)
     br
     | которвая принимает 
     code status

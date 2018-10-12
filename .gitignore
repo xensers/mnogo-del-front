@@ -3,4 +3,5 @@ node_modules/
 package-lock.json
 dist/
 app/**/*.html
+app/assets/css/
 
