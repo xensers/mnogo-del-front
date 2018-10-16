@@ -12,7 +12,7 @@
 
     &:hover
     {
-      z-index: 100;
+      z-index: 900;
     }
 
     &__layer
@@ -96,9 +96,12 @@
       bottom: 0;
       width: 35%;
       height: 35%;
-      // outline: 1px solid black;
       z-index: 99;
       cursor: pointer;
+
+      // outline: 1px solid black;
+      // background: red;
+      // opacity: .5;
     }
 
 }

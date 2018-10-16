@@ -4,7 +4,7 @@
 function headerScroll() {
     var headerElem = document.querySelector('.header');
 
-    if (window.pageYOffset > 30) {
+    if (window.pageYOffset > 10) {
       headerElem.classList.add('scroll');
     } else {
       headerElem.classList.remove('scroll');

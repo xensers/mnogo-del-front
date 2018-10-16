@@ -4,6 +4,7 @@
 function startPageOpen()
 {
   document.documentElement.classList.add('start-page--open');
+  document.querySelector('.start-page__close').addEventListener("click", startPageClose);
 }
 
 /**
@@ -28,5 +29,4 @@ function startPageClose()
 /* Вешаем события */
 document.addEventListener("DOMContentLoaded", function loadedStartPage() {
   document.querySelector('.start-page__menu').addEventListener("click", startPageMenuToggle);
-  document.querySelector('.start-page__close').addEventListener("click", startPageClose);
 });

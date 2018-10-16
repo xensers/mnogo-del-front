@@ -1,0 +1,57 @@
+extends pug/base
+
+append vars
+  - pageTitle = 'Главная';
+  - layout.classList = ['homepage'];
+  //- layout.classList = ['homepage', 'homepage--cases'];
+
+
+block content
+  .homepage__warp
+    .homepage__text
+      h1 Найдите  свой  случай
+      p
+        | Спасите себя и своих коллег  от лихорадочной потери драгоценного времени и мозготоплива! 
+      p
+        | Определите свой недуг  по симптому и узнайте, как сделать себя эффективным!
+
+      p
+        button(onclick="openCases()") Начать
+    .homepage__cases(onselectstart="return false")
+      .homepage__case-item
+        include pug/stiker
+      .homepage__case-item
+        include pug/stiker
+      .homepage__case-item
+        include pug/stiker
+      .homepage__case-item
+        include pug/stiker
+      .homepage__case-item
+        include pug/stiker
+      .homepage__case-item
+        include pug/stiker
+  .homepage__warp
+
+block side-left-top
+block side-left-center
+  .rotate
+    a(href="#") Это – ваш офис...
+block side-left-bottom
+
+block side-right-top
+block side-right-center
+  div
+    span.icon.socal-vk
+  div
+    span.icon.socal-fb
+  div
+    span.icon.socal-tw
+  div
+    span.icon.socal-lj
+  div
+    span.icon.socal-yt
+block side-right-bottom
+  .rotate
+    .lang
+      | RUS /
+      a(href="#") END
