@@ -1,9 +1,9 @@
 # Начало работы
 
-Для начала работы над проектом необходимо [скачать архив](https://github.com/xensers/mnogo-del-front/archive/master.zip) или клонировать текущий репозиторий:
+Для начала работы над проектом необходимо [скачать архив](https://github.com/xensers/mnogosdelal-frontend/archive/master.zip) или клонировать текущий репозиторий:
 
 ```bash
-git clone https://github.com/xensers/mnogo-del-front.git
+git clone https://github.com/xensers/mnogosdelal-frontend.git
 ```
 
 Далее следует установить npm-библиотеки:
