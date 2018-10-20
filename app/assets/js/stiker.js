@@ -32,8 +32,8 @@ document.addEventListener("DOMContentLoaded", function () {
       var progress;
 
       var elemLayer = elemLayers[activeLayerNumber];
-      var elemArena = elemStiker.querySelector('.stiker__arena');
       var elemInner = elemLayer.querySelector('.stiker__inner');
+      var elemArena = elemLayer.querySelector('.stiker__arena');
       var elemOuter = elemInner.querySelector('.stiker__outer');
       var elemBack  = elemOuter.querySelector('.stiker__back');
       var elemItem  = elemOuter.querySelector('.stiker__item');
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
       {
           this.style.height = '200%';
           this.style.width = '200%';
-          this.style.zIndex = '999';
+          this.style.zIndex = '900';
           this.addEventListener('mousemove', onMouseMove);
           return false;
       }
@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
       {
         this.style.height = '35%';
         this.style.width = '35%';
-        this.style.zIndex = '99';
+        this.style.zIndex = '10';
         this.removeEventListener('mousemove', onMouseMove);
 
         if (progress > 0.4) {
