@@ -46,7 +46,7 @@ gulp.task('styles', function(){
     return gulp.src('app/assets/scss/*.scss')
         .pipe(plumber({errorHandler}))
         .pipe(sourcemaps.init())
-        .pipe(sass())
+        .pipe(sass({outputStyle: 'expanded'}))
         .pipe(autoprefixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true }))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('app/assets/css/'))
@@ -80,7 +80,7 @@ gulp.task('html:build', function() {
         .pipe(plumber({errorHandler}))
         .pipe(useref())
         .pipe(gulpif('*.js', uglify() ))
-        .pipe(gulpif('*.css', cssnano() ))
+        .pipe(gulpif('*.css', cssnano({reduceIdents: false}) ))
         .pipe(gulp.dest('dist'));
 });
 
