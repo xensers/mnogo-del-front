@@ -18,7 +18,40 @@
 
         width: 100%;
         height: 100%;
+
+        transition: transform .5s;
     }
+
+
+        &:hover &__layer:nth-child(6n)
+        {
+          transform: translate(0%, 0%);
+        }
+
+        &:hover &__layer:nth-child(6n - 1)
+        {
+          transform: translate(110%, 0%);
+        }
+
+        &:hover &__layer:nth-child(6n - 2)
+        {
+          transform: translate(220%, 0%);
+        }
+
+        &:hover &__layer:nth-child(6n - 3)
+        {
+          transform: translate(0%, 110%);
+        }
+
+        &:hover &__layer:nth-child(6n - 4)
+        {
+          transform: translate(110%, 110%);
+        }
+
+        &:hover &__layer:nth-child(6n - 5)
+        {
+          transform: translate(220%, 110%);
+        }
 
     &:hover
     {
