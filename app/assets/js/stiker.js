@@ -1,24 +1,23 @@
-var elemStikers = document.querySelectorAll('.stiker');
+var elemStikersGroups = document.querySelectorAll('.stikers-group');
 
-for (var i = elemStikers.length - 1; i >= 0; i--) {
-  initStiker(elemStikers[i]);
+for (var i = elemStikersGroups.length - 1; i >= 0; i--) {
+  initStikers(elemStikersGroups[i]);
 }
 
+function initStikers(elemStikersGroup){
 
-
-function initStiker(elemStikerGroup){
-
-  var elemLayers = elemStikerGroup.querySelectorAll('.stiker__layer');
+  var elemStikers = elemStikersGroup.querySelectorAll('.stiker');
 
   var deg = 5;
-  for (var i = elemLayers.length - 1; i >= 0; i--) {
-    elemLayers[i].style.zIndex = i;
-    // deg = (Math.random() * 10) - 5;
-    // elemLayers[i].style.transform = 'rotate('+ deg +'deg)';
+  for (var i = elemStikers.length - 1; i >= 0; i--) {
+
+    elemStikers[i].style.zIndex = i;
+
+    deg = (Math.random() * 10) - 5;
+    elemStikers[i].querySelector('.stiker__wrap').style.transform = 'rotate('+ deg +'deg)';
   }
 
-
-  activeLayerNumber = elemLayers.length - 1;
+  activeLayerNumber = elemStikers.length - 1;
   if (activeLayerNumber > 1) initLayer(true);
 
   function initLayer(firstInit)
@@ -26,9 +25,9 @@ function initStiker(elemStikerGroup){
     var timeLast = 0;
     var progress;
 
-    var elemLayer = elemLayers[activeLayerNumber];
-    var elemInner = elemLayer.querySelector('.stiker__inner');
-    var elemArena = elemLayer.querySelector('.stiker__arena');
+    var elemStiker = elemStikers[activeLayerNumber];
+    var elemInner = elemStiker.querySelector('.stiker__inner');
+    var elemArena = elemStiker.querySelector('.stiker__arena');
     var elemOuter = elemInner.querySelector('.stiker__outer');
     var elemBack  = elemOuter.querySelector('.stiker__back');
     var elemItem  = elemOuter.querySelector('.stiker__item');
@@ -158,15 +157,15 @@ function initStiker(elemStikerGroup){
       elemArena.removeEventListener('mousemove', onMouseMove);
 
       var lastIndex, newIndex;
-      for (var i = elemLayers.length - 1; i >= 0; i--) {
-        lastIndex = +elemLayers[i].style.zIndex;
+      for (var i = elemStikers.length - 1; i >= 0; i--) {
+        lastIndex = +elemStikers[i].style.zIndex;
         newIndex = lastIndex + 1;
-        if (newIndex > elemLayers.length - 1) newIndex = 0;
-        elemLayers[i].style.zIndex = newIndex;
+        if (newIndex > elemStikers.length - 1) newIndex = 0;
+        elemStikers[i].style.zIndex = newIndex;
       }
 
       activeLayerNumber = activeLayerNumber - 1;
-      if (activeLayerNumber < 0) activeLayerNumber = elemLayers.length - 1;
+      if (activeLayerNumber < 0) activeLayerNumber = elemStikers.length - 1;
 
       initLayer();
     }

@@ -1,4 +1,4 @@
-.stiker
+.stikers-group
 {
     font-size: .9rem;
 
@@ -6,56 +6,59 @@
 
     display: inline-block;
 
+
+}
+
+.stiker
+{
+
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 16em;
     height: 16em;
     margin: 1rem;
 
-    &__layer
+    transition: transform .5s;
+
+
+    &:nth-child(6n)
+    {
+      transform: translate(0%, 0%);
+    }
+
+    &:nth-child(6n - 1)
+    {
+      transform: translate(110%, 0%);
+    }
+
+    &:nth-child(6n - 2)
+    {
+      transform: translate(220%, 0%);
+    }
+
+    &:nth-child(6n - 3)
+    {
+      transform: translate(0%, 110%);
+    }
+
+    &:nth-child(6n - 4)
+    {
+      transform: translate(110%, 110%);
+    }
+
+    &:nth-child(6n - 5)
+    {
+      transform: translate(220%, 110%);
+    }
+
+    &__wrap
     {
         position: absolute;
         top: 0;
         left: 0;
-
-        width: 100%;
         height: 100%;
-
-        transition: transform .5s;
-    }
-
-
-        &:hover &__layer:nth-child(6n)
-        {
-          transform: translate(0%, 0%);
-        }
-
-        &:hover &__layer:nth-child(6n - 1)
-        {
-          transform: translate(110%, 0%);
-        }
-
-        &:hover &__layer:nth-child(6n - 2)
-        {
-          transform: translate(220%, 0%);
-        }
-
-        &:hover &__layer:nth-child(6n - 3)
-        {
-          transform: translate(0%, 110%);
-        }
-
-        &:hover &__layer:nth-child(6n - 4)
-        {
-          transform: translate(110%, 110%);
-        }
-
-        &:hover &__layer:nth-child(6n - 5)
-        {
-          transform: translate(220%, 110%);
-        }
-
-    &:hover
-    {
-        z-index: 100;
+        width: 100%;
     }
 
     &__inner
@@ -138,7 +141,7 @@
         cursor: pointer;
     }
 
-    &__layer:hover &__arena
+    &:hover &__arena
     {
         z-index: 900;
 

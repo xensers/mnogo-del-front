@@ -1,7 +1,8 @@
 var activeDrawsList = [];
 var showFrameRate = false;
 
-function animate(options) {
+function animate(options)
+{
   if (!options.delay)  options.delay = 0;
   if (!options.timing) options.timing = linear;
   if (!options.draw)   options.draw = function(progress){};
@@ -29,17 +30,17 @@ function animate(options) {
 
       if (fractionFrom < fractionTo) {
         timeFraction = timeFraction + fractionFrom;
-        var terminationСondition = timeFraction < fractionTo;
+        var terminationCondition = timeFraction < fractionTo;
       } else {
         timeFraction = -(timeFraction - fractionFrom);
-        var terminationСondition = timeFraction > fractionTo;
+        var terminationCondition = timeFraction > fractionTo;
       }
 
       var progress = options.timing(timeFraction);
 
       options.draw(progress);
 
-      if (terminationСondition) {
+      if (terminationCondition) {
         requestAnimationFrame(animate);
 
         if (showFrameRate) {
@@ -90,7 +91,7 @@ function makeEaseOut(timing) {
 // преобразователь в easeOut
 function makeEaseInOut(timing) {
   return function(timeFraction) {
-    if (timeFraction < .5)
+    if (timeFraction < 0.5)
       return timing(2 * timeFraction) / 2;
     else
       return (2 - timing(2 * (1 - timeFraction))) / 2;
