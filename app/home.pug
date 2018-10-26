@@ -3,7 +3,6 @@ extends pug/base
 append vars
   - pageTitle = 'Главная';
   - layout.classList = ['homepage'];
-  //- layout.classList = ['homepage', 'homepage--cases'];
 
 
 block content
@@ -14,7 +13,6 @@ block content
         | Спасите себя и своих коллег  от лихорадочной потери драгоценного времени и мозготоплива! 
       p
         | Определите свой недуг  по симптому и узнайте, как сделать себя эффективным!
-
       p
         button(onclick="openCases()") Начать
     .homepage__cases(onselectstart="return false")

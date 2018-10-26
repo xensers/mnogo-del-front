@@ -1,7 +1,88 @@
-var elemStikersGroups = document.querySelectorAll('.stikers-group');
+document.addEventListener('DOMContentLoaded', loaded);
 
-for (var i = elemStikersGroups.length - 1; i >= 0; i--) {
-  initStikers(elemStikersGroups[i]);
+function loaded()
+{
+  var elemStikers = document.querySelectorAll('.stiker');
+  if (elemStikers) {
+      initStikersForAll(elemStikers);
+  }
+
+  
+  stikersGrid(3, 4, false);
+}
+
+function initStikersForAll(elemStikers)
+{
+  for (var i = elemStikers.length - 1; i >= 0; i--) {
+    var deg = 5;
+    for (var i = elemStikers.length - 1; i >= 0; i--) {
+      elemStikers[i].style.zIndex = i;
+
+      deg = (Math.random() * 10) - 5;
+      elemStikers[i].querySelector('.stiker__wrap').style.transform = 'rotate('+ deg +'deg)';
+    }
+  }
+}
+
+function compareRandom(a, b)
+{
+  return Math.random() - 0.5;
+}
+
+
+function stikersGrid(cols, rows, random)
+{
+  var elemGroup = document.querySelector('.stikers-group');
+  var elemStikers = elemGroup.querySelectorAll('.stiker');
+  var elemStikers = Array.prototype.slice.call(elemStikers); // преобразует NodeList в Array
+  if (random) {
+    elemStikers.sort(compareRandom);
+  }
+
+  elemGroup.style.height = (elemStikers[0].offsetHeight * 1.1) * rows + 'px';
+  elemGroup.style.width = (elemStikers[0].offsetWidth * 1.1) * cols + 'px';
+
+
+  var i = 0, row = 0, col = 0, matrix = new Array(), index;
+  for (var i = 0; i <= elemStikers.length - 1; i++) {
+    var elemStiker = elemStikers[i];
+
+    if (!matrix[row]) {
+      matrix[row] = new Array();
+    }
+
+    if (!matrix[row][col]) {
+      matrix[row][col] = new Array();
+    }
+
+    index = matrix[row][col].push(elemStiker) - 1;
+
+    (function(i, col, row, index, matrix) {
+      setTimeout(function() {
+        var x = 110 * col;
+        var y = 110 * row;
+        var deg = (Math.random() * 10) - 5;
+        matrix[row][col][index].style.transform = 'translate('+ x +'%, '+ y +'%)';
+        elemStikers[i].querySelector('.stiker__wrap').style.transform = 'rotate('+ deg +'deg)';
+        setTimeout(function(){
+          matrix[row][col][index].style.zIndex = i;
+        }, 50);
+      }, 100 * i)
+    })(i, col, row, index, matrix);
+
+
+    col++;
+    if (col >= cols) {
+      col = 0;
+      row++;
+      if (row >= rows) {
+        row = 0;
+      }
+    }
+  }
+
+  return matrix;
+
 }
 
 function initStikers(elemStikersGroup){
@@ -11,16 +92,16 @@ function initStikers(elemStikersGroup){
   var deg = 5;
   for (var i = elemStikers.length - 1; i >= 0; i--) {
 
-    elemStikers[i].style.zIndex = i;
+    elemStiker.style.zIndex = i;
 
     deg = (Math.random() * 10) - 5;
     elemStikers[i].querySelector('.stiker__wrap').style.transform = 'rotate('+ deg +'deg)';
   }
 
   activeLayerNumber = elemStikers.length - 1;
-  if (activeLayerNumber > 1) initLayer(true);
+  if (activeLayerNumber > 1) initStiker(true);
 
-  function initLayer(firstInit)
+  function initStiker(firstInit)
   {
     var timeLast = 0;
     var progress;
@@ -167,7 +248,7 @@ function initStikers(elemStikersGroup){
       activeLayerNumber = activeLayerNumber - 1;
       if (activeLayerNumber < 0) activeLayerNumber = elemStikers.length - 1;
 
-      initLayer();
+      initStiker();
     }
 
     function layerDrawToRight(progress)
@@ -208,4 +289,22 @@ function initStikers(elemStikersGroup){
       }
     }
   }
+}
+
+
+
+
+
+
+
+
+function old() {
+var elemStikersGroups = document.querySelectorAll('.stikers-group');
+
+for (var i = elemStikersGroups.length - 1; i >= 0; i--) {
+  initStikers(elemStikersGroups[i]);
+}
+
+
+
 }
