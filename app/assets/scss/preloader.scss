@@ -1,11 +1,12 @@
 #preloader
 {
+    font-size: 16px;
+
     position: fixed;
+    z-index: 999;
     z-index: 999;
     top: 0;
     left: 0;
-
-    font-size: 16px;
 
     display: none;
 
@@ -17,14 +18,13 @@
     justify-content: center;
     align-items: center;
     animation-fill-mode: both;
-
-    z-index: 999;
 }
 
 .layout
 {
-    opacity: 1;
     transition: opacity 1s;
+
+    opacity: 1;
 }
 
 
@@ -46,7 +46,8 @@
 }
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px)
+{
     #preloader
     {
         font-size: 12px;
@@ -106,13 +107,20 @@
 
 .preloader__stiker__front
 {
-    line-height: 10em;
+    display: flex;
+    flex-direction: row;
+
     width: 10em;
     height: 10em;
+
     transform: rotate(45deg) translate(0, 0);
     text-align: center;
+
     background: linear-gradient(45deg, #fff5ad, #f3e168);
     box-shadow: 0 0 .5em rgba(0, 0, 0, .2);
+
+    align-items: center;
+    justify-content: center;
     animation-fill-mode: both !important;
 }
 
@@ -137,16 +145,24 @@
 
 .preloader__stiker__content
 {
-    display: inline-block;
     font-family: 'Comic Sans MS', 'Courier New';
-    font-weight: bold;
     font-size: 3.5em;
+    font-weight: bold;
+
+    display: inline-block;
+
     color: #330;
+
+    svg
+    {
+        height: 2em;
+    }
 }
 
-.preloader__stiker__content span 
+.preloader__stiker__content span
 {
     font-size: .6em;
+
     padding-left: .1em;
 }
 
@@ -229,6 +245,7 @@
 .preloader__stiker--to-right .preloader__stiker__back
 {
     left: 0;
+
     transform: translate(-8.5em, 8.5em);
     animation: stiker__back--to-right 1s cubic-bezier(.26,.47,.89,-.17);
 }
