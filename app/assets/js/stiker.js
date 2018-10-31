@@ -7,8 +7,9 @@ function loaded()
       initStikersForAll(elemStikers);
   }
 
-  
-  stikersGrid(3, 4, false);
+
+  var matrix = stikersGrid(3, 1, false);
+
 }
 
 function initStikersForAll(elemStikers)
@@ -16,7 +17,6 @@ function initStikersForAll(elemStikers)
   for (var i = elemStikers.length - 1; i >= 0; i--) {
     var deg = 5;
     for (var i = elemStikers.length - 1; i >= 0; i--) {
-      elemStikers[i].style.zIndex = i;
 
       deg = (Math.random() * 10) - 5;
       elemStikers[i].querySelector('.stiker__wrap').style.transform = 'rotate('+ deg +'deg)';
@@ -59,14 +59,11 @@ function stikersGrid(cols, rows, random)
 
     (function(i, col, row, index, matrix) {
       setTimeout(function() {
-        var x = 110 * col;
-        var y = 110 * row;
+        var x = (16 + 2) * col;
+        var y = (16 + 2) * row;
         var deg = (Math.random() * 10) - 5;
-        matrix[row][col][index].style.transform = 'translate('+ x +'%, '+ y +'%)';
+        matrix[row][col][index].style.transform = 'translate('+ x +'em, '+ y +'em)';
         elemStikers[i].querySelector('.stiker__wrap').style.transform = 'rotate('+ deg +'deg)';
-        setTimeout(function(){
-          matrix[row][col][index].style.zIndex = i;
-        }, 50);
       }, 100 * i)
     })(i, col, row, index, matrix);
 
@@ -81,38 +78,47 @@ function stikersGrid(cols, rows, random)
     }
   }
 
+
+  for (var row = matrix.length - 1; row >= 0; row--) {
+    for (var col = matrix[row].length - 1; col >= 0; col--) {
+      initStikers(matrix[row][col]);
+    }
+  }
+
   return matrix;
 
 }
 
-function initStikers(elemStikersGroup){
+function initStikers(elemStikers){
 
-  var elemStikers = elemStikersGroup.querySelectorAll('.stiker');
 
-  var deg = 5;
   for (var i = elemStikers.length - 1; i >= 0; i--) {
+    var elemStiker = elemStikers[i];
 
     elemStiker.style.zIndex = i;
-
-    deg = (Math.random() * 10) - 5;
-    elemStikers[i].querySelector('.stiker__wrap').style.transform = 'rotate('+ deg +'deg)';
   }
 
   activeLayerNumber = elemStikers.length - 1;
-  if (activeLayerNumber > 1) initStiker(true);
+  if (activeLayerNumber > 1) initStiker(activeLayerNumber, true);
 
-  function initStiker(firstInit)
+  function initStiker(activeLayerNumber, firstInit)
   {
     var timeLast = 0;
     var progress;
 
     var elemStiker = elemStikers[activeLayerNumber];
-    var elemInner = elemStiker.querySelector('.stiker__inner');
-    var elemArena = elemStiker.querySelector('.stiker__arena');
-    var elemOuter = elemInner.querySelector('.stiker__outer');
-    var elemBack  = elemOuter.querySelector('.stiker__back');
-    var elemItem  = elemOuter.querySelector('.stiker__item');
+    var elemInner  = elemStiker.querySelector('.stiker__inner');
+    var elemArena  = elemStiker.querySelector('.stiker__arena');
+    var elemOuter  = elemStiker.querySelector('.stiker__outer');
+    var elemBack   = elemStiker.querySelector('.stiker__back');
+    var elemItem   = elemStiker.querySelector('.stiker__item');
 
+    elemStiker.classList.add('active');
+    var stikerZIndex = +elemStiker.style.zIndex;
+
+    console.log('initStiker', 'stikerZIndex = ' + stikerZIndex, 'activeLayerNumber = ' + activeLayerNumber);
+
+    console.log(elemStiker);
     if (activeLayerNumber % 2) {
       var layerDraw = layerDrawToLeft;
       elemArena.style.left = 'auto';
@@ -141,6 +147,32 @@ function initStikers(elemStikersGroup){
     elemArena.addEventListener("mouseout", onMouseoOut, false);
     elemArena.addEventListener('mousedown', onMouseDown, false);
     elemArena.addEventListener('mouseup', onMouseUp, false);
+
+    function nextLayer()
+    {
+      elemStiker.style.zIndex = stikerZIndex;
+      elemStiker.classList.remove('active');
+      elemArena.removeEventListener("mouseover", onMouseOver);
+      elemArena.removeEventListener("mouseout", onMouseoOut);
+      elemArena.removeEventListener('mousedown', onMouseDown);
+      elemArena.removeEventListener('mouseup', onMouseUp);
+      elemArena.removeEventListener('mousemove', onMouseMove);
+
+      console.log('nextLayer', 'stikerZIndex = ' + stikerZIndex, 'activeLayerNumber = ' + activeLayerNumber);
+      activeLayerNumber = activeLayerNumber - 1;
+      if (activeLayerNumber < 0) activeLayerNumber = elemStikers.length - 1;
+
+      var lastIndex, newIndex;
+      for (var i = elemStikers.length - 1; i >= 0; i--) {
+        lastIndex = +elemStikers[i].style.zIndex;
+        newIndex = lastIndex + 1;
+        if (newIndex > elemStikers.length - 1) newIndex = 0;
+        elemStikers[i].style.zIndex = newIndex;
+      }
+
+
+      initStiker(activeLayerNumber);
+    }
 
     function onMouseOver(event) {
       animate({
@@ -185,8 +217,8 @@ function initStikers(elemStikersGroup){
     {
         this.style.height = '200%';
         this.style.width = '200%';
-        this.style.zIndex = '900';
         this.addEventListener('mousemove', onMouseMove);
+        elemStiker.style.zIndex = '999';
         return false;
     }
 
@@ -196,6 +228,7 @@ function initStikers(elemStikersGroup){
       this.style.width = '35%';
       this.style.zIndex = '10';
       this.removeEventListener('mousemove', onMouseMove);
+      elemStiker.style.zIndex = stikerZIndex;
 
       if (progress > 0.4) {
         animate({
@@ -225,30 +258,6 @@ function initStikers(elemStikersGroup){
           to: 10,
         });
       }
-    }
-
-
-    function nextLayer()
-    {
-
-      elemArena.removeEventListener("mouseover", onMouseOver);
-      elemArena.removeEventListener("mouseout", onMouseoOut);
-      elemArena.removeEventListener('mousedown', onMouseDown);
-      elemArena.removeEventListener('mouseup', onMouseUp);
-      elemArena.removeEventListener('mousemove', onMouseMove);
-
-      var lastIndex, newIndex;
-      for (var i = elemStikers.length - 1; i >= 0; i--) {
-        lastIndex = +elemStikers[i].style.zIndex;
-        newIndex = lastIndex + 1;
-        if (newIndex > elemStikers.length - 1) newIndex = 0;
-        elemStikers[i].style.zIndex = newIndex;
-      }
-
-      activeLayerNumber = activeLayerNumber - 1;
-      if (activeLayerNumber < 0) activeLayerNumber = elemStikers.length - 1;
-
-      initStiker();
     }
 
     function layerDrawToRight(progress)
@@ -289,22 +298,4 @@ function initStikers(elemStikersGroup){
       }
     }
   }
-}
-
-
-
-
-
-
-
-
-function old() {
-var elemStikersGroups = document.querySelectorAll('.stikers-group');
-
-for (var i = elemStikersGroups.length - 1; i >= 0; i--) {
-  initStikers(elemStikersGroups[i]);
-}
-
-
-
 }

@@ -7,28 +7,32 @@
 
     display: block;
 
-    width: 32em;
-    height: 32em;
+    min-width: 16em;
+    min-height: 16em;
 
     // background: red;
 
     // outline: 1px solid red;
     // transition: width 0.5s, height 0.5s;
-
-
 }
 
 .stiker
 {
 
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
+    display: inline-block;
     width: 16em;
     height: 16em;
-    margin: 1rem;
+    margin: 1em;
 
     transition: transform .5s;
+
+    .stikers-group > &
+    {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
 
 
     // &:nth-child(6n)
@@ -149,6 +153,8 @@
         height: 35%;
 
         cursor: pointer;
+        background: red;
+        opacity: .5;
     }
 
     &:hover &__arena
