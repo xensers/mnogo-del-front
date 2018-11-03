@@ -3,7 +3,7 @@ extends template
 block vars
   -
     var siteTitle = 'Много сделал!'
-    var pageTitle = 'Шаблон'
+    var pageTitle = ''
   -
     var html = {
       attrs: {
@@ -52,6 +52,8 @@ block styles
 
 block scripts
   // build:js assets/js/main.js
+  script(type='text/javascript', src='assets/js/helpers.js')
+  script(type='text/javascript', src='assets/js/breakpoint.js')
   script(type='text/javascript', src='assets/js/animate.js')
   script(type='text/javascript', src='assets/js/layout.js')
   script(type='text/javascript', src='assets/js/header.js')

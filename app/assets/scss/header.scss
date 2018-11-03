@@ -14,7 +14,7 @@
 
     align-items: center;
     justify-content: space-between;
-    @include respond-to(small)
+    @include respond-from(small)
     {
         justify-content: flex-start;
     }
@@ -22,7 +22,7 @@
 
     &__menu-btn
     {
-        @include respond-to(small)
+        @include respond-from(small)
         {
             display: none;
         }
@@ -32,7 +32,7 @@
     {
         transition: all .3s;
 
-        @include respond-to(small)
+        @include respond-from(small)
         {
             padding-top: 1rem;
             padding-right: 1rem;
@@ -52,7 +52,7 @@
         // flex: 0 0 65%;
         display: none;
 
-        @include respond-to(small)
+        @include respond-from(small)
         {
             display: block;
         }
@@ -95,28 +95,45 @@
 
         display: inline-block;
 
-        width: 12rem;
+        max-width: 12rem;
         margin-left: -6rem;
 
         transition: transform .3s;
         text-align: center;
 
-        @include respond-from(small)
+        font-family: 'AvantGardeGothicC-Bold';
+        font-size: .9rem;
+
+        text-decoration: none;
+
+        color: #000;
+
+        transform-origin: left center;
+        transform: translateX(-7rem) scale(0);
+
+        background: url(../images/marker-1.png);
+        background-size: 100% 100%;
+
+        &:empty
         {
+            display: none;
+        }
+
+        @include respond-to(small)
+        {
+            width: 12rem;
+            text-align: center;
             transform: translateY(5rem);
 
-            .header__link .icon
-            {
-                display: none;
-            }
         }
-        @include respond-to(small)
+        @include respond-from(small)
         {
             position: relative;
             left: 0;
 
-            margin-left: 0;
-            padding-left: 7rem !important;
+            margin-left: 7rem;
+            text-align: left;
+            // padding-left: 7rem !important;
 
             &::before
             {
@@ -132,7 +149,7 @@
 
                 content: '';
                 transition: transform .3s linear .2s;
-                transform: translateX(-3rem) scaleX(0);
+                transform: translateX(-7rem);
                 vertical-align: middle;
 
                 background: #000;
@@ -161,7 +178,7 @@
 
         text-align: right;
 
-        @include respond-to(small)
+        @include respond-from(small)
         {
             display: block;
         }
@@ -176,7 +193,7 @@
 
         height: 2rem;
 
-        @include respond-to(small)
+        @include respond-from(small)
         {
             display: none;
         }
@@ -241,7 +258,7 @@
         {
             padding-top: 0;
 
-            @include respond-from(small)
+            @include respond-to(small)
             {
                 transform: translateY(-5rem);
             };
@@ -254,16 +271,16 @@
         .header__page-title
         {
             background-size: 100%;
-
-            @include respond-from(small)
+            transform: translateX(0) scale(1);
+            @include respond-to(small)
             {
                 transform: translateY(0);
             }
-            @include respond-to(small)
+            @include respond-from(small)
             {
                 &::before
                 {
-                    transform: translateX(0) scaleX(1);
+                    // transform: translateX(0) scaleX(1);
                 }
 
                 .header__link

@@ -6,10 +6,6 @@ function loaded()
   if (elemStikers) {
       initStikersForAll(elemStikers);
   }
-
-
-  var matrix = stikersGrid(3, 2, false);
-
 }
 
 function initStikersForAll(elemStikers)
@@ -24,15 +20,10 @@ function initStikersForAll(elemStikers)
   }
 }
 
-function compareRandom(a, b)
-{
-  return Math.random() - 0.5;
-}
-
-
 function stikersGrid(cols, rows, random)
 {
   var elemGroup = document.querySelector('.stikers-group');
+
   var elemStikers = elemGroup.querySelectorAll('.stiker');
   var elemStikers = Array.prototype.slice.call(elemStikers); // преобразует NodeList в Array
   if (random) {
@@ -42,57 +33,61 @@ function stikersGrid(cols, rows, random)
   elemGroup.style.height = (elemStikers[0].offsetHeight * 1.1) * rows + 'px';
   elemGroup.style.width = (elemStikers[0].offsetWidth * 1.1) * cols + 'px';
 
-
-  var i = 0, row = 0, col = 0, matrix = new Array(), index;
-  for (var i = 0; i <= elemStikers.length - 1; i++) {
-    var elemStiker = elemStikers[i];
-    var elemArena  = elemStiker.querySelector('.stiker__arena');
-
-    elemArena.onmouseover = undefined;
-    elemArena.onmouseout  = undefined;
-    elemArena.onmousedown = undefined;
-    elemArena.onmouseup   = undefined;
-    elemArena.onmousemove = undefined;
-
-    if (!matrix[row]) {
-      matrix[row] = new Array();
-    }
-
-    if (!matrix[row][col]) {
-      matrix[row][col] = new Array();
-    }
-
-    index = matrix[row][col].push(elemStiker) - 1;
-
-    (function(i, col, row, index, matrix) {
-      setTimeout(function() {
-        var x = (16 + 2) * col;
-        var y = (16 + 2) * row;
-        var deg = (Math.random() * 10) - 5;
-        matrix[row][col][index].style.transform = 'translate('+ x +'em, '+ y +'em)';
-        matrix[row][col][index].querySelector('.stiker__wrap').style.transform = 'rotate('+ deg +'deg)';
-      }, 100 * i)
-    })(i, col, row, index, matrix);
+  window.addEventListener('resize', function stikerGroupOnResize() {
+    elemGroup.style.height = (elemStikers[0].offsetHeight * 1.1) * rows + 'px';
+    elemGroup.style.width = (elemStikers[0].offsetWidth * 1.1) * cols + 'px';
+  });
 
 
-    col++;
-    if (col >= cols) {
-      col = 0;
-      row++;
-      if (row >= rows) {
-        row = 0;
+  setTimeout(function() {
+    var i = 0, row = 0, col = 0, matrix = new Array(), index;
+    for (var i = 0; i <= elemStikers.length - 1; i++) {
+      var elemStiker = elemStikers[i];
+      var elemArena  = elemStiker.querySelector('.stiker__arena');
+
+      elemArena.onmouseover = undefined;
+      elemArena.onmouseout  = undefined;
+      elemArena.onmousedown = undefined;
+      elemArena.onmouseup   = undefined;
+      elemArena.onmousemove = undefined;
+
+      if (!matrix[row]) {
+        matrix[row] = new Array();
+      }
+
+      if (!matrix[row][col]) {
+        matrix[row][col] = new Array();
+      }
+
+      index = matrix[row][col].push(elemStiker) - 1;
+
+      (function(i, col, row, index, matrix) {
+        setTimeout(function() {
+          var x = (16 + 2) * col;
+          var y = (16 + 2) * row;
+          var deg = (Math.random() * 10) - 5;
+          matrix[row][col][index].style.transform = 'translate('+ x +'em, '+ y +'em)';
+          matrix[row][col][index].querySelector('.stiker__wrap').style.transform = 'rotate('+ deg +'deg)';
+        }, 100 * i)
+      })(i, col, row, index, matrix);
+
+
+      col++;
+      if (col >= cols) {
+        col = 0;
+        row++;
+        if (row >= rows) {
+          row = 0;
+        }
       }
     }
-  }
 
-
-  for (var row = matrix.length - 1; row >= 0; row--) {
-    for (var col = matrix[row].length - 1; col >= 0; col--) {
-      initStikers(matrix[row][col]);
+    for (var row = matrix.length - 1; row >= 0; row--) {
+      for (var col = matrix[row].length - 1; col >= 0; col--) {
+        initStikers(matrix[row][col]);
+      }
     }
-  }
-
-  return matrix;
+  }, 300);
 
 }
 
@@ -114,6 +109,7 @@ function initStikers(elemStikers){
     var progress;
 
     var elemStiker = elemStikers[activeLayerNumber];
+    var elemWrap   = elemStiker.querySelector('.stiker__wrap');
     var elemInner  = elemStiker.querySelector('.stiker__inner');
     var elemArena  = elemStiker.querySelector('.stiker__arena');
     var elemOuter  = elemStiker.querySelector('.stiker__outer');
@@ -123,9 +119,7 @@ function initStikers(elemStikers){
     elemStiker.classList.add('active');
     var stikerZIndex = +elemStiker.style.zIndex;
 
-    console.log('initStiker', 'stikerZIndex = ' + stikerZIndex, 'activeLayerNumber = ' + activeLayerNumber);
-
-    console.log(elemStiker);
+    // console.log(elemStikers);
     if (activeLayerNumber % 2) {
       var layerDraw = layerDrawToLeft;
       elemArena.style.left = 'auto';
@@ -138,9 +132,7 @@ function initStikers(elemStikers){
 
     if (firstInit) {
       layerDraw(0.1);
-    }
-    else
-    {
+    } else {
       animate({
         timing: linear,
         duration: 3000,
@@ -150,58 +142,7 @@ function initStikers(elemStikers){
       });
     }
 
-    elemArena.onmouseover = onMouseOver;
-    elemArena.onmouseout  = onMouseOut;
-    elemArena.onmousedown = onMouseDown;
-    elemArena.onmouseup   = onMouseUp;
-
-    function nextLayer()
-    {
-      elemStiker.style.zIndex = stikerZIndex;
-      elemStiker.classList.remove('active');
-      elemArena.onmouseover = undefined;
-      elemArena.onmouseout  = undefined;
-      elemArena.onmousedown = undefined;
-      elemArena.onmouseup   = undefined;
-      elemArena.onmousemove = undefined;
-
-      console.log('nextLayer', 'stikerZIndex = ' + stikerZIndex, 'activeLayerNumber = ' + activeLayerNumber);
-      activeLayerNumber = activeLayerNumber - 1;
-      if (activeLayerNumber < 0) activeLayerNumber = elemStikers.length - 1;
-
-      var lastIndex, newIndex;
-      for (var i = elemStikers.length - 1; i >= 0; i--) {
-        lastIndex = +elemStikers[i].style.zIndex;
-        newIndex = lastIndex + 1;
-        if (newIndex > elemStikers.length - 1) newIndex = 0;
-        elemStikers[i].style.zIndex = newIndex;
-      }
-
-
-      initStiker(activeLayerNumber);
-    }
-
-    function onMouseOver(event) {
-      animate({
-        timing: linear,
-        duration: 3000,
-        draw: layerDraw,
-        from: 10,
-        to: 13,
-      });
-    }
-
-    function onMouseOut(event) {
-      animate({
-        timing: linear,
-        duration: 3000,
-        draw: layerDraw,
-        from: 13,
-        to: 10,
-      });
-    }
-
-    function onMouseMove(event)
+    var move = function(event)
     {
         elemArena.onmouseover = undefined;
         elemArena.onmouseout = undefined;
@@ -220,21 +161,51 @@ function initStikers(elemStikers){
         return false;
     }
 
-    function onMouseDown(event)
+    elemStiker.onmouseover = function(){
+      elemStiker.style.zIndex = '99';
+    };
+    elemStiker.onmouseout  = function(){
+      elemStiker.style.zIndex = stikerZIndex;
+    };
+
+    elemArena.onmouseover = function(event) {
+      elemStiker.style.zIndex = '999';
+      animate({
+        timing: linear,
+        duration: 3000,
+        draw: layerDraw,
+        from: 10,
+        to: 13,
+      });
+    }
+
+    elemArena.onmouseout = function(event) {
+      elemStiker.style.zIndex = stikerZIndex;
+      animate({
+        timing: linear,
+        duration: 3000,
+        draw: layerDraw,
+        from: 13,
+        to: 10,
+      });
+    }
+
+    elemArena.onmousedown = function(event)
     {
-        this.style.height = '200%';
-        this.style.width = '200%';
-        this.onmousemove = onMouseMove;
-        elemStiker.style.zIndex = '999';
+        elemWrap.style.overflow = 'visible';
+        elemStiker.style.zIndex = '900';
+        elemArena.style.height = '200%';
+        elemArena.style.width = '200%';
+        elemArena.onmousemove = move;
         return false;
     }
 
-    function onMouseUp(event)
+    elemArena.onmouseup = function(event)
     {
-      this.style.height = '35%';
-      this.style.width = '35%';
-      this.onmousemove = undefined;
       elemStiker.style.zIndex = stikerZIndex;
+      elemArena.style.height = '35%';
+      elemArena.style.width = '35%';
+      elemArena.onmousemove = undefined;
 
       if (progress > 0.4) {
         animate({
@@ -251,6 +222,9 @@ function initStikers(elemStikers){
               draw: layerDraw,
               from: 100,
               to: 1,
+              after: function(){
+                elemWrap.style.overflow = 'hidden';
+              }
             });
           }
         });
@@ -262,9 +236,43 @@ function initStikers(elemStikers){
           draw: layerDraw,
           from: progress * 100,
           to: 10,
+          after: function(){
+            elemWrap.style.overflow = 'hidden';
+          }
         });
       }
     }
+
+    function nextLayer()
+    {
+      elemStiker.style.zIndex = stikerZIndex;
+      elemStiker.classList.remove('active');
+      elemArena.onmouseover = undefined;
+      elemArena.onmouseout  = undefined;
+      elemArena.onmousedown = undefined;
+      elemArena.onmouseup   = undefined;
+      elemArena.onmousemove = undefined;
+      elemStiker.onmouseover = undefined;
+      elemStiker.onmouseout = undefined;
+
+      var lastIndex, newIndex;
+      for (var i = elemStikers.length - 1; i >= 0; i--) {
+        lastIndex = +elemStikers[i].style.zIndex;
+        newIndex = lastIndex + 1;
+
+        if (newIndex > elemStikers.length - 1) {
+          newIndex = 0;
+        }
+
+        elemStikers[i].style.zIndex = newIndex;
+
+        // console.log(newIndex, elemStikers.length - 1);
+        if (newIndex >= elemStikers.length - 1) {
+          initStiker(i);
+        }
+      }
+    }
+
 
     function layerDrawToRight(progress)
     {

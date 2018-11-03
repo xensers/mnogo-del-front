@@ -4,16 +4,16 @@
     span
     span
   .header__logo
-    a(href='/')
+    a(href='home.html')
       img.logo(src='assets/images/logo.png', alt='bar', srcset='assets/images/logo@2x.png 2x')
   nav.header__nav
     ul
       li
-        a.header__link(href='#') О проекте
+        a.header__link.menu__link(href='about.html') О проекте
       li
-        a.header__link(href='#') Все кейсы
+        a.header__link.menu__link(href='home.html#cases') Все кейсы
   .header__page-title
-    a.header__link(href='#') #{pageTitle}
+    | #{pageTitle}
   .header__icons
     .header__icons__wrap
       a.header__icons_lang(href='#')

@@ -1,7 +1,7 @@
 block vars
   -
     var siteTitle = typeof title !== 'undefined' ? title : 'Заголокок сайта'
-    var pageTitle = typeof title !== 'undefined' ? title : 'Заголовок страницы'
+    var pageTitle = typeof title !== 'undefined' ? title : ''
   -
     var html = {
       attrs: {
@@ -27,12 +27,15 @@ html(class=html.classList)&attributes(html.attrs)
     block meta
       meta(charset='UTF-8')
       meta(name='viewport', content='width=device-width, initial-scale=1')
-      title #{siteTitle} - #{pageTitle}
+      - var headPageTitle = pageTitle !== '' ? ('- ' + pageTitle) : '';
+      title #{siteTitle} #{headPageTitle}
 
     block styles
       link(rel='stylesheet', href='assets/css/base.css')
       link(rel='stylesheet', href='assets/css/layout.css')
     block head-end
+      script.
+        var readyjs = new Array();
 
   body(class=body.classList)&attributes(body.attrs)
     block body-start
@@ -44,3 +47,11 @@ html(class=html.classList)&attributes(html.attrs)
     block scripts
       script(type='text/javascript', src='assets/js/layout.js')
     block end-body
+      script.
+        if (readyjs) {
+          document.addEventListener('DOMContentLoaded', function(){
+            for (var i = readyjs.length - 1; i >= 0; i--) {
+              readyjs[i]();
+            }
+          });
+        }

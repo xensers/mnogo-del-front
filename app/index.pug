@@ -20,8 +20,8 @@ block content
         a.menu__link(href='home.html' target="_blank")
           | Главная
       li.menu__item
-        a.menu__link(href='home.html#Cases' target="_blank")
-          del Кейсы
+        a.menu__link(href='home.html#cases' target="_blank")
+          | Кейсы
       li.menu__item
         a.menu__link(href='сase-detailed.html' target="_blank")
           del Страница кейса
@@ -71,6 +71,18 @@ block content
   hr
   div(onselectstart="return false")
     include pug/demo/stikers
+
+  br
+  form.stikers-demo-panel
+    input(type="text" name="cols")
+    input(type="text" name="rows")
+    input(type="checkbox")
+    button(name="ok") OK
+
+  script.
+    readyjs.push(function(){
+      console.log('Im Ready!');
+    });
 
   br
   h2 Иконки

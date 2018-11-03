@@ -4,24 +4,28 @@
 {
     .layout__container
     {
-        @include respond-to(medium)
+        @include respond-from(medium)
         {
             width: 92%;
             max-width: 82rem;
 
-            outline: 1px solid orange;
+            // outline: 1px solid orange;
         }
     }
 
     &__warp
     {
+        display: flex;
+
         padding: 2rem 0;
 
-        outline: 1px solid orange;
+        // outline: 1px solid orange;
 
-        @include respond-from(medium)
+        @include respond-to(medium)
         {
-            display: flex;
+            flex-direction: row-reverse;
+
+            transform: translateX(100%);
 
             transition: transform .5s;
              > *
@@ -31,38 +35,37 @@
                 flex: 0 0 100%;
             }
         }
-        @include respond-to(medium)
+    }
+
+    &__text
+    {
+        // outline: 1px solid orange;
+
+        transition: 1s 1s, opacity .3s;
+
+        @include respond-from(medium)
         {
-            display: flex;
-            flex-direction: row-reverse;
+            flex: 0 0 40%;
         }
     }
 
     &__cases
     {
-        text-align: left;
+        padding: 2rem;
+        text-align: center;
 
-        outline: 1px solid orange;
-        transition: opacity .5s;
+        // outline: 1px solid orange;
+        transition: .3s;
 
         @include respond-from(medium)
         {
-            display: flex;
+            flex: 0 0 60%;
+
+            font-size: .6rem;
         }
-        @include respond-to(medium)
+        @include respond-from(large)
         {
-            flex: 0 0 68%;
-            .stiker
-            {
-                font-size: .6rem;
-            }
-        }
-        @include respond-to(large)
-        {
-            .stiker
-            {
-                font-size: .75rem;
-            }
+            font-size: .75rem;
         }
     }
 
@@ -71,33 +74,23 @@
         display: inline-block;
     }
 
-    &__text
-    {
-        outline: 1px solid orange;
-
-        @include respond-to(medium)
-        {
-            flex: 0 0 32%;
-        }
-    }
-
-
     &--cases
     {
-        @include respond-from(medium)
+        @include respond-to(medium)
         {
             .homepage__warp
             {
-            transform: translateX(-100%);
+                transform: translateX(0%);
             }
 
             .homepage__text
             {
                 opacity: 0;
             }
+
             .homepage__cases
             {
-                transition: transform .5s;
+                transition: transform .3s;
                 > *
                 {
                     width: 100%;
@@ -106,8 +99,25 @@
             }
         }
 
-        @include respond-to(medium)
+        @include respond-from(medium)
         {
+
+            .homepage__text
+            {
+                transform: translateX(50%);
+                opacity: 0;
+            }
+
+            .homepage__cases
+            {
+                // transform: translateX(50%);
+                flex: 0 0 100%;
+            }
+
+            .homepage__warp
+            {
+                // transform: translateX(-50%);
+            }
 
         }
     }

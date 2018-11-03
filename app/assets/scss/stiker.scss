@@ -1,19 +1,21 @@
 .stikers-group
 {
-    // margin: auto;
-    font-size: .9rem;
 
+    font-size: 0.9em;
     position: relative;
 
-    display: block;
+    display: inline-block;
 
     min-width: 16em;
     min-height: 16em;
 
-    // background: red;
+    transition: width .3s;
 
-    // outline: 1px solid red;
-    // transition: width 0.5s, height 0.5s;
+    .debug &, &.debug,
+    {
+        outline: 1px solid rgba(255,0,0, 1);
+        background: rgba(255,0,0, 0.2);
+    }
 }
 
 .stiker
@@ -27,8 +29,10 @@
 
     transition: transform .5s;
 
-    &::hover {
-        z-index: 999;
+    .debug &, &.debug
+    {
+        outline: 1px solid rgba(0,255,0, 1);
+        background: rgba(0,255,0, 0.2);
     }
 
     .stikers-group > &
@@ -38,37 +42,6 @@
         left: 0;
     }
 
-
-    // &:nth-child(6n)
-    // {
-    //   transform: translate(0, 0);
-    // }
-
-    // &:nth-child(6n - 1)
-    // {
-    //   transform: translate(16em, 0);
-    // }
-
-    // &:nth-child(6n - 2)
-    // {
-    //   transform: translate(32em, 0);
-    // }
-
-    // &:nth-child(6n - 3)
-    // {
-    //   transform: translate(0, 16em);
-    // }
-
-    // &:nth-child(6n - 4)
-    // {
-    //   transform: translate(16em, 16em);
-    // }
-
-    // &:nth-child(6n - 5)
-    // {
-    //   transform: translate(32em, 16em);
-    // }
-
     &__wrap
     {
         position: absolute;
@@ -77,6 +50,28 @@
         height: 100%;
         width: 100%;
         transition: transform .5s;
+        overflow: hidden;
+
+        .debug &, &.debug
+        {
+            outline: 1px solid rgba(255,255,0, 1);
+            background: rgba(255,255,0, 0.2);
+        }
+
+        // & {
+        //     transform-origin: top center;
+        //     transform: scale(0.8) !important;
+        // }
+    }
+
+    &__text
+    {
+        position: absolute;
+        bottom: -1em;
+        left: 0;
+        width: 100%;
+        height: 3em;
+        opacity: 0;
     }
 
     &__inner
@@ -89,6 +84,12 @@
 
         width: 24em;
         height: 24em;
+
+        .debug &, &.debug
+        {
+            outline: 1px solid rgba(255,255,0, 1);
+            background: rgba(255,255,0, 0.2);
+        }
     }
 
     &__outer
@@ -99,6 +100,12 @@
 
         width: 100%;
         height: 100%;
+
+        .debug &, &.debug
+        {
+            outline: 1px solid rgba(255,0,255, 1);
+            background: rgba(255,0,255, 0.2);
+        }
     }
 
     &__item
@@ -114,6 +121,12 @@
 
         background: linear-gradient(45deg, #fff5ad, #f3e168);
         box-shadow: 0 0 1em rgba(0, 0, 0, .1);
+
+
+        .debug &, &.debug
+        {
+            outline: 1px solid rgba(192,192,192, 1);
+        }
     }
 
     &__body
@@ -129,6 +142,11 @@
 
         align-items: center;
         justify-content: center;
+
+        .debug &, &.debug
+        {
+            outline: 1px solid fuchsia;
+        }
     }
 
     &__back
@@ -145,6 +163,12 @@
 
         background: linear-gradient(45deg, #fff5ad, #dfc850);
         box-shadow: 0 0 .5em rgba(0, 0, 0, .1);
+
+
+        .debug &, &.debug
+        {
+            outline: 1px solid black;
+        }
     }
 
     &__arena
@@ -157,10 +181,13 @@
         height: 35%;
 
         cursor: pointer;
-    }
 
-    &::hover
-    {
         z-index: 999 !important;
+
+        .debug &, &.debug
+        {
+            outline: 1px solid rgba(128,0,0, 1);
+            background: rgba(128,0,0, 0.2);
+        }
     }
 }

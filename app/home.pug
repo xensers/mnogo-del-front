@@ -1,12 +1,14 @@
 extends pug/base
 
 append vars
-  - pageTitle = 'Главная';
+  - pageTitle = '';
   - layout.classList = ['homepage'];
 
 
 block content
   .homepage__warp
+    .homepage__cases(onselectstart="return false")
+      include pug/demo/stikers
     .homepage__text
       h1 Найдите  свой  случай
       p
@@ -15,14 +17,15 @@ block content
         | Определите свой недуг  по симптому и узнайте, как сделать себя эффективным!
       p
         button(onclick="openCases()") Начать
-    .homepage__cases(onselectstart="return false")
-      include pug/demo/stikers
+      p
+        button(onclick="stikersGrid(3, 2, true)")
+          | Перемешать
   .homepage__warp
 
 block side-left-top
 block side-left-center
   .rotate
-    a(href="#") Это – ваш офис...
+    a.menu__link(href="#" onclick="closeCases()") Это – ваш офис...
 block side-left-bottom
 
 block side-right-top
