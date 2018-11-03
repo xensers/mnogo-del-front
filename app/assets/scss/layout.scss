@@ -55,9 +55,12 @@
         padding: 0 2rem;
         padding-top: 6rem;
 
-        z-index: 100;
-
         transition: transform .5s ease;
+
+        .menu--open &
+        {
+            z-index: 100;
+        }
     }
 
     &__body
