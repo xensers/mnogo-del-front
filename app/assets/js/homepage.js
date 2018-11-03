@@ -3,7 +3,7 @@ function openCases() {
 
   respondFrom(breakpoint.medium, function(){
       setTimeout(function(){
-        stikersGrid(4, 4, true);
+        stikersGrid(4, false, true);
       }, 0)
   }, true, false);
 

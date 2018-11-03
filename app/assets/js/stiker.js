@@ -31,6 +31,12 @@ function stikersGrid(cols, rows, showTitle, random)
     elemStikers.sort(compareRandom);
   }
 
+  if (!rows) {
+    rows = Math.ceil(elemStikers.length / cols);
+  }
+
+  console.log(rows);
+
   if (showTitle) {
     var xFactor = 1.15;
     var yFactor = 1.55;
@@ -58,11 +64,14 @@ function stikersGrid(cols, rows, showTitle, random)
       var elemStiker = elemStikers[i];
       var elemArena  = elemStiker.querySelector('.stiker__arena');
 
+      elemStiker.classList.remove('active');
       elemArena.onmouseover = undefined;
       elemArena.onmouseout  = undefined;
       elemArena.onmousedown = undefined;
       elemArena.onmouseup   = undefined;
       elemArena.onmousemove = undefined;
+      elemStiker.onmouseover = undefined;
+      elemStiker.onmouseout = undefined;
 
       if (!matrix[row]) {
         matrix[row] = new Array();
@@ -330,13 +339,13 @@ function initStikers(elemStikers){
 
     function layerDrawToRight(progress)
     {
-      var layerTranslateY = -24 * progress;
+      var innerTranslateY = -24 * progress - 4 * progress;
       var outerTranslateY = 24 * progress;
       var backTransleteY  = -(17 - progress * 34);
       var backTransleteX  = (17 - progress * 34);
       var backScale  = (100 - 30 * zone(progress, 0.7, 1)) / 100;
 
-      elemInner.style.transform = 'rotate(45deg) translateY(' + layerTranslateY + 'em)';
+      elemInner.style.transform = 'rotate(45deg) translateY(' + innerTranslateY + 'em)';
       elemOuter.style.transform = 'translateY(' + outerTranslateY + 'em)';
       elemBack.style.transform = 'rotate(-45deg) translate(' + backTransleteY + 'em, '+ backTransleteX +'em) scale('+ backScale +')';
       elemItem.style.transform = 'rotate(-45deg)';
@@ -349,13 +358,13 @@ function initStikers(elemStikers){
 
     function layerDrawToLeft(progress)
     {
-      var layerTranslateY = -24 * progress;
+      var innerTranslateY = -24 * progress - 4 * progress;
       var outerTranslateY = 24 * progress;
       var backTransleteY  = (17 - progress * 34);
       var backTransleteX  = (17 - progress * 34);
       var backScale  = (100 - 30 * zone(progress, 0.7, 1)) / 100;
 
-      elemInner.style.transform = 'rotate(-45deg) translateY(' + layerTranslateY + 'em)';
+      elemInner.style.transform = 'rotate(-45deg) translateY(' + innerTranslateY + 'em)';
       elemOuter.style.transform = 'translateY(' + outerTranslateY + 'em)';
       elemBack.style.transform = 'rotate(45deg) translate(' + backTransleteY + 'em, '+ backTransleteX +'em) scale('+ backScale +')';
       elemItem.style.transform = 'rotate(45deg)';

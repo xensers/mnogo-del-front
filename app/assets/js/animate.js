@@ -4,12 +4,12 @@ var showFrameRate = false;
 function animate(options)
 {
   if (!options.duration)  options.duration = 1000;
-  if (!options.delay)  options.delay = 0;
-  if (!options.timing) options.timing = linear;
-  if (!options.draw)   options.draw = function(progress){};
-  if (!options.from)   options.from = 1;
-  if (!options.to)     options.to = 100;
-  if (!options.draw)   options.after = function(){};
+  if (!options.delay)     options.delay = 0;
+  if (!options.timing)    options.timing = linear;
+  if (!options.draw)      options.draw = function(progress){};
+  if (!options.from)      options.from = 1;
+  if (!options.to)        options.to = 100;
+  if (!options.draw)      options.after = function(){};
 
   var fractionFrom = options.from / 100;
   var fractionTo = options.to / 100;
