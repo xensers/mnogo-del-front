@@ -5,13 +5,13 @@ function headerScroll() {
     var headerElem = document.querySelector('.header');
 
     if (window.pageYOffset > 10) {
-      headerElem.classList.add('scroll');
+        headerElem.classList.add('scroll');
     } else {
-      headerElem.classList.remove('scroll');
+        headerElem.classList.remove('scroll');
     }
 }
 
 /* Вешаем события */
 document.addEventListener("DOMContentLoaded", function loadedHeader() {
-  window.addEventListener('scroll', headerScroll);
+    window.addEventListener('scroll', headerScroll);
 });

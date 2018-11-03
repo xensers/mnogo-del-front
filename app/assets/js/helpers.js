@@ -1,13 +1,9 @@
-function boom()
-{
+function boom() {
     var audio = new Audio();
     audio.preload = 'auto';
     audio.src = '/assets/media/boom.mp3';
     audio.play();
 }
-
-// setInterval(boom, 300);
-
 
 /**
  * Сокращение для добавления события DOMContentLoaded
@@ -27,7 +23,7 @@ function ready(listener) {
         var func = function() {
             if (running) { return; }
             running = true;
-             requestAnimationFrame(function() {
+            requestAnimationFrame(function() {
                 obj.dispatchEvent(new CustomEvent(name));
                 running = false;
             });
@@ -53,14 +49,13 @@ function addEvent(object, type, listener) {
     } else if (object.attachEvent) {
         object.attachEvent("on" + type, listener);
     } else {
-        object["on"+type] = listener;
+        object["on" + type] = listener;
     }
 };
 
 /**
  * сompareFunction для arr.sort, для сортироки случйном порядке
  */
-function compareRandom(a, b)
-{
+function compareRandom(a, b) {
     return Math.random() - 0.5;
 }

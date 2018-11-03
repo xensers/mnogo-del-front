@@ -5,29 +5,25 @@
  *                          TURE -  Запустится принудительно.
  */
 function runPreloader(status) {
+    document.documentElement.classList.add('loading');
 
-  document.documentElement.classList.add('loading');
+    var timer = setTimeout(function() {
+        status = true;
+        preloader.style.display = 'flex';
+        preloader.style.opacity = '1';
 
-  var timer = setTimeout(function() {
-    status = true;
-    preloader.style.display = 'flex';
-    preloader.style.opacity = '1';
+        setTimeout(function() {
+            document.documentElement.classList.remove('loading');
+            preloader.style.display = 'none';
+            preloader.style.opacity = '0';
+        }, 5500);
 
-    setTimeout(function() {
-      document.documentElement.classList.remove('loading');
-      preloader.style.display = 'none';
-      preloader.style.opacity = '0';
-    }, 5500);
+    }, 2000);
 
-  }, 2000);
-
-  window.addEventListener("load", function() {
-    if (!status) {
-      clearTimeout(timer);
-      document.documentElement.classList.remove('loading');
-    }
-  });
+    window.addEventListener("load", function() {
+        if (!status) {
+            clearTimeout(timer);
+            document.documentElement.classList.remove('loading');
+        }
+    });
 }
-
-
-

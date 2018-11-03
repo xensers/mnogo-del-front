@@ -1,56 +1,54 @@
 var breakpoint = {
-    'small':  767,
+    'small': 767,
     'medium': 992,
-    'large':  1200
+    'large': 1200
 };
 
-function respondTo(breakpoint, callback, runWhenCalled, addEvent)
-{
+function respondTo(breakpoint, callback, runWhenCalled, addEvent) {
     if (breakpoint >= window.innerWidth) {
-      var active = true;
-      if (runWhenCalled){
-        console.log('run');
-        callback();
-      }
+        var active = true;
+        if (runWhenCalled) {
+            console.log('run');
+            callback();
+        }
     } else {
-      var active = false;
+        var active = false;
     }
 
     if (addEvent) {
-      console.log('addEvent');
-      window.addEventListener("optimizedResize", function() {
-        console.log('event')
-          if (!active) {
-            active = true;
-            if (breakpoint >= window.innerWidth) return callback();
-          }
-          if (breakpoint <= window.innerWidth) active = false;
-      });
+        console.log('addEvent');
+        window.addEventListener("optimizedResize", function() {
+            console.log('event')
+            if (!active) {
+                active = true;
+                if (breakpoint >= window.innerWidth) return callback();
+            }
+            if (breakpoint <= window.innerWidth) active = false;
+        });
     }
 }
 
-function respondFrom(breakpoint, callback, runWhenCalled, addEvent)
-{
+function respondFrom(breakpoint, callback, runWhenCalled, addEvent) {
 
     if (breakpoint <= window.innerWidth) {
-      var active = true;
-      if (runWhenCalled){
-        console.log('run');
-        callback();
-      }
+        var active = true;
+        if (runWhenCalled) {
+            console.log('run');
+            callback();
+        }
     } else {
-      var active = false;
+        var active = false;
     }
 
     if (addEvent) {
-      console.log('addEvent');
-      window.addEventListener("optimizedResize", function() {
-        console.log('event')
-          if (!active) {
-            active = true;
-            if (breakpoint <= window.innerWidth) return callback();
-          }
-          if (breakpoint >= window.innerWidth) active = false;
-      });
+        console.log('addEvent');
+        window.addEventListener("optimizedResize", function() {
+            console.log('event')
+            if (!active) {
+                active = true;
+                if (breakpoint <= window.innerWidth) return callback();
+            }
+            if (breakpoint >= window.innerWidth) active = false;
+        });
     }
 }

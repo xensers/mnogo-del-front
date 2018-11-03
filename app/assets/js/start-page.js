@@ -1,10 +1,9 @@
 /**
  * Показать стартовую
  */
-function startPageOpen()
-{
-  document.documentElement.classList.add('start-page--open');
-  document.querySelector('.start-page__close').addEventListener("click", startPageClose);
+function startPageOpen() {
+    document.documentElement.classList.add('start-page--open');
+    document.querySelector('.start-page__close').addEventListener("click", startPageClose);
 }
 
 /**
@@ -17,16 +16,15 @@ function startPageMenuToggle() {
 /**
  * Закрыть стартовую
  */
-function startPageClose()
-{
-  document.documentElement.classList.add('start-page--closing');
-    setTimeout(function(){
-      document.documentElement.classList.remove('start-page--open');
-      document.documentElement.classList.remove('start-page--closing');
-  }, 1000);
+function startPageClose() {
+    document.documentElement.classList.add('start-page--closing');
+    setTimeout(function() {
+        document.documentElement.classList.remove('start-page--open');
+        document.documentElement.classList.remove('start-page--closing');
+    }, 1000);
 }
 
 /* Вешаем события */
 document.addEventListener("DOMContentLoaded", function loadedStartPage() {
-  document.querySelector('.start-page__menu').addEventListener("click", startPageMenuToggle);
+    document.querySelector('.start-page__menu').addEventListener("click", startPageMenuToggle);
 });
