@@ -10,12 +10,6 @@
     min-height: 16em;
 
     transition: width .3s;
-
-    .debug &, &.debug,
-    {
-        outline: 1px solid rgba(255,0,0, 1);
-        background: rgba(255,0,0, 0.2);
-    }
 }
 
 .stiker
@@ -29,12 +23,6 @@
 
     transition: transform .5s;
 
-    .debug &, &.debug
-    {
-        outline: 1px solid rgba(0,255,0, 1);
-        background: rgba(0,255,0, 0.2);
-    }
-
     .stikers-group > &
     {
         position: absolute;
@@ -42,54 +30,53 @@
         left: 0;
     }
 
-    &__wrap
+    &__title
     {
+        display: none;
+        font-size: 1.4em;
         position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        transition: transform .5s;
-        overflow: hidden;
-
-        .debug &, &.debug
-        {
-            outline: 1px solid rgba(255,255,0, 1);
-            background: rgba(255,255,0, 0.2);
-        }
-
-        // & {
-        //     transform-origin: top center;
-        //     transform: scale(0.8) !important;
-        // }
-    }
-
-    &__text
-    {
-        position: absolute;
-        bottom: -1em;
+        bottom: -4.5em;
         left: 0;
         width: 100%;
         height: 3em;
         opacity: 0;
+        transition: .5s;
+
+        &, & a {
+            text-shadow: 0 0 .5em #fff;
+            color: #000;
+            text-align: left;
+        }
+    }
+
+    &.active &__title
+    {
+        opacity: 1;
+        animation: fadeIn 2s;
+        animation-fill-mode: backwards;
+    }
+
+    &__wrap
+    {
+        position: absolute;
+        top: -1em;
+        left: -1em;
+        height: 18em;
+        width: 18em;
+        transition: transform .5s;
+        overflow: hidden;
     }
 
     &__inner
     {
         position: absolute;
-        top: -4em;
-        left: -4em;
+        top: -3em;
+        left: -3em;
 
         overflow: hidden;
 
         width: 24em;
         height: 24em;
-
-        .debug &, &.debug
-        {
-            outline: 1px solid rgba(255,255,0, 1);
-            background: rgba(255,255,0, 0.2);
-        }
     }
 
     &__outer
@@ -100,12 +87,6 @@
 
         width: 100%;
         height: 100%;
-
-        .debug &, &.debug
-        {
-            outline: 1px solid rgba(255,0,255, 1);
-            background: rgba(255,0,255, 0.2);
-        }
     }
 
     &__item
@@ -122,11 +103,6 @@
         background: linear-gradient(45deg, #fff5ad, #f3e168);
         box-shadow: 0 0 1em rgba(0, 0, 0, .1);
 
-
-        .debug &, &.debug
-        {
-            outline: 1px solid rgba(192,192,192, 1);
-        }
     }
 
     &__body
@@ -142,11 +118,6 @@
 
         align-items: center;
         justify-content: center;
-
-        .debug &, &.debug
-        {
-            outline: 1px solid fuchsia;
-        }
     }
 
     &__back
@@ -163,12 +134,6 @@
 
         background: linear-gradient(45deg, #fff5ad, #dfc850);
         box-shadow: 0 0 .5em rgba(0, 0, 0, .1);
-
-
-        .debug &, &.debug
-        {
-            outline: 1px solid black;
-        }
     }
 
     &__arena
@@ -183,11 +148,5 @@
         cursor: pointer;
 
         z-index: 999 !important;
-
-        .debug &, &.debug
-        {
-            outline: 1px solid rgba(128,0,0, 1);
-            background: rgba(128,0,0, 0.2);
-        }
     }
 }

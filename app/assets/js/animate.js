@@ -3,6 +3,7 @@ var showFrameRate = false;
 
 function animate(options)
 {
+  if (!options.duration)  options.duration = 1000;
   if (!options.delay)  options.delay = 0;
   if (!options.timing) options.timing = linear;
   if (!options.draw)   options.draw = function(progress){};

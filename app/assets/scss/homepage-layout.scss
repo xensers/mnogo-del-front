@@ -57,6 +57,13 @@
         // outline: 1px solid orange;
         transition: .3s;
 
+        font-size: .7rem;
+
+        @include respond-from(small)
+        {
+            font-size: 1.2rem;
+        }
+
         @include respond-from(medium)
         {
             flex: 0 0 60%;

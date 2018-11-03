@@ -2,15 +2,14 @@ function openCases() {
   document.documentElement.classList.add('homepage--cases');
 
   respondFrom(breakpoint.medium, function(){
-      // stikersGrid(1, 1);
       setTimeout(function(){
-        stikersGrid(4, 4);
+        stikersGrid(4, 4, true);
       }, 0)
-  });
+  }, true, false);
 
   respondTo(breakpoint.medium, function(){
-      stikersGrid(1, 1);
-  });
+      stikersGrid(1, 1, true);
+  }, true, false);
 
   return false;
 
@@ -21,12 +20,12 @@ function closeCases() {
   window.location.hash = '';
 
   respondFrom(breakpoint.medium, function(){
-      stikersGrid(3, 2);
-  });
+      stikersGrid(3, 2, false, true);
+  }, true, false);
 
   respondTo(breakpoint.medium, function(){
-      stikersGrid(1, 1);
-  });
+      stikersGrid(1, 1, true);
+  }, true, false);
 
   updateMenu();
 
@@ -44,19 +43,6 @@ ready(function() {
   } else {
     closeCases();
   }
-
-  respondFrom(breakpoint.medium, function(){
-      stikersGrid(3, 2);
-  }, true);
-
-  respondTo(breakpoint.medium, function(){
-      stikersGrid(1, 1);
-  }, true);
-
-  // respondTo(breakpoint.medium, function(){
-  //     closeCases();
-  // }, true);
-
 
   var allLinks = document.getElementsByTagName('a');
   for (var i = allLinks.length - 1; i >= 0; i--) {
