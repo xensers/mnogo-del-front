@@ -42,7 +42,7 @@ gulp.task('browser-sync', function() {
     });
 });
 
-gulp.task('styles', function(){
+gulp.task('scss', function(){
     return gulp.src('app/assets/scss/*.scss')
         .pipe(plumber({errorHandler}))
         .pipe(sourcemaps.init())
@@ -89,10 +89,10 @@ gulp.task('fonts:build', function() {
         .pipe(gulp.dest('dist/assets/fonts'));
 });
 
-gulp.task('build', ['clean', 'styles', 'pug', 'html:build', 'fonts:build', 'img:build']);
+gulp.task('build', ['clean', 'scss', 'pug', 'html:build', 'fonts:build', 'img:build']);
 
 gulp.task('watch', ['browser-sync'], function watch() {
-    gulp.watch('app/assets/scss/**/*.scss', ['styles']);
+    gulp.watch('app/assets/scss/**/*.scss', ['scss']);
     gulp.watch('app/assets/js/**/*.js', browserSync.reload);  
     gulp.watch('app/**/*.pug', ['pug']);
     gulp.watch('app/*.html', browserSync.reload);
@@ -106,4 +106,4 @@ gulp.task('clear', function clear() {
     return cache.clearAll();
 })
 
-gulp.task('default', ['styles', 'pug', 'watch']);
+gulp.task('default', ['scss', 'pug', 'watch']);
