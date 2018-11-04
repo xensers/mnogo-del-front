@@ -1,3 +1,12 @@
+var preloaderTimer;
+
+function onLoadPreloader() {
+    if (!status) {
+        clearTimeout(preloaderTimer);
+        document.documentElement.classList.remove('loading');
+    }
+}
+
 /**
  * Запускает прелоадер
  * 
@@ -7,7 +16,7 @@
 function runPreloader(status) {
     document.documentElement.classList.add('loading');
 
-    var timer = setTimeout(function() {
+    preloaderTimer = setTimeout(function() {
         status = true;
         preloader.style.display = 'flex';
         preloader.style.opacity = '1';
@@ -20,10 +29,5 @@ function runPreloader(status) {
 
     }, 2000);
 
-    window.addEventListener("load", function() {
-        if (!status) {
-            clearTimeout(timer);
-            document.documentElement.classList.remove('loading');
-        }
-    });
+    window.addEventListener("load", onLoadPreloader);
 }

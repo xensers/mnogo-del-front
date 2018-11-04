@@ -2,30 +2,31 @@ var activeDrawsList = [];
 var showFrameRate = false;
 
 function animate(options) {
-    if (!options.duration) options.duration = 1000;
-    if (!options.delay) options.delay = 0;
-    if (!options.timing) options.timing = linear;
-    if (!options.draw) options.draw = function(progress) {};
-    if (!options.from) options.from = 1;
-    if (!options.to) options.to = 100;
-    if (!options.draw) options.after = function() {};
+    var options  = (typeof(options)          == 'object')   ? options          : {};
+    var duration = (typeof(options.duration) == 'number')   ? options.duration : 1000;
+    var delay    = (typeof(options.delay)    == 'number')   ? options.delay    : 0;
+    var from     = (typeof(options.from)     == 'number')   ? options.from     : 1;
+    var to       = (typeof(options.to)       == 'number')   ? options.to       : 100;
+    var timing   = (typeof(options.timing)   == 'function') ? options.timing   : linear;
+    var draw     = (typeof(options.draw)     == 'function') ? options.draw     : function(progress){console.log(progress * 100)};
+    var after    = (typeof(options.after)    == 'function') ? options.after    : function() {};
 
-    var fractionFrom = options.from / 100;
-    var fractionTo = options.to / 100;
+    var fractionFrom = from / 100;
+    var fractionTo   = to / 100;
 
     setTimeout(function() {
-        var start = performance.now();
+        var start    = performance.now();
         var timeLast = start;
 
         for (var i = activeDrawsList.length - 1; i >= 0; i--) {
-            if (activeDrawsList[i] === options.draw) {
+            if (activeDrawsList[i] === draw) {
                 return false;
             }
         }
-        var animationIndex = activeDrawsList.push(options.draw);
+        var animationIndex = activeDrawsList.push(draw);
 
         requestAnimationFrame(function animate(time) {
-            var timeFraction = (time - start) / options.duration;
+            var timeFraction = (time - start) / duration;
             if (timeFraction > 1) timeFraction = 1;
 
             if (fractionFrom < fractionTo) {
@@ -36,9 +37,9 @@ function animate(options) {
                 var terminationCondition = timeFraction > fractionTo;
             }
 
-            var progress = options.timing(timeFraction);
+            var progress = timing(timeFraction);
 
-            options.draw(progress);
+            draw(progress);
 
             if (terminationCondition) {
                 requestAnimationFrame(animate);
@@ -48,11 +49,11 @@ function animate(options) {
                     timeLast = time;
                 }
             } else {
-                activeDrawsList.splice(activeDrawsList.indexOf(options.draw), 1);
-                if (options.after) options.after();
+                activeDrawsList.splice(activeDrawsList.indexOf(draw), 1);
+                if (after) after();
             }
         });
-    }, options.delay);
+    }, delay);
 
 }
 
@@ -61,11 +62,10 @@ function frameRate(timeLast, timeNow) {
 }
 
 function zone(current, from, to, draw) {
-
     current = current * 100;
-    from = from * 100;
-    to = to * 100;
-    draw = draw * 100;
+    from    = from * 100;
+    to      = to * 100;
+    draw    = draw * 100;
 
     if (current >= from && current <= to) {
         var progress = (current - from) / (to - from);
@@ -94,7 +94,6 @@ function makeEaseInOut(timing) {
             return (2 - timing(2 * (1 - timeFraction))) / 2;
     }
 }
-
 
 function linear(progress) {
     return progress;
