@@ -168,7 +168,6 @@ function stikersGrid(cols, rows, showTitle, random, slider) {
 }
 
 function stikersSlider(random) {
-    console.log('slider');
     stikersGrid(1, 1, true, false, true);
 }
 
@@ -363,7 +362,6 @@ function nextStiker(elemStikers, noAnimateInit) {
 }
 
 function prevStiker(elemStikers, noAnimateInit) {
-    console.log('prev');
     requestAnimationFrame(function(t){
         var lastIndex, newIndex;
         for (var i = elemStikers.length - 1; i >= 0; i--) {

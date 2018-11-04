@@ -8,7 +8,6 @@ function respondTo(breakpoint, callback, runWhenCalled, addEvent) {
     if (breakpoint >= window.innerWidth) {
         var active = true;
         if (runWhenCalled) {
-            console.log('run');
             callback();
         }
     } else {
@@ -16,9 +15,7 @@ function respondTo(breakpoint, callback, runWhenCalled, addEvent) {
     }
 
     if (addEvent) {
-        console.log('addEvent');
         window.addEventListener("optimizedResize", function() {
-            console.log('event')
             if (!active) {
                 active = true;
                 if (breakpoint >= window.innerWidth) return callback();
@@ -33,7 +30,6 @@ function respondFrom(breakpoint, callback, runWhenCalled, addEvent) {
     if (breakpoint <= window.innerWidth) {
         var active = true;
         if (runWhenCalled) {
-            console.log('run');
             callback();
         }
     } else {
@@ -41,9 +37,7 @@ function respondFrom(breakpoint, callback, runWhenCalled, addEvent) {
     }
 
     if (addEvent) {
-        console.log('addEvent');
         window.addEventListener("optimizedResize", function() {
-            console.log('event')
             if (!active) {
                 active = true;
                 if (breakpoint <= window.innerWidth) return callback();

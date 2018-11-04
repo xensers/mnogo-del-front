@@ -4,6 +4,7 @@
 {
     .layout__container
     {
+
         @include respond-from(medium)
         {
             width: 92%;
