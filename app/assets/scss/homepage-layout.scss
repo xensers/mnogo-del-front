@@ -46,10 +46,16 @@
     {
         font-size: .7rem;
 
-        padding: 2rem;
+        padding: 0 2rem;
 
         transition: .3s .1s;
         text-align: center;
+
+        @include respond-to(medium)
+        {
+            opacity: 0;
+            transition: opacity .3s .1s;
+        }
 
         @include respond-from(small)
         {
@@ -88,7 +94,8 @@
 
             .homepage__cases
             {
-                transition: transform .3s .1s;
+                opacity: 1;
+                // transition: transform .3s .1s;
                  > *
                 {
                     width: 100%;

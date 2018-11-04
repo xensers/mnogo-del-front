@@ -1,3 +1,5 @@
+@import "core";
+
 .stikers-group
 {
 
@@ -9,7 +11,82 @@
     min-width: 16em;
     min-height: 16em;
 
-    transition: width .3s;
+    // transition: width .3s;
+
+    &__controls
+    {
+        display: none;
+        animation: fadeIn 2s 2s;
+        animation-fill-mode: backwards;
+
+        .stikers__slider &
+        {
+            display: block;
+        }
+    }
+
+    &__dots
+    {
+        position: absolute;
+        display: flex;
+        flex-direction: row-reverse;
+        bottom: -2em;
+        left: 50%;
+        transform: translateX(-50%);
+
+        white-space: nowrap;
+
+        > span
+        {
+            margin: .3em;
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            background: #000;
+            border: 1px solid #000;
+            border-radius: 100%;
+            transform: scale(.5);
+
+            transition: .5s;
+
+            &.active
+            {
+                border-color: #979797;
+                background: #fff;
+                transform: scale(1.2);
+            }
+        }
+    }
+
+    &__prev, &__next
+    {
+        position: absolute;
+        top: 0;
+        width: 4em;
+        height: 18em;
+        // background-color: red;
+        cursor: pointer;
+
+        background-size: 2em auto;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url('../images/icons/arrow-left.png');
+        @include retina
+        {
+            background-image: url('../images/icons/arrow-left@2x.png');
+        }
+    }
+
+    &__prev
+    {
+        left: -4em;
+    }
+
+    &__next
+    {
+        right: -4em;
+        transform: rotate(180deg);
+    }
 }
 
 .stiker
@@ -35,24 +112,37 @@
         display: none;
         font-size: 1.4em;
         position: absolute;
-        bottom: -4.5em;
+        bottom: -5em;
         left: 0;
         width: 100%;
         height: 3em;
         opacity: 0;
-        transition: .5s;
+        text-decoration: none;
 
         &, & a {
             color: #000;
             text-align: left;
         }
+
+        .stikers__slider & {
+            text-align: center;
+            font-size: 1.8em;
+        }
     }
 
     &.active &__title
     {
+        transition: opacity 2s;
         opacity: 1;
-        animation: fadeIn 2s;
-        animation-fill-mode: backwards;
+    }
+
+    &__number
+    {
+        display: inline;
+        .stikers__slider &
+        {
+            display: none;
+        }
     }
 
     &__wrap

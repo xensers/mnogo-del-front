@@ -1,32 +1,67 @@
 var stikerGroupOnResize;
 var timerFromStikersGrid;
-
+var elemGroup;
 
 document.addEventListener('DOMContentLoaded', onLoadedStikers);
 
 
 function onLoadedStikers() {
-    var elemStikers = document.querySelectorAll('.stiker');
+    elemGroup = document.querySelector('.stikers-group');
+    var elemStikers = elemGroup.querySelectorAll('.stiker');
+    var elemControlDots = elemGroup.querySelector('.stikers-group__dots');
+    var elemControlNext = elemGroup.querySelector('.stikers-group__next');
+    var elemControlPrev = elemGroup.querySelector('.stikers-group__prev');
 
-    if (elemStikers) {
-        for (var i = elemStikers.length - 1; i >= 0; i--) {
-            var deg = 5;
-            for (var i = elemStikers.length - 1; i >= 0; i--) {
+    elemControlNext.onclick = function () {
+        slideNextItem(elemStikers);
+    };
+    elemControlPrev.onclick = function () {
+        slidePrevItem(elemStikers);
+    };
 
-                deg = (Math.random() * 10) - 5;
-                elemStikers[i].querySelector('.stiker__wrap').style.transform = 'rotate(' + deg + 'deg)';
-            }
-        }
+    for (var i = elemStikers.length - 1; i >= 0; i--) {
+        var elemStikerNumber = elemStikers[i].querySelector('.stiker__number');
+        var elemDot = document.createElement('span');
+
+        elemStikerNumber.innerHTML = '№' + i + '. ';
+
+        elemDot.className = "stikers-group__dot";
+        elemControlDots.insertBefore(elemDot, null);
+
     }
+    updateDots(elemStikers);
 }
 
-function stikersGrid(cols, rows, showTitle, random) {
+function updateDots(elemStikers)
+{
+    var elemControlDots = elemGroup.querySelectorAll('.stikers-group__dot');
+
+    for (var i = elemControlDots.length - 1; i >= 0; i--) {
+        elemControlDots[i].classList.remove('active');
+    }
+
+    for (var i = elemStikers.length - 1; i >= 0; i--) {
+        if (elemStikers[i].classList.contains('active')) {
+           return elemControlDots[i].classList.add('active');
+        }
+    }
+
+    return elemControlDots[elemStikers.length - 1].classList.add('active');
+}
+
+function stikersGrid(cols, rows, showTitle, random, slider) {
     clearTimeout(timerFromStikersGrid);
 
     timerFromStikersGrid = setTimeout(function () {
-        var elemGroup = document.querySelector('.stikers-group');
+        // var elemGroup = document.querySelector('.stikers-group');
         var elemStikers = elemGroup.querySelectorAll('.stiker');
         var elemStikers = Array.prototype.slice.call(elemStikers); // преобразует NodeList в Array
+
+        if (slider) {
+            elemGroup.classList.add('stikers__slider');
+        } else {
+            elemGroup.classList.remove('stikers__slider');
+        }
 
         if (random) {
             elemStikers.sort(compareRandom);
@@ -130,7 +165,11 @@ function stikersGrid(cols, rows, showTitle, random) {
             }
         }, 300);
     }, 100);
+}
 
+function stikersSlider(random) {
+    console.log('slider');
+    stikersGrid(1, 1, true, false, true);
 }
 
 function initStikers(elemStikers) {
@@ -148,7 +187,7 @@ function initStikers(elemStikers) {
     }
 }
 
-function initStiker(elemStikers, currentItemNumber, single, firstInit) {
+function initStiker(elemStikers, currentItemNumber, single, firstInit, noAnimateInit) {
     var progress;
     var elemStiker = elemStikers[currentItemNumber];
     var elemWrap = elemStiker.querySelector('.stiker__wrap');
@@ -159,6 +198,7 @@ function initStiker(elemStikers, currentItemNumber, single, firstInit) {
     var elemItem = elemStiker.querySelector('.stiker__item');
 
     elemStiker.classList.add('active');
+    updateDots(elemStikers);
     var stikerZIndex = +elemStiker.style.zIndex;
 
     if (currentItemNumber % 2) {
@@ -190,7 +230,7 @@ function initStiker(elemStikers, currentItemNumber, single, firstInit) {
             requestAnimationFrame(function() {
                 stikerDraw(0.1);
             })
-        } else {
+        } else if (!noAnimateInit) {
             animate({
                 timing: linear,
                 duration: 3000,
@@ -275,7 +315,7 @@ function initStiker(elemStikers, currentItemNumber, single, firstInit) {
                             duration: 700,
                             draw: stikerDraw,
                             from: 100,
-                            to: 1,
+                            to: 13,
                             after: function() {
                                 elemWrap.style.overflow = 'hidden';
                             }
@@ -298,31 +338,143 @@ function initStiker(elemStikers, currentItemNumber, single, firstInit) {
     }
 }
 
-function nextStiker(elemStikers) {
-    // elemStikers.style.zIndex = stikerZIndex;
-
-    var start = performance.now();
-
+function nextStiker(elemStikers, noAnimateInit) {
     requestAnimationFrame(function(t){
-      console.log(performance.now() - start);
-      var lastIndex, newIndex;
-      for (var i = elemStikers.length - 1; i >= 0; i--) {
-          lastIndex = +elemStikers[i].style.zIndex;
-          newIndex = lastIndex + 1;
+        var lastIndex, newIndex;
+        for (var i = elemStikers.length - 1; i >= 0; i--) {
 
-          if (newIndex > elemStikers.length - 1) {
-              newIndex = 0;
-          }
+            lastIndex = +elemStikers[i].style.zIndex;
+            newIndex = lastIndex + 1;
+
+            if (newIndex > elemStikers.length - 1) {
+                newIndex = 0;
+            } else if (newIndex < 0) {
+               newIndex = elemStikers.length - 1;
+            }
 
             elemStikers[i].style.zIndex = newIndex;
-
-          if (newIndex >= elemStikers.length - 1) {
-              initStiker(elemStikers, i);
-          } else {
-              resetStiker(elemStikers[i]);
-          }
-      }
+            if (newIndex == elemStikers.length - 1) {
+                initStiker(elemStikers, i, false, false, noAnimateInit);
+            } else {
+                resetStiker(elemStikers[i]);
+            }
+        }
     });
+}
+
+function prevStiker(elemStikers, noAnimateInit) {
+    console.log('prev');
+    requestAnimationFrame(function(t){
+        var lastIndex, newIndex;
+        for (var i = elemStikers.length - 1; i >= 0; i--) {
+
+            lastIndex = +elemStikers[i].style.zIndex;
+            newIndex = lastIndex - 1;
+
+            if (newIndex > elemStikers.length - 1) {
+                newIndex = 0;
+            } else if (newIndex < 0) {
+               newIndex = elemStikers.length - 1;
+            }
+
+            elemStikers[i].style.zIndex = newIndex;
+            if (newIndex == elemStikers.length - 1) {
+                initStiker(elemStikers, i, false, false, noAnimateInit);
+            } else {
+                resetStiker(elemStikers[i]);
+            }
+        }
+    });
+}
+
+
+function slideNextItem(elemStikers) {
+    for (var i = elemStikers.length - 1; i >= 0; i--) {
+        if (elemStikers[i].classList.contains('active')) {
+            (function (elemStiker, i) {
+                var elemWrap = elemStiker.querySelector('.stiker__wrap');
+
+                if (i % 2) {
+                    var stikerDraw = function(progress) {
+                        stikerDrawToLeft(elemStiker, progress);
+                    };
+                } else {
+                    var stikerDraw = function(progress) {
+                        stikerDrawToRight(elemStiker, progress);
+                    };
+                }
+
+                elemWrap.style.overflow = 'visible';
+
+                animate({
+                    timing: linear,
+                    duration: 500,
+                    draw: stikerDraw,
+                    from: 10,
+                    to: 100,
+                    after: function() {
+                        nextStiker(elemStikers);
+                        animate({
+                            timing: linear,
+                            duration: 700,
+                            draw: stikerDraw,
+                            from: 100,
+                            to: 1,
+                            after: function() {
+                                elemWrap.style.overflow = 'hidden';
+                            }
+                        });
+                    }
+                });
+            })(elemStikers[i], i);
+
+            return false;
+        }
+    }
+}
+
+function slidePrevItem(elemStikers) {
+    for (var i = elemStikers.length - 1; i >= 0; i--) {
+        if (+elemStikers[i].style.zIndex == 0) {
+            (function (elemStiker, i) {
+                var elemWrap = elemStiker.querySelector('.stiker__wrap');
+
+                if (i % 2) {
+                    var stikerDraw = function(progress) {
+                        stikerDrawToLeft(elemStiker, progress);
+                    };
+                } else {
+                    var stikerDraw = function(progress) {
+                        stikerDrawToRight(elemStiker, progress);
+                    };
+                }
+
+                elemWrap.style.overflow = 'visible';
+                animate({
+                    timing: linear,
+                    duration: 500,
+                    draw: stikerDraw,
+                    from: 0,
+                    to: 90,
+                    after: function() {
+                        prevStiker(elemStikers, true);
+                        animate({
+                            timing: linear,
+                            duration: 700,
+                            draw: stikerDraw,
+                            from: 90,
+                            to: 10,
+                            after: function() {
+                                elemWrap.style.overflow = 'hidden';
+                            }
+                        });
+                    }
+                });
+            })(elemStikers[i], i);
+
+            return false;
+        }
+    }
 }
 
 function resetStiker(elemStiker) {

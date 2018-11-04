@@ -3,11 +3,17 @@ document.addEventListener("DOMContentLoaded", onLoadedHomePage);
 function onLoadedHomePage() {
     document.querySelector('.header__icons_back').addEventListener('click', closeCases);
 
-    if (window.location.hash === '#cases') {
-        openCases();
-    } else {
-        closeCases();
-    }
+    respondTo(breakpoint.medium, function() {
+        stikersSlider();
+    }, true, true);
+
+    respondFrom(breakpoint.medium, function() {
+        if (window.location.hash === '#cases') {
+            openCases();
+        } else {
+            closeCases();
+        }
+    }, true, true);
 
     var allLinks = document.getElementsByTagName('a');
     for (var i = allLinks.length - 1; i >= 0; i--) {
@@ -28,7 +34,7 @@ function openCases() {
     }, true, false);
 
     respondTo(breakpoint.medium, function() {
-        stikersGrid(1, 1, true);
+        stikersSlider();
     }, true, false);
 
     return false;
@@ -43,7 +49,7 @@ function closeCases() {
     }, true, false);
 
     respondTo(breakpoint.medium, function() {
-        stikersGrid(1, 1, true);
+        stikersSlider();
     }, true, false);
 
     updateMenu();
