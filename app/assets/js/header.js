@@ -1,3 +1,9 @@
+document.addEventListener("DOMContentLoaded", onLoadedHeader);
+
+function onLoadedHeader() {
+    window.addEventListener('scroll', headerScroll);
+}
+
 /**
  * Действия с шапкой при скроллинге
  */
@@ -10,8 +16,3 @@ function headerScroll() {
         headerElem.classList.remove('scroll');
     }
 }
-
-/* Вешаем события */
-document.addEventListener("DOMContentLoaded", function loadedHeader() {
-    window.addEventListener('scroll', headerScroll);
-});

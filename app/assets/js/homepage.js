@@ -1,3 +1,23 @@
+document.addEventListener("DOMContentLoaded", onLoadedHomePage);
+
+function onLoadedHomePage() {
+    document.querySelector('.header__icons_back').addEventListener('click', closeCases);
+
+    if (window.location.hash === '#cases') {
+        openCases();
+    } else {
+        closeCases();
+    }
+
+    var allLinks = document.getElementsByTagName('a');
+    for (var i = allLinks.length - 1; i >= 0; i--) {
+        var link = allLinks[i];
+        if (link.hash === '#cases') {
+            link.addEventListener('click', openCases);
+        }
+    }
+}
+
 function openCases() {
     document.documentElement.classList.add('homepage--cases');
 
@@ -12,7 +32,6 @@ function openCases() {
     }, true, false);
 
     return false;
-
 }
 
 function closeCases() {
@@ -31,23 +50,3 @@ function closeCases() {
 
     return false;
 }
-
-
-/* Вешаем события */
-ready(function() {
-    document.querySelector('.header__icons_back').addEventListener('click', closeCases);
-
-    if (window.location.hash === '#cases') {
-        openCases();
-    } else {
-        closeCases();
-    }
-
-    var allLinks = document.getElementsByTagName('a');
-    for (var i = allLinks.length - 1; i >= 0; i--) {
-        var link = allLinks[i];
-        if (link.hash === '#cases') {
-            link.addEventListener('click', openCases);
-        }
-    }
-});

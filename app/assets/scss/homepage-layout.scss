@@ -8,8 +8,6 @@
         {
             width: 92%;
             max-width: 82rem;
-
-            // outline: 1px solid orange;
         }
     }
 
@@ -19,15 +17,12 @@
 
         padding: 2rem 0;
 
-        // outline: 1px solid orange;
-
         @include respond-to(medium)
         {
             flex-direction: row-reverse;
 
-            transform: translateX(100%);
-
             transition: transform .5s;
+            transform: translateX(100%);
              > *
             {
                 width: 100%;
@@ -39,9 +34,7 @@
 
     &__text
     {
-        // outline: 1px solid orange;
-
-        transition: 1s 1s, opacity .3s;
+        transition: 1s 1s, opacity .3s .1s;
 
         @include respond-from(medium)
         {
@@ -51,24 +44,22 @@
 
     &__cases
     {
-        padding: 2rem;
-        text-align: center;
-
-        // outline: 1px solid orange;
-        transition: .3s;
-
         font-size: .7rem;
+
+        padding: 2rem;
+
+        transition: .3s .1s;
+        text-align: center;
 
         @include respond-from(small)
         {
             font-size: 1.2rem;
         }
-
         @include respond-from(medium)
         {
-            flex: 0 0 60%;
-
             font-size: .6rem;
+
+            flex: 0 0 60%;
         }
         @include respond-from(large)
         {
@@ -97,35 +88,32 @@
 
             .homepage__cases
             {
-                transition: transform .3s;
-                > *
+                transition: transform .3s .1s;
+                 > *
                 {
                     width: 100%;
+
                     flex: 0 0 100%;
                 }
             }
         }
-
         @include respond-from(medium)
         {
-
             .homepage__text
             {
                 transform: translateX(50%);
+
                 opacity: 0;
             }
 
             .homepage__cases
             {
-                // transform: translateX(50%);
                 flex: 0 0 100%;
             }
 
             .homepage__warp
             {
-                // transform: translateX(-50%);
             }
-
         }
     }
 }

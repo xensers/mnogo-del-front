@@ -4,6 +4,15 @@
 {
     margin: 0;
     padding: 0;
+    
+    & .menu--open
+    {
+        @include respond-to(small)
+        {
+            overflow: hidden;
+        }
+    }
+
     &__list
     {
         margin: 0;
@@ -58,25 +67,8 @@
 
             background: black;
         }
-    }
-}
 
-.layout__menu
-{
-    .menu__item,
-    .menu__link.active::before
-    {
-        transform: scale(0);
-    }
-}
-
-.menu--open
-{
-    @include respond-to(small)
-    {
-        overflow: hidden;
-
-        .menu__burger
+        .menu--open &
         {
             transform: rotate(180deg) scale(.9);
             span:first-child
@@ -92,15 +84,19 @@
                 transform: rotate(45deg) translateX(-.35em);
             }
         }
+    }
+}
 
-        .menu__item
-        {
-            transition: transform .3s ease;
-            transform: scale(1);
-        }
-        .menu__link.active::before
-        {
-            transform: scaleX(1);
+.layout__menu
+{
+    .menu__item,
+    .menu__link::before
+    {
+        transition: transform .3s ease;
+        transform: scale(0);
+
+        .menu--open & {
+                transform: scaleX(1);
         }
     }
 }

@@ -1,6 +1,11 @@
 var stikerGroupOnResize;
+var timerFromStikersGrid;
 
-document.addEventListener('DOMContentLoaded', function() {
+
+document.addEventListener('DOMContentLoaded', onLoadedStikers);
+
+
+function onLoadedStikers() {
     var elemStikers = document.querySelectorAll('.stiker');
 
     if (elemStikers) {
@@ -13,114 +18,119 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     }
-});
+}
 
 function stikersGrid(cols, rows, showTitle, random) {
-    var elemGroup = document.querySelector('.stikers-group');
-    var elemStikers = elemGroup.querySelectorAll('.stiker');
-    var elemStikers = Array.prototype.slice.call(elemStikers); // преобразует NodeList в Array
+    clearTimeout(timerFromStikersGrid);
 
-    if (random) {
-        elemStikers.sort(compareRandom);
-    }
+    timerFromStikersGrid = setTimeout(function () {
+        var elemGroup = document.querySelector('.stikers-group');
+        var elemStikers = elemGroup.querySelectorAll('.stiker');
+        var elemStikers = Array.prototype.slice.call(elemStikers); // преобразует NodeList в Array
 
-    if (!rows) {
-        rows = Math.ceil(elemStikers.length / cols);
-    }
-
-    if (showTitle) {
-        var xFactor = 1.15;
-        var yFactor = 1.55;
-    } else {
-        var xFactor = 1.15;
-        var yFactor = 1.15;
-    }
-
-    window.removeEventListener('optimizedResize', stikerGroupOnResize);
-
-    stikerGroupOnResize = function() {
-        requestAnimationFrame(function() {
-            elemGroup.style.width = (elemGroup.querySelector('.stiker').offsetWidth * xFactor) * cols + 'px';
-            elemGroup.style.height = (elemGroup.querySelector('.stiker').offsetHeight * yFactor) * rows + 'px';
-        });
-    };
-
-    window.addEventListener('optimizedResize', stikerGroupOnResize);
-
-    stikerGroupOnResize(xFactor, yFactor, cols, rows);
-
-    setTimeout(function() {
-        var i = 0,
-            row = 0,
-            col = 0,
-            matrix = new Array(),
-            index;
-        for (var i = 0; i <= elemStikers.length - 1; i++) {
-            var elemStiker = elemStikers[i];
-            var elemArena = elemStiker.querySelector('.stiker__arena');
-
-            resetStiker(elemStiker);
-
-            if (!matrix[row]) {
-                matrix[row] = new Array();
-            }
-
-            if (!matrix[row][col]) {
-                matrix[row][col] = new Array();
-            }
-
-            index = matrix[row][col].push(elemStiker) - 1;
-
-            (function(i, col, row, index, matrix, showTitle) {
-                var elemStiker = matrix[row][col][index];
-                var elemTitle = elemStiker.querySelector('.stiker__title');
-                var elemWrap = elemStiker.querySelector('.stiker__wrap');
-
-                if (showTitle) {
-                    var xFactor = 2.5;
-                    var yFactor = 9;
-                } else {
-                    var xFactor = 2.5;
-                    var yFactor = 2.5;
-                    requestAnimationFrame(function() {
-                        elemTitle.style.display = 'none';
-                    });
-                }
-
-                requestAnimationFrame(function() {
-                    var deg = (Math.random() * 10) - 5;
-                    elemWrap.style.transform = 'rotate(' + deg + 'deg)';
-                });
-
-                setTimeout(function() {
-                    requestAnimationFrame(function() {
-                        var x = (16 + xFactor) * col;
-                        var y = (16 + yFactor) * row;
-
-                        elemStiker.style.transform = 'translate(' + x + 'em, ' + y + 'em)';
-                        if (showTitle) {
-                            elemTitle.style.display = 'block';
-                        }
-                    });
-                }, 100 * i)
-            })(i, col, row, index, matrix, showTitle);
-
-            col++;
-            if (col >= cols) {
-                col = 0;
-                row++;
-                if (row >= rows) {
-                    row = 0;
-                }
-            }
+        if (random) {
+            elemStikers.sort(compareRandom);
         }
 
-        for (var row = matrix.length - 1; row >= 0; row--) {
-            for (var col = matrix[row].length - 1; col >= 0; col--) {
-                initStikers(matrix[row][col]);
-            }
+        if (!rows) {
+            rows = Math.ceil(elemStikers.length / cols);
         }
-    }, 300);
+
+        if (showTitle) {
+            var xFactor = 1.15;
+            var yFactor = 1.55;
+        } else {
+            var xFactor = 1.15;
+            var yFactor = 1.15;
+        }
+
+        window.removeEventListener('optimizedResize', stikerGroupOnResize);
+
+        stikerGroupOnResize = function() {
+            requestAnimationFrame(function() {
+                elemGroup.style.width = (elemGroup.querySelector('.stiker').offsetWidth * xFactor) * cols + 'px';
+                elemGroup.style.height = (elemGroup.querySelector('.stiker').offsetHeight * yFactor) * rows + 'px';
+            });
+        };
+
+        window.addEventListener('optimizedResize', stikerGroupOnResize);
+
+        stikerGroupOnResize(xFactor, yFactor, cols, rows);
+
+        setTimeout(function() {
+            var i = 0,
+                row = 0,
+                col = 0,
+                matrix = new Array(),
+                index;
+            for (var i = 0; i <= elemStikers.length - 1; i++) {
+                var elemStiker = elemStikers[i];
+                var elemArena = elemStiker.querySelector('.stiker__arena');
+
+                resetStiker(elemStiker);
+
+                if (!matrix[row]) {
+                    matrix[row] = new Array();
+                }
+
+                if (!matrix[row][col]) {
+                    matrix[row][col] = new Array();
+                }
+
+                index = matrix[row][col].push(elemStiker) - 1;
+
+                (function(i, col, row, index, matrix, showTitle) {
+                    var elemStiker = matrix[row][col][index];
+                    var elemTitle = elemStiker.querySelector('.stiker__title');
+                    var elemWrap = elemStiker.querySelector('.stiker__wrap');
+
+                    if (showTitle) {
+                        var xFactor = 2.5;
+                        var yFactor = 9;
+                    } else {
+                        var xFactor = 2.5;
+                        var yFactor = 2.5;
+                        requestAnimationFrame(function() {
+                            elemTitle.style.display = 'none';
+                        });
+                    }
+
+                    requestAnimationFrame(function() {
+                        var deg = (Math.random() * 10) - 5;
+                        elemWrap.style.transform = 'rotate(' + deg + 'deg)';
+                    });
+
+                    setTimeout(function() {
+                        requestAnimationFrame(function() {
+                            var x = (16 + xFactor) * col;
+                            var y = (16 + yFactor) * row;
+
+                            elemStiker.style.transform = 'translate(' + x + 'em, ' + y + 'em)';
+                            if (showTitle) {
+                                elemTitle.style.display = 'block';
+                            }
+                        });
+                    }, 100 * i)
+                })(i, col, row, index, matrix, showTitle);
+
+                col++;
+                if (col >= cols) {
+                    col = 0;
+                    row++;
+                    if (row >= rows) {
+                        row = 0;
+                    }
+                }
+            }
+
+            for (var row = matrix.length - 1; row >= 0; row--) {
+                for (var col = matrix[row].length - 1; col >= 0; col--) {
+                    initStikers(matrix[row][col]);
+                }
+            }
+        }, 300);
+    }, 100);
+
 }
 
 function initStikers(elemStikers) {
@@ -130,17 +140,17 @@ function initStikers(elemStikers) {
         elemStiker.style.zIndex = i;
     }
 
-    stikerItem = elemStikers.length - 1;
+    currentItemNumber = elemStikers.length - 1;
     if (elemStikers.length > 1) {
-        initStiker(elemStikers, stikerItem, false, true);
+        initStiker(elemStikers, currentItemNumber, false, true);
     } else {
-        initStiker(elemStikers, stikerItem, true, true);
+        initStiker(elemStikers, currentItemNumber, true, true);
     }
 }
 
-function initStiker(elemStikers, stikerItem, single, firstInit) {
+function initStiker(elemStikers, currentItemNumber, single, firstInit) {
     var progress;
-    var elemStiker = elemStikers[stikerItem];
+    var elemStiker = elemStikers[currentItemNumber];
     var elemWrap = elemStiker.querySelector('.stiker__wrap');
     var elemInner = elemStiker.querySelector('.stiker__inner');
     var elemArena = elemStiker.querySelector('.stiker__arena');
@@ -151,7 +161,7 @@ function initStiker(elemStikers, stikerItem, single, firstInit) {
     elemStiker.classList.add('active');
     var stikerZIndex = +elemStiker.style.zIndex;
 
-    if (stikerItem % 2) {
+    if (currentItemNumber % 2) {
         var stikerDraw = function(progress) {
             stikerDrawToLeft(elemStiker, progress);
         };
@@ -188,28 +198,6 @@ function initStiker(elemStikers, stikerItem, single, firstInit) {
                 from: 1,
                 to: 10,
             });
-        }
-
-        var nextStiker = function() {
-            elemStiker.style.zIndex = stikerZIndex;
-
-            resetStiker(elemStiker);
-
-            var lastIndex, newIndex;
-            for (var i = elemStikers.length - 1; i >= 0; i--) {
-                lastIndex = +elemStikers[i].style.zIndex;
-                newIndex = lastIndex + 1;
-
-                if (newIndex > elemStikers.length - 1) {
-                    newIndex = 0;
-                }
-
-                elemStikers[i].style.zIndex = newIndex;
-
-                if (newIndex >= elemStikers.length - 1) {
-                    initStiker(elemStikers, i);
-                }
-            }
         }
 
         var move = function(event) {
@@ -281,7 +269,7 @@ function initStiker(elemStikers, stikerItem, single, firstInit) {
                     from: progress * 100,
                     to: 100,
                     after: function() {
-                        nextStiker();
+                        nextStiker(elemStikers);
                         animate({
                             timing: linear,
                             duration: 700,
@@ -308,6 +296,33 @@ function initStiker(elemStikers, stikerItem, single, firstInit) {
             }
         }
     }
+}
+
+function nextStiker(elemStikers) {
+    // elemStikers.style.zIndex = stikerZIndex;
+
+    var start = performance.now();
+
+    requestAnimationFrame(function(t){
+      console.log(performance.now() - start);
+      var lastIndex, newIndex;
+      for (var i = elemStikers.length - 1; i >= 0; i--) {
+          lastIndex = +elemStikers[i].style.zIndex;
+          newIndex = lastIndex + 1;
+
+          if (newIndex > elemStikers.length - 1) {
+              newIndex = 0;
+          }
+
+            elemStikers[i].style.zIndex = newIndex;
+
+          if (newIndex >= elemStikers.length - 1) {
+              initStiker(elemStikers, i);
+          } else {
+              resetStiker(elemStikers[i]);
+          }
+      }
+    });
 }
 
 function resetStiker(elemStiker) {
@@ -356,6 +371,12 @@ function stikerDrawToRight(elemStiker, progress) {
     elemOuter.style.transform = 'translateY(' + outerTranslateY + 'em)';
     elemBack.style.transform = 'rotate(-45deg) translate(' + backTransleteY + 'em, ' + backTransleteX + 'em) scale(' + backScale + ')';
     elemItem.style.transform = 'rotate(-45deg)';
+
+    if (progress <= 0.5) {
+      elemItem.style.opacity = '1';
+    } else {
+      elemItem.style.opacity = '0';
+    }
 }
 
 function stikerDrawToLeft(elemStiker, progress) {
@@ -376,4 +397,10 @@ function stikerDrawToLeft(elemStiker, progress) {
     elemOuter.style.transform = 'translateY(' + outerTranslateY + 'em)';
     elemBack.style.transform = 'rotate(45deg) translate(' + backTransleteY + 'em, ' + backTransleteX + 'em) scale(' + backScale + ')';
     elemItem.style.transform = 'rotate(45deg)';
+
+    if (progress <= 0.5) {
+      elemItem.style.opacity = '1';
+    } else {
+      elemItem.style.opacity = '0';
+    }
 }

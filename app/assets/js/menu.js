@@ -1,3 +1,22 @@
+document.addEventListener("DOMContentLoaded", onloadedMenu);
+
+
+function onloadedMenu() {
+    updateMenu();
+
+    /* Делаем каждому элементу меню разную задержку при переходах */
+    var menuItems = document.querySelectorAll('.menu__item');
+    for (var i = menuItems.length - 1; i >= 0; i--) {
+        menuItems[i].style.transitionDelay = i * 0.2 + 's';
+    }
+
+    var menuLinks = document.querySelectorAll('.menu__link');
+    for (var i = menuLinks.length - 1; i >= 0; i--) {
+        menuLinks[i].addEventListener('click', updateMenu);
+        menuLinks[i].addEventListener('click', closeMenu);
+    }
+}
+
 function openMenu() {
     document.documentElement.classList.add('menu--open');
 }
@@ -21,20 +40,3 @@ function updateMenu() {
         }
     }, 0);
 }
-
-
-document.addEventListener("DOMContentLoaded", function loadedMenu() {
-    updateMenu();
-
-    /* Делаем каждому элементу меню разную задержку при переходах */
-    var menuItems = document.querySelectorAll('.menu__item');
-    for (var i = menuItems.length - 1; i >= 0; i--) {
-        menuItems[i].style.transitionDelay = i * 0.2 + 's';
-    }
-
-    var menuLinks = document.querySelectorAll('.menu__link');
-    for (var i = menuLinks.length - 1; i >= 0; i--) {
-        menuLinks[i].addEventListener('click', updateMenu);
-        menuLinks[i].addEventListener('click', closeMenu);
-    }
-});
