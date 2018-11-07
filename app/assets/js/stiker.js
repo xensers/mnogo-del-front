@@ -1,4 +1,7 @@
 function Stikers() {
+    var self = this;
+    var stikerGroupOnResize,
+        timerForGrid;
 
     var elemGroup,
         elemsStikers,
@@ -7,11 +10,6 @@ function Stikers() {
         elemControlDotsContainer,
         elemControlNext,
         elemControlPrev;
-
-    var stikerGroupOnResize,
-        timerForGrid;
-
-    var self = this;
 
 
     this.init = function(selector) {
@@ -26,20 +24,20 @@ function Stikers() {
         elemGroup.classList.onselectstart = function() {return false};
         createDots(elemsStikers);
         elemControlNext.onclick = function () {
-            slideNext(elemsStikers);
+            self.slideNext(elemsStikers);
         };
         elemControlPrev.onclick = function () {
-            slidePrev(elemsStikers);
+            self.slidePrev(elemsStikers);
         };
 
         requestAnimationFrame(function() {
             for (var i = elemsStikers.length - 1; i >= 0; i--) {
                 var elemStiker = elemsStikers[i];
+                var elemNumber = elemStiker.querySelector('.stiker__number');
                 var elemWrap   = elemStiker.querySelector('.stiker__wrap');
-                var elemStikerNumber = elemsStikers[i].querySelector('.stiker__number');
-                var deg = (Math.random() * 10) - 5;
+                var deg        = (Math.random() * 10) - 5;
 
-                elemStikerNumber.innerHTML = '№' + (i + 1) + '. ';
+                elemNumber.innerHTML = '№' + (i + 1) + '. ';
                 elemWrap.style.transform = 'rotate(' + deg + 'deg)';
             }
         });
@@ -47,7 +45,7 @@ function Stikers() {
         return this;
     }
 
-    this.grid = function(cols, rows, showTitle, random) {
+    this.convertToGrid = function(cols, rows, showTitle, random) {
         if (cols <= 0) {
           throw new Error("Значение cols должно больше нуля");
         }
@@ -94,7 +92,7 @@ function Stikers() {
             stikerGroupOnResize(xFactor, yFactor, cols, rows);
 
             setTimeout(function() {
-                var i = 0,
+                var i   = 0,
                     row = 0,
                     col = 0,
                     index;
@@ -163,24 +161,96 @@ function Stikers() {
         return this;
     }
 
-    this.slider = function slider()
-    {
-        this.grid(1, 1, true);
+    this.convertToSlider = function () {
+        this.convertToGrid(1, 1, true);
         elemGroup.classList.add('stikers__slider');
 
         return this;
     }
 
+    this.slideNext = function() {
+        for (var currentIteration = elemsStikers.length - 1; currentIteration >= 0; currentIteration--) {
+            if (elemsStikers[currentIteration].classList.contains('active')) {
+                var elemStiker = elemsStikers[currentIteration];
+                var elemWrap   = elemStiker.querySelector('.stiker__wrap');
+                var stikerDraw = getTheRightDraw(elemStiker, currentIteration);
 
-    function createDots(elemsStikers){
+                animate({
+                    timing: linear,
+                    duration: 500,
+                    draw: stikerDraw,
+                    from: 10,
+                    to: 90,
+                    before: function() {
+                        elemWrap.style.overflow = 'visible';
+                    },
+                    after: function() {
+                        nextStiker(elemsStikers);
+                        animate({
+                            timing: linear,
+                            duration: 700,
+                            draw: stikerDraw,
+                            from: 90,
+                            to: 1,
+                            after: function() {
+                                resetStiker(elemStiker);
+                                elemWrap.style.overflow = 'hidden';
+                            }
+                        });
+                    }
+                });
+                return this;
+            }
+        }
+        return this;
+    }
+
+    this.slidePrev = function() {
+        for (var currentIteration = elemsStikers.length - 1; currentIteration >= 0; currentIteration--) {
+            if (+elemsStikers[currentIteration].style.zIndex == 0) {
+                var elemStiker = elemsStikers[currentIteration];
+                var elemWrap   = elemStiker.querySelector('.stiker__wrap');
+                var stikerDraw = getTheRightDraw(elemStiker, currentIteration);
+
+                animate({
+                    timing: linear,
+                    duration: 500,
+                    draw: stikerDraw,
+                    from: 0,
+                    to: 90,
+                    before: function() {
+                        elemWrap.style.overflow = 'visible';
+                    },
+                    after: function() {
+                        prevStiker(elemsStikers, true);
+                        animate({
+                            timing: linear,
+                            duration: 700,
+                            draw: stikerDraw,
+                            from: 90,
+                            to: 10,
+                            after: function() {
+                                resetStiker(elemStiker);
+                                elemWrap.style.overflow = 'hidden';
+                            }
+                        });
+                    }
+                });
+                return this;
+            }
+        }
+        return this;
+    }
+
+
+    var createDots = function(elemsStikers) {
         for (var i = elemsStikers.length - 1; i >= 0; i--) {
             var elemDot = document.createElement('span');
             elemControlDotsContainer.insertBefore(elemDot, null);
         }
     };
 
-    function updateDots(elemsStackStikers)
-    {
+    var updateDots = function(elemsStackStikers) {
         var elemsControlDots = elemControlDotsContainer.querySelectorAll('span');
 
         for (var i = elemsControlDots.length - 1; i >= 0; i--) {
@@ -194,27 +264,31 @@ function Stikers() {
             }
         }
 
-        // elemsControlDots[elemsStikers.length - 1].classList.add('active');
+        elemsControlDots[elemsStikers.length - 1].classList.add('active');
+        return self;
     }
 
-    function initStikers(elemsStackStikers) {
+    var initStikers = function(elemsStackStikers) {
         for (var i = elemsStackStikers.length - 1; i >= 0; i--) {
             var elemStiker = elemsStackStikers[i];
             elemStiker.classList.remove('active');
             elemStiker.style.zIndex = i;
         }
 
-        currentItemNumber = elemsStackStikers.length - 1;
+        currentIteration = elemsStackStikers.length - 1;
         if (elemsStackStikers.length > 1) {
-            initStiker(elemsStackStikers, currentItemNumber, false, true);
+            initStiker(elemsStackStikers, currentIteration, false, true);
         } else {
-            initStiker(elemsStackStikers, currentItemNumber, true, true);
+            initStiker(elemsStackStikers, currentIteration, true, true);
         }
     }
 
-    function initStiker(elemsStackStikers, currentItemNumber, single, firstInit, noAnimateInit) {
+    var initStiker = function(
+        elemsStackStikers, currentIteration,
+        single, firstInit, noAnimateInit
+    ) {
         var progress;
-        var elemStiker = elemsStackStikers[currentItemNumber];
+        var elemStiker = elemsStackStikers[currentIteration];
         var elemWrap   = elemStiker.querySelector('.stiker__wrap');
         var elemInner  = elemStiker.querySelector('.stiker__inner');
         var elemArena  = elemStiker.querySelector('.stiker__arena');
@@ -222,29 +296,12 @@ function Stikers() {
         var elemBack   = elemStiker.querySelector('.stiker__back');
         var elemItem   = elemStiker.querySelector('.stiker__item');
 
-        elemStiker.classList.add('active');
-        updateDots(elemsStackStikers);
+        var stikerDraw   = getTheRightDraw(elemStiker, currentIteration);
         var stikerZIndex = +elemStiker.style.zIndex;
 
-        if (currentItemNumber % 2) {
-            var stikerDraw = function(progress) {
-                stikerDrawToLeft(elemStiker, progress);
-            };
+        elemStiker.classList.add('active');
+        updateDots(elemsStackStikers);
 
-            requestAnimationFrame(function() {
-                elemArena.style.left = 'auto';
-                elemArena.style.right = '0';
-            });
-        } else {
-            var stikerDraw = function(progress) {
-                stikerDrawToRight(elemStiker, progress);
-            };
-
-            requestAnimationFrame(function() {
-                elemArena.style.left = '0';
-                elemArena.style.right = 'auto';
-            });
-        }
 
         if (single) {
             requestAnimationFrame(function() {
@@ -340,6 +397,7 @@ function Stikers() {
                                 from: 100,
                                 to: 13,
                                 after: function() {
+                                    resetStiker(elemStiker);
                                     elemWrap.style.overflow = 'hidden';
                                 }
                             });
@@ -361,184 +419,99 @@ function Stikers() {
         }
     }
 
-    function nextStiker(elemsStackStikers, noAnimateInit) {
-        requestAnimationFrame(function(t){
-            var lastIndex, newIndex;
-            for (var i = elemsStackStikers.length - 1; i >= 0; i--) {
-
-                lastIndex = +elemsStackStikers[i].style.zIndex;
-                newIndex = lastIndex + 1;
-
-                if (newIndex > elemsStackStikers.length - 1) {
-                    newIndex = 0;
-                } else if (newIndex < 0) {
-                   newIndex = elemsStackStikers.length - 1;
-                }
-
-                elemsStackStikers[i].style.zIndex = newIndex;
-                if (newIndex == elemsStackStikers.length - 1) {
-                    initStiker(elemsStackStikers, i, false, false, noAnimateInit);
-                } else {
-                    resetStiker(elemsStackStikers[i]);
-                }
-            }
-        });
-    }
-
-    function prevStiker(elemsStackStikers, noAnimateInit) {
-        requestAnimationFrame(function(t){
-            var lastIndex, newIndex;
-            for (var i = elemsStackStikers.length - 1; i >= 0; i--) {
-
-                lastIndex = +elemsStackStikers[i].style.zIndex;
-                newIndex = lastIndex - 1;
-
-                if (newIndex > elemsStackStikers.length - 1) {
-                    newIndex = 0;
-                } else if (newIndex < 0) {
-                   newIndex = elemsStackStikers.length - 1;
-                }
-
-                elemsStackStikers[i].style.zIndex = newIndex;
-                if (newIndex == elemsStackStikers.length - 1) {
-                    initStiker(elemsStackStikers, i, false, false, noAnimateInit);
-                } else {
-                    resetStiker(elemsStackStikers[i]);
-                }
-            }
-        });
-    }
-
-    function slideNext(elemsStackStikers) {
-        for (var i = elemsStackStikers.length - 1; i >= 0; i--) {
-            if (elemsStackStikers[i].classList.contains('active')) {
-                (function (elemStiker, i) {
-                    var elemWrap = elemStiker.querySelector('.stiker__wrap');
-
-                    if (i % 2) {
-                        var stikerDraw = function(progress) {
-                            stikerDrawToLeft(elemStiker, progress);
-                        };
-                    } else {
-                        var stikerDraw = function(progress) {
-                            stikerDrawToRight(elemStiker, progress);
-                        };
-                    }
-
-                    elemWrap.style.overflow = 'visible';
-
-                    animate({
-                        timing: linear,
-                        duration: 500,
-                        draw: stikerDraw,
-                        from: 10,
-                        to: 100,
-                        after: function() {
-                            nextStiker(elemsStackStikers);
-                            animate({
-                                timing: linear,
-                                duration: 700,
-                                draw: stikerDraw,
-                                from: 100,
-                                to: 1,
-                                after: function() {
-                                    elemWrap.style.overflow = 'hidden';
-                                }
-                            });
-                        }
-                    });
-                })(elemsStackStikers[i], i);
-            }
-        }
-    }
-
-    function slidePrev(elemsStackStikers) {
-        for (var i = elemsStackStikers.length - 1; i >= 0; i--) {
-            if (+elemsStackStikers[i].style.zIndex == 0) {
-                (function (elemStiker, i) {
-                    var elemWrap = elemStiker.querySelector('.stiker__wrap');
-
-                    if (i % 2) {
-                        var stikerDraw = function(progress) {
-                            stikerDrawToLeft(elemStiker, progress);
-                        };
-                    } else {
-                        var stikerDraw = function(progress) {
-                            stikerDrawToRight(elemStiker, progress);
-                        };
-                    }
-
-                    elemWrap.style.overflow = 'visible';
-                    animate({
-                        timing: linear,
-                        duration: 500,
-                        draw: stikerDraw,
-                        from: 0,
-                        to: 90,
-                        after: function() {
-                            prevStiker(elemsStackStikers, true);
-                            animate({
-                                timing: linear,
-                                duration: 700,
-                                draw: stikerDraw,
-                                from: 90,
-                                to: 10,
-                                after: function() {
-                                    elemWrap.style.overflow = 'hidden';
-                                }
-                            });
-                        }
-                    });
-                })(elemsStackStikers[i], i);
-            }
-        }
-    }
-
-    function resetStiker(elemStiker) {
-        var elemWrap = elemStiker.querySelector('.stiker__wrap');
+    var resetStiker = function(elemStiker) {
+        var elemWrap  = elemStiker.querySelector('.stiker__wrap');
         var elemInner = elemStiker.querySelector('.stiker__inner');
         var elemArena = elemStiker.querySelector('.stiker__arena');
         var elemOuter = elemStiker.querySelector('.stiker__outer');
-        var elemBack = elemStiker.querySelector('.stiker__back');
-        var elemItem = elemStiker.querySelector('.stiker__item');
+        var elemBack  = elemStiker.querySelector('.stiker__back');
+        var elemItem  = elemStiker.querySelector('.stiker__item');
+
+        elemStiker.onmouseover = undefined;
+        elemStiker.onmouseout  = undefined;
+        elemArena.onmouseover  = undefined;
+        elemArena.onmouseout   = undefined;
+        elemArena.onmousedown  = undefined;
+        elemArena.onmouseup    = undefined;
+        elemArena.onmousemove  = undefined;
 
         elemStiker.classList.remove('active');
-        elemStiker.onmouseover = undefined;
-        elemStiker.onmouseout = undefined;
-        elemArena.onmouseover = undefined;
-        elemArena.onmouseout = undefined;
-        elemArena.onmousedown = undefined;
-        elemArena.onmouseup = undefined;
-        elemArena.onmousemove = undefined;
 
         requestAnimationFrame(function() {
             elemInner.style.transform = "";
             elemOuter.style.transform = "";
-            elemBack.style.transform = "";
-            elemItem.style.transform = "";
-            elemArena.style.left = "";
-            elemArena.style.right = "";
+            elemBack.style.transform  = "";
+            elemItem.style.transform  = "";
+            elemArena.style.left      = "";
+            elemArena.style.right     = "";
         });
     }
 
-    function stikerDrawToRight(elemStiker, progress) {
-        var elemWrap = elemStiker.querySelector('.stiker__wrap');
+    var nextStiker = function(elemsStackStikers, noAnimateInit) {
+        requestAnimationFrame(function(t){
+            var lastIndex, newIndex;
+            for (var i = elemsStackStikers.length - 1; i >= 0; i--) {
+
+                lastIndex = +elemsStackStikers[i].style.zIndex;
+                newIndex  = lastIndex + 1;
+
+                if (newIndex > elemsStackStikers.length - 1) {
+                    newIndex = 0;
+                } else if (newIndex < 0) {
+                    newIndex = elemsStackStikers.length - 1;
+                }
+
+                elemsStackStikers[i].style.zIndex = newIndex;
+                if (newIndex == elemsStackStikers.length - 1) {
+                    initStiker(elemsStackStikers, i, false, false, noAnimateInit);
+                } else {
+                    resetStiker(elemsStackStikers[i]);
+                }
+            }
+        });
+    }
+
+    var prevStiker = function(elemsStackStikers, noAnimateInit) {
+        requestAnimationFrame(function(t){
+            var lastIndex, newIndex;
+            for (var i = elemsStackStikers.length - 1; i >= 0; i--) {
+                lastIndex = +elemsStackStikers[i].style.zIndex;
+                newIndex  = lastIndex - 1;
+
+                if (newIndex > elemsStackStikers.length - 1) {
+                    newIndex = 0;
+                } else if (newIndex < 0) {
+                   newIndex = elemsStackStikers.length - 1;
+                }
+
+                elemsStackStikers[i].style.zIndex = newIndex;
+                if (newIndex == elemsStackStikers.length - 1) {
+                    initStiker(elemsStackStikers, i, false, false, noAnimateInit);
+                } else {
+                    resetStiker(elemsStackStikers[i]);
+                }
+            }
+        });
+    }
+
+    var stikerDrawToRight = function(elemStiker, progress) {
+        var elemWrap  = elemStiker.querySelector('.stiker__wrap');
         var elemInner = elemStiker.querySelector('.stiker__inner');
         var elemArena = elemStiker.querySelector('.stiker__arena');
         var elemOuter = elemStiker.querySelector('.stiker__outer');
-        var elemBack = elemStiker.querySelector('.stiker__back');
-        var elemItem = elemStiker.querySelector('.stiker__item');
+        var elemBack  = elemStiker.querySelector('.stiker__back');
+        var elemItem  = elemStiker.querySelector('.stiker__item');
 
         var innerTranslateY = -24 * progress - 4 * progress;
         var outerTranslateY = 24 * progress;
-        var backTransleteY = -(17 - progress * 34);
-        var backTransleteX = (17 - progress * 34);
-        var backScale = (100 - 30 * zone(progress, 0.7, 1)) / 100;
+        var backTransleteY  = -(17 - progress * 34);
+        var backTransleteX  = (17 - progress * 34);
+        var backScale       = (100 - 30 * zone(progress, 0.7, 1)) / 100;
 
         elemInner.style.transform = 'rotate(45deg) translateY(' + innerTranslateY + 'em)';
         elemOuter.style.transform = 'translateY(' + outerTranslateY + 'em)';
-        elemBack.style.transform = 'rotate(-45deg) translate(' + backTransleteY + 'em, ' + backTransleteX + 'em) scale(' + backScale + ')';
-        elemItem.style.transform = 'rotate(-45deg)';
+        elemBack.style.transform  = 'rotate(-45deg) translate(' + backTransleteY + 'em, ' + backTransleteX + 'em) scale(' + backScale + ')';
+        elemItem.style.transform  = 'rotate(-45deg)';
 
         if (progress <= 0.5) {
           elemItem.style.opacity = '1';
@@ -547,29 +520,55 @@ function Stikers() {
         }
     }
 
-    function stikerDrawToLeft(elemStiker, progress) {
-        var elemWrap = elemStiker.querySelector('.stiker__wrap');
+    var stikerDrawToLeft = function(elemStiker, progress) {
+        var elemWrap  = elemStiker.querySelector('.stiker__wrap');
         var elemInner = elemStiker.querySelector('.stiker__inner');
         var elemArena = elemStiker.querySelector('.stiker__arena');
         var elemOuter = elemStiker.querySelector('.stiker__outer');
-        var elemBack = elemStiker.querySelector('.stiker__back');
-        var elemItem = elemStiker.querySelector('.stiker__item');
+        var elemBack  = elemStiker.querySelector('.stiker__back');
+        var elemItem  = elemStiker.querySelector('.stiker__item');
 
         var innerTranslateY = -24 * progress - 4 * progress;
         var outerTranslateY = 24 * progress;
-        var backTransleteY = (17 - progress * 34);
-        var backTransleteX = (17 - progress * 34);
-        var backScale = (100 - 30 * zone(progress, 0.7, 1)) / 100;
+        var backTransleteY  = (17 - progress * 34);
+        var backTransleteX  = (17 - progress * 34);
+        var backScale       = (100 - 30 * zone(progress, 0.7, 1)) / 100;
 
         elemInner.style.transform = 'rotate(-45deg) translateY(' + innerTranslateY + 'em)';
         elemOuter.style.transform = 'translateY(' + outerTranslateY + 'em)';
-        elemBack.style.transform = 'rotate(45deg) translate(' + backTransleteY + 'em, ' + backTransleteX + 'em) scale(' + backScale + ')';
-        elemItem.style.transform = 'rotate(45deg)';
+        elemBack.style.transform  = 'rotate(45deg) translate(' + backTransleteY + 'em, ' + backTransleteX + 'em) scale(' + backScale + ')';
+        elemItem.style.transform  = 'rotate(45deg)';
 
         if (progress <= 0.5) {
           elemItem.style.opacity = '1';
         } else {
           elemItem.style.opacity = '0';
         }
+    }
+
+    var getTheRightDraw = function(elemStiker, currentIteration) {
+        var elemArena  = elemStiker.querySelector('.stiker__arena');
+
+        if (currentIteration % 2) {
+            var stikerDraw = function(progress) {
+                stikerDrawToLeft(elemStiker, progress);
+            };
+
+            requestAnimationFrame(function() {
+                elemArena.style.left = 'auto';
+                elemArena.style.right = '0';
+            });
+        } else {
+            var stikerDraw = function(progress) {
+                stikerDrawToRight(elemStiker, progress);
+            };
+
+            requestAnimationFrame(function() {
+                elemArena.style.left = '0';
+                elemArena.style.right = 'auto';
+            });
+        }
+
+        return stikerDraw;
     }
 }

@@ -9,6 +9,7 @@ function animate(options) {
     var to       = (typeof(options.to)       == 'number')   ? options.to       : 100;
     var timing   = (typeof(options.timing)   == 'function') ? options.timing   : linear;
     var draw     = (typeof(options.draw)     == 'function') ? options.draw     : function(progress){console.log(progress * 100)};
+    var before   = (typeof(options.before)   == 'function') ? options.before   : function() {};
     var after    = (typeof(options.after)    == 'function') ? options.after    : function() {};
 
     var fractionFrom = from / 100;
@@ -26,6 +27,10 @@ function animate(options) {
         var animationIndex = activeDrawsList.push(draw);
 
         requestAnimationFrame(function animate(time) {
+            if (before) {
+                before();
+                before = false;
+            }
             var timeFraction = (time - start) / duration;
             if (timeFraction > 1) timeFraction = 1;
 

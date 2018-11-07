@@ -6,7 +6,7 @@ function onLoadedHomePage() {
     document.querySelector('.header__icons_back').addEventListener('click', closeCases);
 
     respondTo(breakpoint.medium, function() {
-        stikers.slider();
+        stikers.convertToSlider();
     }, true, true);
 
     respondFrom(breakpoint.medium, function() {
@@ -31,11 +31,11 @@ function openCases() {
     window.location.hash = 'cases';
 
     respondFrom(breakpoint.medium, function() {
-        stikers.grid(4, false, true, false);
+        stikers.convertToGrid(4, false, true, false);
     }, true, false);
 
     respondTo(breakpoint.medium, function() {
-        stikers.slider();
+        stikers.convertToSlider();
     }, true, false);
 
     return false;
@@ -46,11 +46,11 @@ function closeCases() {
     window.location.hash = '';
 
     respondFrom(breakpoint.medium, function() {
-        stikers.grid(3, 2, false, true);
+        stikers.convertToGrid(3, 2, false, true);
     }, true, false);
 
     respondTo(breakpoint.medium, function() {
-        stikers.slider();
+        stikers.convertToSlider();
     }, true, false);
 
     updateMenu();
