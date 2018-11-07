@@ -47,11 +47,11 @@ function Stikers() {
 
     this.convertToGrid = function(cols, rows, showTitle, random) {
         if (cols <= 0) {
-          throw new Error("Значение cols должно больше нуля");
+          throw new Error("Значение rows должно быть положительным");
         }
 
         if (rows < 0) {
-          throw new Error("Значение rows должно быть положительным");
+          throw new Error("Значение cols должно больше нуля");
         }
 
         clearTimeout(timerForGrid);
@@ -169,11 +169,11 @@ function Stikers() {
     }
 
     this.slideNext = function() {
-        for (var currentIteration = elemsStikers.length - 1; currentIteration >= 0; currentIteration--) {
-            if (elemsStikers[currentIteration].classList.contains('active')) {
-                var elemStiker = elemsStikers[currentIteration];
+        for (var iteration = elemsStikers.length - 1; iteration >= 0; iteration--) {
+            if (elemsStikers[iteration].classList.contains('active')) {
+                var elemStiker = elemsStikers[iteration];
                 var elemWrap   = elemStiker.querySelector('.stiker__wrap');
-                var stikerDraw = getTheRightDraw(elemStiker, currentIteration);
+                var stikerDraw = getTheRightDraw(elemStiker, iteration);
 
                 animate({
                     timing: linear,
@@ -206,11 +206,11 @@ function Stikers() {
     }
 
     this.slidePrev = function() {
-        for (var currentIteration = elemsStikers.length - 1; currentIteration >= 0; currentIteration--) {
-            if (+elemsStikers[currentIteration].style.zIndex == 0) {
-                var elemStiker = elemsStikers[currentIteration];
+        for (var iteration = elemsStikers.length - 1; iteration >= 0; iteration--) {
+            if (+elemsStikers[iteration].style.zIndex == 0) {
+                var elemStiker = elemsStikers[iteration];
                 var elemWrap   = elemStiker.querySelector('.stiker__wrap');
-                var stikerDraw = getTheRightDraw(elemStiker, currentIteration);
+                var stikerDraw = getTheRightDraw(elemStiker, iteration);
 
                 animate({
                     timing: linear,
@@ -275,28 +275,28 @@ function Stikers() {
             elemStiker.style.zIndex = i;
         }
 
-        currentIteration = elemsStackStikers.length - 1;
+        iteration = elemsStackStikers.length - 1;
         if (elemsStackStikers.length > 1) {
-            initStiker(elemsStackStikers, currentIteration, false, true);
+            initStiker(elemsStackStikers, iteration, false, true);
         } else {
-            initStiker(elemsStackStikers, currentIteration, true, true);
+            initStiker(elemsStackStikers, iteration, true, true);
         }
     }
 
     var initStiker = function(
-        elemsStackStikers, currentIteration,
+        elemsStackStikers, iteration,
         single, firstInit, noAnimateInit
     ) {
         var progress;
-        var elemStiker = elemsStackStikers[currentIteration];
+        var elemStiker = elemsStackStikers[iteration];
         var elemWrap   = elemStiker.querySelector('.stiker__wrap');
         var elemInner  = elemStiker.querySelector('.stiker__inner');
         var elemArena  = elemStiker.querySelector('.stiker__arena');
         var elemOuter  = elemStiker.querySelector('.stiker__outer');
         var elemBack   = elemStiker.querySelector('.stiker__back');
-        var elemItem   = elemStiker.querySelector('.stiker__item');
+        var elemFront  = elemStiker.querySelector('.stiker__front');
 
-        var stikerDraw   = getTheRightDraw(elemStiker, currentIteration);
+        var stikerDraw   = getTheRightDraw(elemStiker, iteration);
         var stikerZIndex = +elemStiker.style.zIndex;
 
         elemStiker.classList.add('active');
@@ -424,8 +424,8 @@ function Stikers() {
         var elemInner = elemStiker.querySelector('.stiker__inner');
         var elemArena = elemStiker.querySelector('.stiker__arena');
         var elemOuter = elemStiker.querySelector('.stiker__outer');
+        var elemFront  = elemStiker.querySelector('.stiker__front');
         var elemBack  = elemStiker.querySelector('.stiker__back');
-        var elemItem  = elemStiker.querySelector('.stiker__item');
 
         elemStiker.onmouseover = undefined;
         elemStiker.onmouseout  = undefined;
@@ -441,7 +441,7 @@ function Stikers() {
             elemInner.style.transform = "";
             elemOuter.style.transform = "";
             elemBack.style.transform  = "";
-            elemItem.style.transform  = "";
+            elemFront.style.transform  = "";
             elemArena.style.left      = "";
             elemArena.style.right     = "";
         });
@@ -499,8 +499,8 @@ function Stikers() {
         var elemInner = elemStiker.querySelector('.stiker__inner');
         var elemArena = elemStiker.querySelector('.stiker__arena');
         var elemOuter = elemStiker.querySelector('.stiker__outer');
+        var elemFront  = elemStiker.querySelector('.stiker__front');
         var elemBack  = elemStiker.querySelector('.stiker__back');
-        var elemItem  = elemStiker.querySelector('.stiker__item');
 
         var innerTranslateY = -24 * progress - 4 * progress;
         var outerTranslateY = 24 * progress;
@@ -510,13 +510,13 @@ function Stikers() {
 
         elemInner.style.transform = 'rotate(45deg) translateY(' + innerTranslateY + 'em)';
         elemOuter.style.transform = 'translateY(' + outerTranslateY + 'em)';
+        elemFront.style.transform  = 'rotate(-45deg)';
         elemBack.style.transform  = 'rotate(-45deg) translate(' + backTransleteY + 'em, ' + backTransleteX + 'em) scale(' + backScale + ')';
-        elemItem.style.transform  = 'rotate(-45deg)';
 
         if (progress <= 0.5) {
-          elemItem.style.opacity = '1';
+          elemFront.style.opacity = '1';
         } else {
-          elemItem.style.opacity = '0';
+          elemFront.style.opacity = '0';
         }
     }
 
@@ -526,7 +526,7 @@ function Stikers() {
         var elemArena = elemStiker.querySelector('.stiker__arena');
         var elemOuter = elemStiker.querySelector('.stiker__outer');
         var elemBack  = elemStiker.querySelector('.stiker__back');
-        var elemItem  = elemStiker.querySelector('.stiker__item');
+        var elemFront  = elemStiker.querySelector('.stiker__front');
 
         var innerTranslateY = -24 * progress - 4 * progress;
         var outerTranslateY = 24 * progress;
@@ -536,20 +536,20 @@ function Stikers() {
 
         elemInner.style.transform = 'rotate(-45deg) translateY(' + innerTranslateY + 'em)';
         elemOuter.style.transform = 'translateY(' + outerTranslateY + 'em)';
+        elemFront.style.transform  = 'rotate(45deg)';
         elemBack.style.transform  = 'rotate(45deg) translate(' + backTransleteY + 'em, ' + backTransleteX + 'em) scale(' + backScale + ')';
-        elemItem.style.transform  = 'rotate(45deg)';
 
         if (progress <= 0.5) {
-          elemItem.style.opacity = '1';
+          elemFront.style.opacity = '1';
         } else {
-          elemItem.style.opacity = '0';
+          elemFront.style.opacity = '0';
         }
     }
 
-    var getTheRightDraw = function(elemStiker, currentIteration) {
+    var getTheRightDraw = function(elemStiker, iteration) {
         var elemArena  = elemStiker.querySelector('.stiker__arena');
 
-        if (currentIteration % 2) {
+        if (iteration % 2) {
             var stikerDraw = function(progress) {
                 stikerDrawToLeft(elemStiker, progress);
             };

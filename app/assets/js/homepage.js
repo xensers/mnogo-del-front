@@ -1,4 +1,4 @@
-var stikers = new Stikers().init('.stikers-group');
+var stikers = Stikers().init('.stikers-group');
 
 document.addEventListener("DOMContentLoaded", onLoadedHomePage);
 
