@@ -1,10 +1,12 @@
+var stikers = new Stikers().init('.stikers-group');
+
 document.addEventListener("DOMContentLoaded", onLoadedHomePage);
 
 function onLoadedHomePage() {
     document.querySelector('.header__icons_back').addEventListener('click', closeCases);
 
     respondTo(breakpoint.medium, function() {
-        stikersSlider();
+        stikers.slider();
     }, true, true);
 
     respondFrom(breakpoint.medium, function() {
@@ -26,15 +28,14 @@ function onLoadedHomePage() {
 
 function openCases() {
     document.documentElement.classList.add('homepage--cases');
+    window.location.hash = 'cases';
 
     respondFrom(breakpoint.medium, function() {
-        setTimeout(function() {
-            stikersGrid(4, false, true);
-        }, 0)
+        stikers.grid(4, false, true, false);
     }, true, false);
 
     respondTo(breakpoint.medium, function() {
-        stikersSlider();
+        stikers.slider();
     }, true, false);
 
     return false;
@@ -45,11 +46,11 @@ function closeCases() {
     window.location.hash = '';
 
     respondFrom(breakpoint.medium, function() {
-        stikersGrid(3, 2, false, true);
+        stikers.grid(3, 2, false, true);
     }, true, false);
 
     respondTo(breakpoint.medium, function() {
-        stikersSlider();
+        stikers.slider();
     }, true, false);
 
     updateMenu();

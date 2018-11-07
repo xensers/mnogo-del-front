@@ -119,21 +119,22 @@
         opacity: 0;
         text-decoration: none;
 
-        &, & a {
-            color: #000;
-            text-align: left;
+        .active &
+        {
+            opacity: 1;
+            animation: fadeIn 2s;
+            animation-fill-mode: both;
         }
 
         .stikers__slider & {
             text-align: center;
             font-size: 1.8em;
         }
-    }
 
-    &.active &__title
-    {
-        transition: opacity 2s;
-        opacity: 1;
+        &, & a {
+            color: #000;
+            text-align: left;
+        }
     }
 
     &__number
