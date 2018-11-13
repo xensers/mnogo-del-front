@@ -549,26 +549,11 @@ function Stikers() {
     var getTheRightDraw = function(elemStiker, iteration) {
         var elemArena  = elemStiker.querySelector('.stiker__arena');
 
-        if (iteration % 2) {
-            var stikerDraw = function(progress) {
-                stikerDrawToLeft(elemStiker, progress);
-            };
+        elemArena.style.left = '0';
+        elemArena.style.right = 'auto';
 
-            requestAnimationFrame(function() {
-                elemArena.style.left = 'auto';
-                elemArena.style.right = '0';
-            });
-        } else {
-            var stikerDraw = function(progress) {
-                stikerDrawToRight(elemStiker, progress);
-            };
-
-            requestAnimationFrame(function() {
-                elemArena.style.left = '0';
-                elemArena.style.right = 'auto';
-            });
-        }
-
-        return stikerDraw;
+        return function(progress) {
+            stikerDrawToRight(elemStiker, progress);
+        };
     }
 }
