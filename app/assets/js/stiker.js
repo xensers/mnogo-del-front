@@ -193,7 +193,6 @@ function Stikers() {
                             from: 90,
                             to: 1,
                             after: function() {
-                                resetStiker(elemStiker);
                                 elemWrap.style.overflow = 'hidden';
                             }
                         });
@@ -230,7 +229,6 @@ function Stikers() {
                             from: 90,
                             to: 10,
                             after: function() {
-                                resetStiker(elemStiker);
                                 elemWrap.style.overflow = 'hidden';
                             }
                         });
