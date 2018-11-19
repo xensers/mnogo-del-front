@@ -1,4 +1,12 @@
-@import "core";
+@import 'core';
+
+.marker-fix
+{
+    position: relative;
+    z-index: 1;
+
+    display: inline-block;
+}
 
 .marker-1
 {
@@ -13,4 +21,15 @@
 .marker-3
 {
     @include marker-3;
+}
+
+.marker-4
+{
+    @include marker-4;
+}
+
+
+.marker-5
+{
+    @include marker-5;
 }

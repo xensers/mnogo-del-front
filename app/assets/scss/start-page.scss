@@ -51,7 +51,8 @@
 
         & .layout__body,
         & .layout__header,
-        & .layout__side
+        & .layout__side,
+        & .layout__footer,
         {
             filter: blur(5px);
         }

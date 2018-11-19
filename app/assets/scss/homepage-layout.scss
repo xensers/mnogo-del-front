@@ -4,19 +4,22 @@
 {
     .layout__container
     {
-
         @include respond-from(medium)
         {
-            width: 92%;
+            width: 85%;
             max-width: 82rem;
+
+            .homepage--cases &
+            {
+                width: 66.66666666%;
+                max-width: 53.375rem;
+            }
         }
     }
 
     &__warp
     {
         display: flex;
-
-        padding: 2rem 0;
 
         @include respond-to(medium)
         {
@@ -33,13 +36,31 @@
         }
     }
 
-    &__text
+    &__article
     {
-        transition: 1s 1s, opacity .3s .1s;
+        transition: transform 1s 1s, opacity .3s .1s;
 
         @include respond-from(medium)
         {
-            flex: 0 0 40%;
+            font-size: .8rem;
+
+            flex: 0 0 30%;
+        }
+        @include respond-from(large)
+        {
+            font-size: 1rem;
+        }
+
+        &__text
+        {
+            padding-bottom: .2rem;
+
+            @include respond-from(medium)
+            {
+                font-family: 'AvantGardeGothicC-Bold';
+
+                padding-left: .5rem;
+            };
         }
     }
 
@@ -47,17 +68,18 @@
     {
         font-size: .7rem;
 
-        padding: 0 2rem;
+        padding: 2rem;
+        padding-bottom: 0;
 
         transition: .3s .1s;
         text-align: center;
 
         @include respond-to(medium)
         {
-            opacity: 0;
             transition: opacity .3s .1s;
-        }
 
+            opacity: 0;
+        }
         @include respond-from(small)
         {
             font-size: 1.2rem;
@@ -66,11 +88,57 @@
         {
             font-size: .6rem;
 
-            flex: 0 0 60%;
+            padding-left: 0;
+
+            flex: 0 0 70%;
         }
         @include respond-from(large)
         {
             font-size: .75rem;
+        }
+
+        &__footer
+        {
+            display: none;
+
+            text-align: left;
+
+            .homepage--cases &
+            {
+                display: block;
+            }
+
+            &_feedback
+            {
+                font-size: .75rem;
+
+                display: flex;
+
+                margin-top: 2rem;
+                padding: 1rem 2rem;
+
+                border-top: 1px solid #eee;
+                background: #fff;
+
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+
+        &__end
+        {
+            padding: 4rem 2rem 0 2rem;
+
+            display: none;
+            text-align: left;
+
+            .homepage--cases &
+            {
+                @include respond-from(medium)
+                {
+                    display: block;
+                }
+            }
         }
     }
 
@@ -78,6 +146,63 @@
     {
         display: inline-block;
     }
+
+    &__footer
+    {
+        display: flex;
+
+        height: 100%;
+
+        .homepage--cases &
+        {
+            display: none;
+        }
+    }
+
+    &__footer &__mixed
+    {
+        width: 65%;
+    }
+
+    &__mixed
+    {
+        display: flex;
+
+        padding: 1rem;
+
+        border-top: 1px solid #eee;
+        background: #fff;
+
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__who-is
+    {
+        display: flex;
+
+        padding: 1rem 1rem 1rem 3rem;
+
+        text-decoration: none;
+
+        color: #000;
+
+        align-items: center;
+
+         > .image
+        {
+            display: inline-block;
+
+            width: 3.3rem;
+            padding-right: 1rem;
+        }
+
+         > span
+        {
+            display: inline-block;
+        }
+    }
+
 
     &--cases
     {
@@ -88,7 +213,7 @@
                 transform: translateX(0%);
             }
 
-            .homepage__text
+            .homepage__article
             {
                 opacity: 0;
             }
@@ -96,7 +221,7 @@
             .homepage__cases
             {
                 opacity: 1;
-                // transition: transform .3s .1s;
+
                  > *
                 {
                     width: 100%;
@@ -107,7 +232,7 @@
         }
         @include respond-from(medium)
         {
-            .homepage__text
+            .homepage__article
             {
                 transform: translateX(50%);
 
@@ -117,10 +242,6 @@
             .homepage__cases
             {
                 flex: 0 0 100%;
-            }
-
-            .homepage__warp
-            {
             }
         }
     }

@@ -1,9 +1,9 @@
-@import "core";
+@import 'core';
 
 .stikers-group
 {
+    font-size: .9em;
 
-    font-size: 0.9em;
     position: relative;
 
     display: inline-block;
@@ -11,12 +11,12 @@
     min-width: 16em;
     min-height: 16em;
 
-    // transition: width .3s;
-
     &__controls
     {
         display: none;
+
         animation: fadeIn 2s 2s;
+
         animation-fill-mode: backwards;
 
         .stikers__slider &
@@ -28,49 +28,56 @@
     &__dots
     {
         position: absolute;
-        display: flex;
-        flex-direction: row-reverse;
         bottom: -2em;
         left: 50%;
-        transform: translateX(-50%);
 
+        display: flex;
+        flex-direction: row-reverse;
+
+        transform: translateX(-50%);
         white-space: nowrap;
 
-        > span
+         > span
         {
-            margin: .3em;
             display: inline-block;
+
             width: 1em;
             height: 1em;
-            background: #000;
-            border: 1px solid #000;
-            border-radius: 100%;
-            transform: scale(.5);
+            margin: .3em;
 
             transition: .5s;
+            transform: scale(.5);
+
+            border: 1px solid #000;
+            border-radius: 100%;
+            background: #000;
 
             &.active
             {
+                transform: scale(1.2);
+
                 border-color: #979797;
                 background: #fff;
-                transform: scale(1.2);
             }
         }
     }
 
-    &__prev, &__next
+    &__prev,
+    &__next
     {
         position: absolute;
         top: 0;
+
         width: 4em;
         height: 18em;
-        // background-color: red;
+
         cursor: pointer;
 
-        background-size: 2em auto;
-        background-position: center;
-        background-repeat: no-repeat;
         background-image: url('../images/icons/arrow-left.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 2em auto;
+
         @include retina
         {
             background-image: url('../images/icons/arrow-left@2x.png');
@@ -85,15 +92,17 @@
     &__next
     {
         right: -4em;
+
         transform: rotate(180deg);
     }
 }
 
 .stiker
 {
-
     position: relative;
+
     display: inline-block;
+
     width: 16em;
     height: 16em;
     margin: 1em;
@@ -109,31 +118,43 @@
 
     &__title
     {
-        display: none;
-        font-size: 1.4em;
+        font-size: 1.2em;
+
         position: absolute;
         bottom: -5em;
         left: 0;
+
+        display: none;
+
         width: 100%;
         height: 3em;
-        opacity: 0;
+
         text-decoration: none;
+
+        opacity: 0;
 
         .active &
         {
-            opacity: 1;
             animation: fadeIn 2s;
+
+            opacity: 1;
+
             animation-fill-mode: both;
         }
 
-        .stikers__slider & {
-            text-align: center;
+        .stikers__slider &
+        {
             font-size: 1.8em;
+
+            text-align: center;
         }
 
-        &, & a {
-            color: #000;
+        &,
+        & a
+        {
             text-align: left;
+
+            color: #000;
         }
     }
 
@@ -151,10 +172,13 @@
         position: absolute;
         top: -1em;
         left: -1em;
-        height: 18em;
-        width: 18em;
-        transition: transform .5s;
+
         overflow: hidden;
+
+        width: 18em;
+        height: 18em;
+
+        transition: transform .5s;
     }
 
     &__inner
@@ -192,7 +216,6 @@
 
         background: linear-gradient(45deg, #fff5ad, #f3e168);
         box-shadow: 0 0 1em rgba(0, 0, 0, .1);
-
     }
 
     &__body
@@ -206,12 +229,12 @@
         width: 100%;
         height: 100%;
 
-        align-items: center;
-        justify-content: center;
-
         background-repeat: no-repeat;
         background-position: center center;
         background-size: 95% auto;
+
+        align-items: center;
+        justify-content: center;
     }
 
     &__link
@@ -219,9 +242,11 @@
         position: absolute;
         top: 0;
         left: 0;
+
+        display: block;
+
         width: 100%;
         height: 100%;
-        display: block;
     }
 
     &__back
@@ -244,13 +269,12 @@
     {
         position: absolute;
         z-index: 99;
+        z-index: 999 !important;
         bottom: 0;
 
         width: 35%;
         height: 35%;
 
         cursor: pointer;
-
-        z-index: 999 !important;
     }
 }

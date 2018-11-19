@@ -1,3 +1,5 @@
+@import 'core';
+
 *
 {
     box-sizing: border-box;
@@ -18,4 +20,42 @@ img,
     max-width: 100%;
 
     vertical-align: middle;
+}
+
+.socals
+{
+  display: inline-block;
+  text-align: center;
+  &__item
+  {
+    display: inline-block;
+    margin: 1.4rem .4rem;
+
+    transition: transform .4s;
+
+    &:hover {
+      transform: scale(1.4);
+    }
+
+    .socals.vertical &
+    {
+      display: block;
+    }
+
+    .icon
+    {
+      font-size: 1rem;
+    }
+  }
+}
+
+.lang
+{
+  color: #ccc;
+  font-family: 'AvantGardeGothicC-bold';
+  a
+  {
+    color: #000;
+    text-decoration: none;
+  }
 }

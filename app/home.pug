@@ -4,44 +4,96 @@ append vars
   - pageTitle = '';
   - layout.classList = ['homepage'];
 
+append scripts
+  script.
+    document.addEventListener("DOMContentLoaded", onLoadedHomePage);
+    if (!window.location.hash)
+    {
+      startPageOpen();
+    }
 
 block content
   .homepage__warp
     .homepage__cases(onselectstart="return false")
-      include pug/demo/stikers
-    .homepage__text
-      h1 Найдите  свой  случай
-      p
-        | Спасите себя и своих коллег  от лихорадочной потери драгоценного времени и мозготоплива! 
-      p
-        | Определите свой недуг  по симптому и узнайте, как сделать себя эффективным!
-      p
-        button(onclick="openCases()") Начать
-      p
-        button(onclick="stikers.grid(3, 2, false, true)")
-          | Перемешать
-  .homepage__warp
+      div
+        include pug/demo/stikers
+      .homepage__cases__end
+        p Кажется все...
+    .homepage__article
+      .homepage__article__header
+        h1
+          span.marker-4 Найдите 
+          br
+          span.marker-fix свой  случай
+      .homepage__article__text
+        p
+          | Спасите себя и своих коллег  от лихорадочной потери драгоценного 
+          br
+          span.marker-5 времени и мозготоплива! 
+        p
+          span.marker-1 Определите свой недуг 
+          br
+          |  по симптому и узнайте, как сделать себя эффективным!
+      .homepage__article__buttons
+        p.to-medium
+          a.btn(href="#cases") Начать
+        p.from-medium
+          a.btn(href="about.html") Что все это значит?
+
+block footer
+  .to-small
+    .socals.flex.space-around
+      a(href="#").socals__item
+        span.icon.socal-vk
+      a(href="#").socals__item
+        span.icon.socal-fb
+      a(href="#").socals__item
+        span.icon.socal-tw
+      a(href="#").socals__item
+        span.icon.socal-lj
+      a(href="#").socals__item
+        span.icon.socal-yt
+  .from-medium
+    .homepage__footer
+      .homepage__mixed
+        span.icon.mix
+        button(onclick="closeCases()")
+          | Перемешать карточки
+      a(href="about.html").homepage__who-is
+        .image
+          img(src='assets/images/photo.png', srcset='assets/images/photo@2x.png 2x', alt='')
+        span Кто такой этот
+          br
+          | Максим Дорофеев?
+    .homepage__cases__footer
+      .homepage__cases__footer_feedback
+        p Не нашли свой кейс? Напишите нам о нем, и мы добавим его в этот список!
+        a.btn(href="about.html#feedback")
+          span.icon.tooth
+          | Описать свой случай
+
 
 block side-left-top
 block side-left-center
   .rotate
-    a.menu__link(href="#" onclick="closeCases()") Это – ваш офис...
+    a.header__link.menu__link(href="#" onclick="closeCases()") Это – ваш офис...
 block side-left-bottom
 
 block side-right-top
 block side-right-center
-  div
-    span.icon.socal-vk
-  div
-    span.icon.socal-fb
-  div
-    span.icon.socal-tw
-  div
-    span.icon.socal-lj
-  div
-    span.icon.socal-yt
+  .socals.vertical
+    a(href="#").socals__item
+      span.icon.socal-vk
+    a(href="#").socals__item
+      span.icon.socal-fb
+    a(href="#").socals__item
+      span.icon.socal-tw
+    a(href="#").socals__item
+      span.icon.socal-lj
+    a(href="#").socals__item
+      span.icon.socal-yt
 block side-right-bottom
   .rotate
     .lang
-      | RUS /
+      | RUS / 
       a(href="#") END

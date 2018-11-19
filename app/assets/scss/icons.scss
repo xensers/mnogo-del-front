@@ -12,6 +12,11 @@
     background-position: center;
     background-repeat: no-repeat;
 
+    + button
+    {
+        margin-left: 1rem;
+    }
+
     &.lang
     {
         width: 1.6em;
@@ -67,6 +72,17 @@
         }
     }
 
+    &.tooth
+    {
+        width: 1.2rem;
+        height: 1.5rem;
+        background-image: url('../images/icons/tooth.png');
+        @include retina
+        {
+            background-image: url('../images/icons/tooth@2x.png');
+        }
+    }
+
     &.socal-vk
     {
         width: 1.8em;
@@ -80,8 +96,8 @@
 
     &.socal-fb
     {
-        width: 1em;
-        height: 1em;
+        width: 1.4em;
+        height: 1.4em;
         background-image: url('../images/icons/socal-fb.png');
         @include retina
         {
@@ -102,8 +118,8 @@
 
     &.socal-lj
     {
-        width: 1em;
-        height: 1em;
+        width: 1.4em;
+        height: 1.4em;
         background-image: url('../images/icons/socal-lj.png');
         @include retina
         {
