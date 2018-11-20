@@ -27,7 +27,7 @@
 
             transition: transform .5s;
             transform: translateX(100%);
-             > *
+            > *
             {
                 width: 100%;
 
@@ -39,6 +39,18 @@
     &__article
     {
         transition: transform 1s 1s, opacity .3s .1s;
+
+        span:before{
+            transition: 0.5s 2s;
+        }
+
+        .loading & {
+            opacity: 0;
+
+            span:before{
+                transform: scaleX(0);
+            };
+        }
 
         @include respond-from(medium)
         {
@@ -62,6 +74,24 @@
                 padding-left: .5rem;
             };
         }
+
+        &__header
+        {
+            transition: 1s 0.7s;
+
+            .loading & {
+                opacity: 0;
+            }
+        }
+
+        &__text, &__buttons
+        {
+            transition: 1s 1.5s;
+
+            .loading & {
+                opacity: 0;
+            }
+        }
     }
 
     &__cases
@@ -82,7 +112,7 @@
         }
         @include respond-from(small)
         {
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
         @include respond-from(medium)
         {
@@ -124,6 +154,7 @@
                 align-items: center;
             }
         }
+
 
         &__end
         {
@@ -244,5 +275,22 @@
                 flex: 0 0 100%;
             }
         }
+    }
+
+
+    .stikers-group
+    {
+        height: 25rem;
+        width: 37rem;
+    }
+
+    .stiker
+    {
+        transform: translate(-999px, -999px) rotate(180deg);
+    }
+
+    .stiker__wrap
+    {
+        transform: rotate(360deg);
     }
 }

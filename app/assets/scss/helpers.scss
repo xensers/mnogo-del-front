@@ -1,0 +1,66 @@
+@import 'core';
+
+
+.from-small
+{
+  display: none;
+  @include respond-from(small)
+  {
+    display: block;
+  };
+}
+
+.from-medium
+{
+  display: none;
+  @include respond-from(medium)
+  {
+    display: block;
+  };
+}
+
+.from-large
+{
+  display: none;
+  @include respond-from(large)
+  {
+    display: block;
+  };
+}
+
+.to-small
+{
+  display: none;
+  @include respond-to(small)
+  {
+    display: block;
+  };
+}
+
+.to-medium
+{
+  display: none;
+  @include respond-to(medium)
+  {
+    display: block;
+  };
+}
+
+.to-large
+{
+  display: none;
+  @include respond-to(large)
+  {
+    display: block;
+  };
+}
+
+.flex
+{
+  display: flex;
+}
+
+.space-around
+{
+  justify-content: space-around;
+}

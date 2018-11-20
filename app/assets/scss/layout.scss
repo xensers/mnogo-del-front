@@ -21,7 +21,6 @@
 
         @include respond-from(small)
         {
-            // padding: 0;
             border: none;
             background: url('../images/body-bg.svg') repeat-y;
             background-position: center top;
@@ -43,6 +42,14 @@
         overflow: hidden;
 
         width: 100%;
+
+        opacity: 1;
+        transition: 2s;
+
+        .loading & {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
     }
 
     &__menu
@@ -80,6 +87,13 @@
 
         align-self: center;
         justify-content: space-between;
+
+        transition: 8s;
+        transform-origin: top center;
+
+        .loading & {
+            transform: scale(0.95);
+        }
     }
 
     &__container
@@ -127,6 +141,14 @@
 
         width: 16%;
         height: 100%;
+
+        opacity: 1;
+        transition: 2s 0.5s;
+
+        .loading & {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
     }
 
     &__side-right
@@ -139,6 +161,14 @@
         height: 100%;
 
         align-items: flex-end;
+
+        opacity: 1;
+        transition: 2s 0.4s;
+
+        .loading & {
+            transform: translateX(100%);
+            opacity: 0;
+        }
     }
 
     &__footer
@@ -148,6 +178,14 @@
         left: 0;
 
         width: 100%;
+
+        opacity: 1;
+        transition: 2s 0.7s;
+
+        .loading & {
+            transform: translateY(100%);
+            opacity: 0;
+        }
     }
 }
 

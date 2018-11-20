@@ -39,7 +39,11 @@
 
     &__logo
     {
-        transition: all .3s;
+
+        .loading & {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
 
         @include respond-from(small)
         {

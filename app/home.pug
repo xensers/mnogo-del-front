@@ -6,17 +6,20 @@ append vars
 
 append scripts
   script.
-    document.addEventListener("DOMContentLoaded", onLoadedHomePage);
-    if (!window.location.hash)
-    {
-      startPageOpen();
-    }
+
+    window.addEventListener("DOMContentLoaded", onLoadedHomePage);
+    //- if (!window.location.hash)
+    //- {
+    //-   startPageOpen();
+    //-   document.querySelector('.start-page__close').addEventListener("click", onLoadedHomePage);
+    //- } else {
+    //-   window.addEventListener("DOMContentLoaded", onLoadedHomePage);
+    //- }
 
 block content
   .homepage__warp
     .homepage__cases(onselectstart="return false")
-      div
-        include pug/demo/stikers
+      include pug/demo/stikers
       .homepage__cases__end
         p Кажется все...
     .homepage__article

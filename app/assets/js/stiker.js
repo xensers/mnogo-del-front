@@ -1,3 +1,15 @@
+var elemsStikers = document.querySelectorAll('.stiker');
+for (var i = elemsStikers.length - 1; i >= 0; i--) {
+    var elemStiker = elemsStikers[i];
+    var elemNumber = elemStiker.querySelector('.stiker__number');
+    var elemWrap   = elemStiker.querySelector('.stiker__wrap');
+    var deg        = (Math.random() * 10) - 5;
+
+    elemNumber.innerHTML = '№' + (i + 1) + '. ';
+    elemWrap.style.transform = 'rotate(' + deg + 'deg)';
+}
+
+
 function Stikers() {
     var self = this;
     var stikerGroupOnResize,
@@ -240,7 +252,6 @@ function Stikers() {
         return this;
     }
 
-
     var createDots = function(elemsStikers) {
         for (var i = elemsStikers.length - 1; i >= 0; i--) {
             var elemDot = document.createElement('span');
@@ -439,7 +450,7 @@ function Stikers() {
             elemInner.style.transform = "";
             elemOuter.style.transform = "";
             elemBack.style.transform  = "";
-            elemFront.style.transform  = "";
+            elemFront.style.transform = "";
             elemArena.style.left      = "";
             elemArena.style.right     = "";
         });
