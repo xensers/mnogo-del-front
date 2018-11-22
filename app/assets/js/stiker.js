@@ -1,17 +1,20 @@
-var elemsStikers = document.querySelectorAll('.stiker');
-for (var i = elemsStikers.length - 1; i >= 0; i--) {
-    var elemStiker = elemsStikers[i];
-    var elemNumber = elemStiker.querySelector('.stiker__number');
-    var elemWrap   = elemStiker.querySelector('.stiker__wrap');
-    var deg        = (Math.random() * 10) - 5;
+(function(){
+    var elemsStikers = document.querySelectorAll('.stiker');
+    for (var i = elemsStikers.length - 1; i >= 0; i--) {
+        var elemStiker = elemsStikers[i],
+            elemNumber = elemStiker.querySelector('.stiker__number'),
+            elemWrap   = elemStiker.querySelector('.stiker__wrap');
 
-    elemNumber.innerHTML = '№' + (i + 1) + '. ';
-    elemWrap.style.transform = 'rotate(' + deg + 'deg)';
-}
+        var deg = (Math.random() * 10) - 5;
 
+        elemNumber.innerHTML = '№' + (i + 1) + '. ';
+        elemWrap.style.transform = 'rotate(' + deg + 'deg)';
+    }
+})();
 
 function Stikers() {
     var self = this;
+
     var stikerGroupOnResize,
         timerForGrid;
 
@@ -34,7 +37,9 @@ function Stikers() {
 
         elemGroup.classList.add('stikers-group');
         elemGroup.classList.onselectstart = function() {return false};
+
         createDots(elemsStikers);
+
         elemControlNext.onclick = function () {
             self.slideNext(elemsStikers);
         };
@@ -44,13 +49,14 @@ function Stikers() {
 
         requestAnimationFrame(function() {
             for (var i = elemsStikers.length - 1; i >= 0; i--) {
-                var elemStiker = elemsStikers[i];
-                var elemNumber = elemStiker.querySelector('.stiker__number');
-                var elemWrap   = elemStiker.querySelector('.stiker__wrap');
-                var deg        = (Math.random() * 10) - 5;
+                var elemStiker = elemsStikers[i],
+                    elemNumber = elemStiker.querySelector('.stiker__number'),
+                    elemWrap   = elemStiker.querySelector('.stiker__wrap');
 
-                elemNumber.innerHTML = '№' + (i + 1) + '. ';
+                var deg = (Math.random() * 10) - 5;
+
                 elemWrap.style.transform = 'rotate(' + deg + 'deg)';
+                elemNumber.innerHTML     = '№' + (i + 1) + '. ';
             }
         });
 
@@ -83,11 +89,11 @@ function Stikers() {
             }
 
             if (showTitle) {
-                var xFactor = 1.15;
-                var yFactor = 1.55;
+                var xFactor = 1.15,
+                    yFactor = 1.55;
             } else {
-                var xFactor = 1.15;
-                var yFactor = 1.15;
+                var xFactor = 1.15, 
+                    yFactor = 1.15;
             }
 
             window.removeEventListener('optimizedResize', stikerGroupOnResize);
@@ -124,16 +130,16 @@ function Stikers() {
                     index = elemsStikersMatrix[row][col].push(elemStiker) - 1;
 
                     (function(i, col, row, index, elemsStikersMatrix, showTitle) {
-                        var elemStiker = elemsStikersMatrix[row][col][index];
-                        var elemTitle  = elemStiker.querySelector('.stiker__title');
-                        var elemWrap   = elemStiker.querySelector('.stiker__wrap');
+                        var elemStiker = elemsStikersMatrix[row][col][index],
+                            elemTitle  = elemStiker.querySelector('.stiker__title'),
+                            elemWrap   = elemStiker.querySelector('.stiker__wrap');
 
                         if (showTitle) {
-                            var xFactor = 2.5;
-                            var yFactor = 9;
+                            var xFactor = 2.5, 
+                                yFactor = 9;
                         } else {
-                            var xFactor = 2.5;
-                            var yFactor = 2.5;
+                            var xFactor = 2.5,
+                                yFactor = 2.5;
                             requestAnimationFrame(function() {
                                 elemTitle.style.display = 'none';
                             });
@@ -141,8 +147,8 @@ function Stikers() {
 
                         setTimeout(function() {
                             requestAnimationFrame(function() {
-                                var x = (16 + xFactor) * col;
-                                var y = (16 + yFactor) * row;
+                                var x = (16 + xFactor) * col,
+                                    y = (16 + yFactor) * row;
 
                                 elemStiker.style.transform = 'translate(' + x + 'em, ' + y + 'em)';
                                 if (showTitle) {
@@ -183,9 +189,9 @@ function Stikers() {
     this.slideNext = function() {
         for (var iteration = elemsStikers.length - 1; iteration >= 0; iteration--) {
             if (elemsStikers[iteration].classList.contains('active')) {
-                var elemStiker = elemsStikers[iteration];
-                var elemWrap   = elemStiker.querySelector('.stiker__wrap');
-                var stikerDraw = getTheRightDraw(elemStiker, iteration);
+                var elemStiker = elemsStikers[iteration],
+                    elemWrap   = elemStiker.querySelector('.stiker__wrap'),
+                    stikerDraw = getTheRightDraw(elemStiker, iteration);
 
                 animate({
                     timing: linear,
@@ -219,9 +225,9 @@ function Stikers() {
     this.slidePrev = function() {
         for (var iteration = elemsStikers.length - 1; iteration >= 0; iteration--) {
             if (+elemsStikers[iteration].style.zIndex == 0) {
-                var elemStiker = elemsStikers[iteration];
-                var elemWrap   = elemStiker.querySelector('.stiker__wrap');
-                var stikerDraw = getTheRightDraw(elemStiker, iteration);
+                var elemStiker = elemsStikers[iteration],
+                    elemWrap   = elemStiker.querySelector('.stiker__wrap'),
+                    stikerDraw = getTheRightDraw(elemStiker, iteration);
 
                 animate({
                     timing: linear,
@@ -280,6 +286,7 @@ function Stikers() {
     var initStikers = function(elemsStackStikers) {
         for (var i = elemsStackStikers.length - 1; i >= 0; i--) {
             var elemStiker = elemsStackStikers[i];
+
             elemStiker.classList.remove('active');
             elemStiker.style.zIndex = i;
         }
@@ -297,16 +304,16 @@ function Stikers() {
         single, firstInit, noAnimateInit
     ) {
         var progress;
-        var elemStiker = elemsStackStikers[iteration];
-        var elemWrap   = elemStiker.querySelector('.stiker__wrap');
-        var elemInner  = elemStiker.querySelector('.stiker__inner');
-        var elemArena  = elemStiker.querySelector('.stiker__arena');
-        var elemOuter  = elemStiker.querySelector('.stiker__outer');
-        var elemBack   = elemStiker.querySelector('.stiker__back');
-        var elemFront  = elemStiker.querySelector('.stiker__front');
+        var elemStiker = elemsStackStikers[iteration],
+            elemWrap   = elemStiker.querySelector('.stiker__wrap'),
+            elemInner  = elemStiker.querySelector('.stiker__inner'),
+            elemArena  = elemStiker.querySelector('.stiker__arena'),
+            elemOuter  = elemStiker.querySelector('.stiker__outer'),
+            elemBack   = elemStiker.querySelector('.stiker__back'),
+            elemFront  = elemStiker.querySelector('.stiker__front');
 
-        var stikerDraw   = getTheRightDraw(elemStiker, iteration);
-        var stikerZIndex = +elemStiker.style.zIndex;
+        var stikerDraw   = getTheRightDraw(elemStiker, iteration),
+            stikerZIndex = +elemStiker.style.zIndex;
 
         elemStiker.classList.add('active');
         updateDots(elemsStackStikers);
@@ -429,12 +436,12 @@ function Stikers() {
     }
 
     var resetStiker = function(elemStiker) {
-        var elemWrap  = elemStiker.querySelector('.stiker__wrap');
-        var elemInner = elemStiker.querySelector('.stiker__inner');
-        var elemArena = elemStiker.querySelector('.stiker__arena');
-        var elemOuter = elemStiker.querySelector('.stiker__outer');
-        var elemFront  = elemStiker.querySelector('.stiker__front');
-        var elemBack  = elemStiker.querySelector('.stiker__back');
+        var elemWrap  = elemStiker.querySelector('.stiker__wrap'),
+            elemInner = elemStiker.querySelector('.stiker__inner'),
+            elemArena = elemStiker.querySelector('.stiker__arena'),
+            elemOuter = elemStiker.querySelector('.stiker__outer'),
+            elemFront = elemStiker.querySelector('.stiker__front'),
+            elemBack  = elemStiker.querySelector('.stiker__back');
 
         elemStiker.onmouseover = undefined;
         elemStiker.onmouseout  = undefined;
@@ -504,22 +511,22 @@ function Stikers() {
     }
 
     var stikerDrawToRight = function(elemStiker, progress) {
-        var elemWrap  = elemStiker.querySelector('.stiker__wrap');
-        var elemInner = elemStiker.querySelector('.stiker__inner');
-        var elemArena = elemStiker.querySelector('.stiker__arena');
-        var elemOuter = elemStiker.querySelector('.stiker__outer');
-        var elemFront  = elemStiker.querySelector('.stiker__front');
-        var elemBack  = elemStiker.querySelector('.stiker__back');
+        var elemWrap  = elemStiker.querySelector('.stiker__wrap'),
+            elemInner = elemStiker.querySelector('.stiker__inner'),
+            elemArena = elemStiker.querySelector('.stiker__arena'),
+            elemOuter = elemStiker.querySelector('.stiker__outer'),
+            elemFront = elemStiker.querySelector('.stiker__front'),
+            elemBack  = elemStiker.querySelector('.stiker__back');
 
-        var innerTranslateY = -24 * progress - 4 * progress;
-        var outerTranslateY = 24 * progress;
-        var backTransleteY  = -(17 - progress * 34);
-        var backTransleteX  = (17 - progress * 34);
-        var backScale       = (100 - 30 * zone(progress, 0.7, 1)) / 100;
+        var innerTranslateY = -24 * progress - 4 * progress,
+            outerTranslateY = 24 * progress,
+            backTransleteY  = -(17 - progress * 34),
+            backTransleteX  = (17 - progress * 34),
+            backScale       = (100 - 30 * zone(progress, 0.7, 1)) / 100;
 
         elemInner.style.transform = 'rotate(45deg) translateY(' + innerTranslateY + 'em)';
         elemOuter.style.transform = 'translateY(' + outerTranslateY + 'em)';
-        elemFront.style.transform  = 'rotate(-45deg)';
+        elemFront.style.transform = 'rotate(-45deg)';
         elemBack.style.transform  = 'rotate(-45deg) translate(' + backTransleteY + 'em, ' + backTransleteX + 'em) scale(' + backScale + ')';
 
         if (progress <= 0.5) {
@@ -530,22 +537,22 @@ function Stikers() {
     }
 
     var stikerDrawToLeft = function(elemStiker, progress) {
-        var elemWrap  = elemStiker.querySelector('.stiker__wrap');
-        var elemInner = elemStiker.querySelector('.stiker__inner');
-        var elemArena = elemStiker.querySelector('.stiker__arena');
-        var elemOuter = elemStiker.querySelector('.stiker__outer');
-        var elemBack  = elemStiker.querySelector('.stiker__back');
-        var elemFront  = elemStiker.querySelector('.stiker__front');
+        var elemWrap  = elemStiker.querySelector('.stiker__wrap'),
+            elemInner = elemStiker.querySelector('.stiker__inner'),
+            elemArena = elemStiker.querySelector('.stiker__arena'),
+            elemOuter = elemStiker.querySelector('.stiker__outer'),
+            elemBack  = elemStiker.querySelector('.stiker__back'),
+            elemFront = elemStiker.querySelector('.stiker__front');
 
-        var innerTranslateY = -24 * progress - 4 * progress;
-        var outerTranslateY = 24 * progress;
-        var backTransleteY  = (17 - progress * 34);
-        var backTransleteX  = (17 - progress * 34);
-        var backScale       = (100 - 30 * zone(progress, 0.7, 1)) / 100;
+        var innerTranslateY = -24 * progress - 4 * progress,
+            outerTranslateY = 24 * progress,
+            backTransleteY  = (17 - progress * 34),
+            backTransleteX  = (17 - progress * 34),
+            backScale       = (100 - 30 * zone(progress, 0.7, 1)) / 100;
 
         elemInner.style.transform = 'rotate(-45deg) translateY(' + innerTranslateY + 'em)';
         elemOuter.style.transform = 'translateY(' + outerTranslateY + 'em)';
-        elemFront.style.transform  = 'rotate(45deg)';
+        elemFront.style.transform = 'rotate(45deg)';
         elemBack.style.transform  = 'rotate(45deg) translate(' + backTransleteY + 'em, ' + backTransleteX + 'em) scale(' + backScale + ')';
 
         if (progress <= 0.5) {
