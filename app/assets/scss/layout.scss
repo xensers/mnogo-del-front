@@ -87,13 +87,6 @@
 
         align-self: center;
         justify-content: space-between;
-
-        transition: 8s;
-        transform-origin: top center;
-
-        .loading & {
-            transform: scale(0.95);
-        }
     }
 
     &__container

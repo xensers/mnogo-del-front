@@ -96,6 +96,7 @@
 
     &__cases
     {
+        position: relative;
         font-size: .7rem;
 
         padding: 2rem;
@@ -103,6 +104,15 @@
 
         transition: .3s .1s;
         text-align: center;
+
+        .oval-marker
+        {
+            display: none;
+            position: absolute;
+            font-size: 35rem;
+            top: -4rem;
+            left: 4rem;
+        }
 
         @include respond-to(medium)
         {

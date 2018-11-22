@@ -23,6 +23,8 @@ function openCases() {
     window.location.hash = 'cases';
     updateMenu();
 
+    document.querySelector('.homepage__cases > .oval-marker').style.display = 'none';
+
     respondFrom(breakpoint.medium, function() {
         stikers.convertToGrid(4, false, true, false);
     }, true, false);
@@ -38,6 +40,10 @@ function closeCases() {
     document.documentElement.classList.remove('homepage--cases');
     window.location.hash = '';
     updateMenu();
+
+    setTimeout(function(){
+        document.querySelector('.homepage__cases > .oval-marker').style.display = 'block';
+    }, 1000);
 
     respondFrom(breakpoint.medium, function() {
         stikers.convertToGrid(3, 2, false, true);

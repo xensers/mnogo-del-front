@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", onLoadedMenu);
-window.addEventListener("beforeunload", onUnloadMenu)
+window.addEventListener("beforeunload", onUnloadMenu);
 
 
 function onLoadedMenu() {

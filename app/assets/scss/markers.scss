@@ -4,8 +4,6 @@
 {
     position: relative;
     z-index: 1;
-
-    display: inline-block;
 }
 
 .marker-1
@@ -37,5 +35,71 @@
 
 .oval-marker
 {
-  
+    font-size: 30rem;
+
+    position: relative;
+
+    display: inline-block;
+
+    overflow: hidden;
+
+    width: 1em;
+    height: 1em;
+
+    transform: rotate(45deg) translate(0, 0);
+
+    &:before
+    {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        display: inline-block;
+
+        width: 1em;
+        height: 1em;
+
+        content: '';
+
+        background: url(../images/marker-oval.png) no-repeat;
+        background-position: center center;
+        background-size: 90% 90%;
+        transform: rotate(-45deg) translate(0, 0);
+    };
+}
+
+.oval-marker
+{
+    animation: oval-marker 1s linear;
+    &:before
+    {
+        animation: oval-marker-before 1s linear;
+    }
+}
+
+
+@keyframes oval-marker
+{
+    from
+    {
+        transform: rotate(45deg) translate(-1.41em, 0);
+    }
+
+    to
+    {
+        transform: rotate(45deg) translate(0, 0);
+    }
+}
+
+@keyframes oval-marker-before
+{
+    from
+    {
+        transform: rotate(-45deg) translate(1em, 1em);
+    }
+
+    to
+    {
+        transform: rotate(-45deg) translate(0, 0);
+    }
 }
