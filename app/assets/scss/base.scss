@@ -10,6 +10,21 @@ body
 {
     font-family: 'AvantGardeGothicC', sans-serif;
     font-size: 16px;
+
+    @include respond-from(FHD)
+    {
+      font-size: 24px;
+    };
+
+    @include respond-from(QHD)
+    {
+      font-size: 32px;
+    };
+
+    @include respond-from(UHD)
+    {
+      font-size: 48px;
+    };
 }
 
 img,

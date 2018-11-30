@@ -6,6 +6,15 @@
 
     padding: 0 2rem;
 
+    opacity: 1;
+
+    transition: opacity 2s;
+
+    .loading &
+    {
+        opacity: 0;
+    }
+
     &__wrapper
     {
         position: relative;
@@ -42,14 +51,6 @@
         overflow: hidden;
 
         width: 100%;
-
-        opacity: 1;
-        transition: 2s;
-
-        .loading & {
-            transform: translateY(-100%);
-            opacity: 0;
-        }
     }
 
     &__menu
@@ -102,8 +103,7 @@
         }
     }
 
-    &__side-left,
-    &__side-right
+    &__side
     {
         display: none;
 
@@ -124,45 +124,31 @@
                 writing-mode: vertical-rl;
             }
         }
-    }
 
-    &__side-left
-    {
-        position: fixed;
-        top: 0;
-        left: 0;
+        &_left
+        {
+            position: fixed;
+            top: 0;
+            left: 0;
 
-        width: 16%;
-        height: 100%;
+            width: 16%;
+            height: 100%;
+        }
 
-        opacity: 1;
-        transition: 2s 0.5s;
+        &_right
+        {
+            position: fixed;
+            top: 0;
+            right: 0;
 
-        .loading & {
-            transform: translateX(-100%);
-            opacity: 0;
+            width: 16%;
+            height: 100%;
+
+            align-items: flex-end;
+
         }
     }
 
-    &__side-right
-    {
-        position: fixed;
-        top: 0;
-        right: 0;
-
-        width: 16%;
-        height: 100%;
-
-        align-items: flex-end;
-
-        opacity: 1;
-        transition: 2s 0.4s;
-
-        .loading & {
-            transform: translateX(100%);
-            opacity: 0;
-        }
-    }
 
     &__footer
     {
@@ -173,12 +159,6 @@
         width: 100%;
 
         opacity: 1;
-        transition: 2s 0.7s;
-
-        .loading & {
-            transform: translateY(100%);
-            opacity: 0;
-        }
     }
 }
 
@@ -190,6 +170,7 @@
     {
         overflow-y: hidden !important;
     }
+
     .layout__body,
     .layout__menu
     {

@@ -24,7 +24,6 @@ function runPreloader(status) {
     window.addEventListener("load", onLoadPreloader);
 }
 
-
 function onLoadPreloader() {
     if (!status) {
         clearTimeout(preloaderTimer);

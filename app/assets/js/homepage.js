@@ -16,6 +16,7 @@ function onLoadedHomePage() {
             link.addEventListener('click', openCases);
         }
     }
+
 }
 
 function openCases() {
@@ -23,6 +24,7 @@ function openCases() {
     window.location.hash = 'cases';
     updateMenu();
 
+    document.documentElement.classList.remove('homepage--ready');
     document.querySelector('.homepage__cases > .oval-marker').style.display = 'none';
 
     respondFrom(breakpoint.medium, function() {
@@ -41,6 +43,7 @@ function closeCases() {
     window.location.hash = '';
     updateMenu();
 
+    document.documentElement.classList.add('homepage--ready');
     setTimeout(function(){
         document.querySelector('.homepage__cases > .oval-marker').style.display = 'block';
     }, 1000);

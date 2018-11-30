@@ -53,9 +53,14 @@
             flex: 0 0 15%;
             img
             {
-                max-height: 4rem;
+                height: 4rem;
 
                 transition: all .3s;
+
+                .scroll &
+                {
+                    height: 3rem;
+                }
             }
         }
 
@@ -231,7 +236,7 @@
             flex-direction: column;
 
             transition: transform .5s ease;
-            transform: translateY(-4rem);
+            transform: translateY(2rem);
 
             justify-content: flex-start;
             align-items: flex-end;
@@ -245,6 +250,11 @@
                 height: 2rem;
 
                 transition: transform .5s ease;
+            }
+
+            .homepage--cases &
+            {
+                    transform: translateY(-4rem);
             }
 
             .scroll &

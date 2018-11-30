@@ -20,19 +20,6 @@
     animation-fill-mode: both;
 }
 
-.layout
-{
-    transition: opacity 1s;
-
-    opacity: 1;
-}
-
-
-.loading .layout
-{
-    opacity: 0;
-}
-
 @keyframes loading-fade
 {
     from

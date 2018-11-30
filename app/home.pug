@@ -6,14 +6,15 @@ append vars
 
 append scripts
   script.
-    window.addEventListener("DOMContentLoaded", onLoadedHomePage);
-    //- if (!window.location.hash)
-    //- {
-    //-   startPageOpen();
-    //-   document.querySelector('.start-page__close').addEventListener("click", onLoadedHomePage);
-    //- } else {
-    //-   window.addEventListener("DOMContentLoaded", onLoadedHomePage);
-    //- }
+    if (!window.location.hash)
+    {
+      startPageOpen();
+      document.querySelector('.start-page__close').addEventListener("click", function(){
+          setTimeout(onLoadedHomePage, 300);
+      });
+    } else {
+      window.addEventListener("DOMContentLoaded", onLoadedHomePage);
+    }
 
 block content
   .homepage__warp

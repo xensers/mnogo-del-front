@@ -33,34 +33,50 @@
 
                 flex: 0 0 100%;
             }
+
+            .homepage--cases &
+            {
+                transform: translateX(0%);
+            }
         }
     }
 
     &__article
     {
-        transition: transform 1s 1s, opacity .3s .1s;
+        transition: .3s .1s;
+        opacity: 0;
 
-        span:before{
-            transition: 0.5s 2s;
-        }
-
-        .loading & {
-            opacity: 0;
-
-            span:before{
-                transform: scaleX(0);
-            };
-        }
+        animation: fadeIn 1s ease 2s;
+        animation-fill-mode: both;
 
         @include respond-from(medium)
         {
             font-size: .8rem;
 
             flex: 0 0 30%;
+
+            .homepage--cases &
+            {
+                // transform: translateX(50%);
+
+                animation: outLeft 1s;
+            }
         }
+
         @include respond-from(large)
         {
             font-size: 1rem;
+        }
+
+        @include respond-to(medium)
+        {
+
+        }
+
+        .homepage--cases &
+        {
+            opacity: 0;
+            transform: translateX(-100%);
         }
 
         &__text
@@ -75,23 +91,17 @@
             };
         }
 
-        &__header
-        {
-            transition: 1s 0.7s;
+        span:before{
+            display: none;
+            animation: scaleX 0.5s ease 0.5s;
+            animation-fill-mode: both;
 
-            .loading & {
-                opacity: 0;
+            .homepage--ready &
+            {
+                display: block;
             }
-        }
+        };
 
-        &__text, &__buttons
-        {
-            transition: 1s 1.5s;
-
-            .loading & {
-                opacity: 0;
-            }
-        }
     }
 
     &__cases
@@ -109,9 +119,9 @@
         {
             display: none;
             position: absolute;
-            font-size: 35rem;
-            top: -4rem;
-            left: 4rem;
+            font-size: 45em;
+            top: -10%;
+            left: 10%;
         }
 
         @include respond-to(medium)
@@ -119,7 +129,20 @@
             transition: opacity .3s .1s;
 
             opacity: 0;
+
+            .homepage--cases &
+            {
+                opacity: 1;
+
+                 > *
+                {
+                    width: 100%;
+
+                    flex: 0 0 100%;
+                }
+            }
         }
+
         @include respond-from(small)
         {
             font-size: 1rem;
@@ -245,62 +268,37 @@
     }
 
 
-    &--cases
-    {
-        @include respond-to(medium)
+    @include respond-from(medium){
+        .stikers-group
         {
-            .homepage__warp
-            {
-                transform: translateX(0%);
-            }
-
-            .homepage__article
-            {
-                opacity: 0;
-            }
-
-            .homepage__cases
-            {
-                opacity: 1;
-
-                 > *
-                {
-                    width: 100%;
-
-                    flex: 0 0 100%;
-                }
-            }
+            height: 25rem;
+            width: 37rem;
         }
-        @include respond-from(medium)
-        {
-            .homepage__article
-            {
-                transform: translateX(50%);
+    };
 
-                opacity: 0;
-            }
-
-            .homepage__cases
-            {
-                flex: 0 0 100%;
-            }
-        }
-    }
-
-
-    .stikers-group
+    .start-page--open & .stiker:nth-child(2n)
     {
-        height: 25rem;
-        width: 37rem;
+        transform: translate(110%, 0%);
     }
 
-    .stiker
+    .start-page--open & .stiker:nth-child(3n)
     {
-        transform: translate(-999px, -999px) rotate(180deg);
+        transform: translate(220%, 0%);
     }
 
-    .stiker__wrap
+    .start-page--open & .stiker:nth-child(4n)
     {
-        transform: rotate(360deg);
+        transform: translate(110%, 110%);
     }
+
+    .start-page--open & .stiker:nth-child(5n)
+    {
+        transform: translate(220%, 110%);
+    }
+
+    .start-page--open & .stiker:nth-child(6n)
+    {
+        transform: translate(0%, 110%);
+    }
+
 }
