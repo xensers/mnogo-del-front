@@ -17,11 +17,5 @@ function headerScroll() {
       } else {
           headerElem.classList.remove('empty-title');
       }
-
-      if (window.pageYOffset > 10) {
-          headerElem.classList.add('scroll');
-      } else {
-          headerElem.classList.remove('scroll');
-      }
     });
 }
