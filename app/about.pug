@@ -81,6 +81,30 @@ block content
           +e.P.content
             | Гарри Петрович, глава отдела <br> разработки, Лаборатория <br> Касперского
 
+  +b.feedback
+    +e.left
+      +e.arrow
+    +e.right
+      +b.feedback-form
+        +e.header
+          +e.H2.title Напишите мне сюда:
+          +e.subtitle (если хотите)
+        +e.FORM.form
+          +e.control
+            +e.INPUT.input(type="text", placeholder="Как вас там")
+            //+e.placeholder Как вас там
+          +e.control
+            +e.INPUT.input(type="text", placeholder="По какому поводу пишете")
+            //+e.placeholder По какому поводу пишете
+          +e.control._message
+            +e.INPUT.input(type="text", placeholder="Сюда сообщение")
+            //+e.placeholder Сюда сообщение
+          +e.control
+            +e.INPUT.input(type="text", placeholder="И куда вам на это ответить? (Лучше имейл)")
+          +e.BUTTON.btn 
+            +e.btn-round
+            +e.btn-text Отправить
+
 
 
 
