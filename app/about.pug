@@ -1,0 +1,131 @@
+extends pug/base
+
+append vars
+  - pageTitle = 'О проекте';
+  - layout.classList = ['aboutpage'];
+
+append scripts
+  script.
+    console.log('this is about page');
+
+block content
+  .first-section
+    .first-section__left
+      .first-section__figure
+        .oval-marker
+        img.first-section__figure-img(src="assets/images/aboutpage/man.png", alt="alt", srcset="assets/images/aboutpage/man@2x.png 2x")
+    .first-section__right
+      h2.first-section__title Всем привет!
+      .first-section__content
+        p 
+          | Этот свежий 
+          span.marker-1 молодой человек – я, 
+          br
+          | доктор 
+          a(href="").link прокрастинологических наук,
+        p
+          | воспитатель обезьянок 
+          br
+          a(href="").link в полевых корпоративных условиях
+        p
+          | и почетный мастер 
+          a(href="").link клуба Джедаев,
+          br
+          span.marker-1 Максим Дорофеев…
+      .first-section__bottom
+        .first-section__bottom-text 
+          | Что это все <br> значит?
+
+
+  .trust-us
+    .trust-us__left
+      h2.title.trust-us__title 
+        | Я знаю, как 
+        span.marker-title сделать
+        br
+        | вас и вашу команду <br> эффективной
+      p 
+        | На сегодняшний момент мое любимое <br> дело — обучение 
+        | людей техникам личной <br> эффективности:
+      p.subtitle.trus-us__subtitle
+        | «Как 
+        span.marker-2 приносить больше 
+        |  пользы своей компании, оставаясь при этом <br>        
+        span.marker-2 свободным и творческим 
+        | человеком»
+
+      p
+        | Мне доверились такие компании, которые <br> по контракту я не могу называть… 
+        br
+        | Но на счет картинок никто ничего не говорил…
+        
+    .trust-us__right
+      .trust-us__icons
+        .trust-us__icon-wrapper#js-logo-wrapper
+        img(src="assets/images/aboutpage/icons/yandex.svg", alt="yandex").trust-us__icons-item
+        img(src="assets/images/aboutpage/icons/kaspersky.svg", alt="yandex").trust-us__icons-item
+        img(src="assets/images/aboutpage/icons/some.svg", alt="yandex").trust-us__icons-item
+        img(src="assets/images/aboutpage/icons/yandex.svg", alt="yandex").trust-us__icons-item
+        img(src="assets/images/aboutpage/icons/kaspersky.svg", alt="yandex").trust-us__icons-item
+        img(src="assets/images/aboutpage/icons/some.svg", alt="yandex").trust-us__icons-item
+        img(src="assets/images/aboutpage/icons/yandex.svg", alt="yandex").trust-us__icons-item
+        img(src="assets/images/aboutpage/icons/kaspersky.svg", alt="yandex").trust-us__icons-item
+        img(src="assets/images/aboutpage/icons/some.svg", alt="yandex").trust-us__icons-item
+
+      +b.audio-backfeed
+        +e.left
+          +e.IMG.avatar(src="assets/images/aboutpage/testimonials/clinet_1.png", alt="")
+          +e.BUTTON.play
+        +e.right
+          +e.IMG.tmp(src="assets/images/aboutpage/tmp_audio.png", alt="")
+          +e.P.content
+            | Гарри Петрович, глава отдела <br> разработки, Лаборатория <br> Касперского
+
+
+
+
+
+
+
+block footer
+  
+  .to-small  
+    .socals.flex.space-around
+      a(href="#").socals__item
+        span.icon.socal-vk
+      a(href="#").socals__item
+        span.icon.socal-fb
+      a(href="#").socals__item
+        span.icon.socal-tw
+      a(href="#").socals__item
+        span.icon.socal-lj
+      a(href="#").socals__item
+        span.icon.socal-yt
+  .from-medium       
+
+
+
+block side-left-top
+block side-left-center
+  .rotate
+    a.header__link.menu__link(href="#") Назад в офис
+block side-left-bottom
+
+block side-right-top
+block side-right-center
+  .socals.vertical
+    a(href="#").socals__item
+      span.icon.socal-vk
+    a(href="#").socals__item
+      span.icon.socal-fb
+    a(href="#").socals__item
+      span.icon.socal-tw
+    a(href="#").socals__item
+      span.icon.socal-lj
+    a(href="#").socals__item
+      span.icon.socal-yt
+block side-right-bottom
+  .rotate
+    .lang
+      | RUS / 
+      a(href="#") END

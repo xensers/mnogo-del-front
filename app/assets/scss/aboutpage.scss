@@ -1,0 +1,187 @@
+@import 'core';
+
+.aboutpage {
+
+    // fix layout
+    .layout__container {
+        width: 74.666666%;
+        max-width: 60rem;
+    }
+    .layout__side_right {
+        width: 13%;
+    }
+
+
+    // Setup typography
+    p {
+        line-height: (24/16);
+    }
+    .title {
+        font-size: 2.875rem;
+        font-weight: normal;
+        margin: 0;
+    }
+    .subtitle {
+        font-size: 24px;
+        line-height: (28/24);
+        z-index: 1;
+    }
+
+
+    // Markers
+    .marker-title {
+        display: inline-block;
+        position: relative;
+        z-index: 0;
+        &::before{
+            content: "";
+            width: 15.9375rem;
+            min-height: 4.6875rem;
+            background: url('../images/aboutpage/marker-title.png') no-repeat center;
+            position: absolute;
+            left: -0.625rem;
+            top:-0.625rem;
+            z-index: -1;
+        }
+    }
+
+
+    /* -------------------------------
+        F I R S T   S E C T I O N
+    ---------------------------------- */
+
+    .first-section {
+        display: flex;
+        padding-bottom: 12.5rem;
+        &__figure {
+            min-width: 25rem;
+            min-height: 25.625rem;            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin-left: -15px;
+            .oval-marker {
+                position: absolute;
+                top:0;
+                left:0;
+                font-size: 25rem;                
+            }
+            &-img {
+                margin-top: -1.25rem;
+                z-index: 1;
+            }
+        }
+        &__right {
+            padding-left: 1.5625rem;
+        }
+        &__content {
+            line-height: 1.6;
+        }
+        &__title {
+            font-size: 4.125rem;
+            font-weight: normal;
+            margin-bottom: 0;
+            line-height: 1;
+        }
+
+        &__bottom {
+            position: relative;
+            margin-top: 6.25rem;
+            z-index: 0;
+            &:before {
+                content:"";                
+                min-width: 13.125rem;
+                min-height: 7.7875rem;
+                background: url('../images/aboutpage/round_small.png') no-repeat;
+                position: absolute;
+                top: 60%;
+                left: 10%;
+                transform: translate(-50%, -50%);
+                z-index: -1;
+            }
+            &:after {
+                content: "";
+                min-width: 7.4375rem;
+                min-height: 16rem;
+                background: url('../images/aboutpage/arrow_1.svg') no-repeat center;
+                position: absolute;
+                top:0;
+                left: 0.625rem;
+            }
+        }
+
+    }
+
+
+
+    /* -------------------------------
+        T R U S T   U S
+    ---------------------------------- */
+    .trust-us {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 70px;
+        &__left {
+            max-width: 545px;
+        }
+        &__right {
+            min-width: 410px;
+            max-width: 410px;
+            //border: 1px solid red;
+            margin-right: -75px;
+        }
+        &__icons {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 0;
+            &-item {
+                margin: 0 30px 50px;
+                cursor: pointer;
+                transition: transform 230ms ease;
+                &:hover {
+                    transform: scale(1.1);
+                }               
+            }
+        }
+        &__icon-wrapper {
+            background: url('../images/aboutpage/logo_wrapper.png') no-repeat;
+            width: 145px;
+            height: 158px;
+            position: absolute;
+            z-index: -1;
+            transition: all 230ms ease;
+            //border: 1px solid;
+        }
+    }
+
+
+
+    .audio-backfeed {
+        display: flex;
+        &__left {
+            position: relative;
+            max-width: 80px;
+        }
+        &__right {
+            padding-left: 20px;
+        }
+        &__play {
+            border:2px solid;
+            width: 31px;
+            height: 31px;
+            border-radius: 50%;
+            position: absolute;
+            right: -15px;
+            top:0;
+            background: #fff url('../images/aboutpage/audio-icon.png') no-repeat center;
+        }
+        &__content {     
+            margin-top: 10px;       
+        }
+    }
+
+
+}
