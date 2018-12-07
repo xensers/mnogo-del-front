@@ -184,7 +184,9 @@
     }
 
 
-
+    /* -------------------------------
+        T E L L   T E C H N I Q U E 
+    ---------------------------------- */
     .tell-technique {
         display: flex;
         padding: 150px 0;
@@ -262,6 +264,8 @@
 
 
     .began-slider {
+        overflow: hidden;
+        position: relative;
         &__slide {
             display: flex;     
             &-left {
@@ -284,7 +288,45 @@
         &__content {
             width: 73%;
         }
-
+        .swiper-btn {
+            position: absolute;
+            cursor: pointer;
+            z-index: 1;
+            width: 53px;
+            height: 53px;
+            top:40%;
+            outline: 0;
+            &__round {                
+                width: 100%;
+                height: 100%;
+                border: 2px solid;
+                border-radius: 50%;                
+                background: url('../images/aboutpage/swiper-arrow.svg') no-repeat center;
+                position: absolute;                
+            }
+            &__hover {
+                width: 68px;
+                height: 51px;
+                background: url('../images/aboutpage/swiper-btn-hover.svg') no-repeat center;
+                position: absolute;
+                z-index: -1;
+                left: -5px;
+                transition: all 230ms ease;
+            }
+            &_next {
+                right: 15px;
+                .swiper-btn__round {
+                    transform: rotate(180deg);
+                }
+            }
+            &.swiper-button-disabled {
+                cursor: inherit;
+                opacity: 0.5;
+                .swiper-btn__hover {
+                    opacity: 0;
+                }
+            }
+        }
     }
 
 

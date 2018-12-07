@@ -3,6 +3,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log("About Page loaded...");
     var feedbackIcons = new trustUsFeedback();
+
+    initSlider();
 })
 
 
@@ -22,7 +24,6 @@ var trustUsFeedback = function(){
     })
 }
 
-
 trustUsFeedback.prototype.moveRound = function(element){
     var logoRect = element.getBoundingClientRect();
     var containerRect = this.itemsWrapper.getBoundingClientRect();
@@ -35,4 +36,26 @@ trustUsFeedback.prototype.moveRound = function(element){
     this.round.style.left = pos.left + 'px';
     this.round.style.top = pos.top + 'px';
     this.round.style.transform = 'translate(-27%, -30%)';
+}
+
+
+
+
+// Slider 
+
+
+
+function initSlider(){
+    var mySwiper = new Swiper('.began-slider', {  
+        pagination: {
+            el: '.began-slider__pagination',
+        },
+        navigation: {
+            nextEl: '.began-slider__next',
+            prevEl: '.began-slider__prev',
+        },
+        effect: 'coverflow',
+        spaceBetween: 20,
+        speed: 500
+    })
 }

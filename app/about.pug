@@ -109,24 +109,32 @@ block content
 
   +b.how-began
     +b.began-slider
-      +e.slide
-        +e.slide-left
-          +e.IMG.photo(src="assets/images/aboutpage/slider/photo-1.png", alt="")
-        +e.slide-right
-          +e.title.title Как все начиналось
-          +e.year.marker-1 1981
-          +e.content
-            p Родился в Москве, вечером 15 апреля 1981 года в семье помещика Дорофеева и моей матушки, 
-            a(href="").link Подробнее о книге
-      +e.slide
-        +e.slide-left
-          +e.IMG.photo(src="assets/images/aboutpage/slider/photo-1.png", alt="")
-        +e.slide-right
-          +e.title.title Как все начиналось
-          +e.year.marker-1 1981
-          +e.content
-            p Родился в Москве, вечером 15 апреля 1981 года в семье помещика Дорофеева и моей матушки, 
-            a(href="").link Подробнее о книге
+      +e.wrapper.swiper-wrapper
+        +e.slide.swiper-slide
+          +e.slide-left
+            +e.IMG.photo(src="assets/images/aboutpage/slider/photo-1.png", alt="")
+          +e.slide-right
+            +e.title.title Как все начиналось
+            +e.year.marker-1 1981
+            +e.content
+              p Родился в Москве, вечером 15 апреля 1981 года в семье помещика Дорофеева и моей матушки, 
+              a(href="").link Подробнее о книге
+        +e.slide.swiper-slide
+          +e.slide-left
+            +e.IMG.photo(src="assets/images/aboutpage/slider/photo-1.png", alt="")
+          +e.slide-right
+            +e.title.title Другой заголовок
+            +e.year.marker-1 1981
+            +e.content
+              p Родился в Москве, вечером 15 апреля 1981 года в семье помещика Дорофеева и моей матушки, 
+              a(href="").link Подробнее о книге
+      +e.pagination
+      +b.swiper-btn._prev.began-slider__prev
+        +e.round        
+        +e.hover       
+      +b.swiper-btn._next.began-slider__next
+        +e.round        
+        +e.hover
 
 
 
