@@ -84,6 +84,9 @@ block content
   +b.tell-technique
     +e.left
       +e.IMG.book(src="assets/images/aboutpage/book.png", srcset="assets/images/logo-inverse@2x.png 2x", alt="")
+      +e.player
+        img(src="assets/images/aboutpage/book-player_tmp.png", alt="")
+      +e.A.link.link(href="") Послушать отрывок (читаю сам)
     +e.right
       +e.title.title Расказываю, <br>как познать технику джедаев
       p 
@@ -123,8 +126,8 @@ block content
           +e.slide-left
             +e.IMG.photo(src="assets/images/aboutpage/slider/photo-1.png", alt="")
           +e.slide-right
-            +e.title.title Другой заголовок
-            +e.year.marker-1 1981
+            +e.title.title Другой <br>заголовок
+            +e.year.marker-1 1989 - 1994
             +e.content
               p Родился в Москве, вечером 15 апреля 1981 года в семье помещика Дорофеева и моей матушки, 
               a(href="").link Подробнее о книге
@@ -135,8 +138,53 @@ block content
       +b.swiper-btn._next.began-slider__next
         +e.round        
         +e.hover
+    +e.arrow
 
 
+  +b.do-now
+    +e.left
+      +e.title.title 
+        span.marker-title Что я делаю <br> 
+        | сейчас
+      p.
+        Следите регулярно за обновлениями в моем Youtube канале, 
+        блоге в ЖЖ, слушайте бухтелки и прожекторыпрокрастиналогии. 
+        Присоединяйтесь!
+      br
+      a.link(href="http://www.youtube.com/user/Cartmendum?sub_confirmation=1", target="_blank") Подписаться на канал
+      | &nbsp; (Нас уже 261 027)
+      br
+      br
+      br
+      +e.subtitle.subtitle Корпоративное обучение
+      p
+        | Если 
+        span.marker-1 вы считаете, что ваша 
+        |команда может быть эффективней, 
+        | лучше  
+        span.marker-1 и счастливей -
+        | вы можете заказать 
+        | у меня пробную встречу, 
+        | где мы определим, как пройдет работа по апгрейду. 
+      br
+      a.link(href="") Подробнее здесь
+    +e.right
+      +e.video-wrapper
+        +e.oval.oval-marker
+        +e.video-container.youtube(data-video="https://www.youtube.com/watch?v=uGlzWZyVrBk")          
+          +e.play-btn
+      +e.subtitle.subtitle Открытые тренинги 
+      p я провожу редко, <br> но вот ближайшие:
+      +e.dates
+        +e.date-row
+          +e.date-val 2-3 марта
+          +e.A.date-city.link(href="") Ростов-на-Дону
+        +e.date-row
+          +e.date-val 7 июня
+          +e.A.date-city.link(href="") Иркутск
+        +e.date-row
+          +e.date-val 15 июня
+          +e.A.date-city.link(href="") Новосибирск
 
 
   +b.feedback

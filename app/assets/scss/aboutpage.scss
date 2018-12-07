@@ -10,6 +10,9 @@
     .layout__side_right {
         width: 13%;
     }
+    .layout__body {
+        padding-bottom: 0;
+    }
 
 
     // Setup typography
@@ -194,9 +197,10 @@
             flex-grow: 1;
             display: flex;
             position: relative;
-            justify-content: center;            
+            justify-content: flex-start;            
             z-index: 0;
-            align-items: flex-start;
+            align-items: center;
+            flex-direction: column;
             &:before {
                 content: "";
                 min-width: 7.4375rem;
@@ -208,6 +212,10 @@
                 transform: rotateY(180deg) rotateZ(20deg);
                 z-index: -1;
             }
+        }
+        &__player {
+            padding-top: 10px;
+            padding-bottom: 30px;
         }
         &__right {
             max-width: 482px;
@@ -257,11 +265,20 @@
 
 
 
-
+    /* -------------------------------
+        H O W   B E G A N
+    ---------------------------------- */
     .how-began {
-        padding: 150px 0;
+        padding: 150px 0 50px;
+        &__arrow {
+            width: 100px;
+            height: 12rem;
+            background: url('../images/aboutpage/arrow_1.svg') no-repeat center;
+            background-size: contain;            
+            transform: rotateY(180deg) rotateZ(20deg);   
+            margin-left: 30%;         
+        }
     }
-
 
     .began-slider {
         overflow: hidden;
@@ -288,6 +305,25 @@
         &__content {
             width: 73%;
         }
+        &__pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            .swiper-pagination-bullet {
+                width: 5px;
+                height: 5px;
+                opacity: 1;
+                border-radius: 50%;
+                transition: all 230ms ease;
+                &-active {
+                    background: transparent;
+                    border: 1px solid rgba(0,0,0,0.5);
+                    width: 10px;
+                    height: 10px;
+                }
+            }
+        }
         .swiper-btn {
             position: absolute;
             cursor: pointer;
@@ -299,7 +335,7 @@
             &__round {                
                 width: 100%;
                 height: 100%;
-                border: 2px solid;
+                border: 3px solid;
                 border-radius: 50%;                
                 background: url('../images/aboutpage/swiper-arrow.svg') no-repeat center;
                 position: absolute;                
@@ -330,6 +366,73 @@
     }
 
 
+    /* -------------------------------
+        W H A T   I   D O   N O W  
+    ---------------------------------- */
+    .do-now {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 0 120px;
+        &__left {
+            max-width: 405px;
+        }
+        &__right {   
+            max-width: 465px;
+            flex-grow: 1;         
+        }
+        &__video-wrapper {
+            position: relative;
+            z-index: 0;
+            margin-bottom: 25px;
+        }
+        &__oval {
+            font-size: 26em;
+            position: absolute;
+            top:-80px;
+            max-width: 100%;
+            z-index: -1;
+        }
+        &__play-btn {
+            background: url('../images/aboutpage/play.svg') no-repeat center;
+            width: 70px;
+            height: 70px;
+            position: absolute;
+            background-size: contain;
+            left:50%;        
+            top:50%;        
+            transform: translate(-50%, -50%);
+            transition: transform 230ms ease-in-out;
+            cursor:pointer;
+            &:hover {
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+        &__video-container {
+            border: 1px solid;
+            padding-bottom: 55%;
+            background: #eee;
+            box-shadow: 0 30px 40px -30px rgba(0,0,0,0.4);
+            background-size: cover;                        
+        }
+        &__subtitle {
+            position: relative;
+            z-index: 1;
+        }
+        &__dates { 
+        }
+        &__date-row {
+            display: flex;
+            padding: 10px 0;
+        }
+        &__date-val {
+            min-width: 100px;
+        }
+    }
+
+
+    /* -------------------------------
+        F E E D B A C K
+    ---------------------------------- */
 
     .feedback {        
         display: flex;
