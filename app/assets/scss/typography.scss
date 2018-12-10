@@ -120,3 +120,18 @@ button,
     border: 1px solid;
     margin: .3em 1em .3em 1em;
 }
+
+.separator
+{
+    position: relative;
+    display: inline-block;
+    height: 2em;
+    border: 1px solid;
+    margin: 0 1em;
+    margin-bottom: -0.6em;
+
+    .rotate &
+    {
+        transform: rotate(90deg);
+    }
+}

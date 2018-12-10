@@ -2,79 +2,108 @@
 
 .case-detailed
 {
-
-  &__warp
-  {
-    @include respond-from(medium)
+    &__warp
     {
-      padding-top: 3.5rem;
+        @include respond-from(medium)
+        {
+            padding-top: 3.5rem;
+        }
     }
-  }
 
-  &__stiker
-  {
-    text-align: center;
-    font-size: 0.9rem;
-    @include respond-from(medium)
+    &__stiker
     {
-      position: fixed;
-      font-size: 1rem;
-    }
-  }
+        text-align: center;
 
-  &__article
-  {
-    @include respond-from(medium)
-    {
-      padding-left: 20rem;
-    }
-  }
-
-  &__next
-  {
-    transform: translateX(16rem);
-
-    @include respond-to(medium)
-    {
-      display: none;
+        @include respond-from(medium)
+        {
+            position: fixed;
+        }
     }
 
     .stiker
     {
-      transform: translateX(-2rem);
+      font-size: .9rem;
+
+
+      @include respond-from(medium)
+      {
+          transform: translateX(-5rem);
+      }
+
+      @include respond-from(large)
+      {
+          transform: translateX(0);
+          font-size: 1rem;
+      }
     }
 
-    .layout__side:hover &
+    &__article
     {
-      .stiker
-      {
-        transform: translateX(-5rem);
-      }
+
+        @include respond-from(medium)
+        {
+            padding-left: 13rem;
+        }
+
+        @include respond-from(large)
+        {
+            padding-left: 20rem;
+        }
     }
-    
-    &_btn
+
+    &__next
     {
-       white-space: nowrap;
-      &_text
-      {
-        display: inline-block;
-        padding-right: 1em;
-        transform: translateY(5em);
-        opacity: 0;
-        transition: transform 0.5s, opacity 0.5s;
-      }
+        transform: translateX(16rem);
 
-      .layout__side:hover &_text
-      {
-        transform: translateY(0);
-        opacity: 1;
-      }
+        @include respond-to(medium)
+        {
+            display: none;
+        }
 
-      &_icon
-      {
-        display: inline-block;
-      }
+        .stiker
+        {
+            transform: translateX(-2rem);
+        }
+
+        .layout__side:hover &
+        {
+            .stiker
+            {
+                transform: translateX(-5rem);
+            }
+        }
+
+        &_btn
+        {
+            white-space: nowrap;
+
+            @include respond-to(medium)
+            {
+                display: none;
+            }
+            &_text
+            {
+                display: inline-block;
+
+                padding-right: 1em;
+
+                transition: transform .5s, opacity .5s;
+                transform: translateY(5em);
+
+                opacity: 0;
+            }
+
+            .layout__side:hover &_text
+            {
+                transform: translateY(0);
+
+                opacity: 1;
+            }
+
+            &_icon
+            {
+                display: inline-block;
+            }
+        }
     }
-
-  }
 }
