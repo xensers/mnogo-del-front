@@ -50,6 +50,17 @@
         }
     }
 
+    &.arrow-right
+    {
+        width: 1.4em;
+        height: 1em;
+        background-image: url('../images/icons/arrow-right.png');
+        @include retina
+        {
+            background-image: url('../images/icons/arrow-right@2x.png');
+        }
+    }
+
     &.arrow-top
     {
         width: .9em;

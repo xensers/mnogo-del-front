@@ -35,6 +35,41 @@ h1,
     }
 }
 
+h2,
+.h2
+{
+    font-family: AvantGardeGothicC;
+    font-size: 3.2rem;
+    color: #000;
+    font-weight: 400;
+    margin-block-end: 0em;
+
+    @include respond-to(small)
+    {
+        font-size: 2.5em;
+    }
+
+    + p
+    {
+        margin-block-start: 0em;
+    }
+}
+
+h3,
+.h3
+{
+    font-family: AvantGardeGothicC;
+    font-size: 2rem;
+    color: #000;
+    font-weight: 400;
+    margin-block-end: 0em;
+
+    @include respond-to(small)
+    {
+        font-size: 2.5em;
+    }
+}
+
 button,
 .btn
 {
@@ -68,4 +103,13 @@ button,
 
         border-bottom: none;
     }
+}
+
+.line
+{
+    display: inline-block;
+    width: 5rem;
+    height: 1px;
+    border: 1px solid;
+    margin: .3em 1em .3em 1em;
 }

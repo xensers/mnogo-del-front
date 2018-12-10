@@ -20,7 +20,7 @@
         justify-content: flex-start;
     }
 
-    &.scroll
+    .onscroll &
     {
         height: 4.5rem;
 
@@ -57,14 +57,14 @@
 
                 transition: all .3s;
 
-                .scroll &
+                .onscroll &
                 {
                     height: 3rem;
                 }
             }
         }
 
-        .scroll &
+        .onscroll &
         {
             padding-top: 0;
 
@@ -74,7 +74,7 @@
             }
         }
 
-        .scroll:not(.empty-title) &
+        .onscroll:not(.empty-title) &
         {
             @include respond-to(small)
             {
@@ -190,7 +190,7 @@
             }
         }
 
-        .scroll:not(.empty-title) &
+        .onscroll:not(.empty-title) &
         {
             background-size: 100%;
             transform: translateX(0) scale(1);
@@ -236,7 +236,7 @@
             flex-direction: column;
 
             transition: transform .5s ease;
-            transform: translateY(2rem);
+            transform: translateY(-4rem);
 
             justify-content: flex-start;
             align-items: flex-end;
@@ -252,12 +252,18 @@
                 transition: transform .5s ease;
             }
 
+            .homepage--ready &
+            {
+                opacity: 0;
+                transform: translateX(-2rem);
+            }
+
             .homepage--cases &
             {
                     transform: translateY(-4rem);
             }
 
-            .scroll &
+            .onscroll &
             {
                 transform: translateY(-6rem);
             }
