@@ -1,4 +1,5 @@
 var preloaderTimer;
+var status = false;
 
 /**
  * Запускает прелоадер

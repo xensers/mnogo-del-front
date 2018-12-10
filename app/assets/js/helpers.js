@@ -1,10 +1,3 @@
-function boom() {
-    var audio = new Audio();
-    audio.preload = 'auto';
-    audio.src = '/assets/media/boom.mp3';
-    audio.play();
-}
-
 /**
  * Сокращение для добавления события DOMContentLoaded
  * @param {Function} listener Cлушатель события

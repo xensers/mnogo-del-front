@@ -19,8 +19,12 @@ function initAudioPlayer(audioPlayer) {
     pButton.addEventListener("click", play);
     audio.addEventListener("timeupdate", timeUpdate, false);
 
-    function timeUpdate() {
+    timeline.addEventListener("click", function(event) {
+        audio.currentTime = duration * clickPercent(event);
+        timeUpdate();
+    }, false);
 
+    function timeUpdate() {
         requestAnimationFrame(function(){
             var playPercent = (audio.currentTime / duration);
             playhead.style.transform = 'scaleX('+ playPercent +')';
@@ -29,14 +33,8 @@ function initAudioPlayer(audioPlayer) {
                 pButton.classList.remove('pause');
                 pButton.classList.add('play');
             }
-        })
-
+        });
     }
-
-    timeline.addEventListener("click", function(event) {
-        audio.currentTime = duration * clickPercent(event);
-        timeUpdate();
-    }, false);
 
     function clickPercent(event) {
         return (event.clientX - getPosition(timeline)) / timelineWidth;

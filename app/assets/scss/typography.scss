@@ -90,6 +90,13 @@ button,
     border-bottom: .1em dashed;
     background: none;
 
+    transition: border .5s;
+
+    &:hover
+    {
+        border-bottom-style: solid;
+    }
+
 
      > .icon
     {

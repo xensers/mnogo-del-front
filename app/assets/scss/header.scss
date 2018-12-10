@@ -39,12 +39,7 @@
 
     &__logo
     {
-
-        .loading & {
-            transform: translateY(-100%);
-            opacity: 0;
-        }
-
+        transition: transform .3s;
         @include respond-from(small)
         {
             padding-top: 1rem;
@@ -73,14 +68,14 @@
                 width: auto;
             }
         }
+    }
 
-        .onscroll:not(.empty-title) &
+    .onscroll &:not(.empty-title) &__logo
+    {
+        @include respond-to(small)
         {
-            @include respond-to(small)
-            {
-                transform: translateY(-5rem);
-            };
-        }
+            transform: translateY(-5rem);
+        };
     }
 
     &__nav
