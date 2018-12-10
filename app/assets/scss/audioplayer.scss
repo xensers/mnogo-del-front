@@ -1,38 +1,86 @@
-#audioplayer{
-  width: 480px;
-  height: 60px;
-  margin: 50px auto auto auto;
-  border: solid;
-}
+.audioplayer
+{
+    display: flex;
 
-#pButton{
-    height:60px; 
-    width: 60px;
-    border: none;
-    background-size: 50% 50%;
-    background-repeat: no-repeat;
-    background-position: center;
-    float:left;
-    outline:none;
-}
+    width: 25rem;
+    max-width: 100%;
+    height: 3.75rem;
 
-.play{background: url('http://www.alexkatz.me/codepen/img/play.png') ;}
-.pause{background: url('http://www.alexkatz.me/codepen/img/pause.png') ;}
 
-#timeline{
-  width: 400px;
-  height: 20px;
-  margin-top: 20px;
-  float: left;
-  border-radius: 15px;
-  background: rgba(0,0,0,.3);
-  
-}
-#playhead{
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  margin-top: 1px;
-  background: rgba(0, 0, 0,1);
+    &__button
+    {
+        width: 4rem;
+        height: 3.5rem;
+        margin-right: .625rem;
 
+        border: .125rem solid #000;
+        border-radius: 50%;
+
+        &_icon
+        {
+            position: relative;
+
+            width: 2rem;
+            height: 2rem;
+            margin-top: .6rem;
+            margin-left: .75rem;
+
+            cursor: pointer;
+            transition: 200ms all ease;
+            transform: scale(.8);
+
+            border-color: transparent transparent transparent #202020;
+        }
+
+        &.play &_icon
+        {
+            border-width: 1rem 0 1rem 1.6rem;
+            border-style: solid;
+        }
+
+        &.pause &_icon
+        {
+            border-width: 0 0 0 1.6rem;
+            border-style: double;
+        }
+    }
+
+    &__timeline
+    {
+        position: relative;
+
+        width: 100%;
+        height: 2rem;
+        margin-top: .6rem;
+
+        &:after
+        {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            display: block;
+
+            width: 100%;
+            height: 100%;
+
+            content: '';
+
+            background: url('../images/audioplayer/timeline.svg');
+            background-position: left center;
+            background-size: auto 100%;
+        }
+    }
+
+    &__playhead
+    {
+        width: 100%;
+        height: 2.2rem;
+        margin-top: .06rem;
+
+        transform-origin: left center;
+
+        background: url('../images/audioplayer/playhead.png');
+        background-size: 100% 100%;
+    }
 }
