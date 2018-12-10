@@ -35,8 +35,7 @@ trustUsFeedback.prototype.moveRound = function(element){
     }    
 
     this.round.style.left = pos.left + 'px';
-    this.round.style.top = pos.top + 'px';
-    this.round.style.transform = 'translate(-27%, -30%)';
+    this.round.style.top = pos.top + 'px';    
 }
 
 
@@ -54,7 +53,13 @@ function initSlider(){
         },
         effect: 'coverflow',
         spaceBetween: 20,
-        speed: 500
+        speed: 500,
+        breakpointsInverse: true,
+        breakpoints: {
+            1920: {
+                spaceBetween: 120
+            }
+        }
     })
 }
 
@@ -68,7 +73,7 @@ function loadVideos() {
         let url = item.dataset.video;
         let tmp = url.split('?v=');
         let video_id = tmp[1];
-        item.style.backgroundImage = "url('https://i.ytimg.com/vi_webp/"+video_id+"/maxresdefault.webp')";
+        item.style.backgroundImage = "url('https://i.ytimg.com/vi/"+video_id+"/maxresdefault.jpg')";
     })
 
     playBtns.map(item => {
