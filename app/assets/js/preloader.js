@@ -1,32 +1,30 @@
 var preloaderTimer;
-var status = false;
-
+var preloaderStatus = false;
 /**
  * Запускает прелоадер
  * 
- * @param  {Boolean} status FASLE - запустится только если страница грузится больше 2х секунд.
- *                          TURE -  Запустится принудительно.
+ * @param  {Boolean} preloaderStatus FASLE - запустится только если страница грузится больше 2х секунд.
+ *                                   TURE -  Запустится принудительно.
  */
-function runPreloader(status) {
+function runPreloader() {
     document.documentElement.classList.add('loading');
-
+    preloaderStatus = false;
     preloaderTimer = setTimeout(function() {
-        status = true;
+        preloaderStatus = true;
         preloader.style.display = 'flex';
         preloader.style.opacity = '1';
 
         setTimeout(function() {
             document.documentElement.classList.remove('loading');
             preloader.style.display = 'none';
-            preloader.style.opacity = '0';
         }, 5500);
     }, 2000);
 
     window.addEventListener("load", onLoadPreloader);
 }
 
-function onLoadPreloader() {
-    if (!status) {
+function onLoadPreloader(e) {
+    if (!preloaderStatus) {
         clearTimeout(preloaderTimer);
         document.documentElement.classList.remove('loading');
     }
