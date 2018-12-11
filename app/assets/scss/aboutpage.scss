@@ -134,9 +134,18 @@
                 min-width: 7.4375rem;
                 min-height: 16rem;
                 background: url('../images/aboutpage/arrow_1.svg') no-repeat center;
+                background-size: contain;
                 position: absolute;
                 top:0;
                 left: 0.625rem;
+            }
+        }
+
+        @include respond-from('FHD') {
+            &__figure {
+                &-img {
+                    width: 35%;
+                }
             }
         }
 
@@ -276,6 +285,14 @@
                 }
             }            
         }
+        @media screen and (min-width: 3996px) {
+            &__icons {
+                &-item {
+                    width: 13%;
+                    height: 10%;
+                }
+            }
+        }
     }
 
 
@@ -288,6 +305,10 @@
         &__left {
             position: relative;
             max-width: 5rem;
+            width: 5rem;
+        }
+        &__avatar {
+            width: 100%;
         }
         &__right {
             padding-left: 1.25rem;
@@ -301,6 +322,8 @@
             right: -15px;
             top:0;
             background: #fff url('../images/aboutpage/audio-icon.png') no-repeat center;
+            background-size: 60%;
+
         }
         &__content {     
             margin-top: 0.625rem;       
@@ -331,16 +354,17 @@
                 min-width: 7.4375rem;
                 min-height: 16rem;
                 background: url('../images/aboutpage/arrow_1.svg') no-repeat center;
+                background-size: contain;
                 position: absolute;
-                top: -150px;
-                left: 250px;
+                top: -9.375rem;
+                left: 15.625rem;
                 transform: rotateY(180deg) rotateZ(35deg) scale(0.9);
                 z-index: -1;
             }
-        }
+        }        
         &__player {
-            padding-top: 10px;
-            padding-bottom: 10px;
+            padding-top: 0.625rem;
+            padding-bottom: 0.625rem;
         }
         &__right {
             max-width: 30.125rem;
@@ -350,9 +374,10 @@
                 z-index: 0;
                 &:before {
                     content: "";
-                    width: 300px;
-                    height: 90px;
+                    width: 18.75rem;
+                    height: 5.625rem;
                     background: url('../images/aboutpage/round_second.png') no-repeat center;
+                    background-size: contain;
                     position: absolute;
                     top: -14px;
                     left: -20px;                    
@@ -363,16 +388,17 @@
         &__next {
             position: relative;
             z-index: 0;
-            margin-top: 60px;
+            margin-top: 3.75rem;
             transform: translateY(120px);
             &:before {
                 content: "";
-                width: 204px;
-                height: 126px;
+                width: 12.75rem;
+                height: 7.875rem;
                 background: url('../images/aboutpage/round_small.png') no-repeat;
+                background-size: contain;
                 position: absolute;
-                top: -43px;
-                left: -40px;
+                top: -2.6875rem;
+                left: -2.5rem;
                 transform: rotate(12deg);
                 z-index: -1;
             }
@@ -381,12 +407,18 @@
                 min-width: 7.4375rem;
                 min-height: 16rem;
                 background: url('../images/aboutpage/arrow_1.svg') no-repeat center;
+                background-size: contain;
                 position: absolute;
                 top: -5.625rem;
                 left: 0.9375rem;
                 transform: rotate(11deg) scale(0.8);
             }
         }
+        @include respond-from('UHD'){
+            &__book {
+                width: 60%;
+            }           
+        }        
         @include respond-to('large') {
             &__left {
                 &:before {
@@ -459,7 +491,10 @@
                 flex-grow: 1;
                 display: flex;
                 align-items: center;
-                justify-content: center;                
+                justify-content: center;   
+                img {
+                    width: 45%;
+                }             
             }       
             &-right {
                 max-width: 28.125rem;
@@ -479,18 +514,18 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 30px;
+            margin-top: 1.875rem;
             .swiper-pagination-bullet {
-                width: 5px;
-                height: 5px;
+                width: 0.3125rem;
+                height: 0.3125rem;
                 opacity: 1;
                 border-radius: 50%;
                 transition: all 230ms ease;
                 &-active {
                     background: transparent;
                     border: 1px solid rgba(0,0,0,0.5);
-                    width: 10px;
-                    height: 10px;
+                    width: 0.625rem;
+                    height: 0.625rem;
                 }
             }
         }
@@ -498,22 +533,24 @@
             position: absolute;
             cursor: pointer;
             z-index: 1;
-            width: 53px;
-            height: 53px;
+            width: 3.3125rem;
+            height: 3.3125rem;
             top:40%;
             outline: 0;
             &__round {                
                 width: 100%;
                 height: 100%;
-                border: 3px solid;
+                border: 0.1875rem solid;
                 border-radius: 50%;                
                 background: url('../images/aboutpage/swiper-arrow.svg') no-repeat center;
+                background-size: 80%;
                 position: absolute;                
             }
             &__hover {
-                width: 68px;
-                height: 51px;
+                width: 4.25rem;
+                height: 3.1875rem;
                 background: url('../images/aboutpage/swiper-btn-hover.svg') no-repeat center;
+                background-size: contain;
                 position: absolute;
                 z-index: -1;
                 left: -5px;
@@ -663,9 +700,9 @@
             background-color: #f1f1f1;
             opacity: 0.5;
             position: absolute;
-            left: -30%;
+            left: -31.25rem;
             top:0;
-            width: 120vw;
+            width: 500vw;
             height: 100%;
             z-index: -1;
         }
@@ -772,7 +809,7 @@
             &-text {
                 border-bottom: 0.1em dashed;                
             }
-        }
+        }        
         @include respond-to('small') {
             &__title {
                 font-size: 48px;

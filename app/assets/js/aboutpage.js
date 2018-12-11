@@ -70,7 +70,11 @@ function initSlider(){
         breakpoints: {
             1920: {
                 spaceBetween: 120
-            }
+            },
+            3996: {
+                spaceBetween: 950
+            },
+            
         }
     })
 }
