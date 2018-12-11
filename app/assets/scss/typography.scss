@@ -2,11 +2,13 @@
 
 pre
 {
+    display: inline-block;
     font-family: monospace;
 
     overflow: auto;
 
     background-color: #eee;
+    max-width: 100%;
 }
 
 code
@@ -17,6 +19,10 @@ code
 
     color: #fd8008;
     background-color: #eee;
+    max-width: 100%;
+
+    display: inline-block;
+    overflow: auto;
 }
 
 

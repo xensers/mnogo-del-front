@@ -8,11 +8,11 @@ window.addEventListener('DOMContentLoaded', function(){
 });
 
 function initAudioPlayer(audioPlayer) {
-    var audio       = audioPlayer.querySelector('audio');
-    var pButton     = audioPlayer.querySelector('.audioplayer__button');
-    var playhead    = audioPlayer.querySelector('.audioplayer__playhead');
-    var timeline    = audioPlayer.querySelector('.audioplayer__timeline');
-    var duration    = audio.duration;
+    var audio    = audioPlayer.querySelector('audio');
+    var pButton  = audioPlayer.querySelector('.audioplayer__button');
+    var playhead = audioPlayer.querySelector('.audioplayer__playhead');
+    var timeline = audioPlayer.querySelector('.audioplayer__timeline');
+    var duration = audio.duration;
 
     var timelineWidth = timeline.offsetWidth;
 

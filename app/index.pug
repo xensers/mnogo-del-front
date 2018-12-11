@@ -135,3 +135,23 @@ block content
   h2 Типография
   hr
   include pug/demo/typography
+
+  br
+  h2 Медиа
+  hr
+  h4 Видео
+  code
+    | a.YouTubeVideo[href=""]{Название}
+  a.YouTubeVideo(href="https://youtu.be/uGlzWZyVrBk")
+    | Видео о законах впихуемости
+  h4 Аудио
+  code
+    | .audioplayer>audio[preload='true']>source[src='assets/media/audio.mp3']^.audioplayer__button.play>.audioplayer__button_icon^.audioplayer__timeline>.audioplayer__playhead
+  .audioplayer
+    audio(preload='true')
+      source(src='assets/media/audio.mp3')
+    .audioplayer__button.play
+      .audioplayer__button_icon
+    .audioplayer__timeline
+      .audioplayer__playhead
+
