@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded', function(){
+readyjs.push(function(){
     audioPlayers = document.querySelectorAll('.audioplayer');
     if (audioPlayers) {
         for (var i = audioPlayers.length - 1; i >= 0; i--) {

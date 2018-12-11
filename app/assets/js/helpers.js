@@ -52,3 +52,19 @@ function addEvent(object, type, listener) {
 function compareRandom(a, b) {
     return Math.random() - 0.5;
 }
+
+
+function getDocument(url, callback)
+{
+  var http = new XMLHttpRequest();
+  http.open('GET', url);
+  http.onreadystatechange = function ()
+  {
+    if (this.readyState == 4 && this.status == 200) {
+      var doc = new DOMParser().parseFromString(this.responseText, "text/html");  // преобразовать текст в HTML
+
+      callback(doc);
+    }
+  }
+  http.send(null);
+}

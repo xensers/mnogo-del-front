@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function(){
+readyjs.push(function(){
   var elemsVideosLinks = document.querySelectorAll('.YouTubeVideo');
 
   for (var i = elemsVideosLinks.length - 1; i >= 0; i--) {
