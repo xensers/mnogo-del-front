@@ -414,7 +414,7 @@
                 transform: rotate(11deg) scale(0.8);
             }
         }
-        @include respond-from('UHD'){
+        @include respond-from('FHD'){
             &__book {
                 width: 60%;
             }           
