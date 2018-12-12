@@ -14,8 +14,8 @@ var cssnano      = require('gulp-cssnano');
 var autoprefixer = require('gulp-autoprefixer');
 
 var concat       = require('gulp-concat');
-var uglify       = require('gulp-uglify');
-var babel        = require('gulp-babel');
+var uglify       = require('gulp-uglifyes');
+
 
 var imagemin     = require('gulp-imagemin');
 var pngquant     = require('imagemin-pngquant');
@@ -24,11 +24,12 @@ var plumber      = require('gulp-plumber');
 var notify       = require('gulp-notify');
 var pump         = require('pump');
 
+
 var errorHandler = notify.onError('<%= error.message %>');
 
 gulp.task('debuggingUglify', function (cb) {
   pump([
-    gulp.src('app/**/*.js'),
+    gulp.src('app/**/*.js'),    
     uglify()
   ], cb);
 });

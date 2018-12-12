@@ -168,9 +168,9 @@ block content
         блоге в ЖЖ, слушайте бухтелки и прожекторыпрокрастиналогии. 
         Присоединяйтесь!
       br
-      a.link(href="http://www.youtube.com/user/Cartmendum?sub_confirmation=1", target="_blank") Подписаться на канал
-      |  (Нас&nbsp;уже&nbsp;261&nbsp;027)
-      br
+      p
+        a.link(href="http://www.youtube.com/user/Cartmendum?sub_confirmation=1", target="_blank") Подписаться на канал
+        |  (Нас&nbsp;уже&nbsp;261&nbsp;027)      
       br
       br
       +e.subtitle.subtitle Корпоративное обучение
@@ -184,7 +184,7 @@ block content
         |  у меня пробную встречу, 
         |  где мы определим, как пройдет работа по апгрейду. 
       br
-      a.link(href="") Подробнее здесь
+      +e.A.link.link(href="") Подробнее здесь
     +e.right
       +e.video-wrapper
         +e.oval.oval-marker
@@ -215,16 +215,17 @@ block content
           +e.subtitle (если хотите)
         +e.FORM.form
           +e.control
-            +e.INPUT.input(type="text", placeholder="Как вас там")
-            //+e.placeholder Как вас там
+            +e.INPUT.input(type="text")
+            +e.placeholder Как вас там
           +e.control
-            +e.INPUT.input(type="text", placeholder="По какому поводу пишете")
-            //+e.placeholder По какому поводу пишете
+            +e.INPUT.input(type="text")
+            +e.placeholder По какому поводу пишете
           +e.control._message
-            +e.INPUT.input(type="text", placeholder="Сюда сообщение")
-            //+e.placeholder Сюда сообщение
+            +e.INPUT.input(type="text")
+            +e.placeholder Сюда сообщение
           +e.control
-            +e.INPUT.input(type="text", placeholder="И куда вам на это ответить? (Лучше имейл)")
+            +e.INPUT.input(type="text")
+            +e.placeholder И куда вам на это ответить?
           +e.BUTTON.btn 
             +e.btn-round
             +e.btn-text Отправить

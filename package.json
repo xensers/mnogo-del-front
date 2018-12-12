@@ -8,9 +8,7 @@
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "@babel/core": "^7.1.2",
-    "@babel/preset-env": "^7.1.0",
+  "devDependencies": {   
     "browser-sync": "^2.24.7",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
@@ -28,8 +26,11 @@
     "gulp-sass": "^4.0.1",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.1",
+    "gulp-uglifyes": "^0.2.1",
     "gulp-useref": "^3.1.5",
     "imagemin-pngquant": "^6.0.0",
     "pump": "^3.0.0"
+  },
+  "dependencies": {  
   }
 }

@@ -3,10 +3,30 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log("About Page loaded...");
     var feedbackIcons = new trustUsFeedback();
+    var feedbackInputs = new inputsHandler();
 
     initSlider();
     loadVideos();
+
 })
+
+
+
+
+var inputsHandler = function(){
+    this.inputs = Array.from(document.querySelectorAll('.feedback-form__input'));
+    this.inputs.map(item => {                       
+        item.onblur = function(e){
+            if(e.target.value.trim()) {
+                item.classList.add('is_fill');
+            } else {
+                item.classList.remove('is_fill');
+                item.value = "";
+            }
+        }
+    })
+}
+
 
 
 
