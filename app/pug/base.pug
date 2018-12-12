@@ -24,6 +24,7 @@ block vars
 
 block styles
   link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css')
+  link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.2/css/swiper.min.css")
 
   // build:css assets/css/preloader.css
   link(rel='stylesheet', href='assets/css/preloader.css')
@@ -53,6 +54,7 @@ block styles
   link(rel='stylesheet', href='assets/css/case-detailed-layout.css')
   link(rel='stylesheet', href='assets/css/debug.css')
   link(rel='stylesheet', href='assets/css/helpers.css')
+  link(rel='stylesheet', href='assets/css/aboutpage.css')
   // endbuild
 
 block scripts
@@ -69,7 +71,10 @@ block scripts
   script(type='text/javascript', src='assets/js/video.js')
   script(type='text/javascript', src='assets/js/homepage.js')
   script(type='text/javascript', src='assets/js/case-detailed-page.js')
+  script(type='text/javascript', src='assets/js/aboutpage.js')
   // endbuild
+
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.2/js/swiper.min.js")
 
 block body-start
   include preloader
