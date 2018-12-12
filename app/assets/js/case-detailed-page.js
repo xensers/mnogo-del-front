@@ -17,6 +17,7 @@ function loadCaseDetailedPage() {
   getDocument(linkNextPage.href, function(doc) {
     documentNextPage = doc;
     elemSideRight.onclick = nextPage;
+
   });
 }
 
@@ -60,6 +61,9 @@ function nextPage(event)
         elemNextStiker.style.left       = '';
         elemNextStiker.style.transform  = 'translateX(999px) translateY(-50%)';
 
+        history.pushState('', '', linkNextPage.href);
+        document.title = documentNextPage.title;
+        document.querySelector('.header__page-title').innerHTML = documentNextPage.querySelector('.header__page-title').innerHTML;
         window.scrollTo(0, 0);
 
         requestAnimationFrame(function() {
@@ -71,11 +75,10 @@ function nextPage(event)
           elemNextStiker.style.opacity    = 1;
           elemNextStiker.style.transform  = '';
 
-          history.pushState('', '', linkNextPage.href);
-
-          documentNextPage = undefined;
 
           (function(){
+            documentNextPage = undefined;
+
             for (var i = readyjs.length - 1; i >= 0; i--) {
               readyjs[i]();
             }
