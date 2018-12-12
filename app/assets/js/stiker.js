@@ -1,4 +1,4 @@
-(function(){
+readyjs.push(function(){
     var elemsStikers = document.querySelectorAll('.stiker');
     for (var i = elemsStikers.length - 1; i >= 0; i--) {
         var elemStiker = elemsStikers[i],
@@ -10,7 +10,7 @@
         elemNumber.innerHTML = '№' + (i + 1) + '. ';
         elemWrap.style.transform = 'rotate(' + deg + 'deg)';
     }
-})();
+});
 
 function Stikers() {
     var self = this;
