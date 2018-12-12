@@ -1,4 +1,5 @@
 readyjs.push(loadYoutubeVideos);
+readyjs.push(loadYoutubeLinks);
 
 function loadYoutubeVideos() {
     function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -8,8 +9,7 @@ function loadYoutubeVideos() {
 
     items.map(function(item,index) {
         var url = item.dataset.video;
-        var tmp = url.split('?v=');
-        var video_id = tmp[1];
+        var video_id = YouTubeGetID(url);
         item.style.backgroundImage = "url('https://i.ytimg.com/vi/"+video_id+"/maxresdefault.jpg')";
     })
 

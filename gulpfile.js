@@ -84,12 +84,17 @@ gulp.task('html:build', function() {
         .pipe(gulp.dest('dist'));
 });
 
+gulp.task('media:build', function() {
+    return gulp.src('app/assets/media/**/*.*')
+        .pipe(gulp.dest('dist/assets/media'));
+});
+
 gulp.task('fonts:build', function() {
     return gulp.src('app/assets/fonts/**/*.*')
         .pipe(gulp.dest('dist/assets/fonts'));
 });
 
-gulp.task('build', ['clean', 'scss', 'pug', 'html:build', 'fonts:build', 'img:build']);
+gulp.task('build', ['clean', 'pug', 'scss', 'html:build', 'fonts:build', 'img:build', 'media:build']);
 
 gulp.task('watch', ['browser-sync'], function watch() {
     gulp.watch('app/assets/scss/**/*.scss', ['scss']);
