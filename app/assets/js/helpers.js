@@ -53,7 +53,11 @@ function compareRandom(a, b) {
     return Math.random() - 0.5;
 }
 
-
+/**
+ * Получение DOM дерева другой страницы
+ * @param  {String}   url      URL страницы
+ * @param  {Function} callback Передаваемая функция
+ */
 function getDocument(url, callback)
 {
   var http = new XMLHttpRequest();

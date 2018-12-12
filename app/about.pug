@@ -6,7 +6,8 @@ append vars
 
 append scripts
   script.
-    console.log('this is about page');
+    var feedbackIcons = new trustUsFeedback();
+    initSlider();
 
 block content
   .first-section
@@ -35,8 +36,7 @@ block content
       .first-section__bottom
         .first-section__bottom-text 
           | Что это все <br> значит?
-
-
+  // END: first-section
   .trust-us
     .trust-us__left
       h2.title.trust-us__title 
@@ -75,9 +75,8 @@ block content
         +b.audio-backfeed
           +e.left
             +e.IMG.avatar(src="assets/images/aboutpage/testimonials/clinet_1.png", alt="")
-            +e.BUTTON.play
           +e.right
-            +e.IMG.tmp(src="assets/images/aboutpage/tmp_audio.png", alt="")
+            include pug/audio
             +e.P.content
               | Гарри Петрович, глава отдела <br> разработки, Лаборатория <br> Касперского
         +b.audio-backfeed
@@ -96,13 +95,11 @@ block content
             +e.IMG.tmp(src="assets/images/aboutpage/tmp_audio.png", alt="")
             +e.P.content
               | Другой Человек, глава отдела <br> разработки, Лаборатория <br> Касперского
-
-
+  // END: trust-us
   +b.tell-technique
     +e.left
       +e.IMG.book(src="assets/images/aboutpage/book.png", srcset="assets/images/aboutpage/book@2x.png 2x", alt="")
-      +e.player
-        img(src="assets/images/aboutpage/book-player_tmp.png", alt="")
+      include pug/audio
       +e.A.link.link(href="") Послушать отрывок (читаю сам)
     +e.right
       +e.title.title Расказываю, <br>как познать технику джедаев
@@ -124,9 +121,7 @@ block content
         | проекта или завершению <br>
         | начатого…
       +e.next Как я пришел к <br> такой жизни
-
-
-
+  // END: tell-technique
   +b.how-began
     +b.began-slider
       +e.wrapper.swiper-wrapper
@@ -156,8 +151,7 @@ block content
         +e.round        
         +e.hover
     +e.arrow
-
-
+  // END: how-began
   +b.do-now
     +e.left
       +e.title.title 
@@ -202,8 +196,7 @@ block content
         +e.date-row
           +e.date-val 15 июня
           +e.A.date-city.link(href="") Новосибирск
-
-
+  // END: do-now
   +b.feedback
     +e.left
       +e.label.marker-1 обратная связь
@@ -228,16 +221,9 @@ block content
           +e.BUTTON.btn 
             +e.btn-round
             +e.btn-text Отправить
-
-
-
-
-
-
-
+  // END: feedback
 block footer
-  
-  .to-small  
+  .to-small
     .socals.flex.space-around
       a(href="#").socals__item
         span.icon.socal-vk
@@ -249,13 +235,12 @@ block footer
         span.icon.socal-lj
       a(href="#").socals__item
         span.icon.socal-yt
-  .from-medium       
-
-
+  .from-medium
 
 block side-left-center
   .rotate
-    a.header__link.menu__link(href="#") Назад в офис
+    a.header__link.menu__link(href="home.html") Назад в офис
+      span.separator
 
 block side-right-center
   .socals.vertical

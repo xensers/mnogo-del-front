@@ -1,23 +1,23 @@
-readyjs.push(function(){
-  // loadYoutubeVideos();
-});
+readyjs.push(loadYoutubeVideos);
 
 function loadYoutubeVideos() {
-    var items = [...document.getElementsByClassName('youtube')];
-    var playBtns = [...document.getElementsByClassName('do-now__play-btn')];
+    function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-    items.map((item,index) => {
-        let url = item.dataset.video;
-        let tmp = url.split('?v=');
-        let video_id = tmp[1];
+    var items = [].concat(_toConsumableArray(document.getElementsByClassName('youtube')));
+    var playBtns = [].concat(_toConsumableArray(document.getElementsByClassName('do-now__play-btn')));
+
+    items.map(function(item,index) {
+        var url = item.dataset.video;
+        var tmp = url.split('?v=');
+        var video_id = tmp[1];
         item.style.backgroundImage = "url('https://i.ytimg.com/vi/"+video_id+"/maxresdefault.jpg')";
     })
 
-    playBtns.map(item => {
+    playBtns.map(function(item) {
         item.onclick = function(){
-            let url = item.parentNode.dataset.video;
-            let video_id = url.split('?v=')[1];
-            let iframe = document.createElement('iframe');
+            var url = item.parentNode.dataset.video;
+            var video_id = url.split('?v=')[1];
+            var iframe = document.createElement('iframe');
             
             iframe.src = 'https://www.youtube.com/embed/' + video_id + '?rel=0&autoplay=1&showinfo=0';
             

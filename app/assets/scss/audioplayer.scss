@@ -1,7 +1,11 @@
 .audioplayer
 {
+    position: relative;
+
     display: flex;
 
+    min-width: 20rem;
+    max-width: 100%;
     height: 3.75rem;
 
 
@@ -11,10 +15,22 @@
         height: 3.5rem;
         margin-right: .625rem;
 
+        cursor: pointer;
+
         border: .125rem solid #000;
         border-radius: 50%;
+        background: #fff;
 
         flex: 0 0 3.5rem;
+
+        .audio-backfeed &
+        {
+            position: absolute;
+            top: -1rem;
+            left: -3.2rem;
+
+            transform: scale(.6);
+        }
 
         &_icon
         {
@@ -25,7 +41,6 @@
             margin-top: .6rem;
             margin-left: .9rem;
 
-            cursor: pointer;
             transition: 200ms all ease;
             transform: scale(.8);
 
@@ -40,9 +55,10 @@
 
         &.pause &_icon
         {
+            transform: translateX(-.1rem) scale(.8);
+
             border-width: 0 0 0 1.6rem;
             border-style: double;
-            transform: translateX(-0.1rem) scale(.8);
         }
     }
 

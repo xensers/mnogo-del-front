@@ -1,5 +1,3 @@
-readyjs.push(loadCaseDetailedPage);
-
 var elemSideRight;
 var elemActiveStiker;
 var elemNextStiker;
@@ -33,9 +31,9 @@ function nextPage(event)
     elemActiveStiker.style.transform  = 'translateX(-999px) translateY(-50%)';
     elemActiveStiker.style.opacity    = 0;
 
-    elemNextStiker.style.transform = 'translateX('+ coordsNextStiker.x +'px) translateY('+ coordsNextStiker.y +'px)';
-    elemNextStiker.style.top  = 0;
-    elemNextStiker.style.left = 0;
+    elemNextStiker.style.transform  = 'translateX('+ coordsNextStiker.x +'px) translateY('+ coordsNextStiker.y +'px)';
+    elemNextStiker.style.top        = 0;
+    elemNextStiker.style.left       = 0;
     elemNextStiker.style.transition = 'all 1500ms ease 500ms';
     elemNextStiker.style.transform  = 'translateX('+ coordsActiveStiker.x +'px) translateY('+ coordsActiveStiker.y +'px)';
 
@@ -45,7 +43,7 @@ function nextPage(event)
 
     setTimeout(function(){
       requestAnimationFrame(function(){
-        elemArticle.innerHTML = documentNextPage.querySelector('.case-detailed__article').innerHTML;
+        elemArticle.innerHTML             = documentNextPage.querySelector('.case-detailed__article').innerHTML;
         elemActiveStiker.style.transition = '';
         elemArticle.style.transition      = '';
         elemArticle.style.transform       = 'translateX(999px)';
