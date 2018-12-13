@@ -46,17 +46,7 @@ block content
 
 block footer
   .to-small
-    .socals.flex.space-around
-      a(href="#").socals__item
-        span.icon.socal-vk
-      a(href="#").socals__item
-        span.icon.socal-fb
-      a(href="#").socals__item
-        span.icon.socal-tw
-      a(href="#").socals__item
-        span.icon.socal-lj
-      a(href="#").socals__item
-        span.icon.socal-yt
+    +socals(class="flex space-around")
   .from-medium
     .homepage__footer
       .homepage__mixed
@@ -82,17 +72,8 @@ block side-left-center
     a.header__link.menu__link(href="#" onclick="closeCases()") Это – ваш офис...
 
 block side-right-center
-  .socals.vertical
-    a(href="#").socals__item
-      span.icon.socal-vk
-    a(href="#").socals__item
-      span.icon.socal-fb
-    a(href="#").socals__item
-      span.icon.socal-tw
-    a(href="#").socals__item
-      span.icon.socal-lj
-    a(href="#").socals__item
-      span.icon.socal-yt
+  +socals(class="vertical")
+
 block side-right-bottom
   .rotate
     .lang

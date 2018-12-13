@@ -92,34 +92,16 @@ block content
   br
   h2 Социальные сети
   hr
-  code .socals
+  | pug миксин: 
+  code +socals(class="vertical")
   br
-  .socals
-    a(href="#").socals__item
-      span.icon.socal-vk
-    a(href="#").socals__item
-      span.icon.socal-fb
-    a(href="#").socals__item
-      span.icon.socal-tw
-    a(href="#").socals__item
-      span.icon.socal-lj
-    a(href="#").socals__item
-      span.icon.socal-yt
+  +socals
 
   br
-  code .socals.vertical
+  | pug миксин: 
+  code +socals(class="vertical")
   br
-  .socals.vertical
-    a(href="#").socals__item
-      span.icon.socal-vk
-    a(href="#").socals__item
-      span.icon.socal-fb
-    a(href="#").socals__item
-      span.icon.socal-tw
-    a(href="#").socals__item
-      span.icon.socal-lj
-    a(href="#").socals__item
-      span.icon.socal-yt
+  +socals(class="vertical")
 
 
   br
