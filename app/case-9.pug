@@ -1,0 +1,45 @@
+extends case
+
+append vars
+  - pageTitle = 'Любитель срочного';
+
+block stiker
+  .stiker
+    a(href="case-9.html").stiker__title
+      span.stiker__number
+      | Инфоман
+    .stiker__wrap
+      .stiker__inner
+        .stiker__outer
+          .stiker__front
+            .stiker__body(style="background-image: url(assets/images/cases/9.png)")
+
+block article
+  h5
+    | Кейс
+    span.line
+    | №09
+  h2 Любитель срочного
+  br
+  p
+   a.btn(href="#") Рассказать кому-то
+  h3 В чём проблема
+  p Видео про проклятие трех тараканов:
+  a.YouTubeVideo(href="https://www.youtube.com/watch?v=02mqR4Va0Xw")
+  span.marker-2 Эксклюзивное видео для одного из клиентов. Пока еще в общем доступе
+  br
+  h3 Как с этим работать
+  p Хотя бы время от времени делайте то, что не срочно. Хотя бы одну задачку. Пусть даже маленьку. И пусть она не горит, но при этом хоть чуточку приближает вас к чему-то действительно важному.
+  span.marker-4 Помните – истинно важное практически никогда не бывает срочным. Стадии жизненного цикла примерно такие: «не срочно», «не срочно», «ах… уже и не важно»
+
+
+block next
+  .stiker
+    a(href="case-10.html").stiker__title
+      span.stiker__number
+      | Невпихуемость
+    .stiker__wrap
+      .stiker__inner
+        .stiker__outer
+          .stiker__front
+            .stiker__body(style="background-image: url(assets/images/cases/10.png)")

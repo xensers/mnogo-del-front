@@ -1,0 +1,91 @@
+extends pug/base
+
+append vars
+  - pageTitle = 'Невпихуемость';
+  - layout.classList = ['case-detailed'];
+
+append scripts
+  script.
+    readyjs.push(loadCaseDetailedPage);
+
+block content
+  .case-detailed__warp
+    .case-detailed__stiker
+      block stiker
+        .stiker
+          a(href="case-1.html").stiker__title
+            span.stiker__number
+            | Невпихуемость
+          .stiker__wrap
+            .stiker__inner
+              .stiker__outer
+                .stiker__front
+                  .stiker__body(style="background-image: url(assets/images/cases/1.png)")
+    .case-detailed__article
+      block article
+        h5
+          | Кейс
+          span.line
+          | №01
+        h2 Невпихуемость
+        p В некоторых компаниях бывают отделы, где, кажется, ?не будет сделана ни одна задача, если как следует не наорать или не пригрозить увольнением...
+        br
+        p
+          a.btn(href="#") Рассказать кому-то
+
+        br
+        h3 В чем проблема
+        P Может создаться впечатление, что там работают одни ленивые упыри, но не все так просто…
+        p
+          | Часто это - симптом 
+          span.marker-2 впихивания невпихуемого.
+          | Если так, то есть два момента: 
+
+        br
+        P 1. Наорать недостаточно. Может создаться впечатление, что там работают одни ленивые упыри, но не все так просто…
+        P Часто это - симптом впихивания невпихуемого. Если так, то есть два момента: Наорать недостаточно. 
+        p  Может создаться впечатление, что там работают одни 
+
+        br
+        p
+          b.marker-4 «Скорее всего всё, что было сделано командой, сопровождалось ором, но не всё, что сопровождалось ором, оказалось сделанным»
+        br
+
+        p 2. Если что-то было сделано под воздействием ора, то надо понять, что было НЕ сделано для этого. 
+        P Может создаться впечатление, что там работают одни ленивые упыри, но не все так просто… Часто это - симптом впихивания невпихуемого. Если так, то есть два момента.
+
+        br
+        h3 Как с этим работать
+        p Метод 1. Снижение объема впихиваемого методом отсечения лишнего
+        a.YouTubeVideo(href="https://youtu.be/uGlzWZyVrBk")
+          | Видео о законах впихуемости
+        br
+        p
+          span.marker-2 Метод 2.
+          | Увеличение пределов впихуемости
+        include pug/audio
+
+  .case-detailed__next
+    block next
+      .stiker
+        a(href="case-2.html").stiker__title
+          span.stiker__number
+          | Инфоман
+        .stiker__wrap
+          .stiker__inner
+            .stiker__outer
+              .stiker__front
+                .stiker__body(style="background-image: url(assets/images/cases/2.png)")
+
+block side-left-center
+  .rotate
+    a.header__link.menu__link(href="home.html") Назад в офис
+      span.separator
+
+block side-right-top
+block side-right-bottom
+  .case-detailed__next_btn
+    .case-detailed__next_btn_text
+      | Следующий
+    .case-detailed__next_btn_icon
+      span.icon.arrow-right
