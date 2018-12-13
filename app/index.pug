@@ -93,12 +93,14 @@ block content
   h2 Социальные сети
   hr
   | pug миксин: 
-  code +socals(class="vertical")
+  br
+  code +socals
   br
   +socals
 
   br
   | pug миксин: 
+  br
   code +socals(class="vertical")
   br
   +socals(class="vertical")
@@ -130,11 +132,10 @@ block content
   pre
     code
       | .audioplayer>audio[preload='true']>source[src='assets/media/audio.mp3']^.audioplayer__button.play>.audioplayer__button_icon^.audioplayer__timeline>.audioplayer__playhead
-  .audioplayer
-    audio(preload='true')
-      source(src='assets/media/audio.mp3')
-    .audioplayer__button.play
-      .audioplayer__button_icon
-    .audioplayer__timeline
-      .audioplayer__playhead
+  p
+    | pug миксин: 
+    br
+    code +socals(class="vertical")
+  br
+  +audioplayer('assets/media/audio.mp3')
 
