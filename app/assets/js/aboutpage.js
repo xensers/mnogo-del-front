@@ -77,3 +77,60 @@ function initSlider() {
         }
     });
 }
+
+
+
+
+
+
+
+/*
+function initScrollTo() {
+    var links = Array.from(document.querySelectorAll('*[data-scroll-to]'))
+    var el = document.querySelector('.layout');
+
+    links.map(function (item) {
+        item.onclick = function(e) {
+            e.preventDefault();
+            var target = item.dataset.scrollTo;
+            var targetEl = document.getElementById(target);
+            doScrolling(800, 500);
+            return false;
+        }
+    })
+}
+*/
+
+
+
+
+//t = current time
+//b = start value
+//c = change in value
+//d = duration
+Math.easeInOutQuad = function (t, b, c, d) {
+    t /= d / 2;
+    if (t < 1) return c / 2 * t * t + b;
+    t--;
+    return -c / 2 * (t * (t - 2) - 1) + b;
+};
+
+
+
+function scrollToInit() {
+    let items = Array.from(document.querySelectorAll('*[data-scroll-to]'));
+    items.map(function(item){
+        item.onclick = function(){
+            var target = item.dataset.scrollTo;
+            var element = document.querySelector(target);
+            console.log(element);
+            element.scrollIntoView({
+                behavior: "smooth"
+            });
+        }
+    })
+    
+}
+
+scrollToInit();
+

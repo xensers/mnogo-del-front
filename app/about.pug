@@ -24,7 +24,7 @@ block content
           span.marker-1 молодой человек – я, 
           br
           | доктор 
-          a(href="").link прокрастинологических наук,
+          a(href="javascript:;", data-scroll-to="#tell" ).link прокрастинологических наук,
         p
           | воспитатель обезьянок 
           br
@@ -97,7 +97,7 @@ block content
             +e.P.content
               | Другой Человек, глава отдела <br> разработки, Лаборатория <br> Касперского
   // END: trust-us
-  +b.tell-technique
+  +b.tell-technique#tell
     +e.left
       +e.IMG.book(src="assets/images/aboutpage/book.png", srcset="assets/images/aboutpage/book@2x.png 2x", alt="")
       include pug/audio
