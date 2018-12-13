@@ -1,19 +1,35 @@
-var trustUsFeedback = function(){
+var trustUsFeedback = function trustUsFeedback() {
+    var self = this;
+
     this.items = Array.from(document.querySelectorAll('.trust-us__icons-item'));
     this.itemsWrapper = document.getElementsByClassName('trust-us__icons')[0];
     this.round = document.getElementById('js-logo-wrapper');
     this.backfeeds = Array.from(document.querySelectorAll('.audio-backfeed'));
-    
+
     this.moveRound(this.items[0]);
     this.changeSlide(0);
 
-    this.items.map(function(item,index) {
-        item.onclick = function() {
-            this.moveRound(item);
-            this.changeSlide(index);
-        }
+    this.items.map(function (item, index) {
+        item.onclick = function () {
+            self.moveRound(item);
+            self.changeSlide(index);
+        };
     });
-}
+};
+
+var inputsHandler = function inputsHandler() {
+    this.inputs = Array.from(document.querySelectorAll('.feedback-form__input'));
+    this.inputs.map(function (item) {
+        item.onblur = function (e) {
+            if (e.target.value.trim()) {
+                item.classList.add('is_fill');
+            } else {
+                item.classList.remove('is_fill');
+                item.value = "";
+            }
+        };
+    });
+};
 
 trustUsFeedback.prototype.moveRound = function(element){
     var logoRect = element.getBoundingClientRect();
@@ -26,26 +42,25 @@ trustUsFeedback.prototype.moveRound = function(element){
     this.round.style.top  = pos.top + 'px';
 }
 
-trustUsFeedback.prototype.changeSlide = function(item_index) {
-    this.backfeeds.map(function(item, index) {
-        if(item_index === index) {
+trustUsFeedback.prototype.changeSlide = function (item_index) {
+    this.backfeeds.map(function (item, index) {
+        if (item_index === index) {
             item.classList.remove('is_hidden');
         } else {
             item.classList.add('is_hidden');
         }
-    })
-}
+    });
+};
 
 // Slider 
-function initSlider()
-{
-    var mySwiper = new Swiper('.began-slider', {  
+function initSlider() {
+    var mySwiper = new Swiper('.began-slider', {
         pagination: {
-            el: '.began-slider__pagination',
+            el: '.began-slider__pagination'
         },
         navigation: {
             nextEl: '.began-slider__next',
-            prevEl: '.began-slider__prev',
+            prevEl: '.began-slider__prev'
         },
         effect: 'coverflow',
         spaceBetween: 20,
@@ -57,8 +72,8 @@ function initSlider()
             },
             3996: {
                 spaceBetween: 950
-            },
-            
+            }
+
         }
-    })
+    });
 }
