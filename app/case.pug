@@ -12,15 +12,7 @@ block content
   .case-detailed__warp
     .case-detailed__stiker
       block stiker
-        .stiker
-          a(href="case.html").stiker__title
-            span.stiker__number
-            | Невпихуемость
-          .stiker__wrap
-            .stiker__inner
-              .stiker__outer
-                .stiker__front
-                  .stiker__body(style="background-image: url(assets/images/cases/1.png)")
+        +stiker('Невпихуемость', 'case-1.html', 'assets/images/cases/1.png')
     .case-detailed__article
       block article
         h5

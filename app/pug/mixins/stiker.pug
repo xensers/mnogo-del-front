@@ -1,0 +1,13 @@
+mixin stiker(title, href, img)
+  .stiker
+    a(href=href).stiker__title
+      span.stiker__number
+      =title
+    .stiker__wrap
+      .stiker__inner
+        .stiker__outer
+          .stiker__front
+            .stiker__body(style="background-image: url("+img+")")
+          .stiker__back
+      a.stiker__link(href=href)
+      .stiker__arena
