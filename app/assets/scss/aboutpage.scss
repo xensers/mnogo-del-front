@@ -47,6 +47,10 @@
         }
         &__right {
             padding-right: 2.5rem;
+            @include respond-from(medium)
+            {
+                padding-top: 5rem;
+            }
         }
         &__content {
             line-height: 1.6;
@@ -726,7 +730,7 @@
             position: relative;
         }
         &__title {
-            font-size: 4.125rem;
+            font-size: 4rem;
             font-weight: normal;
             text-align: right;
             line-height: 1;
