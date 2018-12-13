@@ -88,6 +88,14 @@
 
         align-self: center;
         justify-content: space-between;
+
+        animation: fadeIn 1s;
+        animation-fill-mode: both;
+
+        .menu--open &
+        {
+            animation-name: fadeOut;
+        }
     }
 
     &__container
