@@ -2,6 +2,11 @@
 
 .case-detailed
 {
+    .layout__side_right
+    {
+        width: 18%;
+    }
+
     &__warp
     {
         @include respond-from(medium)
