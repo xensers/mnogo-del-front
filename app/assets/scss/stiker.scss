@@ -133,6 +133,8 @@
 
         opacity: 0;
 
+        text-align: center;
+
         .active &
         {
             animation: fadeIn 2s;
@@ -152,7 +154,7 @@
         &,
         & a
         {
-            text-align: left;
+            text-align: center;
 
             color: #000;
         }

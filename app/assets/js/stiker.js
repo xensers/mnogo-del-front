@@ -2,12 +2,12 @@ readyjs.push(function(){
     var elemsStikers = document.querySelectorAll('.stiker');
     for (var i = elemsStikers.length - 1; i >= 0; i--) {
         var elemStiker = elemsStikers[i],
-            elemNumber = elemStiker.querySelector('.stiker__number'),
+            // elemNumber = elemStiker.querySelector('.stiker__number'),
             elemWrap   = elemStiker.querySelector('.stiker__wrap');
 
         var deg = (Math.random() * 10) - 5;
 
-        elemNumber.innerHTML = '№' + (i + 1) + '. ';
+        // elemNumber.innerHTML = '№' + (i + 1) + '. ';
         elemWrap.style.transform = 'rotate(' + deg + 'deg)';
     }
 });
