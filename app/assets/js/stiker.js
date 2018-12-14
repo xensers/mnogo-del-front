@@ -349,15 +349,8 @@ function Stikers() {
                 }
             }
 
-            elemStiker.onmouseover = function(event) {
-                elemStiker.style.zIndex = '99';
-            };
-            elemStiker.onmouseout = function(event) {
-                elemStiker.style.zIndex = stikerZIndex;
-            };
 
             elemArena.onmouseover = function(event) {
-                elemStiker.style.zIndex = '999';
                 animate({
                     timing: linear,
                     duration: 3000,
@@ -368,7 +361,6 @@ function Stikers() {
             }
 
             elemArena.onmouseout = function(event) {
-                elemStiker.style.zIndex = stikerZIndex;
                 animate({
                     timing: linear,
                     duration: 3000,
@@ -379,7 +371,8 @@ function Stikers() {
             }
 
             elemArena.onmousedown = function(event) {
-                elemStiker.style.zIndex = '900';
+                elemStiker.style.zIndex = '999';
+                document.querySelector('.layout__header').style.zIndex = '0';
                 requestAnimationFrame(function() {
                     elemWrap.style.overflow = 'visible';
                     elemArena.style.height = '200%';
@@ -390,6 +383,7 @@ function Stikers() {
 
             elemArena.onmouseup = function(event) {
                 elemStiker.style.zIndex = stikerZIndex;
+                document.querySelector('.layout__header').style.zIndex = '';
                 requestAnimationFrame(function() {
                     elemArena.style.height = '35%';
                     elemArena.style.width = '35%';
