@@ -29,7 +29,7 @@ function nextPage(event)
 
   requestAnimationFrame(function(){
     elemActiveStiker.style.transition = 'all 2000ms ease';
-    elemActiveStiker.style.transform  = 'translateX(-999px) translateY(-50%)';
+    elemActiveStiker.style.transform  = 'translateX(-50rem) translateY(-50%)';
     elemActiveStiker.style.opacity    = 0;
 
     elemNextStiker.style.transform  = 'translateX('+ coordsNextStiker.x +'px) translateY('+ coordsNextStiker.y +'px)';
@@ -38,17 +38,26 @@ function nextPage(event)
     elemNextStiker.style.transition = 'all 1500ms ease 500ms';
     elemNextStiker.style.transform  = 'translateX('+ coordsActiveStiker.x +'px) translateY('+ coordsActiveStiker.y +'px)';
 
-    elemArticle.style.transition = 'all 2000ms ease 100ms';
-    elemArticle.style.transform  = 'translateX(-999px)';
+    elemArticle.style.transition = 'all 2000ms ease 200ms, opacity 1000ms';
+    elemArticle.style.transform  = 'translateX(-50rem)';
     elemArticle.style.opacity    = 0;
 
     setTimeout(function(){
-      requestAnimationFrame(function(){
+      requestAnimationFrame(function() {
         elemArticle.innerHTML             = documentNextPage.querySelector('.case-detailed__article').innerHTML;
         elemActiveStiker.style.transition = '';
         elemArticle.style.transition      = '';
-        elemArticle.style.transform       = 'translateX(999px)';
+        elemArticle.style.transform       = 'translateX(50rem)';
+        requestAnimationFrame(function() {
+          elemArticle.style.transition = 'all 1500ms ease';
+          elemArticle.style.opacity    = 1;
+          elemArticle.style.transform  = '';
+        });
+      });
+    }, 1000);
 
+    setTimeout(function(){
+      requestAnimationFrame(function(){
         elemActiveStiker.innerHTML       = elemNextStiker.innerHTML;
         elemActiveStiker.style.opacity   = '';
         elemActiveStiker.style.transform = '';
@@ -58,7 +67,7 @@ function nextPage(event)
         elemNextStiker.style.opacity    = 0;
         elemNextStiker.style.top        = '';
         elemNextStiker.style.left       = '';
-        elemNextStiker.style.transform  = 'translateX(999px) translateY(-50%)';
+        elemNextStiker.style.transform  = 'translateX(50rem) translateY(-50%)';
 
         history.pushState('', '', linkNextPage.href);
         document.title = documentNextPage.title;
@@ -66,14 +75,10 @@ function nextPage(event)
         window.scrollTo(0, 0);
 
         requestAnimationFrame(function() {
-          elemArticle.style.transition = 'all 1500ms ease';
-          elemArticle.style.opacity    = 1;
-          elemArticle.style.transform  = '';
 
           elemNextStiker.style.transition = 'all 1500ms ease 500ms';
           elemNextStiker.style.opacity    = 1;
           elemNextStiker.style.transform  = '';
-
 
           timerClearStyle = setTimeout(function(){
             requestAnimationFrame(function(){
