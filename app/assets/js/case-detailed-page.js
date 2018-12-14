@@ -48,6 +48,7 @@ function nextPage(event)
         elemActiveStiker.style.transition = '';
         elemArticle.style.transition      = '';
         elemArticle.style.transform       = 'translateX(50rem)';
+        window.scrollTo(0, 0);
         requestAnimationFrame(function() {
           elemArticle.style.transition = 'all 1500ms ease';
           elemArticle.style.opacity    = 1;
@@ -72,7 +73,6 @@ function nextPage(event)
         history.pushState('', '', linkNextPage.href);
         document.title = documentNextPage.title;
         document.querySelector('.header__page-title').innerHTML = documentNextPage.querySelector('.header__page-title').innerHTML;
-        window.scrollTo(0, 0);
 
         requestAnimationFrame(function() {
 
