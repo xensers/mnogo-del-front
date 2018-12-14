@@ -133,27 +133,26 @@
             }
         }
 
-        &_left
+        &_left, &_right
         {
             position: fixed;
             top: 0;
-            left: 0;
 
-            width: 16%;
+            width: 10%;
             height: 100%;
+
+        }
+
+        &_left
+        {
+            left: 0;
+            align-items: flex-start;
         }
 
         &_right
         {
-            position: fixed;
-            top: 0;
             right: 0;
-
-            width: 16%;
-            height: 100%;
-
             align-items: flex-end;
-
         }
     }
 
