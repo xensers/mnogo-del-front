@@ -27,14 +27,16 @@ function nextPage(event)
   var coordsActiveStiker = elemActiveStiker.getBoundingClientRect();
   var coordsNextStiker   = elemNextStiker.getBoundingClientRect();
 
+
+  elemNextStiker.style.transform  = 'translateX('+ coordsNextStiker.x +'px) translateY('+ coordsNextStiker.y +'px)';
+  elemNextStiker.style.top        = 0;
+  elemNextStiker.style.left       = 0;
+
   requestAnimationFrame(function(){
     elemActiveStiker.style.transition = 'all 2000ms ease';
     elemActiveStiker.style.transform  = 'translateX(-50rem) translateY(-50%)';
     elemActiveStiker.style.opacity    = 0;
 
-    elemNextStiker.style.transform  = 'translateX('+ coordsNextStiker.x +'px) translateY('+ coordsNextStiker.y +'px)';
-    elemNextStiker.style.top        = 0;
-    elemNextStiker.style.left       = 0;
     elemNextStiker.style.transition = 'all 1500ms ease 500ms';
     elemNextStiker.style.transform  = 'translateX('+ coordsActiveStiker.x +'px) translateY('+ coordsActiveStiker.y +'px)';
 

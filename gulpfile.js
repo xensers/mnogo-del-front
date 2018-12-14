@@ -94,7 +94,7 @@ gulp.task('fonts:build', function() {
         .pipe(gulp.dest('dist/assets/fonts'));
 });
 
-gulp.task('build', ['clean', 'pug', 'scss', 'html:build', 'fonts:build', 'img:build', 'media:build']);
+gulp.task('build', ['clean', 'scss', 'pug', 'fonts:build', 'img:build', 'media:build', 'html:build']);
 
 gulp.task('watch', ['browser-sync'], function watch() {
     gulp.watch('app/assets/scss/**/*.scss', ['scss']);
