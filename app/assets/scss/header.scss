@@ -220,6 +220,10 @@
 
         height: 2rem;
 
+        a {
+            text-decoration: none;
+        }
+
         @include respond-from(small)
         {
             display: none;
