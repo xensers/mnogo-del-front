@@ -1,3 +1,5 @@
+@import 'core';
+
 .audioplayer
 {
     position: relative;
@@ -5,28 +7,35 @@
     display: flex;
 
     max-width: 100%;
-    height: 3.75rem;
+    height: 3.75em;
+
+    @include respond-to(small)
+    {
+        font-size: 0.8em;
+    }
 
 
     &__button
     {
-        width: 3.5rem;
-        height: 3.5rem;
-        margin-right: .625rem;
+        width: 3.5em;
+        height: 3.5em;
+        margin-right: .625em;
+
+
 
         cursor: pointer;
 
-        border: .125rem solid #000;
+        border: .125em solid #000;
         border-radius: 50%;
         background: #fff;
 
-        flex: 0 0 3.5rem;
+        flex: 0 0 3.5em;
 
         .audio-backfeed &
         {
             position: absolute;
-            top: -1rem;
-            left: -3.2rem;
+            top: -1em;
+            left: -3.2em;
 
             transform: scale(.6);
         }
@@ -35,10 +44,10 @@
         {
             position: relative;
 
-            width: 2rem;
-            height: 2rem;
-            margin-top: .6rem;
-            margin-left: .9rem;
+            width: 2em;
+            height: 2em;
+            margin-top: .6em;
+            margin-left: .9em;
 
             transition: 200ms all ease;
             transform: scale(.8);
@@ -48,15 +57,15 @@
 
         &.play &_icon
         {
-            border-width: 1rem 0 1rem 1.6rem;
+            border-width: 1em 0 1em 1.6em;
             border-style: solid;
         }
 
         &.pause &_icon
         {
-            transform: translateX(-.1rem) scale(.8);
+            transform: translateX(-.1em) scale(.8);
 
-            border-width: 0 0 0 1.6rem;
+            border-width: 0 0 0 1.6em;
             border-style: double;
         }
     }
@@ -66,8 +75,8 @@
         position: relative;
 
         width: 100%;
-        height: 2rem;
-        margin-top: .6rem;
+        height: 2em;
+        margin-top: .6em;
 
         &:after
         {
@@ -91,8 +100,8 @@
     &__playhead
     {
         width: 100%;
-        height: 2.2rem;
-        margin-top: .06rem;
+        height: 2.2em;
+        margin-top: .06em;
 
         transform-origin: left center;
 
