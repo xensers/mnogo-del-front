@@ -56,7 +56,6 @@ function Stikers() {
                 var deg = (Math.random() * 10) - 5;
 
                 elemWrap.style.transform = 'rotate(' + deg + 'deg)';
-                elemNumber.innerHTML     = '№' + (i + 1) + '. ';
             }
         });
 
