@@ -35,6 +35,7 @@
       width: 4.4375rem;
       height: 3.125rem;
       background: url('../images/YouTube_full-color_icon.svg');
+      background-size: 100%;
       opacity: 0;
       transition: 500ms all;
       @include respond-to(small){
