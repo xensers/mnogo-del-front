@@ -1,18 +1,10 @@
-extends case
+extends case-layout
 
 append vars
   - pageTitle = 'Всегда в последний момент!';
 
 block stiker
-  .stiker
-    a(href="case-13.html").stiker__title
-      span.stiker__number
-      | Инфоман
-    .stiker__wrap
-      .stiker__inner
-        .stiker__outer
-          .stiker__front
-            .stiker__body(style="background-image: url(assets/images/cases/13.png)")
+  +stiker('Всегда в последний момент!', 'case-13.html', 'assets/images/cases/13.png')
 
 block article
   h5
@@ -41,12 +33,4 @@ block article
 
 
 block next
-  .stiker
-    a(href="case-1.html").stiker__title
-      span.stiker__number
-      | Невпихуемость
-    .stiker__wrap
-      .stiker__inner
-        .stiker__outer
-          .stiker__front
-            .stiker__body(style="background-image: url(assets/images/cases/1.png)")
+  +stiker('Невпихуемость', 'case-1.html', 'assets/images/cases/1.png')

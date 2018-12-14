@@ -1,18 +1,10 @@
-extends case
+extends case-layout
 
 append vars
   - pageTitle = 'Инфоман';
 
 block stiker
-  .stiker
-    a(href="case-2.html").stiker__title
-      span.stiker__number
-      | Инфоман
-    .stiker__wrap
-      .stiker__inner
-        .stiker__outer
-          .stiker__front
-            .stiker__body(style="background-image: url(assets/images/cases/2.png)")
+  +stiker('Инфоман', 'case-2.html', 'assets/images/cases/2.png')
 
 block article
   h5
@@ -44,12 +36,4 @@ block article
 
 
 block next
-  .stiker
-    a(href="case-3.html").stiker__title
-      span.stiker__number
-      | Трудоголик
-    .stiker__wrap
-      .stiker__inner
-        .stiker__outer
-          .stiker__front
-            .stiker__body(style="background-image: url(assets/images/cases/3.png)")
+  +stiker('Трудоголик', 'case-3.html', 'assets/images/cases/3.png')

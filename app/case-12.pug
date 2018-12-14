@@ -1,18 +1,10 @@
-extends case
+extends case-layout
 
 append vars
   - pageTitle = 'Сжатие/разрежение сроков';
 
 block stiker
-  .stiker
-    a(href="case-12.html").stiker__title
-      span.stiker__number
-      | Инфоман
-    .stiker__wrap
-      .stiker__inner
-        .stiker__outer
-          .stiker__front
-            .stiker__body(style="background-image: url(assets/images/cases/12.png)")
+  +stiker('Сжатие/разрежение сроков', 'case-12.html', 'assets/images/cases/12.png')
 
 block article
   h5
@@ -42,12 +34,4 @@ block article
   a.YouTubeVideo(href="https://www.youtube.com/watch?v=GNI8tEahVRI")
 
 block next
-  .stiker
-    a(href="case-13.html").stiker__title
-      span.stiker__number
-      | Невпихуемость
-    .stiker__wrap
-      .stiker__inner
-        .stiker__outer
-          .stiker__front
-            .stiker__body(style="background-image: url(assets/images/cases/13.png)")
+  +stiker('Всегда в последний момент!', 'case-13.html', 'assets/images/cases/13.png')

@@ -1,18 +1,10 @@
-extends case
+extends case-layout
 
 append vars
   - pageTitle = 'Трудоголик';
 
 block stiker
-  .stiker
-    a(href="case-3.html").stiker__title
-      span.stiker__number
-      | Инфоман
-    .stiker__wrap
-      .stiker__inner
-        .stiker__outer
-          .stiker__front
-            .stiker__body(style="background-image: url(assets/images/cases/3.png)")
+  +stiker('Трудоголик', 'case-3.html', 'assets/images/cases/3.png')
 
 block article
   h5
@@ -42,12 +34,4 @@ block article
   a.link(href="http://links.mnogosdelal.ru/wp-content/uploads/Тест-на-степень-риска-зависимости-от-работы.xlsx", target="_blank") Скачать
 
 block next
-  .stiker
-    a(href="case-4.html").stiker__title
-      span.stiker__number
-      | Невпихуемость
-    .stiker__wrap
-      .stiker__inner
-        .stiker__outer
-          .stiker__front
-            .stiker__body(style="background-image: url(assets/images/cases/4.png)")
+  +stiker('Кругом срочное', 'case-4.html', 'assets/images/cases/4.png')

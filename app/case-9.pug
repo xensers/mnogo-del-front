@@ -1,19 +1,10 @@
-extends case
+extends case-layout
 
 append vars
   - pageTitle = 'Любитель срочного';
 
 block stiker
-  .stiker
-    a(href="case-9.html").stiker__title
-      span.stiker__number
-      | Инфоман
-    .stiker__wrap
-      .stiker__inner
-        .stiker__outer
-          .stiker__front
-            .stiker__body(style="background-image: url(assets/images/cases/9.png)")
-
+  +stiker('Любитель срочного (Это не срочно, значит потом)', 'case-9.html', 'assets/images/cases/9.png')
 block article
   h5
     | Кейс
@@ -34,12 +25,4 @@ block article
 
 
 block next
-  .stiker
-    a(href="case-10.html").stiker__title
-      span.stiker__number
-      | Невпихуемость
-    .stiker__wrap
-      .stiker__inner
-        .stiker__outer
-          .stiker__front
-            .stiker__body(style="background-image: url(assets/images/cases/10.png)")
+  +stiker('Я креативный и разносторонне развитый', 'case-10.html', 'assets/images/cases/10.png')
