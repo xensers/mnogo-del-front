@@ -244,6 +244,7 @@
         transition: opacity 500ms ease;
         width: 100%;
         justify-content: center;
+
         &__left {
             position: relative;
             flex: 0 0 5rem;
@@ -251,7 +252,16 @@
             {
                 flex: 0 0 3.5rem;
             }
+        }
 
+        &__right {
+            position: relative;
+            flex: 0 0 18rem;
+
+            @include respond-to(small)
+            {
+                flex: 0 0 13rem;
+            }
         }
         &__avatar {
             width: 100%;
@@ -269,10 +279,12 @@
             top:0;
             background: #fff url('../images/aboutpage/audio-icon.png') no-repeat center;
             background-size: 60%;
-
         }
         &__content {
-            margin-top: 0.625rem;
+            p, h4
+            {
+                margin: 0.2rem 0;
+            }
         }
         &.is_hidden {
             opacity: 0;
@@ -295,6 +307,7 @@
             @include respond-to(small)
             {
                 margin: 1rem 0;
+                width: 20rem;
             }
         }
         &__left {
