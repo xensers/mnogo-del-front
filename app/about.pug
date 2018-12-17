@@ -19,8 +19,8 @@ block content
     .first-section__right
       .h1.first-section__title Всем привет!
       .first-section__content
-        p 
-          | Этот свежий 
+        p
+          span.zi-2 Этот свежий 
           span.marker-1 молодой человек – я, 
           br
           | доктор 
@@ -140,7 +140,7 @@ block content
       p 
         | Об этом я написал целую книгу <br>
         span.marker-1 «Джедайские техники. 
-        | Как воспитать свою обезьяну, 
+        span.zi-2 Как воспитать свою обезьяну, 
         | опустошить инбокс и сберечь 
         | мыслетопливо»      
       br
@@ -204,10 +204,9 @@ block content
       p
         span.zi-2 Если 
         span.marker-1 вы считаете, что ваша 
-        span.zi-1  команда может быть эффективней, 
-        | лучше  
+        span.zi-2  команда может быть эффективней, лучше  
         span.marker-1 и счастливей -
-        |  вы можете заказать 
+        span.zi-2  вы можете заказать 
         |  у меня пробную встречу, 
         |  где мы определим, как пройдет работа по апгрейду. 
       br
@@ -264,8 +263,7 @@ block footer
 
 block side-left-center
   .rotate
-    a.header__link.menu__link(href="home.html") Назад в офис
-      span.separator
+    a.back-to-office.menu__link(href="home.html") Назад в офис
 
 block side-right-center
   +socals(class="vertical")
