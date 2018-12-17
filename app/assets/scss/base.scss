@@ -13,17 +13,15 @@ body
 
     @include respond-from(FHD)
     {
-      font-size: 24px;
+        font-size: 24px;
     };
-
     @include respond-from(QHD)
     {
-      font-size: 32px;
+        font-size: 32px;
     };
-
     @include respond-from(UHD)
     {
-      font-size: 48px;
+        font-size: 48px;
     };
 }
 
@@ -39,38 +37,59 @@ img,
 
 .socals
 {
-  display: inline-block;
-  text-align: center;
-  &__item
-  {
     display: inline-block;
-    margin: 1.4rem .4rem;
 
-    transition: transform .4s;
-
-    &:hover {
-      transform: scale(1.4);
-    }
-
-    .socals.vertical &
+    text-align: center;
+    &__item
     {
-      display: block;
-    }
+        display: inline-block;
 
-    .icon
-    {
-      font-size: 1rem;
+        margin: 1.4rem .4rem;
+
+        transition: transform .4s;
+
+        &:hover
+        {
+            transform: scale(1.4);
+        }
+
+        .socals.vertical &
+        {
+            display: block;
+        }
+
+        .icon
+        {
+            font-size: 1rem;
+        }
     }
-  }
 }
 
 .lang
 {
-  color: #ccc;
-  font-family: 'AvantGardeGothicC-bold';
-  a
-  {
-    color: #000;
+    font-family: 'AvantGardeGothicC-bold';
+
+    color: #ccc;
+    a
+    {
+        text-decoration: none;
+
+        color: #000;
+    }
+}
+
+.back-to-office
+{
+    font-family: AvantGardeGothicC-Bold;
+    font-size: .9rem;
+
+    display: inline-block;
+
+    line-height: 2.2em;
+    padding-bottom: 1em;
+
     text-decoration: none;
-  }
+
+    color: #000;
+    border-bottom: .15em solid #000;
 }
