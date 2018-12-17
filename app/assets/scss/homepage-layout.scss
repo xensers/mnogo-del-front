@@ -43,7 +43,6 @@
 
     &__article
     {
-        transition: .3s .1s;
         opacity: 0;
 
         animation: fadeIn 1s ease 2s;
@@ -57,8 +56,6 @@
 
             .homepage--cases &
             {
-                // transform: translateX(50%);
-
                 animation: outLeft 1s;
             }
         }

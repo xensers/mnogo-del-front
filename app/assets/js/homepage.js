@@ -1,3 +1,7 @@
+var fromMedium;
+var toMedium;
+
+
 function onLoadedHomePage() {
     window.stikers = new Stikers().init('.stikers-group');
 
@@ -9,6 +13,13 @@ function onLoadedHomePage() {
         closeCases();
     }
 
+    respondFrom(breakpoint.medium, function(){
+        fromMedium();
+    }, false, true);
+    respondTo(breakpoint.medium, function(){
+        toMedium();
+    }, false, true);
+
     var allLinks = document.getElementsByTagName('a');
     for (var i = allLinks.length - 1; i >= 0; i--) {
         var link = allLinks[i];
@@ -16,7 +27,6 @@ function onLoadedHomePage() {
             link.addEventListener('click', openCases);
         }
     }
-
 }
 
 function openCases() {
@@ -27,13 +37,16 @@ function openCases() {
     document.documentElement.classList.remove('homepage--ready');
     document.querySelector('.homepage__cases > .oval-marker').style.display = 'none';
 
-    respondFrom(breakpoint.medium, function() {
+    fromMedium = function() {
         stikers.convertToGrid(4, false, true, false);
-    }, true, false);
+    }
 
-    respondTo(breakpoint.medium, function() {
+    toMedium = function() {
         stikers.convertToSlider();
-    }, true, false);
+    }
+
+    respondFrom(breakpoint.medium, fromMedium, true, false);
+    respondTo(breakpoint.medium, toMedium, true, false);
 
     return false;
 }
@@ -48,13 +61,16 @@ function closeCases() {
         document.querySelector('.homepage__cases > .oval-marker').style.display = 'block';
     }, 1000);
 
-    respondFrom(breakpoint.medium, function() {
+    fromMedium = function(){
         stikers.convertToGrid(3, 2, false, true);
-    }, true, false);
+    }
 
-    respondTo(breakpoint.medium, function() {
+    toMedium = function(){
         stikers.convertToSlider();
-    }, true, false);
+    }
+
+    respondFrom(breakpoint.medium, fromMedium, true, false);
+    respondTo(breakpoint.medium, toMedium, true, false);
 
     updateMenu();
 
