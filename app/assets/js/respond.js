@@ -32,7 +32,6 @@ function respondTo(breakpoint, callback, runWhenCalled, addEvent) {
 }
 
 function respondFrom(breakpoint, callback, runWhenCalled, addEvent) {
-
     if (breakpoint <= window.innerWidth) {
         var active = true;
         if (runWhenCalled) {

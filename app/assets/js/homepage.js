@@ -1,7 +1,6 @@
 var fromMedium;
 var toMedium;
 
-
 function onLoadedHomePage() {
     window.stikers = new Stikers().init('.stikers-group');
 
@@ -16,6 +15,7 @@ function onLoadedHomePage() {
     respondFrom(breakpoint.medium, function(){
         fromMedium();
     }, false, true);
+
     respondTo(breakpoint.medium, function(){
         toMedium();
     }, false, true);
