@@ -113,24 +113,28 @@
 
     &__side
     {
-        display: none;
 
-        @include respond-from(small)
+        display: flex;
+        flex-direction: column;
+
+        padding: 2rem;
+        padding-top: 8rem;
+
+        text-shadow: 0 0 2rem rgba(255, 255, 255, 0.5);
+
+        justify-content: space-between;
+        align-items: flex-start;
+
+        @include respond-to(small)
         {
-            display: flex;
-            flex-direction: column;
+            display: none;
+        }
 
-            padding: 2rem;
-            padding-top: 8rem;
+        .rotate
+        {
+            transform: rotate(180deg);
 
-            justify-content: space-between;
-            align-items: flex-start;
-            .rotate
-            {
-                transform: rotate(180deg);
-
-                writing-mode: vertical-rl;
-            }
+            writing-mode: vertical-rl;
         }
 
         &_left, &_right
@@ -166,6 +170,19 @@
         width: 100%;
 
         opacity: 1;
+    }
+
+    &__crby
+    {
+        display: block;
+        background: #111;
+        border-top: 1px solid #eee;
+        padding: 1rem 3rem;
+        text-align: center;
+        img
+        {
+            max-height: 2rem;
+        }
     }
 }
 
