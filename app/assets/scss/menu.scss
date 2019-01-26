@@ -42,10 +42,23 @@
         color: #000;
 
     }
-
-    &__link.active
+    
+    &__link
     {
-        @include marker-1;
+        &.active, &:hover
+        {
+            &::before
+            {
+                animation: scaleX 0.4s;
+
+                .rotate &
+                {
+                    animation: scaleY 0.4s;
+                }
+
+            }
+            @include marker-1;
+        }
     }
 
     &__burger
