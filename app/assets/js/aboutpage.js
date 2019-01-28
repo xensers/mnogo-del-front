@@ -11,6 +11,7 @@ var trustUsFeedback = function trustUsFeedback() {
 
     this.items.map(function (item, index) {
         item.onclick = function () {
+            pauseAllPlayers();
             self.moveRound(item);
             self.changeSlide(index);
         };

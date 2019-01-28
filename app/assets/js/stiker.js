@@ -323,19 +323,6 @@ function Stikers() {
                 stikerDraw(0);
             })
         } else {
-            if (firstInit) {
-                requestAnimationFrame(function() {
-                    stikerDraw(0.1);
-                })
-            } else if (!noAnimateInit) {
-                animate({
-                    timing: linear,
-                    duration: 3000,
-                    draw: stikerDraw,
-                    from: 1,
-                    to: 10,
-                });
-            }
 
             var move = function(event) {
                 elemArena.onmouseover = undefined;
@@ -349,6 +336,31 @@ function Stikers() {
                 }
             }
 
+            var outTimer;
+            elemStiker.onmouseover = function(event) {
+                console.log('over');
+                clearTimeout(outTimer);
+                animate({
+                    timing: linear,
+                    duration: 3000,
+                    draw: stikerDraw,
+                    from: 0,
+                    to: 10,
+                });
+            }
+
+            elemStiker.onmouseout = function(event) {
+                console.log('out');
+                outTimer = setTimeout(function(){
+                    animate({
+                        timing: linear,
+                        duration: 3000,
+                        draw: stikerDraw,
+                        from: 10,
+                        to: 0,
+                    });
+                }, 300);
+            }
 
             elemArena.onmouseover = function(event) {
                 animate({
@@ -356,7 +368,7 @@ function Stikers() {
                     duration: 3000,
                     draw: stikerDraw,
                     from: 10,
-                    to: 13,
+                    to: 15,
                 });
             }
 
@@ -365,7 +377,7 @@ function Stikers() {
                     timing: linear,
                     duration: 3000,
                     draw: stikerDraw,
-                    from: 13,
+                    from: 15,
                     to: 10,
                 });
             }

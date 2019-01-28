@@ -6,12 +6,13 @@ append vars
 
 append scripts
   script.
-    if (!window.location.hash)
-    {
-      startPageOpen();
-      document.querySelector('.start-page__close').addEventListener("click", function(){
-          setTimeout(onLoadedHomePage, 300);
-      });
+    if (!window.location.hash && getCookie('startPageOpenToday') !== "yes") {
+        startPageOpen();
+        document.querySelector('.start-page__close').addEventListener("click", function(){
+            setTimeout(onLoadedHomePage, 300);
+        });
+        document.cookie = "startPageOpenToday=yes;";
+
     } else {
       window.addEventListener("DOMContentLoaded", onLoadedHomePage);
     }

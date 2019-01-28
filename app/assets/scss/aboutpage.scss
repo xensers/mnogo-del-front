@@ -644,27 +644,7 @@
             transform: translate(-50%, -50%) rotate(45deg);
             z-index: -1;
         }
-        &__play-btn {
-            background: url('../images/aboutpage/play.svg') no-repeat center;
-            width: 4.375rem;
-            height: 4.375rem;
-            position: absolute;
-            background-size: contain;
-            left:50%;
-            top:50%;
-            transform: translate(-50%, -50%);
-            transition: transform 230ms ease-in-out;
-            cursor:pointer;
-            &:hover {
-                transform: translate(-50%, -50%) scale(1.2);
-            }
-        }
-        &__video-container {
-            padding-bottom: 55%;
-            background: #eee;
-            box-shadow: 0 1.875rem 2.5rem -1.875rem rgba(0,0,0,0.4);
-            background-size: cover;
-        }
+
         &__subtitle {
             position: relative;
             z-index: 1;

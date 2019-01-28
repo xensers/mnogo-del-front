@@ -135,6 +135,19 @@ button,
     }
 }
 
+.link
+{
+    text-decoration: none;
+
+    color: inherit;
+    border-bottom: .1em dashed;
+
+    &:hover
+    {
+        border-bottom-style: solid;
+    }
+}
+
 
 .line
 {
@@ -163,14 +176,4 @@ button,
     {
         transform: rotate(90deg);
     }
-}
-
-
-
-.link
-{
-    text-decoration: none;
-
-    color: inherit;
-    border-bottom: .1em dashed;
 }

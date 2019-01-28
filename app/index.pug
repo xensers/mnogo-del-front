@@ -65,6 +65,11 @@ block content
     | Что бы показать стартовую, нужно вызвать JS функцию 
     code startPageOpen()
 
+  br
+  h2 Кнопки поделиться
+  hr
+  .ya-share2(data-services="vkontakte,facebook,odnoklassniki,gplus" data-size="s")
+
 
   br
   h2 Стикеры
@@ -125,8 +130,8 @@ block content
   hr
   h4 Видео
   code
-    | a.YouTubeVideo[href=""]{Название}
-  a.YouTubeVideo(href="https://youtu.be/uGlzWZyVrBk")
+    | a.youtube[href=""]{Название}
+  a.youtube(href="https://youtu.be/uGlzWZyVrBk")
     | Видео о законах впихуемости
   h4 Аудио
   pre

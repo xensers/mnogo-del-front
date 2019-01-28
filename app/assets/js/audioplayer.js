@@ -1,19 +1,32 @@
+var audioPlayers = new Array();
+
 readyjs.push(function(){
-    audioPlayers = document.querySelectorAll('.audioplayer');
-    if (audioPlayers) {
-        for (var i = audioPlayers.length - 1; i >= 0; i--) {
-            initAudioPlayer(audioPlayers[i]);
+    audioPlayersNodeList = document.querySelectorAll('.audioplayer');
+    if (audioPlayersNodeList) {
+        for (var i = audioPlayersNodeList.length - 1; i >= 0; i--) {
+            audioPlayers.push(new initAudioPlayer(audioPlayersNodeList[i]));
         }
     }
 });
 
-function initAudioPlayer(audioPlayer) {
-    var audio    = audioPlayer.querySelector('audio');
-    var pButton  = audioPlayer.querySelector('.audioplayer__button');
-    var playhead = audioPlayer.querySelector('.audioplayer__playhead');
-    var timeline = audioPlayer.querySelector('.audioplayer__timeline');
-    var duration = audio.duration;
+function pauseAllPlayers()
+{
+    for (var i = audioPlayers.length - 1; i >= 0; i--) {
+        audioPlayers[i].pause();
+    }
+}
 
+function initAudioPlayer(audioPlayerElem) {
+    self = this;
+
+    this.play = play;
+    this.pause = pause;
+
+    var audio    = audioPlayerElem.querySelector('audio');
+    var pButton  = audioPlayerElem.querySelector('.audioplayer__button');
+    var playhead = audioPlayerElem.querySelector('.audioplayer__playhead');
+    var timeline = audioPlayerElem.querySelector('.audioplayer__timeline');
+    var duration = audio.duration;
     var timelineWidth = timeline.offsetWidth;
 
     pButton.addEventListener("click", play);
@@ -23,6 +36,7 @@ function initAudioPlayer(audioPlayer) {
         audio.currentTime = duration * clickPercent(event);
         timeUpdate();
     }, false);
+
 
     function timeUpdate() {
         requestAnimationFrame(function(){
@@ -42,14 +56,21 @@ function initAudioPlayer(audioPlayer) {
 
     function play() {
         if (audio.paused) {
-            audio.play();
+            pauseAllPlayers();
+
             pButton.classList.remove('play');
             pButton.classList.add('pause');
+            audio.play();
         } else {
-            audio.pause();
-            pButton.classList.remove('pause');
-            pButton.classList.add('play');
+            pause();
         }
+    }
+
+    function pause()
+    {
+        pButton.classList.remove('pause');
+        pButton.classList.add('play');
+        audio.pause();
     }
 
     audio.addEventListener("canplaythrough", function() {

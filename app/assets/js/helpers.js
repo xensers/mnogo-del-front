@@ -75,6 +75,9 @@ function getDocument(url, callback)
 
 
 
+/**
+ * Плавный скроллинг до якроя
+ */
 function smoothScrollToAnchor (){
     var linkNav = document.querySelectorAll('[href^="#"]'), //выбираем все ссылки к якорю на странице
         V = 0.3;  // скорость, может иметь дробное значение через точку (чем меньше значение - тем больше скорость)
@@ -107,6 +110,16 @@ function smoothScrollToAnchor (){
             }, false);
         }
     }
+}
+
+/**
+ *  возвращает cookie с именем name, если есть, если нет, то undefined
+ */
+function getCookie(name) {
+  var matches = document.cookie.match(new RegExp(
+    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+  ));
+  return matches ? decodeURIComponent(matches[1]) : undefined;
 }
 
 readyjs.push(smoothScrollToAnchor);
