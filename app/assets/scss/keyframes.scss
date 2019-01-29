@@ -102,3 +102,57 @@
         transform: translateX(500px);
     }
 }
+
+@keyframes steps
+{
+    0%
+    {
+        transform: translateX(500px) rotate(0deg);
+    }
+    10%
+    {
+        transform: translateX(450px) rotate(-10deg);
+    }
+    20%
+    {
+        transform: translateX(400px) rotate(10deg);
+    }
+    30%
+    {
+        transform: translateX(350px) rotate(-10deg);
+    }
+    40%
+    {
+        transform: translateX(300px) rotate(10deg);
+    }
+    50%
+    {
+        transform: translateX(250px) rotate(-10deg);
+    }
+    60%
+    {
+        transform: translateX(200px) rotate(10deg);
+    }
+    70%
+    {
+        transform: translateX(150px) rotate(-10deg);
+    }
+    80%
+    {
+        transform: translateX(100px) rotate(10deg);
+    }
+    90%
+    {
+        transform: translateX(50px) rotate(-10deg);
+    }
+    100%
+    {
+        transform: translateX(0px) rotate(0deg);
+    }
+}
+
+.steps
+{
+    animation-name: steps;
+    animation-timing-function: linear;
+}

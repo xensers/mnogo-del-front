@@ -123,3 +123,27 @@ function getCookie(name) {
 }
 
 readyjs.push(smoothScrollToAnchor);
+
+
+/**
+ * Появление с задержкой
+ */
+function displayDelay()
+{
+    var elems = document.getElementsByClassName('display-delay');
+    for (var i = elems.length - 1; i >= 0; i--) {
+        var elem = elems[i];
+
+        display = getComputedStyle(elem).display;
+        elem.style.display = 'none';
+
+        (function(elem, display){
+            var delay = +elem.dataset.delay;
+            setTimeout(function(){
+                elem.style.display = display;
+            }, delay);
+        })(elem, display);
+    }
+}
+
+readyjs.push(displayDelay);

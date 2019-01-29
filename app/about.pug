@@ -14,52 +14,50 @@ block content
   .first-section
     .first-section__left
       .first-section__figure
-        .oval-marker
-        img.first-section__figure-img(src="assets/images/aboutpage/man.png", alt="alt", srcset="assets/images/aboutpage/man@2x.png 2x")
+        .oval-marker.display-delay(data-delay="3000")
+        img.first-section__figure-img.wow.steps.slow(src="assets/images/aboutpage/man.png", alt="alt", srcset="assets/images/aboutpage/man@2x.png 2x")
     .first-section__right
-      .h1.first-section__title Всем привет!
+      .h1.first-section__title.wow.rotateInUpLeft.fast(data-wow-delay="2s") Всем привет!
       .first-section__content
-        p
+        p.wow.fadeInRight.fast(data-wow-delay="2.5s")
           span.zi-2 Этот свежий 
           span.marker-1 молодой человек – я, 
           br
           | доктор 
           a(href="#do-now").link прокрастинологических наук,
-        p
+        p.wow.fadeInRight(data-wow-delay="3s")
           | воспитатель обезьянок 
           br
           a(href="#reviews").link в полевых корпоративных условиях
-        p
+        p.wow.fadeInRight.fast(data-wow-delay="3.5s")
           | и почетный мастер 
           a(href="#book").link клуба Джедаев,
           br
           span.marker-1 Максим Дорофеев…
-      .first-section__bottom
-        .first-section__bottom-text 
+      .first-section__bottom.wow.bounceInUp(data-wow-delay="4s")
+        .first-section__bottom-text
           | Что это все <br> значит?
   // END: first-section
-  .trust-us#reviews
+  .trust-us#reviews.wow.fadeIn
     .trust-us__left
-      h2.title.trust-us__title 
+      h2.title.trust-us__title
         | Я знаю, как 
         span.marker-title сделать
         br
         span.zi-1 вас и вашу команду <br> эффективной
-      p 
+      p
         | На сегодняшний момент мое любимое <br> дело — обучение 
         | людей техникам личной <br> эффективности:
-      h3.subtitle.trus-us__subtitle
+      h3
         | «Как 
         span.marker-2 приносить больше 
-        |  пользы своей компании, оставаясь при этом <br>        
+        |  пользы своей компании, оставаясь при этом <br>
         span.marker-2 свободным и творческим 
         | человеком»
-
       p
         | Мне доверились такие компании, которые <br> по контракту я не могу называть… 
         br
         | Но на счет картинок никто ничего не говорил…
-        
     .trust-us__right
       .trust-us__icons
         .trust-us__icon-wrapper#js-logo-wrapper
@@ -130,7 +128,7 @@ block content
                 br
                 a(href="http://www.glt.company/" target="_blank").link ООО «ГЛТ- Москва»
   // END: trust-us
-  +b.tell-technique#book
+  +b.tell-technique#book.wow.fadeIn
     +e.left
       +e.IMG.book(src="assets/images/aboutpage/book.png", srcset="assets/images/aboutpage/book@2x.png 2x", alt="")
       +audioplayer('assets/media/audio.mp3')
@@ -156,7 +154,7 @@ block content
         | начатого…
       +e.next Как я пришел к <br> такой жизни
   // END: tell-technique
-  +b.how-began#history
+  +b.how-began#history.wow.fadeIn
     +b.began-slider
       +e.wrapper.swiper-wrapper
         +e.slide.swiper-slide
@@ -184,7 +182,7 @@ block content
         +e.hover
     +e.arrow
   // END: how-began
-  +b.do-now#do-now
+  +b.do-now#do-now.wow.fadeIn
     +e.left
       +e.title.title 
         span.marker-title Что я делаю <br> 
@@ -229,7 +227,7 @@ block content
           +e.date-val 15 июня
           +e.A.date-city.link(href="") Новосибирск
   // END: do-now
-  +b.feedback#feedback
+  +b.feedback#feedback.wow.fadeIn
     +e.left
       +e.label.marker-1 обратная связь
       +e.arrow

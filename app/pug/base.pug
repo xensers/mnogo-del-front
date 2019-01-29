@@ -28,6 +28,7 @@ block vars
 
 block styles
   link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css')
+  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css')
   link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.2/css/swiper.min.css")
 
   // build:css assets/css/preloader.css
@@ -63,9 +64,9 @@ block styles
 
 block scripts
   script(src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.2/js/swiper.min.js")
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js")
   script(src="//yastatic.net/share2/share.js")
-  script.
-    var myShare = document.getElementById('my-share');
+
   // build:js assets/js/main.js
   script(type='text/javascript', src='assets/js/helpers.js')
   script(type='text/javascript', src='assets/js/respond.js')
@@ -81,6 +82,10 @@ block scripts
   script(type='text/javascript', src='assets/js/case-detailed-page.js')
   script(type='text/javascript', src='assets/js/aboutpage.js')
   // endbuild
+
+  script.
+    var myShare = document.getElementById('my-share');
+    new WOW().init();
 
 block body-start
   include preloader
