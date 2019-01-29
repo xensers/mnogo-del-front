@@ -91,7 +91,7 @@ setTimeout(function(){
             elem.style.transform = 'scale(-1, 1)';
         }
         iteration++;
-        if (iteration >= 3) {
+        if (iteration >= 2) {
             clearInterval(interval);
         }
     }, 1000);
