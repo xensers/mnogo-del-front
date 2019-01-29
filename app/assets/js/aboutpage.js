@@ -81,12 +81,18 @@ function initSlider() {
 
 
 setTimeout(function(){
+    var iteration = 0;
     var elem = document.getElementsByClassName('first-section__figure-img')[0];
-    setInterval(function(){
+
+    var interval = setInterval(function(){
         if (elem.style.transform) {
             elem.style.transform = '';
         } else {
             elem.style.transform = 'scale(-1, 1)';
+        }
+        iteration++;
+        if (iteration >= 3) {
+            clearInterval(interval);
         }
     }, 1000);
 }, 2000);
