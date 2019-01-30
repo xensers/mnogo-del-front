@@ -85,14 +85,16 @@ setTimeout(function(){
     var elem = document.getElementsByClassName('first-section__figure-img')[0];
 
     var interval = setInterval(function(){
-        if (elem.style.transform) {
-            elem.style.transform = '';
-        } else {
-            elem.style.transform = 'scale(-1, 1)';
-        }
-        iteration++;
-        if (iteration >= 4) {
-            clearInterval(interval);
-        }
+        requestAnimationFrame(function(){
+            if (elem.style.transform) {
+                elem.style.transform = '';
+            } else {
+                elem.style.transform = 'scale(-1, 1)';
+            }
+            iteration++;
+            if (iteration >= 4) {
+                clearInterval(interval);
+            }
+        });
     }, 1000);
 }, 2000);
