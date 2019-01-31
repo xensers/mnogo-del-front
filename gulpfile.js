@@ -48,7 +48,6 @@ gulp.task('scss', function(){
         .pipe(sourcemaps.init())
         .pipe(sass({outputStyle: 'expanded'}))
         .pipe(autoprefixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true }))
-        .pipe(sourcemaps.write())
         .pipe(gulp.dest('app/assets/css/'))
         .pipe(browserSync.reload({stream: true}))
 });
