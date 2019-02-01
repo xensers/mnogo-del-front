@@ -80,21 +80,23 @@ function initSlider() {
 }
 
 
-setTimeout(function(){
-    var iteration = 0;
-    var elem = document.getElementsByClassName('first-section__figure-img')[0];
+function firstSectionAnimation() {
+    setTimeout(function(){
+        var iteration = 0;
+        var elem = document.getElementsByClassName('first-section__figure-img')[0];
 
-    var interval = setInterval(function(){
-        requestAnimationFrame(function(){
-            if (elem.style.transform) {
-                elem.style.transform = '';
-            } else {
-                elem.style.transform = 'scale(-1, 1)';
-            }
-            iteration++;
-            if (iteration >= 4) {
-                clearInterval(interval);
-            }
-        });
-    }, 1000);
-}, 2000);
+        var interval = setInterval(function(){
+            requestAnimationFrame(function(){
+                if (elem.style.transform) {
+                    elem.style.transform = '';
+                } else {
+                    elem.style.transform = 'scale(-1, 1)';
+                }
+                iteration++;
+                if (iteration >= 4) {
+                    clearInterval(interval);
+                }
+            });
+        }, 1000);
+    }, 2000);
+}

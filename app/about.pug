@@ -6,9 +6,12 @@ append vars
 
 append scripts
   script.
-    var feedbackIcons = new trustUsFeedback();
-    var feedbackInputs = new inputsHandler();
-    initSlider();
+    readyjs.push(function(){
+      var feedbackIcons = new trustUsFeedback();
+      var feedbackInputs = new inputsHandler();
+      initSlider();
+      firstSectionAnimation();
+    });
 
 block content
   .first-section
