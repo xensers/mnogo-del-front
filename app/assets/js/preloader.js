@@ -1,32 +1,49 @@
-var preloaderTimer;
-var preloaderStatus = false;
-/**
- * Запускает прелоадер
- * 
- * @param  {Boolean} preloaderStatus FASLE - запустится только если страница грузится больше 2х секунд.
- *                                   TURE -  Запустится принудительно.
- */
-function runPreloader() {
-    document.documentElement.classList.add('loading');
-    preloaderStatus = false;
-    preloaderTimer = setTimeout(function() {
-        preloaderStatus = true;
-        preloader.style.display = 'flex';
-        preloader.style.opacity = '1';
+var Preloader = new Preloader();
+
+function Preloader(){
+    var self = this;
+
+    var elemPreloader;
+    var timer;
+    var status = false;
+
+    this.run = function() {
+        elemPreloader = document.getElementById('preloader');
+        document.documentElement.classList.add('loading');
+        status = false;
+        timer = setTimeout(function() {
+            self.open();
+        }, 3000);
+
+        window.addEventListener("load", function(){
+            if (!status) {
+                self.close();
+            }
+        });
+    }
+
+    this.open = function() {
+        status = true;
+        document.documentElement.classList.add('loading');
+
+        requestAnimationFrame(function(){
+            elemPreloader.style.display = 'flex';
+            elemPreloader.style.opacity = '1';
+        });
 
         setTimeout(function() {
-            document.documentElement.classList.remove('loading');
-            preloader.style.display = 'none';
+            self.close();
         }, 5500);
-    }, 2000);
+    }
 
-    window.addEventListener("load", onLoadPreloader);
-}
+    this.close = function() {
+        clearTimeout(timer);
+        status = false;
 
-function onLoadPreloader(e) {
-    if (!preloaderStatus) {
-        clearTimeout(preloaderTimer);
-        document.documentElement.classList.remove('loading');
+        requestAnimationFrame(function(){
+            elemPreloader.style.display = 'none';
+            document.documentElement.classList.remove('loading');
+            document.documentElement.classList.add('loaded');
+        })
     }
 }
-
