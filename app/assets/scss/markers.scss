@@ -42,9 +42,11 @@
 {
     @include oval-marker;
     animation: oval-marker 1s linear;
+    animation-fill-mode: both;
     &:before
     {
         animation: oval-marker-before 1s linear;
+        animation-fill-mode: both;
     }
 }
 

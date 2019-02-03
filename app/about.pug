@@ -10,38 +10,39 @@ append scripts
       var feedbackIcons = new trustUsFeedback();
       var feedbackInputs = new inputsHandler();
       initSlider();
-      firstSectionAnimation();
+      window.addEventListener('load', firstSectionAnimation);
     });
 
 block content
-  .first-section
+  #first.first-section
     .first-section__left
       .first-section__figure
-        .oval-marker.display-delay(data-delay="3000")
-        img.first-section__figure-img.wow.steps.slow(src="assets/images/aboutpage/man.png", alt="alt", srcset="assets/images/aboutpage/man@2x.png 2x")
+        .oval-marker
+        img.first-section__figure-img(src="assets/images/aboutpage/man.png", alt="alt", srcset="assets/images/aboutpage/man@2x.png 2x")
     .first-section__right
-      .h1.first-section__title.wow.rotateInUpLeft.fast(data-wow-delay="2s") Всем привет!
+      .h1.first-section__title Всем привет!
       .first-section__content
-        p.wow.fadeInRight.fast(data-wow-delay="2.5s")
+        p
           span.zi-2 Этот свежий 
           span.marker-1 молодой человек – я, 
           br
           | доктор 
           a(href="#do-now").link прокрастинологических наук,
-        p.wow.fadeInRight(data-wow-delay="3s")
+        p
           | воспитатель обезьянок 
           br
           a(href="#reviews").link в полевых корпоративных условиях
-        p.wow.fadeInRight.fast(data-wow-delay="3.5s")
+        p
           | и почетный мастер 
           a(href="#book").link клуба Джедаев,
           br
           span.marker-1 Максим Дорофеев…
-      .first-section__bottom.wow.bounceInUp(data-wow-delay="4s")
+      .first-section__bottom
         .first-section__bottom-text
           | Что это все <br> значит?
   // END: first-section
-  .trust-us#reviews.wow.fadeIn
+
+  #reviews.trust-us.wow.fadeIn
     .trust-us__left
       h2.title.trust-us__title
         | Я знаю, как 
@@ -131,208 +132,217 @@ block content
                 br
                 a(href="http://www.glt.company/" target="_blank").link ООО «ГЛТ- Москва»
   // END: trust-us
-  +b.tell-technique#book.wow.fadeIn
-    +e.left
-      +e.IMG.book(src="assets/images/aboutpage/book.png", srcset="assets/images/aboutpage/book@2x.png 2x", alt="")
-      +audioplayer('assets/media/audio.mp3')
-      +e.A.link.link(href="") Послушать отрывок (читаю сам)
-    +e.right
-      +e.title.title Расказываю, <br>как познать технику джедаев
-      p 
-        | Об этом я написал целую книгу <br>
-        span.marker-1 «Джедайские техники. 
-        span.zi-2 Как воспитать свою обезьяну, 
-        | опустошить инбокс и сберечь 
-        | мыслетопливо»      
-      br
-      a.link(href="https://www.mann-ivanov-ferber.ru/books/dzhedajskie-texniki" target="_blank") Подробнее о книге
-      br
-      br
-      p.with_round 
-        | О том, что такое обезьянка, <br>
-        | и почему мы предпочитаем проверить <br>
-        | новости, почту и старые фотографии <br>
-        | написанию диплома, началу нового <br>
-        | проекта или завершению <br>
-        | начатого…
-      +e.next Как я пришел к <br> такой жизни
+
+  #book
+    +b.tell-technique.wow.fadeIn
+      +e.left
+        +e.IMG.book(src="assets/images/aboutpage/book.png", srcset="assets/images/aboutpage/book@2x.png 2x", alt="")
+        +audioplayer('assets/media/audio.mp3')
+        +e.A.link.link(href="") Послушать отрывок (читаю сам)
+      +e.right
+        +e.title.title Расказываю, <br>как познать технику джедаев
+        p 
+          | Об этом я написал целую книгу <br>
+          span.marker-1 «Джедайские техники. 
+          span.zi-2 Как воспитать свою обезьяну, 
+          | опустошить инбокс и сберечь 
+          | мыслетопливо»      
+        br
+        a.link(href="https://www.mann-ivanov-ferber.ru/books/dzhedajskie-texniki" target="_blank") Подробнее о книге
+        br
+        br
+        p.with_round 
+          | О том, что такое обезьянка, <br>
+          | и почему мы предпочитаем проверить <br>
+          | новости, почту и старые фотографии <br>
+          | написанию диплома, началу нового <br>
+          | проекта или завершению <br>
+          | начатого…
+        +e.next Как я пришел к <br> такой жизни
   // END: tell-technique
-  +b.how-began#history.wow.fadeIn
-    +b.began-slider
-      +e.wrapper.swiper-wrapper
-        +e.slide.swiper-slide
-          +e.slide-left
-            +e.photo
-              img(src="assets/images/aboutpage/slider/photo-0.png", alt="")
-          +e.slide-right
-            +e.title.title Как все начиналось
-            +e.year.marker-1 1981
-            +e.content
-              p Родился в Москве, вечером 15 апреля 1981 года в семье помещика Дорофеева и моей матушки, 
-        +e.slide.swiper-slide
-          +e.slide-left
-            +e.photo
-              img(src="assets/images/aboutpage/slider/photo-1.png", alt="")
-          +e.slide-right
-            +e.title.title Школа
-            +e.year.marker-1 1988-1997
-            +e.content
-              p Учился в очень интересной (в то время) школе
-        +e.slide.swiper-slide
-          +e.slide-left
-            +e.photo
-              img(src="assets/images/aboutpage/slider/photo-2.png", alt="")
-          +e.slide-right
-            +e.title.title Студенчество
-            +e.year.marker-1 1997
-            +e.content
-              p Пошел учиться на физфак МГУ. Успешно. Но, бывало всякое...
-        +e.slide.swiper-slide
-          +e.slide-left
-            +e.photo
-              img(src="assets/images/aboutpage/slider/photo-3.png", alt="")
-          +e.slide-right
-            +e.title.title Работа, путешествия
-            +e.year.marker-1 2001 – 2008
-            +e.content
-              p Работал на разные компании. Катался в разные командировки.
-              p То в край огромных кактусов.
-        +e.slide.swiper-slide
-          +e.slide-left
-            +e.photo
-              img(src="assets/images/aboutpage/slider/photo-4.png", alt="")
-          +e.slide-right
-            +e.title.title Работа, путешествия
-            +e.year.marker-1 2001 – 2008
-            +e.content
-              p То просто по Европе.
-        +e.slide.swiper-slide
-          +e.slide-left
-            +e.photo
-              img(src="assets/images/aboutpage/slider/photo-6.png", alt="")
-          +e.slide-right
-            +e.title.title Азия
-            +e.year.marker-1 2013
-            +e.content
-              p Покинул Лабораторию Касперского.
-              p Некоторое время провел в Азии.
-              p То в лагерях Тайского бокса.
-        +e.slide.swiper-slide
-          +e.slide-left
-            +e.photo
-              img(src="assets/images/aboutpage/slider/photo-7.png", alt="")
-          +e.slide-right
-            +e.title.title Азия
-            +e.year.marker-1 2013
-            +e.content
-              p С переменным, кстати, успехом…
-        +e.slide.swiper-slide
-          +e.slide-left
-            +e.photo
-              img(src="assets/images/aboutpage/slider/photo-8.png", alt="")
-          +e.slide-right
-            +e.title.title Азия
-            +e.year.marker-1 2013
-            +e.content
-              p То по монастырям, да развалинам.
-        +e.slide.swiper-slide
-          +e.slide-left
-            +e.photo
-              img(src="assets/images/aboutpage/slider/photo-10.png", alt="")
-          +e.slide-right
-            +e.title.title Начал вести тренинги
-            +e.year.marker-1 2013
-            +e.content
-              p Понял, что у меня есть, чему учить людей.
-        +e.slide.swiper-slide
-          +e.slide-left
-            +e.photo
-              img(src="assets/images/aboutpage/slider/photo-11.png", alt="")
-          +e.slide-right
-            +e.title.title Начал вести тренинги
-            +e.year.marker-1 2013
-            +e.content
-              p И кое-где даже с размахом
-      +e.pagination
-      +b.swiper-btn._prev.began-slider__prev
-        +e.round
-        +e.hover
-      +b.swiper-btn._next.began-slider__next
-        +e.round
-        +e.hover
-    +e.arrow
-  // END: how-began
-  +b.do-now#do-now.wow.fadeIn
-    +e.left
-      +e.title.title 
-        span.marker-title Что я делаю <br> 
-        span.zi-1 сейчас
-      p.
-        Следите регулярно за обновлениями в моем Youtube канале, 
-        блоге в ЖЖ, слушайте бухтелки и прожекторыпрокрастиналогии. 
-        Присоединяйтесь!
-      br
-      p
-        a.link(href="http://www.youtube.com/user/Cartmendum?sub_confirmation=1", target="_blank") Подписаться на канал
-        |  (Нас&nbsp;уже&nbsp;261&nbsp;027)
-      br
-      br
-      br
-      +e.subtitle.subtitle Корпоративное обучение
-      p
-        span.zi-2 Если 
-        span.marker-1 вы считаете, что ваша 
-        span.zi-2  команда может быть эффективней, лучше  
-        span.marker-1 и счастливей -
-        span.zi-2  вы можете заказать 
-        |  у меня пробную встречу, 
-        |  где мы определим, как пройдет работа по апгрейду. 
-      br
-      +e.A.link.link(href="#") Подробнее здесь
-    +e.right
-      +e.video-wrapper
-        +e.oval.oval-marker
-        a.youtube(href="https://www.youtube.com/watch?v=uGlzWZyVrBk")
-      +e.subtitle.subtitle Открытые тренинги 
-      p я провожу редко, <br> но вот 
-        a.link(href="#") ближайшие.
-      //- +e.dates
-        +e.date-row
-          +e.date-val 2-3 марта
-          +e.A.date-city.link(href="") Ростов-на-Дону
-        +e.date-row
-          +e.date-val 7 июня
-          +e.A.date-city.link(href="") Иркутск
-        +e.date-row
-          +e.date-val 15 июня
-          +e.A.date-city.link(href="") Новосибирск
-  // END: do-now
-  +b.feedback#feedback.wow.fadeIn
-    +e.left
-      +e.label.marker-1 обратная связь
+
+  #history
+    +b.how-began.wow.fadeIn
+      +b.began-slider
+        +e.wrapper.swiper-wrapper
+          +e.slide.swiper-slide
+            +e.slide-left
+              +e.photo
+                img(src="assets/images/aboutpage/slider/photo-0.png", alt="")
+            +e.slide-right
+              +e.title.title Как все начиналось
+              +e.year.marker-1 1981
+              +e.content
+                p Родился в Москве, вечером 15 апреля 1981 года в семье помещика Дорофеева и моей матушки, 
+          +e.slide.swiper-slide
+            +e.slide-left
+              +e.photo
+                img(src="assets/images/aboutpage/slider/photo-1.png", alt="")
+            +e.slide-right
+              +e.title.title Школа
+              +e.year.marker-1 1988-1997
+              +e.content
+                p Учился в очень интересной (в то время) школе
+          +e.slide.swiper-slide
+            +e.slide-left
+              +e.photo
+                img(src="assets/images/aboutpage/slider/photo-2.png", alt="")
+            +e.slide-right
+              +e.title.title Студенчество
+              +e.year.marker-1 1997
+              +e.content
+                p Пошел учиться на физфак МГУ. Успешно. Но, бывало всякое...
+          +e.slide.swiper-slide
+            +e.slide-left
+              +e.photo
+                img(src="assets/images/aboutpage/slider/photo-3.png", alt="")
+            +e.slide-right
+              +e.title.title Работа, путешествия
+              +e.year.marker-1 2001 – 2008
+              +e.content
+                p Работал на разные компании. Катался в разные командировки.
+                p То в край огромных кактусов.
+          +e.slide.swiper-slide
+            +e.slide-left
+              +e.photo
+                img(src="assets/images/aboutpage/slider/photo-4.png", alt="")
+            +e.slide-right
+              +e.title.title Работа, путешествия
+              +e.year.marker-1 2001 – 2008
+              +e.content
+                p То просто по Европе.
+          +e.slide.swiper-slide
+            +e.slide-left
+              +e.photo
+                img(src="assets/images/aboutpage/slider/photo-6.png", alt="")
+            +e.slide-right
+              +e.title.title Азия
+              +e.year.marker-1 2013
+              +e.content
+                p Покинул Лабораторию Касперского.
+                p Некоторое время провел в Азии.
+                p То в лагерях Тайского бокса.
+          +e.slide.swiper-slide
+            +e.slide-left
+              +e.photo
+                img(src="assets/images/aboutpage/slider/photo-7.png", alt="")
+            +e.slide-right
+              +e.title.title Азия
+              +e.year.marker-1 2013
+              +e.content
+                p С переменным, кстати, успехом…
+          +e.slide.swiper-slide
+            +e.slide-left
+              +e.photo
+                img(src="assets/images/aboutpage/slider/photo-8.png", alt="")
+            +e.slide-right
+              +e.title.title Азия
+              +e.year.marker-1 2013
+              +e.content
+                p То по монастырям, да развалинам.
+          +e.slide.swiper-slide
+            +e.slide-left
+              +e.photo
+                img(src="assets/images/aboutpage/slider/photo-10.png", alt="")
+            +e.slide-right
+              +e.title.title Начал вести тренинги
+              +e.year.marker-1 2013
+              +e.content
+                p Понял, что у меня есть, чему учить людей.
+          +e.slide.swiper-slide
+            +e.slide-left
+              +e.photo
+                img(src="assets/images/aboutpage/slider/photo-11.png", alt="")
+            +e.slide-right
+              +e.title.title Начал вести тренинги
+              +e.year.marker-1 2013
+              +e.content
+                p И кое-где даже с размахом
+        +e.pagination
+        +b.swiper-btn._prev.began-slider__prev
+          +e.round
+          +e.hover
+        +b.swiper-btn._next.began-slider__next
+          +e.round
+          +e.hover
       +e.arrow
-    +e.right
-      +b.feedback-form
-        +e.header
-          +e.H2.title Напишите мне <br> сюда:
-          +e.subtitle (если хотите)
-        +e.FORM.form
-          +e.control
-             +e.INPUT.input(type="text")
-             +e.placeholder Как вас там
-          +e.control
-            +e.INPUT.input(type="text")
-            +e.placeholder По какому поводу пишете
-          +e.control._message
-            +e.INPUT.input(type="text")
-            +e.placeholder Сюда сообщение
-          +e.control
-            +e.INPUT.input(type="text")
-            +e.placeholder И куда вам на это ответить?
-          +e.BUTTON.btn 
-            +e.btn-round
-            +e.btn-text Отправить
+  // END: how-began
+
+  #do-now
+    +b.do-now.wow.fadeIn
+      +e.left
+        +e.title.title 
+          span.marker-title Что я делаю <br> 
+          span.zi-1 сейчас
+        p.
+          Следите регулярно за обновлениями в моем Youtube канале, 
+          блоге в ЖЖ, слушайте бухтелки и прожекторыпрокрастиналогии. 
+          Присоединяйтесь!
+        br
+        p
+          a.link(href="http://www.youtube.com/user/Cartmendum?sub_confirmation=1", target="_blank") Подписаться на канал
+          |  (Нас&nbsp;уже&nbsp;261&nbsp;027)
+        br
+        br
+        br
+        +e.subtitle.subtitle Корпоративное обучение
+        p
+          span.zi-2 Если 
+          span.marker-1 вы считаете, что ваша 
+          span.zi-2  команда может быть эффективней, лучше  
+          span.marker-1 и счастливей -
+          span.zi-2  вы можете заказать 
+          |  у меня пробную встречу, 
+          |  где мы определим, как пройдет работа по апгрейду. 
+        br
+        +e.A.link.link(href="#") Подробнее здесь
+      +e.right
+        +e.video-wrapper
+          +e.oval.oval-marker
+          a.youtube(href="https://www.youtube.com/watch?v=uGlzWZyVrBk")
+        +e.subtitle.subtitle Открытые тренинги 
+        p я провожу редко, <br> но вот 
+          a.link(href="#") ближайшие.
+        //- +e.dates
+          +e.date-row
+            +e.date-val 2-3 марта
+            +e.A.date-city.link(href="") Ростов-на-Дону
+          +e.date-row
+            +e.date-val 7 июня
+            +e.A.date-city.link(href="") Иркутск
+          +e.date-row
+            +e.date-val 15 июня
+            +e.A.date-city.link(href="") Новосибирск
+  // END: do-now
+
+  #feedback
+    +b.feedback.wow.fadeIn
+      +e.left
+        +e.label.marker-1 обратная связь
+        +e.arrow
+      +e.right
+        +b.feedback-form
+          +e.header
+            +e.H2.title Напишите мне <br> сюда:
+            +e.subtitle (если хотите)
+          +e.FORM.form
+            +e.control
+               +e.INPUT.input(type="text")
+               +e.placeholder Как вас там
+            +e.control
+              +e.INPUT.input(type="text")
+              +e.placeholder По какому поводу пишете
+            +e.control._message
+              +e.INPUT.input(type="text")
+              +e.placeholder Сюда сообщение
+            +e.control
+              +e.INPUT.input(type="text")
+              +e.placeholder И куда вам на это ответить?
+            +e.BUTTON.btn 
+              +e.btn-round
+              +e.btn-text Отправить
   // END: feedback
+
 block footer
   .to-small
     +socals(class="flex space-around")

@@ -79,8 +79,15 @@ function initSlider() {
     });
 }
 
-
 function firstSectionAnimation() {
+    var elemParagraphs = document.querySelectorAll('.first-section__content p');
+
+    var delay = 2.5;
+    for (var i = 0; i <= elemParagraphs.length - 1; i++) {
+        elemParagraphs[i].style.animationDelay = delay + 's';
+        delay = delay + 0.4;
+    }
+
     setTimeout(function(){
         var iteration = 0;
         var elem = document.getElementsByClassName('first-section__figure-img')[0];
