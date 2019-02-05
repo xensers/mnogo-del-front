@@ -338,7 +338,6 @@ function Stikers() {
 
             var outTimer;
             elemStiker.onmouseover = function(event) {
-                console.log('over');
                 clearTimeout(outTimer);
                 animate({
                     timing: linear,
@@ -350,7 +349,6 @@ function Stikers() {
             }
 
             elemStiker.onmouseout = function(event) {
-                console.log('out');
                 outTimer = setTimeout(function(){
                     animate({
                         timing: linear,
