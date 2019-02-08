@@ -132,6 +132,7 @@ function Stikers() {
                         var elemStiker = elemsStikersMatrix[row][col][index],
                             elemTitle  = elemStiker.querySelector('.stiker__title'),
                             elemWrap   = elemStiker.querySelector('.stiker__wrap');
+                            elemTitle.style.display = 'none';
 
                         if (showTitle) {
                             var xFactor = 2.5, 
@@ -139,9 +140,6 @@ function Stikers() {
                         } else {
                             var xFactor = 2.5,
                                 yFactor = 2.5;
-                            requestAnimationFrame(function() {
-                                elemTitle.style.display = 'none';
-                            });
                         }
 
                         setTimeout(function() {
@@ -196,7 +194,7 @@ function Stikers() {
                     timing: linear,
                     duration: 500,
                     draw: stikerDraw,
-                    from: 10,
+                    from: 0,
                     to: 90,
                     before: function() {
                         elemWrap.style.overflow = 'visible';
@@ -208,7 +206,7 @@ function Stikers() {
                             duration: 700,
                             draw: stikerDraw,
                             from: 90,
-                            to: 1,
+                            to: 0,
                             after: function() {
                                 elemWrap.style.overflow = 'hidden';
                             }
@@ -244,7 +242,7 @@ function Stikers() {
                             duration: 700,
                             draw: stikerDraw,
                             from: 90,
-                            to: 10,
+                            to: 0,
                             after: function() {
                                 elemWrap.style.overflow = 'hidden';
                             }

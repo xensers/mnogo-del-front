@@ -5,6 +5,7 @@ function onLoadedHomePage() {
     window.stikers = new Stikers().init('.stikers-group');
 
     document.querySelector('.header__icons_back').addEventListener('click', closeCases);
+    document.querySelector('.show-all-cases').addEventListener('click', showAllCases);
 
     if (window.location.hash == '#cases') {
         openCases();
@@ -29,6 +30,7 @@ function onLoadedHomePage() {
     }
 }
 
+
 function openCases() {
     document.documentElement.classList.add('homepage--cases');
     window.location.hash = 'cases';
@@ -36,6 +38,7 @@ function openCases() {
 
     document.documentElement.classList.remove('homepage--ready');
     document.querySelector('.homepage__cases > .oval-marker').style.display = 'none';
+    document.querySelector('.show-all-cases').style.display = 'block';
 
     fromMedium = function() {
         stikers.convertToGrid(4, false, true, false);
@@ -66,7 +69,7 @@ function closeCases() {
     }
 
     toMedium = function(){
-        stikers.convertToSlider();
+        stikers.convertToGrid(1, 1);
     }
 
     respondFrom(breakpoint.medium, fromMedium, true, false);
@@ -74,5 +77,12 @@ function closeCases() {
 
     updateMenu();
 
+    return false;
+}
+
+function showAllCases()
+{
+    this.style.display = 'none';
+    stikers.convertToGrid(1, 0, 1);
     return false;
 }

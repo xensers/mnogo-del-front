@@ -194,12 +194,22 @@
             display: none;
             text-align: left;
 
+            opacity: 0;
             .homepage--cases &
             {
-                @include respond-from(medium)
-                {
-                    display: block;
-                }
+                opacity: 1;
+                animation: fadeIn 2s 2s;
+                animation-fill-mode: both;
+            }
+
+            .show-all-cases
+            {
+                text-align: center;
+            }
+
+            .homepage--cases &
+            {
+                display: block;
             }
         }
     }

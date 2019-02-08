@@ -78,6 +78,8 @@
         background-position: center;
         background-size: 2em auto;
 
+        z-index: 500;
+
         @include retina
         {
             background-image: url('../images/icons/arrow-left@2x.png');
