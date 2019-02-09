@@ -17,6 +17,14 @@ function loadCaseDetailedPage() {
     documentNextPage = doc;
     elemSideRight.onclick = nextPage;
   });
+
+  elemSideRight.onmouseover = function() {
+    elemNextStiker.querySelector('.stiker').style.transform = 'translateX(-5rem)';
+  }
+
+  elemSideRight.onmouseout = function() {
+    elemNextStiker.querySelector('.stiker').style.transform = '';
+  }
 }
 
 function nextPage(event)
@@ -26,7 +34,6 @@ function nextPage(event)
 
   var coordsActiveStiker = elemActiveStiker.getBoundingClientRect();
   var coordsNextStiker   = elemNextStiker.getBoundingClientRect();
-
 
   elemNextStiker.style.transform  = 'translateX('+ coordsNextStiker.x +'px) translateY('+ coordsNextStiker.y +'px)';
   elemNextStiker.style.top        = 0;
@@ -46,6 +53,7 @@ function nextPage(event)
 
     setTimeout(function(){
       requestAnimationFrame(function() {
+        elemNextStiker.querySelector('.stiker').style.transform = '';
         elemArticle.innerHTML             = documentNextPage.querySelector('.case-detailed__article').innerHTML;
         elemActiveStiker.style.transition = '';
         elemArticle.style.transition      = '';
@@ -95,7 +103,6 @@ function nextPage(event)
               }
             });
           }, 2000);
-
         });
       });
     }, 2000);
