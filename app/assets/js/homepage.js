@@ -35,6 +35,7 @@ function openCases() {
     document.documentElement.classList.add('homepage--cases');
     window.location.hash = 'cases';
     updateMenu();
+    window.scrollTo(0, 0);
 
     document.documentElement.classList.remove('homepage--ready');
     document.querySelector('.homepage__cases > .oval-marker').style.display = 'none';
@@ -58,6 +59,7 @@ function closeCases() {
     document.documentElement.classList.remove('homepage--cases');
     window.location.hash = '';
     updateMenu();
+    window.scrollTo(0, 0);
 
     document.documentElement.classList.add('homepage--ready');
     setTimeout(function(){
@@ -84,5 +86,6 @@ function showAllCases()
 {
     this.style.display = 'none';
     stikers.convertToGrid(1, 0, 1);
+    window.scrollTo(0, 0);
     return false;
 }
