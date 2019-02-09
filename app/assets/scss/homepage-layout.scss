@@ -187,32 +187,31 @@
         }
 
 
-        &__end
+        &__footer
         {
             padding: 4rem 2rem 0 2rem;
+        }
 
+        &_show-all
+        {
+            display: none;
+            text-align: center;
+
+            opacity: 0;
+            animation: fadeIn 2s 2s;
+            animation-fill-mode: both;
+        }
+
+        &_end
+        {
             display: none;
             text-align: left;
 
-            opacity: 0;
-            .homepage--cases &
-            {
-                opacity: 1;
-                animation: fadeIn 2s 2s;
-                animation-fill-mode: both;
-            }
-
-            .show-all-cases
-            {
-                text-align: center;
-            }
-
-            .homepage--cases &
-            {
-                display: block;
-            }
+            animation: fadeIn 2s 2s;
+            animation-fill-mode: both;
         }
     }
+
 
     &__case-item
     {

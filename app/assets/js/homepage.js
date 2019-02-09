@@ -1,11 +1,16 @@
 var fromMedium;
 var toMedium;
+var stikers;
+var elemShowAllCases;
+var elemCasesEnd;
 
 function onLoadedHomePage() {
-    window.stikers = new Stikers().init('.stikers-group');
+    stikers = new Stikers().init('.stikers-group');
+    elemCasesEnd = document.querySelector('.homepage__cases_end');
+    elemShowAllCases = document.querySelector('.homepage__cases_show-all');
 
     document.querySelector('.header__icons_back').addEventListener('click', closeCases);
-    document.querySelector('.show-all-cases').addEventListener('click', showAllCases);
+    elemShowAllCases.addEventListener('click', showAllCases);
 
     if (window.location.hash == '#cases') {
         openCases();
@@ -39,14 +44,17 @@ function openCases() {
 
     document.documentElement.classList.remove('homepage--ready');
     document.querySelector('.homepage__cases > .oval-marker').style.display = 'none';
-    document.querySelector('.show-all-cases').style.display = 'block';
 
     fromMedium = function() {
         stikers.convertToGrid(4, false, true, false);
+        elemCasesEnd.style.display = 'block';
+        elemShowAllCases.style.display = 'none';
     }
 
     toMedium = function() {
         stikers.convertToSlider();
+        elemCasesEnd.style.display = 'none';
+        elemShowAllCases.style.display = 'block';
     }
 
     respondFrom(breakpoint.medium, fromMedium, true, false);
@@ -84,7 +92,8 @@ function closeCases() {
 
 function showAllCases()
 {
-    this.style.display = 'none';
+    elemCasesEnd.style.display = 'block';
+    elemShowAllCases.style.display = 'none';
     stikers.convertToGrid(1, 0, 1);
     window.scrollTo(0, 0);
     return false;
