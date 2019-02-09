@@ -69,7 +69,7 @@ function nextPage(event)
 
     setTimeout(function(){
       requestAnimationFrame(function(){
-        elemActiveStiker.innerHTML       = elemNextStiker.innerHTML;
+        elemActiveStiker.querySelector('.stiker').innerHTML       = elemNextStiker.querySelector('.stiker').innerHTML;
         elemActiveStiker.style.opacity   = '';
         elemActiveStiker.style.transform = '';
 
