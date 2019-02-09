@@ -32,7 +32,6 @@
     {
       font-size: .9rem;
 
-
       @include respond-from(medium)
       {
           transform: translateX(-5rem);
@@ -42,6 +41,11 @@
       {
           transform: translateX(0);
           font-size: 1rem;
+      }
+
+      .stiker__link
+      {
+        display: none;
       }
     }
 
