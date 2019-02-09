@@ -26,6 +26,11 @@
             top: 50%;
             transform: translateY(-50%);
         }
+
+        .stiker__link
+        {
+          display: none;
+        }
     }
 
     .stiker
@@ -43,7 +48,7 @@
           font-size: 1rem;
       }
 
-      .stiker__link
+      &__arena
       {
         display: none;
       }
