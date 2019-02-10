@@ -9,6 +9,10 @@ append scripts
     readyjs.push(loadCaseDetailedPage);
 
 block content
+  .case-detailed__prev
+    block prev
+      +stiker('Всегда в последний момент!', 'case-13.html', 'assets/images/cases/13.png')
+
   .case-detailed__warp
     .case-detailed__stiker
       block stiker
@@ -63,21 +67,15 @@ block content
       .case-detailed__next_title-img
         img(src="assets/images/icons/arrow-next-to-bottom.png", srcset="assets/images/icons/arrow-next-to-bottom@2x.png 2x", alt="")
     block next
-      .stiker
-        a(href="case-2.html").stiker__title
-          span.stiker__number
-          | Инфоман
-        .stiker__wrap
-          .stiker__inner
-            .stiker__outer
-              .stiker__front
-                .stiker__body(style="background-image: url(assets/images/cases/2.png)")
+      +stiker('Инфоман', 'case-2.html', 'assets/images/cases/2.png')
 
-block side-left-center
-  .rotate
-    a.back-to-office.menu__link(href="home.html") Назад в офис
+block side-left-bottom
+  .case-detailed__prev_btn
+    .case-detailed__prev_btn_icon
+      span.icon.arrow-left
+    .case-detailed__prev_btn_text
+      | Предыдущий
 
-block side-right-top
 block side-right-bottom
   .case-detailed__next_btn
     .case-detailed__next_btn_text
