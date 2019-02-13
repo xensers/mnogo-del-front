@@ -511,7 +511,7 @@ function Stikers() {
         });
     }
 
-    var stikerDrawToRight = function(elemStiker, progress) {
+    var drawToRight = function(elemStiker, progress) {
         var elemWrap  = elemStiker.querySelector('.stiker__wrap'),
             elemInner = elemStiker.querySelector('.stiker__inner'),
             elemArena = elemStiker.querySelector('.stiker__arena'),
@@ -537,7 +537,7 @@ function Stikers() {
         }
     }
 
-    var stikerDrawToLeft = function(elemStiker, progress) {
+    var drawToLeft = function(elemStiker, progress) {
         var elemWrap  = elemStiker.querySelector('.stiker__wrap'),
             elemInner = elemStiker.querySelector('.stiker__inner'),
             elemArena = elemStiker.querySelector('.stiker__arena'),
@@ -570,7 +570,7 @@ function Stikers() {
         elemArena.style.right = 'auto';
 
         return function(progress) {
-            stikerDrawToRight(elemStiker, progress);
+            drawToRight(elemStiker, progress);
         };
     }
 }
