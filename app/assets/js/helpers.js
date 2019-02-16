@@ -112,6 +112,8 @@ function smoothScrollToAnchor (){
     }
 }
 
+readyjs.push(smoothScrollToAnchor);
+
 /**
  *  возвращает cookie с именем name, если есть, если нет, то undefined
  */
@@ -121,8 +123,6 @@ function getCookie(name) {
   ));
   return matches ? decodeURIComponent(matches[1]) : undefined;
 }
-
-readyjs.push(smoothScrollToAnchor);
 
 
 /**
