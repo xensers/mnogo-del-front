@@ -10,6 +10,11 @@ function caseDetailedPage() {
   var linkNextPage     = document.querySelector('.case-detailed__next a');
   var linkPrevPage     = document.querySelector('.case-detailed__prev a');
 
+  document.querySelector('.header__icons_back').onclick = function() {
+    window.location.assign(linkPrevPage.href);
+    return false;
+  }
+
   getDocument(linkNextPage.href, function(doc) {
     documentNextPage = doc;
     elemSideRight.onclick = slideNextPage;
