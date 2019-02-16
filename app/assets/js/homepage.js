@@ -9,7 +9,7 @@ function onLoadedHomePage() {
     elemCasesEnd = document.querySelector('.homepage__cases_end');
     elemShowAllCases = document.querySelector('.homepage__cases_show-all');
 
-    document.querySelector('.header__icons_back').addEventListener('click', closeCases);
+    document.querySelector('.header__icons_back').onclick = closeCases;
     elemShowAllCases.addEventListener('click', showAllCases);
 
     if (window.location.hash == '#cases') {

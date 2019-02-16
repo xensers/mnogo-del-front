@@ -2,6 +2,11 @@ document.addEventListener("DOMContentLoaded", onLoadedHeader);
 
 function onLoadedHeader() {
     window.addEventListener('scroll', headerScroll);
+
+    document.querySelector('.header__icons_back').onclick = function() {
+      window.history.back();
+      return false;
+    };
 }
 
 /**
