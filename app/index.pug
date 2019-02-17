@@ -1,146 +1,84 @@
 extends pug/base
 
 append vars
-  - pageTitle = 'Документация';
+  - pageTitle = '';
+  - layout.classList = ['homepage'];
+
+append scripts
+  script.
+    if (!window.location.hash && getCookie('startPageOpenToday') !== "yes") {
+        startPageOpen();
+        document.querySelector('.start-page__close').addEventListener("click", function(){
+            setTimeout(onLoadedHomePage, 300);
+        });
+        document.cookie = "startPageOpenToday=yes;";
+
+    } else {
+      window.addEventListener("DOMContentLoaded", onLoadedHomePage);
+    }
 
 block content
-  br
-  h2 Меню 
-  hr
-  ul.menu
-    ul.menu__list
-      li.menu__item
-        a.menu__link.active(href='index.html')
-          | Документация
-          code .active
-      li.menu__item
-        a.menu__link(href='layout-template.html' target="_blank")
-          | Просто структурный шаблон
-      li.menu__item
-        a.menu__link(href='home.html' target="_blank")
-          | Главная
-      li.menu__item
-        a.menu__link(href='home.html#cases' target="_blank")
-          | Кейсы
-      li.menu__item
-        a.menu__link(href='case.html' target="_blank")
-          | Страница кейса
-      li.menu__item
-        a.menu__link(href='about.html' target="_blank")
-          del О нас
-    p
-      strong Emmet 
-      | Сокращение для кода меню:
-      br
-      code
-        | ul.menu>ul.menu__list>li.menu__item*6>a.menu__link[#]{Пункт меню $}
+  .homepage__warp
+    .homepage__cases(onselectstart="return false")
+      .oval-marker
+      include pug/demo/stikers
+      .homepage__cases__footer
+        p.homepage__cases_end
+          | Кажется все...
+        p.homepage__cases_show-all
+          span.btn Показать все
+    .homepage__article
+      .homepage__article__header
+        h1
+          span.marker-4 Найдите 
+          br
+          span.marker-fix свой  случай
+      .homepage__article__text
+        p
+          | Спасите себя и своих коллег  от лихорадочной потери драгоценного 
+          br
+          span.marker-5 времени и мозготоплива! 
+        p
+          span.marker-1 Определите свой недуг 
+          br
+          |  по симптому и узнайте, как сделать себя эффективным!
+      .homepage__article__buttons
+        p.to-medium
+          a.btn(href="#cases") Начать
+        p.from-medium
+          a.btn(href="about.html") Что все это значит?
+
+block footer
+  .to-small
+    +socals(class="flex space-around")
+  .from-medium
+    .homepage__footer
+      .homepage__mixed
+        span.icon.mix
+        button(onclick="closeCases()")
+          | Перемешать карточки
+      a(href="about.html").homepage__who-is
+        .image
+          img(src='assets/images/photo.png', srcset='assets/images/photo@2x.png 2x', alt='')
+        span Кто такой этот
+          br
+          | Максим Дорофеев?
+    .homepage__cases__footer
+      .homepage__cases__footer_feedback
+        p Не нашли свой кейс? Напишите нам о нем, и мы добавим его в этот список!
+        a.btn(href="about.html#feedback")
+          span.icon.tooth
+          | Описать свой случай
 
 
-  br
-  h2 Прелоавдер
-  hr
-  p
-    button(onclick="runPreloader(true)") Показать
-  p
-    | Что бы запустить преловадер, нужно вызвать JS функцию 
-    code runPreloader(status)
-    br
-    | которвая принимает 
-    code status
-    |  параметр:
-    br
-    code false
-    |  - покажется только если страница грузится больше 2х секунд
-    br
-    code ture
-    |  - для принудительного показа
+block side-left-center
+  .rotate
+    a.header__link.menu__link(href="#" onclick="closeCases()") Это – ваш офис...
 
-
-  br
-  h2 Стартовая страница
-  hr
-  p
-    button(onclick="startPageOpen()") Показать
-  p
-    | Что бы показать стартовую, нужно вызвать JS функцию 
-    code startPageOpen()
-
-  br
-  h2 Кнопки поделиться
-  hr
-  .ya-share2(data-services="vkontakte,facebook,odnoklassniki,gplus" data-size="s")
-
-
-  br
-  h2 Стикеры
-  hr
-  div(onselectstart="return false")
-    include pug/demo/stikers
-
-  br
-  form.stikers-demo-panel
-    input(type="text" name="cols")
-    input(type="text" name="rows")
-    input(type="checkbox")
-    button(name="ok") OK
-
-  script.
-    readyjs.push(function(){
-      console.log('Im Ready!');
-    });
-
-  br
-  h2 Иконки
-  hr
-  include pug/demo/icons
-
-  br
-  h2 Социальные сети
-  hr
-  | pug миксин: 
-  br
-  code +socals
-  br
-  +socals
-
-  br
-  | pug миксин: 
-  br
-  code +socals(class="vertical")
-  br
+block side-right-center
   +socals(class="vertical")
 
-
-  br
-  h2 Маркеры
-  hr
-  include pug/demo/markers
-  br
-  code .oval-marker
-  br
-  .oval-marker
-
-  br
-  h2 Типография
-  hr
-  include pug/demo/typography
-
-  br
-  h2 Медиа
-  hr
-  h4 Видео
-  code
-    | a.youtube[href=""]{Название}
-  a.youtube(href="https://youtu.be/uGlzWZyVrBk")
-    | Видео о законах впихуемости
-  h4 Аудио
-  pre
-    code
-      | .audioplayer>audio[preload='true']>source[src='assets/media/audio.mp3']^.audioplayer__button.play>.audioplayer__button_icon^.audioplayer__timeline>.audioplayer__playhead
-  p
-    | pug миксин: 
-    br
-    code +socals(class="vertical")
-  br
-  +audioplayer('assets/media/audio.mp3')
-
+block side-right-bottom
+  .rotate
+    .lang
+      | RUS

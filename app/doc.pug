@@ -1,0 +1,146 @@
+extends pug/base
+
+append vars
+  - pageTitle = 'Документация';
+
+block content
+  br
+  h2 Меню 
+  hr
+  ul.menu
+    ul.menu__list
+      li.menu__item
+        a.menu__link.active(href='doc.html')
+          | Документация
+          code .active
+      li.menu__item
+        a.menu__link(href='layout-template.html' target="_blank")
+          | Просто структурный шаблон
+      li.menu__item
+        a.menu__link(href='index.html' target="_blank")
+          | Главная
+      li.menu__item
+        a.menu__link(href='index.html#cases' target="_blank")
+          | Кейсы
+      li.menu__item
+        a.menu__link(href='case.html' target="_blank")
+          | Страница кейса
+      li.menu__item
+        a.menu__link(href='about.html' target="_blank")
+          del О нас
+    p
+      strong Emmet 
+      | Сокращение для кода меню:
+      br
+      code
+        | ul.menu>ul.menu__list>li.menu__item*6>a.menu__link[#]{Пункт меню $}
+
+
+  br
+  h2 Прелоавдер
+  hr
+  p
+    button(onclick="runPreloader(true)") Показать
+  p
+    | Что бы запустить преловадер, нужно вызвать JS функцию 
+    code runPreloader(status)
+    br
+    | которвая принимает 
+    code status
+    |  параметр:
+    br
+    code false
+    |  - покажется только если страница грузится больше 2х секунд
+    br
+    code ture
+    |  - для принудительного показа
+
+
+  br
+  h2 Стартовая страница
+  hr
+  p
+    button(onclick="startPageOpen()") Показать
+  p
+    | Что бы показать стартовую, нужно вызвать JS функцию 
+    code startPageOpen()
+
+  br
+  h2 Кнопки поделиться
+  hr
+  .ya-share2(data-services="vkontakte,facebook,odnoklassniki,gplus" data-size="s")
+
+
+  br
+  h2 Стикеры
+  hr
+  div(onselectstart="return false")
+    include pug/demo/stikers
+
+  br
+  form.stikers-demo-panel
+    input(type="text" name="cols")
+    input(type="text" name="rows")
+    input(type="checkbox")
+    button(name="ok") OK
+
+  script.
+    readyjs.push(function(){
+      console.log('Im Ready!');
+    });
+
+  br
+  h2 Иконки
+  hr
+  include pug/demo/icons
+
+  br
+  h2 Социальные сети
+  hr
+  | pug миксин: 
+  br
+  code +socals
+  br
+  +socals
+
+  br
+  | pug миксин: 
+  br
+  code +socals(class="vertical")
+  br
+  +socals(class="vertical")
+
+
+  br
+  h2 Маркеры
+  hr
+  include pug/demo/markers
+  br
+  code .oval-marker
+  br
+  .oval-marker
+
+  br
+  h2 Типография
+  hr
+  include pug/demo/typography
+
+  br
+  h2 Медиа
+  hr
+  h4 Видео
+  code
+    | a.youtube[href=""]{Название}
+  a.youtube(href="https://youtu.be/uGlzWZyVrBk")
+    | Видео о законах впихуемости
+  h4 Аудио
+  pre
+    code
+      | .audioplayer>audio[preload='true']>source[src='assets/media/audio.mp3']^.audioplayer__button.play>.audioplayer__button_icon^.audioplayer__timeline>.audioplayer__playhead
+  p
+    | pug миксин: 
+    br
+    code +socals(class="vertical")
+  br
+  +audioplayer('assets/media/audio.mp3')
+
