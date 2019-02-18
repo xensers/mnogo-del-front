@@ -1,5 +1,3 @@
-document.addEventListener("DOMContentLoaded", onLoadedStartPage);
-
 function onLoadedStartPage() {
     document.querySelector('.start-page__menu').addEventListener("click", startPageMenuToggle);
 }

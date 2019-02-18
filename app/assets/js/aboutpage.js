@@ -18,20 +18,6 @@ var trustUsFeedback = function trustUsFeedback() {
     });
 };
 
-var inputsHandler = function inputsHandler() {
-    this.inputs = Array.from(document.querySelectorAll('.feedback-form__input'));
-    this.inputs.map(function (item) {
-        item.onblur = function (e) {
-            if (e.target.value.trim()) {
-                item.classList.add('is_fill');
-            } else {
-                item.classList.remove('is_fill');
-                item.value = "";
-            }
-        };
-    });
-};
-
 trustUsFeedback.prototype.moveRound = function(element){
     var logoRect = element.getBoundingClientRect();
     var containerRect = this.itemsWrapper.getBoundingClientRect();

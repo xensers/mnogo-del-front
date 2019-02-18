@@ -3,6 +3,7 @@ extends template
 include mixins/socals
 include mixins/audioplayer
 include mixins/stiker
+include mixins/feedback
 
 block vars
   -
@@ -60,6 +61,7 @@ block styles
   link(rel='stylesheet', href='assets/css/debug.css')
   link(rel='stylesheet', href='assets/css/helpers.css')
   link(rel='stylesheet', href='assets/css/aboutpage.css')
+  link(rel='stylesheet', href='assets/css/feedback.css')
   // endbuild
 
 block scripts
@@ -80,6 +82,7 @@ block scripts
   script(type='text/javascript', src='assets/js/homepage.js')
   script(type='text/javascript', src='assets/js/case-detailed-page.js')
   script(type='text/javascript', src='assets/js/aboutpage.js')
+  script(type='text/javascript', src='assets/js/feedback.js')
   // endbuild
 
   script.
@@ -92,7 +95,6 @@ block header
   include header
 
 block modal
-  include start-page
 
 block menu
   include menu

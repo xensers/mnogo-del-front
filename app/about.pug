@@ -7,10 +7,10 @@ append vars
 append scripts
   script.
     readyjs.push(function(){
-      var feedbackIcons = new trustUsFeedback();
-      var feedbackInputs = new inputsHandler();
-      initSlider();
       window.addEventListener('load', firstSectionAnimation);
+      var feedbackIcons = new trustUsFeedback();
+      initSlider();
+      feedback();
     });
 
 block content
@@ -316,32 +316,10 @@ block content
   // END: do-now
 
   #feedback
-    +b.feedback
-      +e.left
-        +e.label.marker-1 обратная связь
-        +e.arrow
-      +e.right
-        +b.feedback-form
-          +e.header
-            +e.H2.title Напишите мне <br> сюда:
-            +e.subtitle (если хотите)
-          +e.FORM.form
-            +e.control
-               +e.INPUT.input(type="text")
-               +e.placeholder Как вас там
-            +e.control
-              +e.INPUT.input(type="text")
-              +e.placeholder По какому поводу пишете
-            +e.control._message
-              +e.INPUT.input(type="text")
-              +e.placeholder Сюда сообщение
-            +e.control
-              +e.INPUT.input(type="text")
-              +e.placeholder И куда вам на это ответить?
-            +e.BUTTON.btn 
-              +e.btn-round
-              +e.btn-text Отправить
-  // END: feedback
+    +feedback
+
+block modal
+  +feedback-modal
 
 block footer
   .to-small

@@ -511,7 +511,7 @@ function Stikers() {
         });
     }
 
-    var drawToRight = function(elemStiker, progress) {
+    this.drawToRight = function(elemStiker, progress) {
         var elemWrap  = elemStiker.querySelector('.stiker__wrap'),
             elemInner = elemStiker.querySelector('.stiker__inner'),
             elemArena = elemStiker.querySelector('.stiker__arena'),
@@ -537,7 +537,7 @@ function Stikers() {
         }
     }
 
-    var drawToLeft = function(elemStiker, progress) {
+    this.drawToLeft = function(elemStiker, progress) {
         var elemWrap  = elemStiker.querySelector('.stiker__wrap'),
             elemInner = elemStiker.querySelector('.stiker__inner'),
             elemArena = elemStiker.querySelector('.stiker__arena'),
