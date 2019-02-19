@@ -194,11 +194,14 @@
         text-decoration: none;
 
         border-bottom: none;
+        transition: transform 0.3s ease;
         &:hover
         {
             text-decoration: none;
 
             border-bottom: none;
+
+            transform: scale(1.1);
         }
         &-round
         {
@@ -214,11 +217,13 @@
 
             background: url('../images/aboutpage/btn-round.png') no-repeat center;
             background-size: contain;
+
+
         }
         &-text
         {
             border-bottom: .1em dashed;
-            &:hover
+            .feedback-form__btn:hover &
             {
                 border-bottom-style: solid;
             }
