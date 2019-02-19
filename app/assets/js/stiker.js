@@ -26,6 +26,8 @@ function Stikers() {
         elemControlNext,
         elemControlPrev;
 
+    this.drawToRight = drawToRight;
+    this.drawToLeft = drawToLeft;
 
     this.init = function(selector) {
         elemGroup                = document.querySelector(selector);
@@ -255,14 +257,14 @@ function Stikers() {
         return this;
     }
 
-    var createDots = function(elemsStikers) {
+    function createDots(elemsStikers) {
         for (var i = elemsStikers.length - 1; i >= 0; i--) {
             var elemDot = document.createElement('span');
             elemControlDotsContainer.insertBefore(elemDot, null);
         }
     };
 
-    var updateDots = function(elemsStackStikers) {
+    function updateDots(elemsStackStikers) {
         var elemsControlDots = elemControlDotsContainer.querySelectorAll('span');
 
         for (var i = elemsControlDots.length - 1; i >= 0; i--) {
@@ -280,7 +282,7 @@ function Stikers() {
         return self;
     }
 
-    var initStikers = function(elemsStackStikers) {
+    function initStikers(elemsStackStikers) {
         for (var i = elemsStackStikers.length - 1; i >= 0; i--) {
             var elemStiker = elemsStackStikers[i];
 
@@ -296,7 +298,7 @@ function Stikers() {
         }
     }
 
-    var initStiker = function(
+    function initStiker(
         elemsStackStikers, iteration,
         single, firstInit, noAnimateInit
     ) {
@@ -436,7 +438,7 @@ function Stikers() {
         }
     }
 
-    var resetStiker = function(elemStiker) {
+    function resetStiker(elemStiker) {
         var elemWrap  = elemStiker.querySelector('.stiker__wrap'),
             elemInner = elemStiker.querySelector('.stiker__inner'),
             elemArena = elemStiker.querySelector('.stiker__arena'),
@@ -464,7 +466,7 @@ function Stikers() {
         });
     }
 
-    var nextStiker = function(elemsStackStikers, noAnimateInit) {
+    function nextStiker(elemsStackStikers, noAnimateInit) {
         requestAnimationFrame(function(t){
             var lastIndex, newIndex;
             for (var i = elemsStackStikers.length - 1; i >= 0; i--) {
@@ -488,7 +490,7 @@ function Stikers() {
         });
     }
 
-    var prevStiker = function(elemsStackStikers, noAnimateInit) {
+    function prevStiker(elemsStackStikers, noAnimateInit) {
         requestAnimationFrame(function(t){
             var lastIndex, newIndex;
             for (var i = elemsStackStikers.length - 1; i >= 0; i--) {
@@ -511,7 +513,7 @@ function Stikers() {
         });
     }
 
-    this.drawToRight = function(elemStiker, progress) {
+    function drawToRight(elemStiker, progress) {
         var elemWrap  = elemStiker.querySelector('.stiker__wrap'),
             elemInner = elemStiker.querySelector('.stiker__inner'),
             elemArena = elemStiker.querySelector('.stiker__arena'),
@@ -537,7 +539,7 @@ function Stikers() {
         }
     }
 
-    this.drawToLeft = function(elemStiker, progress) {
+    function drawToLeft(elemStiker, progress) {
         var elemWrap  = elemStiker.querySelector('.stiker__wrap'),
             elemInner = elemStiker.querySelector('.stiker__inner'),
             elemArena = elemStiker.querySelector('.stiker__arena'),
@@ -563,7 +565,7 @@ function Stikers() {
         }
     }
 
-    var getTheRightDraw = function(elemStiker, iteration) {
+    function getTheRightDraw(elemStiker, iteration) {
         var elemArena  = elemStiker.querySelector('.stiker__arena');
 
         elemArena.style.left = '0';
