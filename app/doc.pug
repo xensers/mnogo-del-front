@@ -3,6 +3,9 @@ extends pug/base
 append vars
   - pageTitle = 'Документация';
 
+block modal
+  include pug/start-page
+
 block content
   br
   h2 Меню 
@@ -40,20 +43,10 @@ block content
   h2 Прелоавдер
   hr
   p
-    button(onclick="runPreloader(true)") Показать
+    button(onclick="Preloader.run()") Показать
   p
     | Что бы запустить преловадер, нужно вызвать JS функцию 
-    code runPreloader(status)
-    br
-    | которвая принимает 
-    code status
-    |  параметр:
-    br
-    code false
-    |  - покажется только если страница грузится больше 2х секунд
-    br
-    code ture
-    |  - для принудительного показа
+    code Preloader.run()
 
 
   br
@@ -115,10 +108,6 @@ block content
   h2 Маркеры
   hr
   include pug/demo/markers
-  br
-  code .oval-marker
-  br
-  .oval-marker
 
   br
   h2 Типография

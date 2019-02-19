@@ -65,12 +65,12 @@ block content
     .trust-us__right
       .trust-us__icons
         .trust-us__icon-wrapper#js-logo-wrapper
-        img(src="assets/images/revievs/logo_1.png", alt="").trust-us__icons-item
-        img(src="assets/images/revievs/logo_2.png", alt="").trust-us__icons-item
-        img(src="assets/images/revievs/logo_3.png", alt="").trust-us__icons-item
-        img(src="assets/images/revievs/logo_4.png", alt="").trust-us__icons-item
-        img(src="assets/images/revievs/logo_5.png", alt="").trust-us__icons-item
-        img(src="assets/images/revievs/logo_6.png", alt="").trust-us__icons-item
+        img.trust-us__icons-item(src="assets/images/revievs/logo_1.svg", alt="")
+        img.trust-us__icons-item(src="assets/images/revievs/logo_2.svg", alt="")
+        img.trust-us__icons-item(src="assets/images/revievs/logo_3.svg", alt="")
+        img.trust-us__icons-item(src="assets/images/revievs/logo_4.svg", alt="")
+        img.trust-us__icons-item(src="assets/images/revievs/logo_5.svg", alt="")
+        img.trust-us__icons-item(src="assets/images/revievs/logo_6.svg", alt="")
       .trust-us__backfeeds
         +b.audio-backfeed
           +e.left
@@ -79,7 +79,7 @@ block content
             +audioplayer('assets/media/reviev-1.mp3')
             +e.content
               h4 Роман Квартальнов 
-                a(href="https://www.facebook.com/roma.kvartalnov" target="_blank").icon.socal-fb
+                a.icon.socal-fb(href="https://www.facebook.com/roma.kvartalnov" target="_blank")
         +b.audio-backfeed
           +e.left
             +e.IMG.avatar(src="assets/images/revievs/photo_2.png", alt="")
@@ -87,7 +87,7 @@ block content
             +audioplayer('assets/media/reviev-2.mp3')
             +e.content
               h4 Наталья Свешникова
-                a(href="https://www.facebook.com/oduduka" target="_blank").icon.socal-fb
+                a.icon.socal-fb(href="https://www.facebook.com/oduduka" target="_blank")
               p Работает в Лаборатории Касперского
         +b.audio-backfeed
           +e.left
@@ -96,7 +96,7 @@ block content
             +audioplayer('assets/media/reviev-3.mp3')
             +e.content
               h4 Виталий Васильев
-                a(href="https://www.facebook.com/vitaliyanan" target="_blank").icon.socal-fb
+                a.icon.socal-fb(href="https://www.facebook.com/vitaliyanan" target="_blank")
               p Работает в 
                 a.link(href="https://tt.transneft.ru/" target="_blank") Транснефть
         +b.audio-backfeed
@@ -106,7 +106,7 @@ block content
             +audioplayer('assets/media/reviev-4.mp3')
             +e.content
               h4 Мария Горбатова
-                a(href="https://www.facebook.com/maria.gorbatova" target="_blank").icon.socal-fb
+                a.icon.socal-fb(href="https://www.facebook.com/maria.gorbatova" target="_blank")
               p
                 | Работала (на момент тренинга) в 
                 a.link(href="https://www.db.com/company/index.html" target="_blank") Deutsche Bank 
@@ -118,7 +118,7 @@ block content
             +audioplayer('assets/media/reviev-5.mp3')
             +e.content
               h4 Илья Рудаков
-                a(href="https://www.facebook.com/irudakov30" target="_blank").icon.socal-fb
+                a.icon.socal-fb(href="https://www.facebook.com/irudakov30" target="_blank")
               p Работает в 
                 a.link(href="https://www.db.com/company/index.html" target="_blank") Deutsche Bank 
         +b.audio-backfeed
@@ -138,7 +138,7 @@ block content
       +e.left
         +e.IMG.book(src="assets/images/aboutpage/book.png", srcset="assets/images/aboutpage/book@2x.png 2x", alt="")
         +audioplayer('assets/media/audio.mp3')
-        +e.A.link.link(href="") Послушать отрывок (читаю сам)
+        +e.A.link.link(href="#") Послушать отрывок (читаю сам)
       +e.right
         +e.title.title Расказываю, <br>как познать технику джедаев
         p 
@@ -295,14 +295,14 @@ block content
           |  у меня пробную встречу, 
           |  где мы определим, как пройдет работа по апгрейду. 
         br
-        +e.A.link.link(href="#") Подробнее здесь
+        +e.A.link.link(href="http://mnogosdelal.ru/trening/") Подробнее здесь
       +e.right
         +e.video-wrapper
           +e.oval.oval-marker
           a.youtube(href="https://www.youtube.com/watch?v=uGlzWZyVrBk")
         +e.subtitle.subtitle Открытые тренинги 
         p я провожу редко, <br> но вот 
-          a.link(href="#") ближайшие.
+          a.link(href="http://mnogosdelal.ru/trening/") ближайшие.
         //- +e.dates
           +e.date-row
             +e.date-val 2-3 марта

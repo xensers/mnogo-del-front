@@ -17,13 +17,13 @@
         content: '';
         transition: transform .5s ease .5s;
 
-        background-image: url('../images/marker-1.png');
+        background-image: url('../images/markers/marker-1.png');
         background-position: center center;
         background-size: 100% 100%;
 
         @include retina
         {
-            background-image: url('../images/marker-1@2x.png');
+            background-image: url('../images/markers/marker-1@2x.png');
         }
     }
 }
@@ -46,12 +46,12 @@
 
         content: '';
 
-        background-image: url('../images/marker-2.png');
+        background-image: url('../images/markers/marker-2.png');
         background-size: 100% 100%;
 
         @include retina
         {
-            background-image: url('../images/marker-2@2x.png');
+            background-image: url('../images/markers/marker-2@2x.png');
         }
     }
 }
@@ -74,12 +74,12 @@
 
         content: '';
 
-        background-image: url('../images/marker-3.png');
+        background-image: url('../images/markers/marker-3.png');
         background-size: 100% 100%;
 
         @include retina
         {
-            background-image: url('../images/marker-3@2x.png');
+            background-image: url('../images/markers/marker-3@2x.png');
         }
     }
 }
@@ -108,7 +108,7 @@
 
         @include retina
         {
-            background-image: url('../images/marker-4@2x.png');
+            background-image: url('../images/markers/marker-4@2x.png');
         }
     }
 }
@@ -137,7 +137,7 @@
 
         @include retina
         {
-            background-image: url('../images/marker-5@2x.png');
+            background-image: url('../images/markers/marker-5@2x.png');
         }
     }
 }
@@ -161,8 +161,13 @@
         content: '';
         transform: translate(-40%, -40%);
 
-        background: url('../images/aboutpage/marker-title.png') no-repeat center;
+        background: url('../images/markers/marker-title.png') no-repeat center;
         background-size: contain;
+
+        @include retina
+        {
+            background-image: url('../images/markers/marker-title@2x.png');
+        }
     }
 }
 
@@ -192,7 +197,7 @@
         content: '';
         transform: rotate(-45deg) translate(0, 0);
 
-        background: url(../images/marker-oval.png) no-repeat;
+        background: url(../images/markers/marker-oval.png) no-repeat;
         background-position: center center;
         background-size: 90% 90%;
     };
