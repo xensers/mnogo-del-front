@@ -73,17 +73,12 @@
 
         cursor: pointer;
 
-        background-image: url('../images/icons/arrow-left.png');
+        background-image: url('../images/icons/arrow-left.svg');
         background-repeat: no-repeat;
         background-position: center;
         background-size: 2em auto;
 
         z-index: 500;
-
-        @include retina
-        {
-            background-image: url('../images/icons/arrow-left@2x.png');
-        }
     }
 
     &__prev
