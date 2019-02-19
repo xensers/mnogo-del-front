@@ -66,6 +66,7 @@ block styles
 
 block scripts
   script(src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.2/js/swiper.min.js")
+  script(src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js")
   script(src="//yastatic.net/share2/share.js")
 
   // build:js assets/js/main.js
@@ -86,7 +87,12 @@ block scripts
   // endbuild
 
   script.
-    var myShare = document.getElementById('my-share');
+    readyjs.push(function(){
+      var scroll = new SmoothScroll('a[href*="#"]', {
+        offset: document.querySelector('.layout__header').offsetHeight
+      });
+      var myShare = document.getElementById('my-share');
+    });
 
 block body-start
   include preloader
