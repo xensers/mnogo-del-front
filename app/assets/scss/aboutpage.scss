@@ -22,8 +22,11 @@
     .first-section {
         display: flex;
         padding-bottom: 12.5rem;
-        padding-top: 2.5rem;
         justify-content: space-between;
+        @include respond-from(medium)
+        {
+            padding-top: 2.5rem;
+        }
         &__figure {
             min-width: 25rem;
             min-height: 25.625rem;
