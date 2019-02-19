@@ -41,8 +41,23 @@ function feedback() {
   }
 
   function modalClose() {
-    elemModal.style.display = 'none';
-    elemSuccessfulSend.style.display = 'none';
+    animate({
+      draw: drawStiker,
+      from: 1,
+      to: 100,
+      duration: 500,
+    });
+
+    animate({
+      duration: 500,
+      draw: function(progress) {
+        elemModal.style.opacity = 1 - progress;
+      },
+      after: function() {
+         resetStyle();
+      },
+    });
+
     return false;
   }
 
@@ -54,5 +69,10 @@ function feedback() {
       to: 1,
       duration: 500,
     });
+  }
+
+  function resetStyle() {
+    elemModal.removeAttribute('style');
+    elemSuccessfulSend.removeAttribute('style');
   }
 }
