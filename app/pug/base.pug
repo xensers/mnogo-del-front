@@ -28,9 +28,16 @@ block vars
     }
 
 block styles
-  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css')
-  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css')
-  link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.2/css/swiper.min.css")
+  //- link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css')
+  //- link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css')
+  //- link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.2/css/swiper.min.css")
+
+
+  // build:css assets/css/libs.css
+  link(rel='stylesheet', href='assets/libs/normalize.min.css')
+  link(rel='stylesheet', href='assets/libs/animate.min.css')
+  link(rel='stylesheet', href='assets/libs/swiper.min.css')
+  // endbuild
 
   // build:css assets/css/preloader.css
   link(rel='stylesheet', href='assets/css/preloader.css')
@@ -39,7 +46,7 @@ block styles
   script(type='text/javascript', src='assets/js/preloader.js')
   // endbuild
 
-  // build:css assets/fonts/fonts.css
+  // build:css assets/fonts/libs.css
   link(rel='stylesheet', href='assets/fonts/fonts.css')
   // endbuild
 
@@ -62,12 +69,17 @@ block styles
   link(rel='stylesheet', href='assets/css/helpers.css')
   link(rel='stylesheet', href='assets/css/aboutpage.css')
   link(rel='stylesheet', href='assets/css/feedback.css')
+  link(rel="stylesheet", href='assets/css/share-block.css')
   // endbuild
 
 block scripts
-  script(src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.2/js/swiper.min.js")
-  script(src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js")
-  script(src="//yastatic.net/share2/share.js")
+  //- script(src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.2/js/swiper.min.js")
+  //- script(src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js")
+
+  // build:js assets/js/libs.js
+  script(src="assets/libs/smooth-scroll.polyfills.min.js")
+  script(src="assets/libs/swiper.min.js")
+  // endbuild
 
   // build:js assets/js/main.js
   script(type='text/javascript', src='assets/js/helpers.js')
@@ -84,6 +96,7 @@ block scripts
   script(type='text/javascript', src='assets/js/case-detailed-page.js')
   script(type='text/javascript', src='assets/js/aboutpage.js')
   script(type='text/javascript', src='assets/js/feedback.js')
+  script(type='text/javascript', src='assets/js/share.js')
   // endbuild
 
   script.
@@ -91,7 +104,7 @@ block scripts
       var scroll = new SmoothScroll('a[href*="#"]', {
         offset: document.querySelector('.layout__header').offsetHeight
       });
-      var myShare = document.getElementById('my-share');
+      share();
     });
 
 block body-start

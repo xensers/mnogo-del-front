@@ -59,7 +59,6 @@ function animate(options) {
             }
         });
     }, delay);
-
 }
 
 function frameRate(timeLast, timeNow) {

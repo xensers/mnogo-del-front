@@ -1,0 +1,43 @@
+@import 'core';
+
+.share-block
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-top: 2px solid #D8D8D8;
+
+  @include respond-to(small)
+  {
+    flex-direction: column;
+  }
+
+  &__title
+  {
+    display: flex;
+    align-items: center;
+    text-align: right;
+    &:after
+    {
+      content: '';
+      display: inline-block;
+      width: 5rem;
+      height: 2rem;
+      margin: 2rem 1rem 1rem 1rem;
+      background: url('../images/icons/share-arrow.svg') no-repeat;
+      background-position: center center;
+      background-size: contain;
+
+      @include respond-to(small)
+      {
+        display: none;
+      }
+    }
+  }
+
+  &__socals
+  {
+    text-align: left;
+  }
+}
