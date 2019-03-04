@@ -197,6 +197,7 @@
             z-index: 0;
             max-width: 25.625rem;
             &-item {
+                height: 4.5rem;
                 margin: 1.25rem 1.875rem 3.125rem;
                 cursor: pointer;
                 transition: transform 230ms ease;
@@ -254,6 +255,7 @@
             &__icons {
                 padding-bottom: 1.875rem;
                 &-item {
+                    height: 4rem;
                     margin: 1.875rem;
                 }
             }
