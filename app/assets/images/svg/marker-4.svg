@@ -1,16 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="256px" height="105px" viewBox="0 0 256 105" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 52 (66869) - http://www.bohemiancoding.com/sketch -->
-    <title>marker-4</title>
-    <desc>Created with Sketch.</desc>
-    <g id="21-фев" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="02.-Главная-01-Copy-17" transform="translate(-919.000000, -172.000000)" stroke="#EAFF5B" stroke-width="60">
-            <g id="Group-2" transform="translate(76.000000, 83.000000)">
-                <g id="marker-4" transform="translate(847.000000, 116.000000)">
-                    <path d="M1.42108547e-14,-5.68434189e-14 C118.129798,15.7649504 179.645058,25.7842719 184.54578,30.0579644" id="Path-2" opacity="0.800000012" style="mix-blend-mode: multiply;" transform="translate(92.272890, 15.028982) scale(1, -1) translate(-92.272890, -15.028982) "></path>
-                    <path d="M10,31 C29.6776381,33.709727 43.8440119,35.235636 52.4991213,35.5777268 C66.0226302,36.1122399 110.887467,39.9196643 187.093633,47 L233.548732,10.9654717" id="Path-1" opacity="0.600000024" style="mix-blend-mode: multiply;"></path>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg>
+<svg width="256" height="105" xmlns="http://www.w3.org/2000/svg"><g stroke="#EAFF5B" stroke-width="60" fill="none" fill-rule="evenodd"><path d="M4 57.058C122.13 41.293 183.645 31.274 188.546 27" opacity=".8" style="mix-blend-mode:multiply"/><path d="M14 58c19.678 2.71 33.844 4.236 42.5 4.578 13.523.534 58.387 4.342 134.594 11.422l46.455-36.035" opacity=".6" style="mix-blend-mode:multiply"/></g></svg>

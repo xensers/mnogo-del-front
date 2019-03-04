@@ -1,18 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="212px" height="155px" viewBox="0 0 212 155" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
-    <title>Group 2 Copy 6</title>
-    <desc>Created with Sketch.</desc>
-    <g id="21-фев" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="About-edit-0221" transform="translate(-397.000000, -4024.000000)" stroke="#000000" stroke-width="1.79999995">
-            <g id="Group-23" transform="translate(-107.000000, 3812.000000)">
-                <g id="Group-2-Copy-6" transform="translate(595.578493, 301.290363) scale(1, -1) rotate(240.000000) translate(-595.578493, -301.290363) translate(502.578493, 163.790363)">
-                    <g id="Path-5-Copy" transform="translate(93.204827, 137.176938) scale(-1, 1) rotate(109.000000) translate(-93.204827, -137.176938) translate(-32.795173, 82.676938)">
-                        <path d="M0.403947742,64.100993 C94.0218294,138.746547 176.39529,118.968994 247.524328,4.76833211" id="Path-5"></path>
-                        <polygon id="Triangle" stroke-linecap="round" stroke-linejoin="round" transform="translate(246.439999, 6.331255) rotate(32.000000) translate(-246.439999, -6.331255) " points="246.465606 1.95125519 250.018658 10.7112554 246.465606 1.95125519 242.86134 10.7112554"></polygon>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg>
+<svg width="212" height="155" xmlns="http://www.w3.org/2000/svg"><g stroke="#000" stroke-width="1.8" fill="none" fill-rule="evenodd"><path d="M1.552.816c5.083 119.627 74.051 168.82 206.904 147.579"/><path stroke-linecap="round" stroke-linejoin="round" d="M210.896 147.942l-8.097 4.88 8.097-4.88-9.216-2.19z"/></g></svg>

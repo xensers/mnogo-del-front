@@ -1,17 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="68px" height="64px" viewBox="0 0 68 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
-    <title>logo_2</title>
-    <desc>Created with Sketch.</desc>
-    <g id="21-фев" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="About-edit-0221" transform="translate(-1038.000000, -951.000000)">
-            <g id="logo_2" transform="translate(1039.000000, 949.000000)">
-                <polygon id="Path-8" fill="#D8D8D8" transform="translate(46.165378, 45.825224) rotate(34.000000) translate(-46.165378, -45.825224) " points="29.3657282 30.4 55.0122716 39.819907 60.4142076 30.4 69.0046694 54.0621889 49.1851988 61.2504471 49.2290621 54.0621889 23.326087 45.8252236"></polygon>
-                <g id="Group-7" transform="translate(32.619391, 31.112715) rotate(-2.000000) translate(-32.619391, -31.112715) translate(1.619391, 1.612715)" stroke="#000000" stroke-width="1.5999999">
-                    <polyline id="Path-6" points="3.40335134 55.0621714 59.7393757 2.26217143 38.4790273 2.26217143 17.7655407 22.6815583 18.4433019 1.46813451 0.0275813473 0.771593064 1.02198437 51.1984412"></polyline>
-                    <polyline id="Path-7" points="31.3695652 38.9477945 45.313172 51.95492 38.3413686 58.4 61.9347826 58.4 61.9347826 33.5194862 54.8450671 40.5843917 40.8904686 28 33.3400964 36.6020359 47.9442109 51.8402559"></polyline>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg>
+<svg width="68" height="64" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path fill="#D8D8D8" d="M41.864 21.643l15.994 22.15 9.746-4.788-6.11 24.42-20.45-5.123 4.055-5.935-16.868-21.313z"/><path d="M6.932 55.622L61.39.888l-21.248.742-19.988 21.13-.063-21.224-18.429-.053 2.754 50.361m29.902-13.302l14.39 12.512-6.743 6.685 23.579-.823-.868-24.866-6.84 7.308-14.385-12.09-7.245 8.86 15.127 14.72" stroke="#000" stroke-width="1.6"/></g></svg>
