@@ -9,6 +9,11 @@
         cursor: pointer;
     }
 
+    .layout__body
+    {
+        padding-bottom: 0;
+    }
+
     &__warp
     {
         @include respond-from(medium)
@@ -59,6 +64,8 @@
     &__article
     {
 
+        padding-bottom: 4rem;
+
         @include respond-from(medium)
         {
             padding-left: 13rem;
@@ -96,7 +103,6 @@
 
         @include respond-to(medium)
         {
-            margin-top: 2rem;
             .stiker__title
             {
                 display: block;
