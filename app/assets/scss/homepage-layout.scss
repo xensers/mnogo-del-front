@@ -189,7 +189,10 @@
 
         &__footer
         {
-            padding: 4rem 2rem 0 2rem;
+            @include respond-to('medium')
+            {
+                padding: 4rem 2rem 0 2rem;
+            }
         }
 
         &_show-all
