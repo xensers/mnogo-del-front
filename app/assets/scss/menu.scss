@@ -45,19 +45,28 @@
     
     &__link
     {
+        @include marker-1;
+        &::before
+        {
+            transform: scaleX(0);
+            transition: transform 0.5s;
+            .rotate &
+            {
+                transform: scaleY(0);
+            }
+        }
         &.active, &:hover
         {
             &::before
             {
-                animation: scaleX 0.4s;
+                transform: scaleX(1);
 
                 .rotate &
                 {
-                    animation: scaleY 0.4s;
+                    transform: scaleY(1);
                 }
 
             }
-            @include marker-1;
         }
     }
 
