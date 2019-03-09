@@ -1,0 +1,157 @@
+@keyframes fadeIn
+{
+    from
+    {
+        opacity: 0;
+    }
+    to
+    {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut
+{
+    from
+    {
+        opacity: 1;
+    }
+    to
+    {
+        opacity: 0;
+    }
+}
+
+@keyframes scaleOut
+{
+    from
+    {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to
+    {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+@keyframes scaleX
+{
+    from
+    {
+        transform: scaleX(0);
+    }
+    to
+    {
+        transform: scaleX(1);
+    }
+}
+
+@keyframes scaleY
+{
+    from
+    {
+        transform: scaleY(0);
+    }
+    to
+    {
+        transform: scaleY(1);
+    }
+}
+
+@keyframes outUp
+{
+    from
+    {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to
+    {
+        opacity: 0;
+        transform: translateY(-500px);
+    }
+}
+
+@keyframes outDown
+{
+    from
+    {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to
+    {
+        opacity: 0;
+        transform: translateY(500px);
+    }
+}
+
+@keyframes outLeft
+{
+    from
+    {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to
+    {
+        opacity: 0;
+        transform: translateX(500px);
+    }
+}
+
+@keyframes steps
+{
+    0%
+    {
+        transform: translateX(50rem) rotate(0deg);
+    }
+    10%
+    {
+        transform: translateX(45rem) rotate(-15deg);
+    }
+    20%
+    {
+        transform: translateX(40rem) rotate(15deg);
+    }
+    30%
+    {
+        transform: translateX(35rem) rotate(-15deg);
+    }
+    40%
+    {
+        transform: translateX(30rem) rotate(15deg);
+    }
+    50%
+    {
+        transform: translateX(25rem) rotate(-15deg);
+    }
+    60%
+    {
+        transform: translateX(20rem) rotate(15deg);
+    }
+    70%
+    {
+        transform: translateX(15rem) rotate(-15deg);
+    }
+    80%
+    {
+        transform: translateX(10rem) rotate(15deg);
+    }
+    90%
+    {
+        transform: translateX(5rem) rotate(-15deg);
+    }
+    100%
+    {
+        transform: translateX(0) rotate(0deg);
+    }
+}
+
+.steps
+{
+    animation-name: steps;
+    animation-timing-function: linear;
+}

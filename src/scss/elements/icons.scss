@@ -1,0 +1,108 @@
+.icon
+{
+    display: inline-block;
+    vertical-align: middle;
+
+    height: 1em;
+    width: 1.6em;
+
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    + button
+    {
+        margin-left: 1rem;
+    }
+
+    &.lang
+    {
+        width: 1.6em;
+        height: 1em;
+        background-image: url('../images/icons/lang.svg');
+    }
+
+    &.mix
+    {
+        width: 1.3em;
+        height: 1em;
+        background-image: url('../images/icons/mix.svg');
+    }
+
+    &.arrow-left
+    {
+        width: 1.4em;
+        height: 1em;
+        background-image: url('../images/icons/arrow-left.svg');
+    }
+
+    &.arrow-right
+    {
+        width: 1.4em;
+        height: 1em;
+        background-image: url('../images/icons/arrow-right.svg');
+    }
+
+    &.arrow-top
+    {
+        width: .9em;
+        height: 1em;
+        background-image: url('../images/icons/arrow-top.svg');
+    }
+
+    &.back
+    {
+        width: 1.3em;
+        height: 1em;
+        background-image: url('../images/icons/back.svg');
+    }
+
+    &.tooth
+    {
+        width: 1.2rem;
+        height: 1.5rem;
+        background-image: url('../images/icons/tooth.svg');
+    }
+
+    &.socal-vk
+    {
+        width: 1.8em;
+        height: 1em;
+        background-image: url('../images/icons/socal-vk.svg');
+    }
+
+    &.socal-fb
+    {
+        width: 1.4em;
+        height: 1.4em;
+        background-image: url('../images/icons/socal-fb.svg');
+    }
+
+    &.socal-tw
+    {
+        width: 1.4em;
+        height: 1em;
+        background-image: url('../images/icons/socal-tw.svg');
+    }
+
+    &.socal-lj
+    {
+        width: 1.4em;
+        height: 1.4em;
+        background-image: url('../images/icons/socal-lj.svg');
+    }
+
+    &.socal-yt
+    {
+        width: 1.5em;
+        height: 1em;
+        background-image: url('../images/icons/socal-yt.svg');
+    }
+
+    &.socal-in
+    {
+        width: 1.4em;
+        height: 1.4em;
+        background-image: url('../images/icons/socal-in.svg');
+    }
+}

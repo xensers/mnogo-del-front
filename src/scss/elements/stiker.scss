@@ -1,0 +1,277 @@
+.stikers-group
+{
+    font-size: .9em;
+
+    position: relative;
+
+    display: inline-block;
+
+    min-width: 16em;
+    min-height: 16em;
+
+    &__controls
+    {
+        display: none;
+
+        animation: fadeIn 2s 2s;
+
+        animation-fill-mode: backwards;
+
+        .stikers__slider &
+        {
+            display: block;
+        }
+    }
+
+    &__dots
+    {
+        position: absolute;
+        bottom: -3em;
+        left: 50%;
+
+        display: flex;
+        flex-direction: row-reverse;
+
+        transform: translateX(-50%);
+        white-space: nowrap;
+
+         > span
+        {
+            display: inline-block;
+
+            width: 1em;
+            height: 1em;
+            margin: .3em;
+
+            transition: .5s;
+            transform: scale(.5);
+
+            border: 1px solid #000;
+            border-radius: 100%;
+            background: #000;
+
+            &.active
+            {
+                transform: scale(1.2);
+
+                border-color: #979797;
+                background: #fff;
+            }
+        }
+    }
+
+    &__prev,
+    &__next
+    {
+        position: absolute;
+        top: 0;
+
+        width: 4em;
+        height: 18em;
+
+        cursor: pointer;
+
+        background-image: url('../images/icons/arrow-left.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 2em auto;
+
+        z-index: 500;
+    }
+
+    &__prev
+    {
+        left: -4em;
+    }
+
+    &__next
+    {
+        right: -4em;
+
+        transform: rotate(180deg);
+    }
+}
+
+.stiker
+{
+    position: relative;
+
+    display: inline-block;
+
+    width: 16em;
+    height: 16em;
+    margin: 1em;
+
+    transition: transform .5s;
+
+    .stikers-group > &
+    {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    &__title
+    {
+        font-size: 1.2em;
+
+        position: absolute;
+        bottom: -5em;
+        left: 0;
+
+        display: none;
+
+        width: 100%;
+        height: 3em;
+
+        text-decoration: none;
+
+        opacity: 0;
+
+        text-align: center;
+
+        .active &
+        {
+            animation: fadeIn 2s;
+
+            opacity: 1;
+
+            animation-fill-mode: both;
+        }
+
+        .stikers__slider &
+        {
+            font-size: 1.5em;
+
+            text-align: center;
+        }
+
+        &,
+        & a
+        {
+            text-align: center;
+
+            color: #000;
+        }
+    }
+
+    &__number
+    {
+        display: inline;
+        .stikers__slider &
+        {
+            display: none;
+        }
+    }
+
+    &__wrap
+    {
+        position: absolute;
+        top: -1em;
+        left: -1em;
+
+        overflow: hidden;
+
+        width: 18em;
+        height: 18em;
+
+        transition: transform .5s;
+    }
+
+    &__inner
+    {
+        position: absolute;
+        top: -3em;
+        left: -3em;
+
+        overflow: hidden;
+
+        width: 24em;
+        height: 24em;
+    }
+
+    &__outer
+    {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+    }
+
+    &__front
+    {
+        position: absolute;
+        top: 4em;
+        left: 4em;
+
+        overflow: hidden;
+
+        width: 16em;
+        height: 16em;
+
+        background: linear-gradient(45deg, #fff5ad, #f3e168);
+        box-shadow: 0.1em 0.1em 1.5em rgba(0, 0, 0, .2);
+    }
+
+    &__body
+    {
+        font-size: 2em;
+
+        position: absolute;
+
+        display: flex;
+
+        width: 100%;
+        height: 100%;
+
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 95% auto;
+
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__link
+    {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        display: block;
+
+        width: 100%;
+        height: 100%;
+    }
+
+    &__back
+    {
+        position: absolute;
+        top: 4em;
+        left: 4em;
+
+        width: 16em;
+        height: 16em;
+
+        content: '';
+        transform: translate(-24em, 24em);
+
+        background: linear-gradient(45deg, #fff5ad, #dfc850);
+        box-shadow: 0 0 .5em rgba(0, 0, 0, .1);
+    }
+
+    &__arena
+    {
+        position: absolute;
+        z-index: 99;
+        z-index: 999 !important;
+        bottom: 0;
+
+        width: 35%;
+        height: 35%;
+
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,76 @@
+.marker-fix
+{
+    position: relative;
+    z-index: 1;
+}
+
+.marker-1
+{
+    @include marker-1;
+}
+
+.marker-2
+{
+    @include marker-2;
+}
+
+.marker-3
+{
+    @include marker-3;
+}
+
+.marker-4
+{
+    @include marker-4;
+}
+
+
+.marker-5
+{
+    @include marker-5;
+}
+
+.marker-title
+{
+    @include marker-title;
+}
+
+
+.oval-marker
+{
+    @include oval-marker;
+    animation: oval-marker 1s linear;
+    animation-fill-mode: both;
+    &:before
+    {
+        animation: oval-marker-before 1s linear;
+        animation-fill-mode: both;
+    }
+}
+
+
+@keyframes oval-marker
+{
+    from
+    {
+        transform: rotate(45deg) translate(-1.41em, 0);
+    }
+
+    to
+    {
+        transform: rotate(45deg) translate(0, 0);
+    }
+}
+
+@keyframes oval-marker-before
+{
+    from
+    {
+        transform: rotate(-45deg) translate(1em, 1em);
+    }
+
+    to
+    {
+        transform: rotate(-45deg) translate(0, 0);
+    }
+}

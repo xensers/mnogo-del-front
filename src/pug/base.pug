@@ -1,0 +1,85 @@
+extends template
+
+include mixins/socals
+include mixins/audioplayer
+include mixins/stiker
+include mixins/feedback
+include mixins/share-block
+
+block vars
+  -
+    var siteTitle = 'Много сделал!'
+    var pageTitle = ''
+    var description = 'Помогая компании, успевай жить для себя'
+    var url       = 'http://xensers.github.io/mnogosdelal/'
+    var image     = url + 'images/logo.svg'
+  -
+    var html = {
+      attrs: {
+        lang: 'ru'
+      },
+      classList: []
+    }
+  -
+    var body = {
+      attrs: {},
+      classList: []
+    }
+  -
+    var layout = {
+      attrs: {},
+      classList: []
+    }
+
+append meta
+  meta(name='description', content=description)
+  meta(property='og:title', content=pageTitle)
+  meta(property='og:type', content='website')
+  meta(property='og:url', content=url)
+  meta(property='og:image', content=image)
+  meta(property='og:image:type', content='image/png')
+  meta(property='og:image:width', content='202')
+  meta(property='og:image:height', content='116')
+  meta(property='og:description', content=description)
+
+
+block styles
+  script(type='text/javascript', src='scripts/preloader.js')
+  link(rel='stylesheet', href='css/preloader.css')
+
+  link(rel="stylesheet", href='css/main.css')
+
+block scripts
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.2/js/swiper.min.js")
+  script(src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js")
+
+  script(src="scripts/main.js")
+
+  script.
+    readyjs.push(function(){
+      var scroll = new SmoothScroll('a[href*="#"]', {
+        offset: document.querySelector('.layout__header').offsetHeight
+      });
+      share();
+    });
+
+block body-start
+  include preloader
+
+block header
+  include header
+
+block modal
+
+block menu
+  include menu
+
+block side-left-top
+block side-left-center
+block side-left-bottom
+
+block side-right-top
+block side-right-center
+block side-right-bottom
+
+block footer

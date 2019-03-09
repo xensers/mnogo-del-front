@@ -1,0 +1,196 @@
+.case-detailed
+{
+    .layout__side_right,
+    .layout__side_left
+    {
+        width: 18%;
+        cursor: pointer;
+    }
+
+    .layout__body
+    {
+        padding-bottom: 0;
+    }
+
+    &__warp
+    {
+        @include respond-from(medium)
+        {
+            padding-top: 5rem;
+        }
+    }
+
+    .stiker
+    {
+      font-size: .9rem;
+
+      @include respond-from(medium)
+      {
+          transform: translateX(-5rem);
+      }
+
+      @include respond-from(large)
+      {
+          transform: translateX(0);
+          font-size: 1rem;
+      }
+
+      &__arena
+      {
+        display: none;
+      }
+    }
+
+    &__stiker
+    {
+        text-align: center;
+        // outline: 5px solid red;
+
+        @include respond-from(medium)
+        {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .stiker__link
+        {
+          display: none;
+        }
+    }
+
+    &__article
+    {
+
+        padding-bottom: 4rem;
+
+        @include respond-from(medium)
+        {
+            padding-left: 13rem;
+        }
+
+        @include respond-from(large)
+        {
+            padding-left: 20rem;
+        }
+    }
+
+    &__next
+    {
+        position: relative;
+        text-align: center;
+
+        // outline: 5px solid blue;
+
+        @include respond-from(medium)
+        {
+            position: fixed;
+            top: 50%;
+            left: 100%;
+            transform: translate(-25%, -50%);
+
+            .stiker{
+                transform: translateX(0rem);
+            }
+        }
+
+        @include respond-from(large)
+        {
+            transform: translate(-50%, -50%);
+        }
+
+        @include respond-to(medium)
+        {
+            .stiker__title
+            {
+                display: block;
+                opacity: 1;
+                text-align: center;
+            }
+        }
+
+        &_title
+        {
+            display: none;
+
+            @include respond-to(medium)
+            {
+                display: block;
+
+                border-top: 0.1rem solid #ccc;
+
+                &-text
+                {
+                    padding: 1.5rem 0;
+                }
+
+                &-img img
+                {
+                    width: 1rem;
+                }
+            }
+        }
+    }
+
+    &__prev
+    {
+        display: none;
+
+        // outline: 5px solid green;
+
+        @include respond-from(medium)
+        {
+            display: block;
+            position: fixed;
+            top: 50%;
+            right: 100%;
+            transform: translate(0%, -50%);
+        }
+
+        @include respond-from(large)
+        {
+            display: block;
+            position: fixed;
+            top: 50%;
+            right: 100%;
+            transform: translate(25%, -50%);
+        }
+    }
+
+    &__next, &__prev
+    {
+
+        &_btn
+        {
+            white-space: nowrap;
+
+            @include respond-to(medium)
+            {
+                display: none;
+            }
+            &_text
+            {
+                display: inline-block;
+
+                padding: 0 1em;
+
+                transition: transform .5s, opacity .5s;
+                transform: translateY(5em);
+
+                opacity: 0;
+
+                .layout__side:hover &
+                 {
+                     transform: translateY(0);
+
+                     opacity: 1;
+                 }
+            }
+
+            &_icon
+            {
+                display: inline-block;
+            }
+        }
+    }
+}

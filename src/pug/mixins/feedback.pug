@@ -1,0 +1,47 @@
+mixin feedback
+  .feedback
+    .feedback__left
+      .feedback__label.marker-1
+        | обратная связь
+      .feedback__arrow
+    .feedback__right
+      .feedback-form
+        .feedback-form__header
+          h2.feedback-form__title
+            | Напишите мне 
+            br
+            |  сюда:
+          .feedback-form__subtitle
+            | (если хотите)
+        form.feedback-form__form
+          .feedback-form__control
+            input.feedback-form__input(type='text')
+            .feedback-form__placeholder
+              | Как вас там
+          .feedback-form__control
+            input.feedback-form__input(type='text')
+            .feedback-form__placeholder
+              | По какому поводу пишете
+          .feedback-form__control.feedback-form__control_message
+            input.feedback-form__input(type='text')
+            .feedback-form__placeholder
+              | Сюда сообщение
+          .feedback-form__control
+            input.feedback-form__input(type='text')
+            .feedback-form__placeholder
+              | И куда вам на это ответить?
+          button.feedback-form__btn
+            .feedback-form__btn-round
+            .feedback-form__btn-text
+              | Отправить
+  // END: feedback
+
+mixin feedback-modal
+  .feedback-modal
+    .feedback-modal__owerlay
+    .feedback-modal__content
+      .feedback-modal__successful-send
+        +stiker('', '#', 'images/feedback-sent.png')
+        .btn Хорошо!
+    .feedback-modal__close
+  // END: feedback-modal

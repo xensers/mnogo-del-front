@@ -1,0 +1,339 @@
+extends pug/base
+
+append vars
+  - pageTitle = 'О проекте';
+  - layout.classList = ['aboutpage'];
+
+append scripts
+  script.
+    readyjs.push(function(){
+      window.addEventListener('load', firstSectionAnimation);
+      var feedbackIcons = new trustUsFeedback();
+      initSlider();
+      feedback();
+    });
+
+block content
+  #first.first-section
+    .first-section__left
+      .first-section__figure
+        .oval-marker
+        img.first-section__figure-img(src="images/aboutpage/man.png", alt="alt", srcset="images/aboutpage/man@2x.png 2x")
+    .first-section__right
+      .h1.first-section__title Всем привет!
+      .first-section__content
+        p
+          span.zi-2 Этот свежий 
+          span.marker-1 молодой человек – я, 
+          br
+          | доктор 
+          a(href="#do-now").link прокрастинологических наук,
+        p
+          | воспитатель обезьянок 
+          br
+          a(href="#reviews").link в полевых корпоративных условиях
+        p
+          | и почетный мастер 
+          a(href="#book").link клуба Джедаев,
+          br
+          span.marker-1 Максим Дорофеев…
+      .first-section__bottom
+        .first-section__bottom-text
+          | Что это все <br> значит?
+  // END: first-section
+
+  #reviews.trust-us
+    .trust-us__left
+      h2.title.trust-us__title
+        | Я знаю, как 
+        span.marker-title сделать
+        br
+        span.zi-1 вас и вашу команду <br> эффективной
+      p
+        | На сегодняшний момент мое любимое <br> дело — обучение 
+        | людей техникам личной <br> эффективности:
+      h3
+        | «Как 
+        span.marker-2 приносить больше 
+        |  пользы своей компании, оставаясь при этом <br>
+        span.marker-2 свободным и творческим 
+        | человеком»
+      p
+        | Мне доверились такие компании, которые <br> по контракту я не могу называть… 
+        br
+        | Но на счет картинок никто ничего не говорил…
+    .trust-us__right
+      .trust-us__icons
+        .trust-us__icon-wrapper#js-logo-wrapper
+        img.trust-us__icons-item(src="images/revievs/logo_1.svg", alt="")
+        img.trust-us__icons-item(src="images/revievs/logo_2.svg", alt="")
+        img.trust-us__icons-item(src="images/revievs/logo_3.svg", alt="")
+        img.trust-us__icons-item(src="images/revievs/logo_4.svg", alt="")
+        img.trust-us__icons-item(src="images/revievs/logo_5.svg", alt="")
+        img.trust-us__icons-item(src="images/revievs/logo_6.svg", alt="")
+      .trust-us__backfeeds
+        +b.audio-backfeed
+          +e.left
+            +e.IMG.avatar(src="images/revievs/photo_1.png", alt="")
+          +e.right
+            +audioplayer('assets/media/reviev-1.mp3')
+            +e.content
+              h4 Роман Квартальнов 
+                a.icon.socal-fb(href="https://www.facebook.com/roma.kvartalnov" target="_blank")
+        +b.audio-backfeed
+          +e.left
+            +e.IMG.avatar(src="images/revievs/photo_2.png", alt="")
+          +e.right
+            +audioplayer('assets/media/reviev-2.mp3')
+            +e.content
+              h4 Наталья Свешникова
+                a.icon.socal-fb(href="https://www.facebook.com/oduduka" target="_blank")
+              p Работает в Лаборатории Касперского
+        +b.audio-backfeed
+          +e.left
+            +e.IMG.avatar(src="images/revievs/photo_3.png", alt="")
+          +e.right
+            +audioplayer('assets/media/reviev-3.mp3')
+            +e.content
+              h4 Виталий Васильев
+                a.icon.socal-fb(href="https://www.facebook.com/vitaliyanan" target="_blank")
+              p Работает в 
+                a.link(href="https://tt.transneft.ru/" target="_blank") Транснефть
+        +b.audio-backfeed
+          +e.left
+            +e.IMG.avatar(src="images/revievs/photo_4.png", alt="")
+          +e.right
+            +audioplayer('assets/media/reviev-4.mp3')
+            +e.content
+              h4 Мария Горбатова
+                a.icon.socal-fb(href="https://www.facebook.com/maria.gorbatova" target="_blank")
+              p
+                | Работала (на момент тренинга) в 
+                a.link(href="https://www.db.com/company/index.html" target="_blank") Deutsche Bank 
+                | сейчас в Google UK, бегает марафоны и имеет права пилота самолета
+        +b.audio-backfeed
+          +e.left
+            +e.IMG.avatar(src="images/revievs/photo_5.png", alt="")
+          +e.right
+            +audioplayer('assets/media/reviev-5.mp3')
+            +e.content
+              h4 Илья Рудаков
+                a.icon.socal-fb(href="https://www.facebook.com/irudakov30" target="_blank")
+              p Работает в 
+                a.link(href="https://www.db.com/company/index.html" target="_blank") Deutsche Bank 
+        +b.audio-backfeed
+          +e.left
+            +e.IMG.avatar(src="images/revievs/photo_6.png", alt="")
+          +e.right
+            +audioplayer('assets/media/reviev-6.mp3')
+            +e.content
+              h4 Федяев Павел
+              p Генеральный директор 
+                br
+                a(href="http://www.glt.company/" target="_blank").link ООО «ГЛТ- Москва»
+  // END: trust-us
+
+  #book
+    +b.tell-technique
+      +e.left
+        +e.IMG.book(src="images/aboutpage/book.png", srcset="images/aboutpage/book@2x.png 2x", alt="")
+        +audioplayer('assets/media/audio.mp3')
+        +e.A.link.link(href="#") Послушать отрывок (читаю сам)
+      +e.right
+        +e.title.title Расказываю, <br>как познать технику джедаев
+        p 
+          | Об этом я написал целую книгу <br>
+          span.marker-1 «Джедайские техники. 
+          span.zi-2 Как воспитать свою обезьяну, 
+          | опустошить инбокс и сберечь 
+          | мыслетопливо»      
+        br
+        a.link(href="https://www.mann-ivanov-ferber.ru/books/dzhedajskie-texniki" target="_blank") Подробнее о книге
+        br
+        br
+        p.with_round 
+          | О том, что такое обезьянка, <br>
+          | и почему мы предпочитаем проверить <br>
+          | новости, почту и старые фотографии <br>
+          | написанию диплома, началу нового <br>
+          | проекта или завершению <br>
+          | начатого…
+        +e.next Как я пришел к <br> такой жизни
+  // END: tell-technique
+
+  #history
+    +b.how-began
+      +b.began-slider
+        +e.wrapper.swiper-wrapper
+          +e.slide.swiper-slide
+            +e.slide-left
+              +e.photo
+                img(src="images/aboutpage/slider/photo-0.png", alt="")
+            +e.slide-right
+              +e.title.title Как все начиналось
+              +e.year.marker-1 1981
+              +e.content
+                p Родился в Москве, вечером 15 апреля 1981 года в семье помещика Дорофеева и моей матушки, 
+          +e.slide.swiper-slide
+            +e.slide-left
+              +e.photo
+                img(src="images/aboutpage/slider/photo-1.png", alt="")
+            +e.slide-right
+              +e.title.title Школа
+              +e.year.marker-1 1988-1997
+              +e.content
+                p Учился в очень интересной (в то время) школе
+          +e.slide.swiper-slide
+            +e.slide-left
+              +e.photo
+                img(src="images/aboutpage/slider/photo-2.png", alt="")
+            +e.slide-right
+              +e.title.title Студенчество
+              +e.year.marker-1 1997
+              +e.content
+                p Пошел учиться на физфак МГУ. Успешно. Но, бывало всякое...
+          +e.slide.swiper-slide
+            +e.slide-left
+              +e.photo
+                img(src="images/aboutpage/slider/photo-3.png", alt="")
+            +e.slide-right
+              +e.title.title Работа, путешествия
+              +e.year.marker-1 2001 – 2008
+              +e.content
+                p Работал на разные компании. Катался в разные командировки.
+                p То в край огромных кактусов.
+          +e.slide.swiper-slide
+            +e.slide-left
+              +e.photo
+                img(src="images/aboutpage/slider/photo-4.png", alt="")
+            +e.slide-right
+              +e.title.title Работа, путешествия
+              +e.year.marker-1 2001 – 2008
+              +e.content
+                p То просто по Европе.
+          +e.slide.swiper-slide
+            +e.slide-left
+              +e.photo
+                img(src="images/aboutpage/slider/photo-6.png", alt="")
+            +e.slide-right
+              +e.title.title Азия
+              +e.year.marker-1 2013
+              +e.content
+                p Покинул Лабораторию Касперского.
+                p Некоторое время провел в Азии.
+                p То в лагерях Тайского бокса.
+          +e.slide.swiper-slide
+            +e.slide-left
+              +e.photo
+                img(src="images/aboutpage/slider/photo-7.png", alt="")
+            +e.slide-right
+              +e.title.title Азия
+              +e.year.marker-1 2013
+              +e.content
+                p С переменным, кстати, успехом…
+          +e.slide.swiper-slide
+            +e.slide-left
+              +e.photo
+                img(src="images/aboutpage/slider/photo-8.png", alt="")
+            +e.slide-right
+              +e.title.title Азия
+              +e.year.marker-1 2013
+              +e.content
+                p То по монастырям, да развалинам.
+          +e.slide.swiper-slide
+            +e.slide-left
+              +e.photo
+                img(src="images/aboutpage/slider/photo-10.png", alt="")
+            +e.slide-right
+              +e.title.title Начал вести тренинги
+              +e.year.marker-1 2013
+              +e.content
+                p Понял, что у меня есть, чему учить людей.
+          +e.slide.swiper-slide
+            +e.slide-left
+              +e.photo
+                img(src="images/aboutpage/slider/photo-11.png", alt="")
+            +e.slide-right
+              +e.title.title Начал вести тренинги
+              +e.year.marker-1 2013
+              +e.content
+                p И кое-где даже с размахом
+        +e.pagination
+        +b.swiper-btn._prev.began-slider__prev
+          +e.round
+          +e.hover
+        +b.swiper-btn._next.began-slider__next
+          +e.round
+          +e.hover
+      +e.arrow
+  // END: how-began
+
+  #do-now
+    +b.do-now
+      +e.left
+        +e.title.title 
+          span.marker-title Что я делаю <br> 
+          span.zi-1 сейчас
+        p.
+          Следите регулярно за обновлениями в моем Youtube канале, 
+          блоге в ЖЖ, слушайте бухтелки и прожекторыпрокрастиналогии. 
+          Присоединяйтесь!
+        br
+        p
+          a.link(href="http://www.youtube.com/user/Cartmendum?sub_confirmation=1", target="_blank") Подписаться на канал
+          |  (Нас&nbsp;уже&nbsp;261&nbsp;027)
+        br
+        br
+        br
+        +e.subtitle.subtitle Корпоративное обучение
+        p
+          span.zi-2 Если 
+          span.marker-1 вы считаете, что ваша 
+          span.zi-2  команда может быть эффективней, лучше  
+          span.marker-1 и счастливей -
+          span.zi-2  вы можете заказать 
+          |  у меня пробную встречу, 
+          |  где мы определим, как пройдет работа по апгрейду. 
+        br
+        +e.A.link.link(href="http://mnogosdelal.ru/trening/") Подробнее здесь
+      +e.right
+        +e.video-wrapper
+          +e.oval.oval-marker
+          a.youtube(href="https://www.youtube.com/watch?v=uGlzWZyVrBk")
+        +e.subtitle.subtitle Открытые тренинги 
+        p я провожу редко, <br> но вот 
+          a.link(href="http://mnogosdelal.ru/trening/") ближайшие.
+        //- +e.dates
+          +e.date-row
+            +e.date-val 2-3 марта
+            +e.A.date-city.link(href="") Ростов-на-Дону
+          +e.date-row
+            +e.date-val 7 июня
+            +e.A.date-city.link(href="") Иркутск
+          +e.date-row
+            +e.date-val 15 июня
+            +e.A.date-city.link(href="") Новосибирск
+  // END: do-now
+
+  #feedback
+    +feedback
+
+block modal
+  +feedback-modal
+
+block footer
+  .to-small
+    +socals(class="flex space-around")
+
+
+block side-left-center
+  .rotate
+    a.back-to-office.menu__link(href="index.html") Назад в офис
+
+block side-right-center
+  +socals(class="vertical")
+
+block side-right-bottom
+  .rotate
+    .lang
+      | RUS

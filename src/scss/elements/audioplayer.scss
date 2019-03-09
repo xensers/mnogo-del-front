@@ -1,0 +1,109 @@
+.audioplayer
+{
+    position: relative;
+
+    display: flex;
+
+    max-width: 100%;
+    height: 3.75em;
+
+    @include respond-to(small)
+    {
+        font-size: 0.8em;
+    }
+
+
+    &__button
+    {
+        width: 3.5em;
+        height: 3.5em;
+        margin-right: .625em;
+
+
+
+        cursor: pointer;
+
+        border: .125em solid #000;
+        border-radius: 50%;
+        background: #fff;
+
+        flex: 0 0 3.5em;
+
+        .audio-backfeed &
+        {
+            position: absolute;
+            top: -1em;
+            left: -3.2em;
+
+            transform: scale(.6);
+        }
+
+        &_icon
+        {
+            position: relative;
+
+            width: 2em;
+            height: 2em;
+            margin-top: .6em;
+            margin-left: .9em;
+
+            transition: 200ms all ease;
+            transform: scale(.8);
+
+            border-color: transparent transparent transparent #202020;
+        }
+
+        &.play &_icon
+        {
+            border-width: 1em 0 1em 1.6em;
+            border-style: solid;
+        }
+
+        &.pause &_icon
+        {
+            transform: translateX(-.1em) scale(.8);
+
+            border-width: 0 0 0 1.6em;
+            border-style: double;
+        }
+    }
+
+    &__timeline
+    {
+        position: relative;
+
+        width: 100%;
+        height: 2em;
+        margin-top: .6em;
+
+        &:after
+        {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            display: block;
+
+            width: 100%;
+            height: 100%;
+
+            content: '';
+
+            background: url('../images/audioplayer/timeline.svg');
+            background-position: left center;
+            background-size: auto 100%;
+        }
+    }
+
+    &__playhead
+    {
+        width: 100%;
+        height: 2.2em;
+        margin-top: .06em;
+
+        transform-origin: left center;
+
+        background: url('../images/audioplayer/playhead.png');
+        background-size: 100% 100%;
+    }
+}
